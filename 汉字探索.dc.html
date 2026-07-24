@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="九经书院 · 汉字哲学启蒙 — 文字探索：说文解字哲学系统 25 字核心数据集。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #9c2b23; color: #f4efe4; }
+  a { color: inherit; text-decoration: none; }
+  .i18n-en, .i18n-hant { display: none; }
+  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
+  .lang-hant .i18n-hant { display: inline; }
+  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
+  .lang-en .i18n-en { display: inline; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
+  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
+  .tile:hover { border-color: #9c2b23 !important; background: #faf4ec !important; }
+  .langbtn:hover { background:#22201d; color:#f4efe4; }
+  .back:hover { opacity: 1 !important; }
+  .rel-chip:hover { opacity: .7; }
+  .evo-item { cursor: pointer; }
+  .evo-item:hover .evo-ring { border-color: #d99a4e !important; transform: scale(1.1); }
+  @keyframes fadeSwap { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  input::placeholder { color: #a89f90; }
+  @media (max-width: 880px) {
+    .layout { grid-template-columns: 1fr !important; }
+    .detail-sticky { position: static !important; }
+  }
+  .footnav a:hover { color:#efe9dc !important; }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
+
+  <!-- TOP BAR -->
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="汉字哲学.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;transition:opacity .3s;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
+      <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回门户</span><span class="i18n-hant">返回門戶</span><span class="i18n-en">Portal</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">字</span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">汉字探索</span><span class="i18n-hant">漢字探索</span><span class="i18n-en en-serif" style="letter-spacing:1px;">Hanzi Explorer</span></span>
+    </div>
+    <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言 · Switch language" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .3s,color .3s;">{{ langLabel }}</button>
+  </header>
+
+  <!-- INTRO -->
+  <section style="max-width:1280px;margin:0 auto;padding:56px 5vw 30px;">
+    <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">肆 · 汉字哲学启蒙</span><span class="i18n-hant">肆 · 漢字哲學啟蒙</span><span class="i18n-en">IV · HANZI PHILOSOPHY</span></div>
+    <h1 style="margin:0;font-size:clamp(34px,5.5vw,64px);font-weight:700;letter-spacing:3px;line-height:1.1;"><span class="i18n-zh">一字一世界　文字探索</span><span class="i18n-hant">一字一世界　文字探索</span><span class="i18n-en en-serif">One Character, One World</span></h1>
+    <p style="max-width:640px;margin:22px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">选一个字，看它的构件、说文本义、哲学叙事与「勇哥说」——25 个核心字，来自说文解字哲学系统。深度内容暂以中文原文呈现。</span><span class="i18n-hant">選一個字，看它的構件、說文本義、哲學敘事與「勇哥說」——25 個核心字，來自說文解字哲學系統。深度內容暫以中文原文呈現。</span><span class="i18n-en">Choose a character to explore its components, Shuowen gloss, philosophical narrative and "Yong-ge Says" — 25 core characters from the Shuowen Philosophy System. Deep content is presented in Chinese for now.</span></p>
+  </section>
+
+  <!-- LAYOUT -->
+  <div class="layout" style="max-width:1280px;margin:0 auto;padding:20px 5vw 90px;display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start;">
+
+    <!-- PICKER -->
+    <div>
+      <div style="position:relative;margin-bottom:22px;">
+        <input value="{{ query }}" onInput="{{ onQuery }}" aria-label="搜寻汉字 · Search" placeholder="{{ searchPlaceholder }}" style="width:100%;padding:14px 16px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:1px;color:#22201d;background:#faf7ef;border:1px solid rgba(34,32,29,.18);outline:none;" />
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px;">
+        <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="16">
+          <button class="tile" onClick="{{ t.select }}" aria-label="{{ t.c }} {{ t.pinyin }}" style="aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;background:{{ t.bg }};border:1.5px solid {{ t.border }};transition:border-color .25s,background .25s;padding:0;">
+            <span style="font-size:32px;font-weight:600;line-height:1;color:{{ t.charColor }};">{{ t.c }}</span>
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:10.5px;letter-spacing:1px;color:{{ t.pyColor }};">{{ t.pinyin }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#8a857c;padding:24px 4px;"><span class="i18n-zh">未找到相符的字。</span><span class="i18n-hant">未找到相符的字。</span><span class="i18n-en">No matching characters.</span></div>
+      </sc-if>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#a89f90;margin-top:20px;"><span class="i18n-zh">共 {{ total }} 字 · 点选以探索</span><span class="i18n-hant">共 {{ total }} 字 · 點選以探索</span><span class="i18n-en">{{ total }} characters · tap to explore</span></div>
+    </div>
+
+    <!-- DETAIL -->
+    <div class="detail-sticky" style="position:sticky;top:96px;">
+      <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+      <div key="{{ sel.c }}" style="background:#faf7ef;border:1px solid rgba(34,32,29,.1);padding:44px 42px;animation:fadeSwap .4s ease;">
+
+        <!-- big char + meta -->
+        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="width:150px;height:150px;flex-shrink:0;background:#f4efe4;border:1px solid rgba(34,32,29,.12);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:96px;font-weight:500;line-height:1;color:#22201d;">{{ sel.c }}</span>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px;flex-wrap:wrap;">
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:22px;letter-spacing:2px;color:#9c2b23;">{{ sel.pinyin }}</span>
+              <sc-if value="{{ sel.hasTraditional }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:20px;color:#8a857c;">（繁：{{ sel.traditional }}）</span>
+              </sc-if>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:13px;color:{{ sel.portalColor }};padding:3px 10px;border:1px solid {{ sel.portalColor }};">{{ sel.portalZh }}</span>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8a857c;">{{ sel.structure }}</span>
+            </div>
+            <p style="margin:0 0 16px;font-size:19px;font-weight:600;line-height:1.6;letter-spacing:.5px;color:#22201d;">{{ sel.hero }}</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <sc-for list="{{ sel.stages }}" as="st" hint-placeholder-count="4">
+                <span style="font-family:'Noto Sans SC',sans-serif;font-size:11.5px;letter-spacing:1px;padding:5px 12px;border:1px solid {{ st.border }};color:{{ st.color }};background:{{ st.bg }};">{{ st.label }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- 构件拆解 -->
+        <div style="margin-top:32px;">
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin-bottom:12px;"><span class="i18n-zh">构　件</span><span class="i18n-hant">構　件</span><span class="i18n-en">COMPONENTS</span></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <sc-for list="{{ sel.components }}" as="cp" hint-placeholder-count="2">
+              <div style="display:flex;align-items:center;gap:10px;background:#f4efe4;border:1px solid rgba(34,32,29,.12);padding:10px 16px;">
+                <span style="font-size:24px;font-weight:600;color:#22201d;">{{ cp.c }}</span>
+                <span style="font-family:'Noto Sans SC',sans-serif;font-size:12.5px;color:#55504a;">{{ cp.meaning }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- 说文 -->
+        <div style="margin-top:26px;padding:20px 22px;border-left:2px solid #9c2b23;background:rgba(156,43,35,.05);">
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:11.5px;letter-spacing:3px;color:#9c2b23;margin-bottom:8px;">《说文解字》</div>
+          <p style="margin:0;font-size:16px;line-height:1.8;font-style:italic;color:#3b3833;">{{ sel.shuowen }}</p>
+        </div>
+
+        <!-- 叙事 -->
+        <div style="margin-top:30px;">
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin-bottom:14px;"><span class="i18n-zh">文明编码解读</span><span class="i18n-hant">文明編碼解讀</span><span class="i18n-en">CIVILIZATIONAL READING</span></div>
+          <sc-for list="{{ sel.narrative }}" as="para" hint-placeholder-count="3">
+            <p style="margin:0 0 16px;font-family:'Noto Sans SC',sans-serif;font-size:14.5px;line-height:2.05;color:#3b3833;font-weight:300;">{{ para }}</p>
+          </sc-for>
+        </div>
+
+        <!-- 勇哥说 -->
+        <div style="margin-top:8px;background:#22201d;color:#efe9dc;padding:28px 28px;">
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#d99a4e;margin-bottom:14px;">勇哥说</div>
+          <sc-for list="{{ sel.yongge }}" as="yp" hint-placeholder-count="2">
+            <p style="margin:0 0 14px;font-size:16px;line-height:1.85;color:#efe9dc;font-weight:400;letter-spacing:.3px;">{{ yp }}</p>
+          </sc-for>
+        </div>
+
+        <!-- 道字六体真迹（仅道字） -->
+        <sc-if value="{{ selIsDao }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:30px;">
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin-bottom:14px;"><span class="i18n-zh">字形演变 · 金文 → 楷书（书法真迹）</span><span class="i18n-hant">字形演變 · 金文 → 楷書（書法真跡）</span><span class="i18n-en">EVOLUTION · Bronze → Regular (calligraphy)</span></div>
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;">
+              <sc-for list="{{ daoEvo }}" as="e" hint-placeholder-count="6">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;">
+                  <div class="evo-ring" style="width:100%;max-width:60px;aspect-ratio:1;border:1.5px solid rgba(34,32,29,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f4efe4;">
+                    <img src="{{ e.img }}" alt="道 {{ e.lab }}" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" />
+                  </div>
+                  <span style="font-family:'Noto Sans SC',sans-serif;font-size:10px;color:#8a857c;white-space:nowrap;">{{ e.lab }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- 关联字族 -->
+        <div style="margin-top:32px;padding-top:26px;border-top:1px solid rgba(34,32,29,.1);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;">
+          <sc-if value="{{ sel.hasSound }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:2px;color:#a89f90;margin-bottom:8px;">同声符</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <sc-for list="{{ sel.soundChips }}" as="rc" hint-placeholder-count="3">
+                  <span class="rel-chip" onClick="{{ rc.select }}" style="font-size:16px;color:{{ rc.color }};cursor:{{ rc.cursor }};padding:2px 4px;">{{ rc.c }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:2px;color:#a89f90;margin-bottom:8px;">同形符</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ sel.formChips }}" as="rc" hint-placeholder-count="4">
+                <span class="rel-chip" onClick="{{ rc.select }}" style="font-size:16px;color:{{ rc.color }};cursor:{{ rc.cursor }};padding:2px 4px;">{{ rc.c }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:2px;color:#a89f90;margin-bottom:8px;">同义符</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ sel.meaningChips }}" as="rc" hint-placeholder-count="4">
+                <span class="rel-chip" onClick="{{ rc.select }}" style="font-size:16px;color:{{ rc.color }};cursor:{{ rc.cursor }};padding:2px 4px;">{{ rc.c }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- 字外关联 -->
+        <sc-if value="{{ sel.hasNotes }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:30px;padding-top:26px;border-top:1px solid rgba(34,32,29,.1);">
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:2px;color:#a89f90;margin-bottom:14px;">字外关联</div>
+            <sc-for list="{{ sel.notes }}" as="nt" hint-placeholder-count="2">
+              <div style="display:flex;gap:14px;align-items:baseline;margin-bottom:14px;">
+                <span class="rel-chip" onClick="{{ nt.select }}" style="font-size:22px;font-weight:600;color:{{ nt.color }};cursor:{{ nt.cursor }};flex-shrink:0;">{{ nt.c }}</span>
+                <p style="margin:0;font-family:'Noto Sans SC',sans-serif;font-size:13.5px;line-height:1.9;color:#55504a;font-weight:300;">{{ nt.relation }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" aria-label="快速导览" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="九经书院.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">首页</span><span class="i18n-hant">首頁</span><span class="i18n-en">Home</span></a>
+        <a href="九经书院.dc.html#classics" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+        <a href="觉智哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+        <a href="情爱哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></a>
+        <a href="汉字哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Hanzi Philosophy</span></a>
+        <a href="超级管理学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en">News</span></a>
+        <a href="学员风采.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en">Enroll</span></a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;"><span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span><span style="letter-spacing:3px;"><span class="i18n-zh">九经书院</span><span class="i18n-hant">九經書院</span><span class="i18n-en">Jiujing Academy</span></span></a>
+        <div style="opacity:.7;">© 2026 九经书院 · 汉字探索</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    selectedC: (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('char')) || '道',
+    query: '', lang: 'zh', chars: null, portals: null
+  };
+
+  componentDidMount() {
+    import('./hanzi-data.js').then((mod) => {
+      this.setState({ chars: mod.HANZI_CHARS, portals: mod.PORTALS });
+    });
+  }
+
+  daoEvoImgs() {
+    return [
+      { lab: '金文', img: 'assets/hanzi-dao-1.png' },
+      { lab: '楚简', img: 'assets/hanzi-dao-2.png' },
+      { lab: '小篆', img: 'assets/hanzi-dao-3.png' },
+      { lab: '秦牍', img: 'assets/hanzi-dao-4.png' },
+      { lab: '隶书', img: 'assets/hanzi-dao-5.png' },
+      { lab: '楷书', img: 'assets/hanzi-dao-6.png' }
+    ];
+  }
+
+  renderVals() {
+    const chars = this.state.chars || [];
+    const portals = this.state.portals || {};
+    const q = this.state.query.trim().toLowerCase();
+    const filtered = q
+      ? chars.filter((c) => c.c.includes(q) || c.pinyin.toLowerCase().includes(q) || (c.hero || '').includes(q))
+      : chars;
+
+    const sel = chars.find((c) => c.c === this.state.selectedC) || chars[0];
+
+    const tiles = filtered.map((c) => {
+      const active = sel && c.c === sel.c;
+      return {
+        c: c.c,
+        pinyin: c.pinyin,
+        bg: active ? '#22201d' : '#faf7ef',
+        border: active ? '#22201d' : 'rgba(34,32,29,.14)',
+        charColor: active ? '#f4efe4' : '#22201d',
+        pyColor: active ? '#c3bcae' : '#8a857c',
+        select: () => this.setState({ selectedC: c.c })
+      };
+    });
+
+    let selVals = null;
+    if (sel) {
+      const p = portals[sel.portal] || { zh: '', color: '#9c2b23' };
+      const stages = [
+        { label: '甲骨文', on: !!sel.oracle },
+        { label: '金文', on: !!sel.bronze },
+        { label: '小篆', on: !!sel.seal },
+        { label: '楷书', on: true }
+      ].map((s) => ({
+        label: s.label,
+        color: s.on ? '#9c2b23' : '#a89f90',
+        border: s.on ? 'rgba(156,43,35,.4)' : 'rgba(34,32,29,.12)',
+        bg: s.on ? 'rgba(156,43,35,.06)' : 'transparent'
+      }));
+
+      const findIn = (arr) => arr.includes(sel.c);
+      const mkChips = (list) => list.map((c) => {
+        const exists = chars.some((x) => x.c === c);
+        return {
+          c,
+          color: exists ? '#9c2b23' : '#22201d',
+          cursor: exists ? 'pointer' : 'default',
+          select: exists ? () => this.setState({ selectedC: c }) : () => {}
+        };
+      });
+
+      selVals = {
+        c: sel.c,
+        pinyin: sel.pinyin,
+        hasTraditional: !!sel.traditional,
+        traditional: sel.traditional || '',
+        structure: sel.structure,
+        hero: sel.hero,
+        portalZh: p.zh,
+        portalColor: p.color,
+        stages,
+        components: sel.components,
+        shuowen: sel.shuowen,
+        narrative: sel.narrative,
+        yongge: sel.yongge,
+        hasSound: sel.relSound && sel.relSound.length > 0,
+        soundChips: mkChips(sel.relSound || []),
+        formChips: mkChips(sel.relForm || []),
+        meaningChips: mkChips(sel.relMeaning || []),
+        hasNotes: !!(sel.notes && sel.notes.length),
+        notes: (sel.notes || []).map((n) => {
+          const exists = chars.some((x) => x.c === n.c);
+          return { c: n.c, relation: n.relation, color: exists ? '#9c2b23' : '#22201d', cursor: exists ? 'pointer' : 'default', select: exists ? () => this.setState({ selectedC: n.c }) : () => {} };
+        })
+      };
+    }
+
+    const lang = this.state.lang;
+    const en = lang === 'en';
+    const hant = lang === 'hant';
+    const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
+    const langLabels = { zh: '繁', hant: 'EN', en: '简' };
+
+    return {
+      rootClass: en ? 'lang-en' : (hant ? 'lang-hant' : ''),
+      langLabel: langLabels[lang],
+      toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
+      searchPlaceholder: en ? 'Search character / pinyin…' : (hant ? '搜尋漢字 / 拼音…' : '搜寻汉字 / 拼音…'),
+      query: this.state.query,
+      onQuery: (e) => this.setState({ query: e.target.value }),
+      tiles,
+      total: chars.length,
+      noResults: chars.length > 0 && filtered.length === 0,
+      hasSel: !!sel,
+      sel: selVals || {},
+      selIsDao: !!sel && sel.c === '道',
+      daoEvo: this.daoEvoImgs()
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="九经书院 · 汉字哲学启蒙 — 一文一世界，一字一文明。五大门户，探寻汉字里的文明编码。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #9c2b23; color: #f4efe4; }
+  a { color: inherit; text-decoration: none; }
+  .i18n-en, .i18n-hant { display: none; }
+  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
+  .lang-hant .i18n-hant { display: inline; }
+  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
+  .lang-en .i18n-en { display: inline; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
+  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
+  .langbtn:hover { background:#22201d; color:#f4efe4; }
+  .back:hover { opacity: 1 !important; }
+  .today-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(34,32,29,.14); }
+  .portal-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .portal-card:hover { transform: translateY(-4px); }
+  .chip:hover { background: rgba(255,255,255,.16) !important; }
+  .chip-light:hover { background: rgba(34,32,29,.08) !important; }
+  @media (max-width: 880px) {
+    .portals-grid { grid-template-columns: 1fr !important; }
+  }
+  .footnav a:hover { color:#efe9dc !important; }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
+
+  <!-- TOP BAR -->
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="九经书院.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;transition:opacity .3s;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
+      <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回书院</span><span class="i18n-hant">返回書院</span><span class="i18n-en">Academy</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">字</span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">汉字哲学启蒙</span><span class="i18n-hant">漢字哲學啟蒙</span><span class="i18n-en en-serif" style="letter-spacing:1px;">Hanzi Philosophy</span></span>
+    </div>
+    <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言 · Switch language" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .3s,color .3s;">{{ langLabel }}</button>
+  </header>
+
+  <!-- HERO -->
+  <section style="max-width:1160px;margin:0 auto;padding:64px 5vw 20px;text-align:center;">
+    <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:18px;"><span class="i18n-zh">肆 · 汉字哲学启蒙</span><span class="i18n-hant">肆 · 漢字哲學啟蒙</span><span class="i18n-en">IV · HANZI PHILOSOPHY</span></div>
+    <h1 style="margin:0;font-size:clamp(34px,5.5vw,64px);font-weight:700;letter-spacing:3px;line-height:1.15;"><span class="i18n-zh">一文一世界　一字一文明</span><span class="i18n-hant">一文一世界　一字一文明</span><span class="i18n-en en-serif">One Character, One World</span></h1>
+    <p style="max-width:600px;margin:26px auto 0;font-family:'Noto Sans SC',sans-serif;font-size:15.5px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">每一个汉字，都是中国文明的一次编码决策。从天地自然到哲思之字，五大门户，带你由字入文，由文入道。</span><span class="i18n-hant">每一個漢字，都是中國文明的一次編碼決策。從天地自然到哲思之字，五大門戶，帶你由字入文，由文入道。</span><span class="i18n-en">Every Chinese character is a civilizational encoding decision. Five portals — from Heaven and Earth to words of philosophy — lead from character to text, from text to Dao.</span></p>
+  </section>
+
+  <!-- TODAY'S CHARACTER -->
+  <section style="max-width:1160px;margin:0 auto;padding:36px 5vw 10px;">
+    <a href="{{ todayHref }}" class="today-card" style="display:flex;align-items:center;gap:36px;background:#22201d;color:#efe9dc;padding:40px 44px;transition:transform .3s ease, box-shadow .3s ease;flex-wrap:wrap;">
+      <div style="width:104px;height:104px;flex-shrink:0;border:1px solid rgba(239,233,220,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:52px;color:#d99a4e;line-height:1;">{{ today.c }}</span>
+      </div>
+      <div style="flex:1;min-width:220px;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#d99a4e;margin-bottom:10px;"><span class="i18n-zh">今 日 一 字</span><span class="i18n-hant">今 日 一 字</span><span class="i18n-en">CHARACTER OF THE DAY</span></div>
+        <p style="margin:0;font-size:19px;font-weight:500;line-height:1.7;letter-spacing:.5px;">{{ today.hero }}</p>
+      </div>
+      <span style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:2px;color:#c3bcae;white-space:nowrap;"><span class="i18n-zh">进入完整叙事 →</span><span class="i18n-hant">進入完整敘事 →</span><span class="i18n-en">Full narrative →</span></span>
+    </a>
+  </section>
+
+  <!-- PORTALS -->
+  <section style="max-width:1160px;margin:0 auto;padding:56px 5vw 20px;">
+    <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;margin-bottom:26px;"><span class="i18n-zh">五 大 门 户</span><span class="i18n-hant">五 大 門 戶</span><span class="i18n-en">FIVE PORTALS</span></div>
+    <div class="portals-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;">
+      <sc-for list="{{ portals }}" as="p" hint-placeholder-count="5">
+        <div class="portal-card" style="background:{{ p.bg }};color:{{ p.fg }};padding:36px 34px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:{{ p.accent }};">{{ p.no }}</span>
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:{{ p.muted }};">{{ p.q }}</span>
+          </div>
+          <h3 style="margin:0 0 12px;font-size:26px;font-weight:700;letter-spacing:2px;"><span class="i18n-zh">{{ p.zh }}</span><span class="i18n-hant">{{ p.hant }}</span><span class="i18n-en en-serif">{{ p.en }}</span></h3>
+          <p style="margin:0 0 22px;font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.95;font-weight:300;color:{{ p.body }};flex:1;"><span class="i18n-zh">{{ p.narZh }}</span><span class="i18n-hant">{{ p.narHant }}</span><span class="i18n-en">{{ p.narEn }}</span></p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ p.chars }}" as="ch" hint-placeholder-count="3">
+              <a href="{{ ch.href }}" class="{{ p.chipClass }}" style="padding:7px 15px;border:1px solid {{ p.chipBorder }};font-size:14px;letter-spacing:1px;transition:background .25s;">{{ ch.c }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:8px;padding:20px 4px;font-family:'Noto Sans SC',sans-serif;font-size:12.5px;letter-spacing:.5px;color:#a89f90;"><span class="i18n-zh">三系关系网可视化（声符 · 形符 · 义符）即将上线——敬请期待。</span><span class="i18n-hant">三系關係網可視化（聲符 · 形符 · 義符）即將上線——敬請期待。</span><span class="i18n-en">A visualization of the sound / form / meaning relationship network is coming soon.</span></div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1160px;margin:0 auto;padding:40px 5vw 90px;text-align:center;">
+    <a href="汉字探索.dc.html" style="display:inline-block;padding:16px 42px;background:#9c2b23;color:#f4efe4;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;font-weight:500;">
+      <span class="i18n-zh">开始探索</span><span class="i18n-hant">開始探索</span><span class="i18n-en">Start Exploring</span>
+    </a>
+  </section>
+
+  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" aria-label="快速导览" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="九经书院.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">首页</span><span class="i18n-hant">首頁</span><span class="i18n-en">Home</span></a>
+        <a href="九经书院.dc.html#classics" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+        <a href="觉智哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+        <a href="情爱哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></a>
+        <a href="汉字哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Hanzi Philosophy</span></a>
+        <a href="超级管理学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en">News</span></a>
+        <a href="学员风采.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en">Enroll</span></a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;"><span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span><span style="letter-spacing:3px;"><span class="i18n-zh">九经书院</span><span class="i18n-hant">九經書院</span><span class="i18n-en">Jiujing Academy</span></span></a>
+        <div style="opacity:.7;">© 2026 九经书院 · 汉字哲学启蒙</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'zh', chars: [], portalsData: {} };
+
+  componentDidMount() {
+    import('./hanzi-data.js').then((mod) => {
+      this.setState({ chars: mod.HANZI_CHARS, portalsData: mod.PORTALS });
+    });
+  }
+
+  portalDefs() {
+    return [
+      { id: 'nature', no: '壹', zh: '天地自然', hant: '天地自然', en: 'Heaven & Earth', q: '人是怎么看世界的？', bg: '#eef2ee', fg: '#22201d', accent: '#3f7268', muted: '#6b7b76', body: '#4a544f', chipBorder: 'rgba(63,114,104,.4)', chipClass: 'chip-light', narZh: '古人抬头看天，画一个圆，中间点一点，这是「日」。日月为「明」——两个最简单的图画，造出了「光明」这个概念。', narHant: '古人抬頭看天，畫一個圓，中間點一點，這是「日」。日月為「明」——兩個最簡單的圖畫，造出了「光明」這個概念。', narEn: 'The ancients looked up at the sky and drew a circle with a dot — 日, "sun." Sun plus moon becomes 明, "brightness" — two simple pictures encoding the concept of light itself.' },
+      { id: 'self', no: '贰', zh: '人身自知', hant: '人身自知', en: 'Body & Self', q: '人是怎么看自己的？', bg: '#f7ece8', fg: '#22201d', accent: '#9c2b23', muted: '#8a6b63', body: '#5a453f', chipBorder: 'rgba(156,43,35,.35)', chipClass: 'chip-light', narZh: '「人」是侧面微躬的人形；「仁」=人+二，两个人在一起，就有了仁——不是从定义推导的伦理，而是从空间关系直接视觉化的直觉。', narHant: '「人」是側面微躬的人形；「仁」=人+二，兩個人在一起，就有了仁——不是從定義推導的倫理，而是從空間關係直接視覺化的直覺。', narEn: '"人" is a figure bowed in profile; "仁" (benevolence) = person + two — two people together already make benevolence, an ethical intuition visualized directly from spatial relation.' },
+      { id: 'society', no: '叁', zh: '社会秩序', hant: '社會秩序', en: 'Social Order', q: '人是怎么组织起来的？', bg: '#f8f1e2', fg: '#22201d', accent: '#b3822f', muted: '#8c7a53', body: '#5a4f38', chipBorder: 'rgba(179,130,47,.4)', chipClass: 'chip-light', narZh: '「家」=宀+豕，屋顶下面养猪——不是抽象的家庭，而是具体的经济—空间单元。汉字的社会概念，总是从具体生活长出来的。', narHant: '「家」=宀+豕，屋頂下面養豬——不是抽象的家庭，而是具體的經濟—空間單元。漢字的社會概念，總是從具體生活長出來的。', narEn: '"家" (family) = roof + pig — a household raising livestock, not an abstract family unit but a concrete economic-spatial one. Social concepts in Hanzi always grow out of lived life.' },
+      { id: 'wisdom', no: '肆', zh: '智识之路', hant: '智識之路', en: 'The Path of Knowing', q: '人是怎么认知和表达的？', bg: '#eceef2', fg: '#22201d', accent: '#5c6b78', muted: '#727d87', body: '#454e56', chipBorder: 'rgba(92,107,120,.4)', chipClass: 'chip-light', narZh: '「道」=辵+首，辵是行走，首是头——道不是静止的规则，而是行走中的方向辨认。这是中国哲学最古老的直觉：道，始终保有它走在路上的字形记忆。', narHant: '「道」=辵+首，辵是行走，首是頭——道不是靜止的規則，而是行走中的方向辨認。這是中國哲學最古老的直覺：道，始終保有它走在路上的字形記憶。', narEn: '"道" (Dao) = walk + head — not a static rule, but direction discerned while walking. Chinese philosophy\u2019s oldest intuition: the Dao keeps, in its very form, the memory of walking the road.' },
+      { id: 'philosophy', no: '伍', zh: '哲思之字', hant: '哲思之字', en: 'Words of Philosophy', q: '字里面藏着什么哲学？', bg: '#22201d', fg: '#efe9dc', accent: '#d99a4e', muted: '#b7b0a2', body: '#c3bcae', chipBorder: 'rgba(217,154,78,.4)', chipClass: 'chip', narZh: '道、德、心、中、和、无、易——每一个哲学核心字，都沿「古文字形→说文释义→构造分析→二阶性解读」这条线展开。这是启蒙的最终指向：不是识字，而是理解文明的底层编码。', narHant: '道、德、心、中、和、無、易——每一個哲學核心字，都沿「古文字形→說文釋義→構造分析→二階性解讀」這條線展開。這是啟蒙的最終指向：不是識字，而是理解文明的底層編碼。', narEn: 'Dao, De, Heart, Mean, Harmony, Nothingness, Change — each philosophical core character unfolds from ancient form to Shuowen gloss to structural analysis to a second-order reading. Enlightenment\u2019s true aim: not literacy, but understanding civilization\u2019s deep code.' }
+    ];
+  }
+
+  renderVals() {
+    const chars = this.state.chars || [];
+    const hasChars = chars.length > 0;
+    const dayIndex = hasChars ? Math.floor(Date.now() / 86400000) % chars.length : 0;
+    const today = hasChars ? chars[dayIndex] : { c: '道', hero: '', pinyin: '' };
+    const portals = this.portalDefs().map((p) => ({
+      ...p,
+      chars: chars.filter((c) => c.portal === p.id).map((c) => ({ c: c.c, href: '汉字探索.dc.html?char=' + encodeURIComponent(c.c) }))
+    }));
+
+    const lang = this.state.lang;
+    const en = lang === 'en';
+    const hant = lang === 'hant';
+    const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
+    const langLabels = { zh: '繁', hant: 'EN', en: '简' };
+
+    return {
+      rootClass: en ? 'lang-en' : (hant ? 'lang-hant' : ''),
+      langLabel: langLabels[lang],
+      toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
+      today,
+      hasChars,
+      todayHref: '汉字探索.dc.html?char=' + encodeURIComponent(today.c),
+      portals
+    };
+  }
+}
+
+</script>
+</body>
+</html>

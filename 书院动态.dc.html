@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="description" content="九经书院 · 动态与文章 — 会讲、讲座、游学与经义札记。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #9c2b23; color: #f4efe4; }
+  a { color: inherit; text-decoration: none; }
+  .i18n-en, .i18n-hant { display: none; }
+  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
+  .lang-hant .i18n-hant { display: inline; }
+  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
+  .lang-en .i18n-en { display: inline; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
+  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
+  .langbtn:hover { background:#22201d; color:#f4efe4; }
+  .back:hover { opacity:1 !important; }
+  .filt:hover { border-color:#9c2b23 !important; }
+  .art:hover { border-color:#9c2b23 !important; transform:translateY(-3px); }
+  .art { transition:transform .3s, border-color .3s; }
+  .footnav a:hover { color:#efe9dc !important; }
+  [data-reveal] { opacity:0; }
+  [data-reveal].seen { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; opacity:1; }
+  @keyframes rise { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+  @media (max-width:900px){ .grid{ grid-template-columns:1fr 1fr !important; } .feat{ grid-template-columns:1fr !important; } }
+  @media (max-width:600px){ .grid{ grid-template-columns:1fr !important; } }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="九经书院.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;transition:opacity .3s;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
+      <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回书院</span><span class="i18n-hant">返回書院</span><span class="i18n-en">Academy</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">动</span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en en-serif" style="letter-spacing:1px;">News &amp; Writings</span></span>
+    </div>
+    <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言 · Switch language" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .3s,color .3s;">{{ langLabel }}</button>
+  </header>
+
+  <section style="max-width:1200px;margin:0 auto;padding:56px 5vw 20px;">
+    <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">书院动态 · 文章</span><span class="i18n-hant">書院動態 · 文章</span><span class="i18n-en">NEWS · WRITINGS</span></div>
+    <h1 style="margin:0;font-size:clamp(34px,5.5vw,60px);font-weight:700;letter-spacing:3px;line-height:1.1;"><span class="i18n-zh">会讲 · 讲座 · 游学 · 札记</span><span class="i18n-hant">會講 · 講座 · 遊學 · 札記</span><span class="i18n-en en-serif">Seminars · Lectures · Journeys · Notes</span></h1>
+  </section>
+
+  <!-- FEATURED -->
+  <section style="max-width:1200px;margin:0 auto;padding:36px 5vw 20px;">
+    <a href="书院动态详情.dc.html?id=0" class="art feat" data-reveal style="display:grid;grid-template-columns:1.1fr 1fr;border:1px solid rgba(34,32,29,.12);background:#faf7ef;overflow:hidden;">
+      <div style="aspect-ratio:16/11;background:url('uploads/734b48a581091a17db2428e3ab683227.jpg') center/cover;position:relative;display:flex;align-items:center;justify-content:center;">
+        <span style="position:absolute;top:16px;left:16px;background:#9c2b23;color:#f4efe4;font-family:'Noto Sans SC',sans-serif;font-size:12px;padding:5px 12px;letter-spacing:2px;"><span class="i18n-zh">置顶 · 会讲</span><span class="i18n-hant">置頂 · 會講</span><span class="i18n-en">Featured · Seminar</span></span>
+      </div>
+      <div style="padding:44px 42px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;color:#9c2b23;margin-bottom:14px;">丙申 · 孟秋 · 2026.08</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:1px;line-height:1.4;"><span class="i18n-zh">「易道与时变」秋季会讲</span><span class="i18n-hant">「易道與時變」秋季會講</span><span class="i18n-en en-serif">Autumn Seminar: The Dao of Change and the Times</span></h2>
+        <p style="margin:0 0 24px;font-family:'Noto Sans SC',sans-serif;font-size:14.5px;line-height:1.95;color:#55504a;font-weight:300;"><span class="i18n-zh">山长主席，以《周易》为纲，论变易之道如何应于当世之治。开放旁听，额满为止。</span><span class="i18n-hant">山長主席，以《周易》為綱，論變易之道如何應於當世之治。開放旁聽，額滿為止。</span><span class="i18n-en">Chaired by the principal, taking the Book of Changes as guide — how the way of change applies to governing our age. Open to auditors while seats last.</span></p>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;color:#9c2b23;font-weight:500;"><span class="i18n-zh">阅读全文 →</span><span class="i18n-hant">閱讀全文 →</span><span class="i18n-en">Read more →</span></span>
+      </div>
+    </a>
+  </section>
+
+  <!-- FILTERS -->
+  <section style="max-width:1200px;margin:0 auto;padding:34px 5vw 10px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button class="filt" onClick="{{ f.select }}" style="cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;padding:9px 20px;background:{{ f.bg }};color:{{ f.color }};border:1px solid {{ f.border }};transition:border-color .2s;"><span class="i18n-zh">{{ f.zh }}</span><span class="i18n-hant">{{ f.hant }}</span><span class="i18n-en">{{ f.en }}</span></button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section style="max-width:1200px;margin:0 auto;padding:26px 5vw 90px;">
+    <div class="grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
+        <a href="{{ a.href }}" class="art" style="display:block;border:1px solid rgba(34,32,29,.12);background:#faf7ef;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:{{ a.bandBg }};position:relative;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Ma Shan Zheng',cursive;font-size:52px;color:{{ a.glyphColor }};">{{ a.glyph }}</span>
+            <span style="position:absolute;top:14px;left:14px;background:{{ a.tagBg }};color:#f4efe4;font-family:'Noto Sans SC',sans-serif;font-size:11.5px;padding:4px 11px;letter-spacing:2px;"><span class="i18n-zh">{{ a.catZh }}</span><span class="i18n-hant">{{ a.catHant }}</span><span class="i18n-en">{{ a.catEn }}</span></span>
+          </div>
+          <div style="padding:24px 24px 28px;">
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#a89f90;margin-bottom:10px;">{{ a.date }}</div>
+            <h3 style="margin:0 0 10px;font-size:18px;font-weight:600;line-height:1.55;letter-spacing:.5px;"><span class="i18n-zh">{{ a.titleZh }}</span><span class="i18n-hant">{{ a.titleHant }}</span><span class="i18n-en en-serif">{{ a.titleEn }}</span></h3>
+            <p style="margin:0;font-family:'Noto Sans SC',sans-serif;font-size:13px;line-height:1.85;color:#7a7266;font-weight:300;"><span class="i18n-zh">{{ a.excZh }}</span><span class="i18n-hant">{{ a.excHant }}</span><span class="i18n-en">{{ a.excEn }}</span></p>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#8a857c;padding:50px 4px;text-align:center;"><span class="i18n-zh">此类暂无内容。</span><span class="i18n-hant">此類暫無內容。</span><span class="i18n-en">Nothing in this category yet.</span></div>
+    </sc-if>
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#a89f90;padding:50px 4px;text-align:center;"><span class="i18n-zh">载入中…</span><span class="i18n-hant">載入中…</span><span class="i18n-en">Loading…</span></div>
+    </sc-if>
+    <sc-if value="{{ loadError }}" hint-placeholder-val="{{ false }}">
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#c0392b;padding:50px 4px;text-align:center;"><span class="i18n-zh">动态内容载入失败，请稍后重试。</span><span class="i18n-hant">動態內容載入失敗，請稍後重試。</span><span class="i18n-en">Failed to load news content. Please try again later.</span></div>
+    </sc-if>
+  </section>
+
+  <!-- 订阅 -->
+  <section style="background:#22201d;color:#efe9dc;padding:70px 5vw;">
+    <div style="max-width:720px;margin:0 auto;text-align:center;">
+      <div style="font-family:'Ma Shan Zheng',cursive;font-size:40px;color:#d99a4e;line-height:1;margin-bottom:18px;">闻道有先后</div>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#c3bcae;font-weight:300;margin:0 0 30px;"><span class="i18n-zh">会讲、讲座与游学信息，将先发于书院。留下电邮，不错过每一次相聚。</span><span class="i18n-hant">會講、講座與遊學信息，將先發於書院。留下電郵，不錯過每一次相聚。</span><span class="i18n-en">Seminars, lectures and study journeys are announced here first. Leave your email so you never miss a gathering.</span></p>
+      <a href="报名入学.dc.html" style="display:inline-block;padding:15px 40px;background:#d99a4e;color:#22201d;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;font-weight:500;"><span class="i18n-zh">订阅书院消息</span><span class="i18n-hant">訂閱書院消息</span><span class="i18n-en">Subscribe</span></a>
+    </div>
+  </section>
+
+  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" aria-label="快速导览" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="九经书院.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">首页</span><span class="i18n-hant">首頁</span><span class="i18n-en">Home</span></a>
+        <a href="九经书院.dc.html#classics" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+        <a href="觉智哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+        <a href="情爱哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></a>
+        <a href="汉字哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Hanzi Philosophy</span></a>
+        <a href="超级管理学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en">News</span></a>
+        <a href="学员风采.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en">Enroll</span></a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;"><span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span><span style="letter-spacing:3px;"><span class="i18n-zh">九经书院</span><span class="i18n-hant">九經書院</span><span class="i18n-en">Jiujing Academy</span></span></a>
+        <div style="opacity:.7;">© 2026 九经书院 · 动态</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'zh', cat: 'all', items: null, loadError: false };
+
+  componentDidMount() {
+    fetch('data/news-articles.json')
+      .then((r) => { if (!r.ok) throw new Error('load failed'); return r.json(); })
+      .then((items) => this.setState({ items }))
+      .catch(() => this.setState({ loadError: true, items: [] }));
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const en = lang === 'en';
+    const hant = lang === 'hant';
+    const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
+    const langLabels = { zh: '繁', hant: 'EN', en: '简' };
+    const cats = [
+      { id: 'all', zh: '全部', hant: '全部', en: 'All' },
+      { id: 'seminar', zh: '会讲', hant: '會講', en: 'Seminar' },
+      { id: 'lecture', zh: '讲座', hant: '講座', en: 'Lecture' },
+      { id: 'journey', zh: '游学', hant: '遊學', en: 'Journey' },
+      { id: 'note', zh: '札记', hant: '札記', en: 'Notes' },
+      { id: 'student', zh: '学员', hant: '學員', en: 'Student' }
+    ];
+    const filters = cats.map((c) => {
+      const active = c.id === this.state.cat;
+      return { ...c, select: () => this.setState({ cat: c.id }),
+        bg: active ? '#22201d' : 'transparent', color: active ? '#f4efe4' : '#55504a', border: active ? '#22201d' : 'rgba(34,32,29,.22)' };
+    });
+    const loading = this.state.items === null;
+    const allRaw = this.state.items || [];
+    const catHantMap = { seminar: '會講', lecture: '講座', journey: '遊學', note: '札記', student: '學員' };
+    const hantOverrides = {
+      '易道与时变 · 秋季会讲预告': '易道與時變 · 秋季會講預告',
+      '礼乐与人伦 · 三礼专题第三讲': '禮樂與人倫 · 三禮專題第三講',
+      '文庙谒圣暨曲阜访碑游学': '文廟謁聖暨曲阜訪碑遊學',
+      '反思与返思 · 觉之二阶性札记': '反思與返思 · 覺之二階性札記',
+      '一字一世界 · 说「道」': '一字一世界 · 說「道」',
+      '管理即修行 · 超级管理学公开课': '管理即修行 · 超級管理學公開課',
+      '一位学员的札记：初读《传习录》有感': '一位學員的札記：初讀《傳習錄》有感',
+      '曲阜访碑随行记': '曲阜訪碑隨行記'
+    };
+    const excHantOverrides = {
+      '以《周易》为纲，论变易之道如何应于当世之治。': '以《周易》為綱，論變易之道如何應於當世之治。',
+      '从三礼出发，重探礼之为序与乐之为和的当代意义。': '從三禮出發，重探禮之為序與樂之為和的當代意義。',
+      '谒圣访碑，于古迹之间体认道统之所传。': '謁聖訪碑，於古蹟之間體認道統之所傳。',
+      '辨析一阶反思与二阶返思之别，觉之实现不可摹。': '辨析一階反思與二階返思之別，覺之實現不可摹。',
+      '从金文到楷书，看「道」字如何承载一部文明的思想。': '從金文到楷書，看「道」字如何承載一部文明的思想。',
+      '以治己治人治事为纲，讲觉智哲学如何落地于组织。': '以治己治人治事為綱，講覺智哲學如何落地於組織。',
+      '从知行合一到反躬自省，记一位学员的入门体悟。': '從知行合一到反躬自省，記一位學員的入門體悟。',
+      '一位随行学员的游学手记与照片。': '一位隨行學員的遊學手記與照片。'
+    };
+    const all = allRaw.map((a, i) => ({
+      ...a,
+      catHant: catHantMap[a.cat] || a.catZh,
+      titleHant: hantOverrides[a.titleZh] || a.titleZh,
+      excHant: excHantOverrides[a.excZh] || a.excZh,
+      href: '书院动态详情.dc.html?id=' + (a.id != null ? a.id : i)
+    }));
+    const articles = this.state.cat === 'all' ? all : all.filter((a) => a.cat === this.state.cat);
+    return {
+      rootClass: en ? 'lang-en' : (hant ? 'lang-hant' : ''),
+      langLabel: langLabels[lang],
+      toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
+      filters,
+      articles,
+      loading,
+      loadError: this.state.loadError,
+      noResults: !loading && !this.state.loadError && articles.length === 0
+    };
+  }
+}
+
+</script>
+</body>
+</html>

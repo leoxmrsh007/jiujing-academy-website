@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>九经书院 · Jiujing Academy</title>
+<meta name="description" content="九经书院——通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。">
+<meta name="keywords" content="九经书院,觉智哲学,超级管理学,汉字哲学,情爱哲学,胡勇,Jiujing Academy">
+<meta name="theme-color" content="#9c2b23">
+<meta property="og:type" content="website">
+<meta property="og:title" content="九经书院 · Jiujing Academy">
+<meta property="og:description" content="通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f4efe4;
+    color: #22201d;
+    font-family: 'Noto Serif SC', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  .logo { height: 52px; width: auto; margin-bottom: 32px; }
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+    color: #22201d;
+  }
+  .subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #9c2b23;
+    margin-bottom: 32px;
+  }
+  .desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 2;
+    color: #55504a;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .btn-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 15px 36px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: background .3s, color .3s;
+  }
+  .btn-primary {
+    background: #22201d;
+    color: #f4efe4;
+  }
+  .btn-primary:hover { background: #9c2b23; }
+  .btn-secondary {
+    border: 1px solid rgba(34,32,29,.3);
+    color: #22201d;
+  }
+  .btn-secondary:hover { background: #22201d; color: #f4efe4; }
+  .loader {
+    margin-top: 40px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(34,32,29,.12);
+    border-top-color: #9c2b23;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .redirect-msg {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8a857c;
+    margin-top: 20px;
+  }
+  .redirect-msg a { color: #9c2b23; text-decoration: underline; }
+  .footer {
+    margin-top: 48px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #a89f90;
+    letter-spacing: 1px;
+  }
+</style>
+<script>
+  // 自动跳转到首页
+  setTimeout(function() {
+    window.location.href = '九经书院.dc.html';
+  }, 2000);
+</script>
+</head>
+<body>
+  <img src="assets/logo-tagline.png" alt="精读经典·真做真人·实干实事" class="logo">
+  <h1>九经书院</h1>
+  <div class="subtitle">Jiujing Academy</div>
+  <p class="desc">
+    通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。
+    于典籍之中，见天地、见众生、见自己。
+  </p>
+  <div class="btn-group">
+    <a href="九经书院.dc.html" class="btn btn-primary">进入书院</a>
+    <a href="报名入学.dc.html" class="btn btn-secondary">报名入学</a>
+  </div>
+  <div class="loader"></div>
+  <p class="redirect-msg">正在转入书院首页… <a href="九经书院.dc.html">立即进入</a></p>
+  <div class="footer">© 2026 九经书院 · Jiujing Academy</div>
+</body>
+</html>

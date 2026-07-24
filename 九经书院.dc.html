@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="description" content="九经书院——通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。Jiujing Academy: the Nine Standards of Chinese and Western wisdom, awakened-wisdom philosophy and Super-Management.">
+<meta name="keywords" content="九经书院,觉智哲学,超级管理学,汉字哲学,情爱哲学,胡勇,Jiujing Academy">
+<meta name="theme-color" content="#9c2b23">
+<meta property="og:type" content="website">
+<meta property="og:title" content="九经书院 · Jiujing Academy">
+<meta property="og:description" content="通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #9c2b23; color: #f4efe4; }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(26px) scale(.985); filter: blur(4px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+  [data-reveal] { opacity: 0; }
+  [data-reveal].seen { animation: riseIn 1.05s cubic-bezier(.2,.7,.2,1) both; opacity: 1; }
+  a { color: inherit; text-decoration: none; }
+  section[id], header[id] { scroll-margin-top: 84px; }
+  .evo-cell { opacity: .45; transition: opacity .55s ease, transform .55s ease; }
+  .evo-cell.active { opacity: 1; transform: translateY(-4px); }
+  .evo-ring { transition: border-color .55s ease, box-shadow .55s ease; }
+  .evo-cell.active .evo-ring { border-color: #d99a4e; box-shadow: 0 0 0 3px rgba(217,154,78,.20); }
+  h1, h2 { text-wrap: balance; }
+  .img-slot { display:flex; align-items:center; justify-content:center; text-align:center; background: radial-gradient(circle at 30% 25%,rgba(156,43,35,.05),transparent 45%), radial-gradient(circle at 75% 70%,rgba(217,154,78,.06),transparent 50%), repeating-linear-gradient(4deg,transparent,transparent 3px,rgba(34,32,29,.015) 3px,rgba(34,32,29,.015) 4px), #f2ece0; color:#8a857c; font-family:'Noto Sans SC',sans-serif; font-size:12px; letter-spacing:1px; line-height:1.6; padding: 6px; }
+  .img-slot-label { opacity:.85; }
+  .hv1:hover,.hv2:hover,.hv3:hover,.hv4:hover,.hv5:hover{opacity:1;}
+  .hv6:hover,.hv7:hover,.hv10:hover{background:#9c2b23;}
+  .hv8:hover{border-color:#22201d;}
+  .hv9:hover{background:#22201d;color:#f4efe4;}
+  .langbtn:hover{background:#22201d;color:#f4efe4;}
+  .footnav a:hover { color:#efe9dc !important; }
+  /* i18n: default shows zh (Simplified); .lang-hant shows Traditional; .lang-en shows English */
+  .i18n-en, .i18n-hant { display: none; }
+  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
+  .lang-hant .i18n-hant { display: inline; }
+  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
+  .lang-en .i18n-en { display: inline; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
+  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
+  .skip-link { position:absolute; left:12px; top:-60px; z-index:100; background:#22201d; color:#f4efe4; padding:10px 18px; font-family:'Noto Sans SC',sans-serif; font-size:14px; letter-spacing:1px; transition:top .25s ease; }
+  .skip-link:focus { top:12px; }
+  .nav-burger { display:none; }
+  .nav-guide-cell:hover { background:#faf7ef !important; }
+  @media (max-width: 860px) {
+    .nav-desktop { display:none !important; }
+    .nav-burger { display:flex !important; }
+    header#top > div:first-child { display: none !important; }
+    header#top { min-height: 84vh !important; padding-top: 40px !important; }
+  }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:radial-gradient(circle at 15% 8%,rgba(156,43,35,.025),transparent 40%), radial-gradient(circle at 85% 92%,rgba(217,154,78,.03),transparent 45%), repeating-linear-gradient(3deg,transparent,transparent 3px,rgba(34,32,29,.008) 3px,rgba(34,32,29,.008) 4px), #f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
+
+  <a href="#classics" class="skip-link"><span class="i18n-zh">跳至主要内容</span><span class="i18n-hant">跳至主要內容</span><span class="i18n-en">Skip to content</span></a>
+
+  <!-- ============ NAV ============ -->
+  <nav aria-label="主导览" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(244,239,228,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="#top" aria-label="九经书院 · Jiujing Academy" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/logo-horizontal-white.png" alt="九经书院" style="height:30px;width:auto;flex-shrink:0;" />
+    </a>
+    <div class="nav-desktop" style="display:flex;align-items:center;gap:30px;font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:400;letter-spacing:1px;">
+      <a href="#classics" style="opacity:.72;" class="hv1"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+      <a href="#juezhi" style="opacity:.72;" class="hv2"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+      <a href="#qingai" style="opacity:.72;" class="hv3"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Love</span></a>
+      <a href="#children" style="opacity:.72;" class="hv4"><span class="i18n-zh">汉字哲学启蒙</span><span class="i18n-hant">漢字哲學啟蒙</span><span class="i18n-en">Hanzi</span></a>
+      <a href="#supermgmt" style="opacity:.72;" class="hv5"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Mgmt</span></a>
+      <a href="书院动态.dc.html" style="opacity:.72;" class="hv5"><span class="i18n-zh">动态</span><span class="i18n-hant">動態</span><span class="i18n-en">News</span></a>
+      <a href="学员风采.dc.html" style="opacity:.72;" class="hv5"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+      <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言 · Switch language" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .3s,color .3s;">{{ langLabel }}</button>
+      <a href="报名入学.dc.html" style="padding:9px 20px;background:#22201d;color:#f4efe4;letter-spacing:2px;" class="hv6"><span class="i18n-zh">报 名</span><span class="i18n-hant">報 名</span><span class="i18n-en">Enroll</span></a>
+    </div>
+    <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="开启／关闭选单 · Menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:44px;height:44px;background:none;border:1px solid rgba(34,32,29,.25);color:#22201d;font-size:20px;line-height:1;cursor:pointer;">{{ burgerIcon }}</button>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:100%;left:0;right:0;background:#f4efe4;border-bottom:1px solid rgba(34,32,29,.12);box-shadow:0 12px 26px rgba(34,32,29,.10);display:flex;flex-direction:column;padding:8px 6vw 18px;font-family:'Noto Sans SC',sans-serif;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="padding:15px 4px;font-size:16px;letter-spacing:1px;border-bottom:1px solid rgba(34,32,29,.08);color:#22201d;"><span class="i18n-zh">{{ n.zh }}</span><span class="i18n-hant">{{ n.hant }}</span><span class="i18n-en">{{ n.en }}</span></a>
+        </sc-for>
+        <div style="display:flex;gap:12px;margin-top:16px;">
+          <button onClick="{{ toggleLang }}" class="langbtn" style="flex:0 0 auto;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:14px 18px;font-size:14px;letter-spacing:2px;cursor:pointer;">{{ langLabel }}</button>
+          <a href="报名入学.dc.html" onClick="{{ closeMenu }}" style="flex:1;text-align:center;padding:14px;background:#9c2b23;color:#f4efe4;letter-spacing:3px;font-size:16px;"><span class="i18n-zh">报 名 入 学</span><span class="i18n-hant">報 名 入 學</span><span class="i18n-en">Enroll</span></a>
+        </div>
+      </div>
+    </sc-if>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:center;padding:0 6vw;overflow:hidden;">
+    <div data-reveal style="position:absolute;right:6vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:26px;">
+      <div style="writing-mode:vertical-rl;font-size:12px;letter-spacing:8px;color:#9c2b23;font-weight:400;"><span class="i18n-zh">中庸 · 九经</span><span class="i18n-hant">中庸 · 九經</span><span class="i18n-en">The Nine Standards</span></div>
+      <div style="position:relative;height:340px;width:40px;display:flex;align-items:center;justify-content:center;">
+        <sc-for list="{{ jiujing }}" as="jj" hint-placeholder-count="9">
+          <div style="{{ jj.style }}">
+            <span class="i18n-zh">{{ jj.zh }}</span><span class="i18n-hant">{{ jj.hant }}</span><span class="i18n-en">{{ jj.en }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <sc-for list="{{ jiujing }}" as="jj" hint-placeholder-count="9">
+          <span style="{{ jj.dotStyle }}"></span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="max-width:840px;position:relative;z-index:2;">
+      <div data-reveal style="display:inline-flex;align-items:center;gap:14px;margin-bottom:40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:5px;color:#9c2b23;">
+        <span style="width:34px;height:1px;background:#9c2b23;"></span><span class="i18n-zh">觉智圆成 · 体用不二</span><span class="i18n-hant">覺智圓成 · 體用不二</span><span class="i18n-en" style="letter-spacing:3px;">AWAKENED WISDOM · SUBSTANCE &amp; FUNCTION, NOT-TWO</span>
+      </div>
+      <h1 data-reveal style="margin:0;font-size:clamp(52px,9vw,132px);line-height:1.04;font-weight:700;letter-spacing:4px;">
+        <span class="i18n-zh" style="display:block;"><img src="assets/logo-horizontal-white.png" alt="九经书院" style="height:clamp(52px,9vw,132px);width:auto;display:block;" /></span>
+        <span class="i18n-hant">九經書院</span>
+        <span class="i18n-en en-serif" style="letter-spacing:1px;">Jiujing Academy</span>
+      </h1>
+      <p data-reveal style="margin:34px 0 0;font-size:clamp(15px,1.5vw,22px);line-height:2;font-weight:300;color:#3b3833;max-width:820px;font-family:'Noto Sans SC',sans-serif;">
+        <span class="i18n-zh"><span style="white-space:nowrap;">通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。</span><br>于典籍之中，见天地、见众生、见自己。</span>
+        <span class="i18n-hant"><span style="white-space:nowrap;">通中西智慧之九經，立覺智圓成之體，行弘傳治理之用。</span><br>於典籍之中，見天地、見眾生、見自己。</span>
+        <span class="i18n-en">Comprehending the Nine Standards of Chinese and Western wisdom; establishing the substance of consummate awakened wisdom; enacting the function through teaching and governance.<br>Within the classics — see Heaven and Earth, see all beings, see yourself.</span>
+      </p>
+      <div data-reveal style="margin-top:36px;padding:22px 26px;border-left:2px solid #9c2b23;background:rgba(156,43,35,.05);max-width:620px;">
+        <p style="margin:0 0 8px;font-size:16px;line-height:1.9;color:#3b3833;font-style:italic;letter-spacing:.5px;"><span class="i18n-zh">「凡为天下国家有九经，曰：修身也，尊贤也，亲亲也，敬大臣也，体群臣也，子庶民也，来百工也，柔远人也，怀诸侯也。」</span><span class="i18n-hant">「凡為天下國家有九經，曰：修身也，尊賢也，親親也，敬大臣也，體群臣也，子庶民也，來百工也，柔遠人也，懷諸侯也。」</span><span class="i18n-en en-serif">"In governing the world and the state there are Nine Standards: cultivating the self; honoring the worthy; cherishing one's kin; respecting great ministers; identifying with the body of officials; treating the common people as one's own children; attracting the artisans; showing tenderness to strangers from afar; and cherishing the feudal lords."</span></p>
+        <p style="margin:0;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;color:#8a857c;text-align:right;"><span class="i18n-zh">——《中庸》第二十章</span><span class="i18n-hant">——《中庸》第二十章</span><span class="i18n-en">— The Doctrine of the Mean, Chapter 20</span></p>
+      </div>
+      <div data-reveal style="margin-top:38px;">
+        <img src="assets/logo-tagline.png" alt="精读经典·真做真人·实干实事" style="height:34px;width:auto;" />
+      </div>
+      <div data-reveal style="display:flex;gap:18px;margin-top:40px;font-family:'Noto Sans SC',sans-serif;flex-wrap:wrap;">
+        <a href="#classics" style="padding:15px 34px;background:#22201d;color:#f4efe4;font-size:15px;letter-spacing:3px;" class="hv7"><span class="i18n-zh">研习九经</span><span class="i18n-hant">研習九經</span><span class="i18n-en">Study the Classics</span></a>
+        <a href="#juezhi" style="padding:15px 34px;border:1px solid rgba(34,32,29,.3);font-size:15px;letter-spacing:3px;" class="hv8"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+      </div>
+    </div>
+
+    <div aria-hidden="true" style="position:absolute;left:-2vw;bottom:-8vh;font-size:min(52vh,540px);line-height:1;color:rgba(34,32,29,0.035);font-weight:900;pointer-events:none;user-select:none;font-family:'Ma Shan Zheng',cursive;">觉</div>
+  </header>
+
+  <!-- ============ 书院导览 ============ -->
+  <nav aria-label="书院导览 · Overview" style="max-width:1280px;margin:-1px auto 0;padding:0 6vw;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(34,32,29,.12);border-left:1px solid rgba(34,32,29,.12);border-right:1px solid rgba(34,32,29,.12);">
+      <sc-for list="{{ navGuide }}" as="g" hint-placeholder-count="5">
+        <a href="{{ g.href }}" class="nav-guide-cell" style="background:#f4efe4;padding:20px 22px;display:flex;flex-direction:column;gap:7px;transition:background .3s ease;">
+          <span style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:3px;color:#9c2b23;">{{ g.no }}</span>
+          <span style="font-size:19px;font-weight:600;letter-spacing:1px;color:#22201d;"><span class="i18n-zh">{{ g.cnZh }}</span><span class="i18n-hant">{{ g.cnHant }}</span><span class="i18n-en">{{ g.cnEn }}</span></span>
+          <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#8a857c;font-weight:300;"><span class="i18n-zh">{{ g.subZh }}</span><span class="i18n-hant">{{ g.subHant }}</span><span class="i18n-en">{{ g.subEn }}</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </nav>
+
+  <!-- ============ 三教符号 DIVIDER ============ -->
+  <div style="display:flex;justify-content:center;align-items:center;gap:30px;padding:52px 0 60px;flex-wrap:wrap;">
+    <sc-for list="{{ triad }}" as="t" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:13px;">
+        <div style="width:84px;height:84px;border-radius:50%;border:1.5px solid rgba(34,32,29,.26);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#faf7ef;">
+          <sc-if value="{{ t.hasImg }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ t.img }}" alt="{{ t.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:sepia(.12) saturate(.9) brightness(1.02);" />
+          </sc-if>
+          <sc-if value="{{ t.noImg }}" hint-placeholder-val="{{ true }}">
+            <div class="img-slot" role="img" aria-label="{{ t.alt }}" style="width:100%;height:100%;"><span class="img-slot-label"><span class="i18n-zh">{{ t.slotZh }}</span><span class="i18n-hant">{{ t.slotHant }}</span><span class="i18n-en">{{ t.slotEn }}</span></span></div>
+          </sc-if>
+        </div>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;"><span class="i18n-zh">{{ t.labZh }}</span><span class="i18n-hant">{{ t.labHant }}</span><span class="i18n-en">{{ t.labEn }}</span></span>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- ============ CORE CLASSICS ============ -->
+  <section id="classics" style="padding:40px 6vw 110px;max-width:1280px;margin:0 auto;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:64px;">
+      <div data-reveal>
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">壹 · 核心课程</span><span class="i18n-hant">壹 · 核心課程</span><span class="i18n-en">I · CORE CURRICULUM</span></div>
+        <h2 style="margin:0;font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">儒 · 释 · 道　九经</span><span class="i18n-hant">儒 · 釋 · 道　九經</span><span class="i18n-en en-serif">The Nine Classics</span></h2>
+      </div>
+      <p data-reveal style="max-width:400px;margin:0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">三教九经，各三部而成一体。由入世之学而心性之觉，而返于自然之道。</span><span class="i18n-hant">三教九經，各三部而成一體。由入世之學而心性之覺，而返於自然之道。</span><span class="i18n-en">Three teachings, nine classics — three works each, forming one whole. From worldly learning to the awakening of mind-nature, returning to the Dao of nature.</span></p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
+      <sc-for list="{{ schools }}" as="s" hint-placeholder-count="3">
+        <div data-reveal style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);padding:44px 38px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:30px;gap:10px;">
+            <span style="font-size:58px;font-weight:700;color:#9c2b23;line-height:1;">{{ s.glyph }}</span>
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:#8a857c;text-align:right;"><span class="i18n-zh">{{ s.tagZh }}</span><span class="i18n-hant">{{ s.tagHant }}</span><span class="i18n-en">{{ s.tagEn }}</span></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:22px;">
+            <sc-for list="{{ s.books }}" as="b" hint-placeholder-count="3">
+              <div style="border-top:1px solid rgba(34,32,29,.1);padding-top:20px;">
+                <div style="font-size:22px;font-weight:600;letter-spacing:1px;"><span class="i18n-zh">{{ b.zh }}</span><span class="i18n-hant">{{ b.hant }}</span><span class="i18n-en en-serif" style="font-size:24px;">{{ b.en }}</span></div>
+                <div style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;color:#55504a;line-height:1.9;margin-top:6px;font-weight:300;"><span class="i18n-zh">{{ b.noteZh }}</span><span class="i18n-hant">{{ b.noteHant }}</span><span class="i18n-en">{{ b.noteEn }}</span></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ 觉智哲学 ============ -->
+  <section id="juezhi" style="background:#22201d;color:#efe9dc;padding:120px 6vw;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div data-reveal style="text-align:center;margin-bottom:80px;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#d99a4e;margin-bottom:18px;"><span class="i18n-zh">贰 · 中国觉智哲学</span><span class="i18n-hant">貳 · 中國覺智哲學</span><span class="i18n-en">II · CHINESE AWAKENED-WISDOM PHILOSOPHY</span></div>
+        <h2 style="margin:0;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:4px;"><span class="i18n-zh">体 · 用 不二</span><span class="i18n-hant">體 · 用 不二</span><span class="i18n-en en-serif">Substance &amp; Function — Not Two</span></h2>
+        <p style="max-width:620px;margin:26px auto 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#b7b0a2;font-weight:300;"><span class="i18n-zh">立一家觉智哲学之理论，为体；弘扬于世、致用于治理，为用。体用相生，学问乃活。</span><span class="i18n-hant">立一家覺智哲學之理論，為體；弘傳於世、致用於治理，為用。體用相生，學問乃活。</span><span class="i18n-en">To establish a theory of awakened-wisdom philosophy is the substance; to spread it in the world and apply it in governance is the function. Substance and function beget each other — thus learning lives.</span></p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px;background:rgba(239,233,220,.14);">
+        <div data-reveal style="background:#22201d;padding:56px 48px;">
+          <div style="font-size:96px;font-weight:900;line-height:1;color:#d99a4e;font-family:'Ma Shan Zheng',cursive;">明体</div>
+          <h3 style="font-size:27px;font-weight:600;letter-spacing:2px;margin:24px 0 10px;"><span class="i18n-zh">奠基立体</span><span class="i18n-hant">奠基立體</span><span class="i18n-en en-serif">Theoretical Construction</span></h3>
+          <div style="font-size:20px;font-weight:500;letter-spacing:2px;color:#efe9dc;margin-bottom:18px;"><span class="i18n-zh">觉知 — 认知　统一</span><span class="i18n-hant">覺知 — 認知　統一</span><span class="i18n-en">Awareness — Cognition, Unified</span></div>
+          <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#c3bcae;font-weight:300;margin:0;"><span class="i18n-zh">奠基于中国体知—工夫之文明范式，融通西方认知—技术之文明成就，于觉知与认知的统一处，建构关于生命觉醒与实践、宇宙运化与开展的完整理论。</span><span class="i18n-hant">奠基於中國體知—工夫之文明範式，融通西方認知—技術之文明成就，於覺知與認知的統一處，建構關於生命覺醒與實踐、宇宙運化與開展的完整理論。</span><span class="i18n-en">Rooted in the Nine Classics, integrating the theories of mind-nature, realms and cultivation across the three teachings; at the unity of "awareness" and "cognition," it builds a complete theoretical system of awakened-wisdom philosophy — a Chinese articulation of awakening, wisdom and the practice of life.</span></p>
+        </div>
+        <div data-reveal style="background:#22201d;padding:56px 48px;">
+          <div style="font-size:96px;font-weight:900;line-height:1;color:#d99a4e;font-family:'Ma Shan Zheng',cursive;">达用</div>
+          <h3 style="font-size:27px;font-weight:600;letter-spacing:2px;margin:24px 0 10px;"><span class="i18n-zh">弘扬传播 · 经世致用</span><span class="i18n-hant">弘揚傳播 · 經世致用</span><span class="i18n-en en-serif">Dissemination &amp; Practical Application</span></h3>
+          <div style="font-size:20px;font-weight:500;letter-spacing:2px;color:#efe9dc;margin-bottom:18px;"><span class="i18n-zh">身 — 心 — 业　同治</span><span class="i18n-hant">身 — 心 — 業　同治</span><span class="i18n-en">Body — Mind — Enterprise, Governed as One</span></div>
+          <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#c3bcae;font-weight:300;margin:0;"><span class="i18n-zh">将觉智哲学落地于当代——修身、正心、治业，三者同治。上达于面向大众的弘扬传播，下贯于面向组织的「超级管理学」（见下文）。</span><span class="i18n-hant">將覺智哲學落地於當代——修身、正心、治業，三者同治。上達於面向大眾的弘揚傳播，下貫於面向組織的「超級管理學」（見下文）。</span><span class="i18n-en">Grounding awakened-wisdom philosophy in the present — cultivating body, rectifying mind, ordering the enterprise, the three governed as one. Upward to public dissemination, downward through organizational "Super-Management" (below).</span></p>
+        </div>
+      </div>
+
+      <div data-reveal style="margin-top:60px;padding-top:52px;border-top:1px solid rgba(239,233,220,.14);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;">
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#d99a4e;margin-bottom:22px;"><span class="i18n-zh">觉的二阶性 · 三觉</span><span class="i18n-hant">覺的二階性 · 三覺</span><span class="i18n-en">SECOND-ORDER AWARENESS · THE THREE AWARENESSES</span></div>
+          <div style="display:flex;gap:12px;">
+            <sc-for list="{{ awareness }}" as="a" hint-placeholder-count="3">
+              <div style="flex:1;text-align:center;padding:22px 8px;border:1px solid {{ a.border }};">
+                <div style="font-size:26px;font-weight:600;color:{{ a.color }};line-height:1;"><span class="i18n-zh">{{ a.zh }}</span><span class="i18n-hant">{{ a.hant }}</span><span class="i18n-en">{{ a.en }}</span></div>
+                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:#b7b0a2;margin-top:10px;font-weight:300;"><span class="i18n-zh">{{ a.subZh }}</span><span class="i18n-hant">{{ a.subHant }}</span><span class="i18n-en">{{ a.subEn }}</span></div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;line-height:2;color:#c3bcae;font-weight:300;margin:22px 0 0;"><span class="i18n-zh">反思（一阶最高态）≠ 返思（二阶最高态）。心之二阶机制可摹，觉之二阶实现不可摹——结穴于「吾心光明」。</span><span class="i18n-hant">反思（一階最高態）≠ 返思（二階最高態）。心之二階機制可摹，覺之二階實現不可摹——結穴於「吾心光明」。</span><span class="i18n-en">Reflection (the highest first-order state) ≠ Re-flection (the highest second-order state). The mind's second-order mechanism can be modeled; awareness's second-order realization cannot — it culminates in "my mind is luminous."</span></p>
+        </div>
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#d99a4e;margin-bottom:22px;"><span class="i18n-zh">二阶性 · 中国哲学谱系</span><span class="i18n-hant">二階性 · 中國哲學譜系</span><span class="i18n-en">SECOND-ORDER NATURE · A GENEALOGY</span></div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ lineage }}" as="l" hint-placeholder-count="5">
+              <div style="display:flex;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid rgba(239,233,220,.1);">
+                <span style="font-size:16px;font-weight:600;color:{{ l.color }};white-space:nowrap;min-width:92px;"><span class="i18n-zh">{{ l.whoZh }}</span><span class="i18n-hant">{{ l.whoHant }}</span><span class="i18n-en">{{ l.whoEn }}</span></span>
+                <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#c3bcae;font-weight:300;"><span class="i18n-zh">{{ l.ideaZh }}</span><span class="i18n-hant">{{ l.ideaHant }}</span><span class="i18n-en">{{ l.ideaEn }}</span></span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div data-reveal style="font-family:'Noto Sans SC',sans-serif;font-size:12.5px;letter-spacing:1px;color:#8a857c;margin-top:40px;"><span class="i18n-zh">理论详见创办人专著《吾丧我——AI与中国觉悟哲学》：认知求真·知识论 与 体知求道·工夫论。</span><span class="i18n-hant">理論詳見創辦人專著《吾喪我——AI與中國覺悟哲學》：認知求真·知識論 與 體知求道·工夫論。</span><span class="i18n-en">Full theory in the founder's monograph <i>I Have Lost Myself — AI and the Chinese Philosophy of Awakening</i>: Cognition Seeking Truth (epistemology) &amp; Embodied Knowing Seeking the Dao (cultivation theory).</span></div>
+      <div data-reveal style="margin-top:30px;"><a href="觉智哲学.dc.html" style="display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:2px;color:#d99a4e;font-weight:500;"><span class="i18n-zh">深入觉智哲学</span><span class="i18n-hant">深入覺智哲學</span><span class="i18n-en">Explore Awakened Wisdom</span><span style="font-size:16px;">&#8594;</span></a></div>
+    </div>
+  </section>
+
+  <!-- ============ 情爱哲学 ============ -->
+  <section id="qingai" style="padding:120px 6vw 120px 0;max-width:1440px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:minmax(320px,42%) 1fr;gap:0;align-items:center;">
+      <div data-reveal style="padding:0 4vw 0 6vw;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:18px;"><span class="i18n-zh">叁 · 情爱哲学</span><span class="i18n-hant">叁 · 情愛哲學</span><span class="i18n-en">III · PHILOSOPHY OF LOVE</span></div>
+        <h2 style="margin:0 0 26px;font-size:clamp(32px,4.5vw,56px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">「之间」的功夫<br>在关系之中成人成己</span><span class="i18n-hant">「之間」的功夫<br>在關係之中成人成己</span><span class="i18n-en en-serif">The Work of the "In-Between":<br>Becoming Oneself Within Relationship</span></h2>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:15.5px;line-height:2.1;color:#55504a;font-weight:300;max-width:500px;"><span class="i18n-zh">情之为物，最近人心，亦最考人心。以觉智之眼，观亲密、观欲望、观执着与放下——由情而入道，于爱中修行，成就成熟而自由的关系。</span><span class="i18n-hant">情之為物，最近人心，亦最考人心。以覺智之眼，觀親密、觀慾望、觀執著與放下——由情而入道，於愛中修行，成就成熟而自由的關係。</span><span class="i18n-en">Emotion lies closest to the human heart, and tests it most. With the eye of awakened wisdom, observe intimacy, desire, attachment and letting-go — enter the Dao through feeling, cultivate within love, and realize relationships that are mature and free.</span></p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;font-family:'Noto Sans SC',sans-serif;font-size:13px;">
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">亲密关系</span><span class="i18n-hant">親密關係</span><span class="i18n-en">Intimacy</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">欲望与觉察</span><span class="i18n-hant">慾望與覺察</span><span class="i18n-en">Desire &amp; Awareness</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">执着与自由</span><span class="i18n-hant">執著與自由</span><span class="i18n-en">Attachment &amp; Freedom</span></span>
+        </div>
+        <div style="margin-top:34px;"><a href="情爱哲学.dc.html" class="hv7" style="display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:2px;color:#9c2b23;font-weight:500;"><span class="i18n-zh">进入情爱哲学 →</span><span class="i18n-hant">進入情愛哲學 →</span><span class="i18n-en">Enter Philosophy of Love →</span></a></div>
+      </div>
+      <div data-reveal style="aspect-ratio:4/3;align-self:stretch;background:radial-gradient(circle at 30% 25%,rgba(156,43,35,.06),transparent 45%), radial-gradient(circle at 75% 70%,rgba(217,154,78,.08),transparent 50%), repeating-linear-gradient(4deg,transparent,transparent 3px,rgba(34,32,29,.015) 3px,rgba(34,32,29,.015) 4px), #f2ece0;display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:ui-monospace,monospace;font-size:12px;letter-spacing:2px;color:#8a857c;"><span class="i18n-zh">［ 图 · 情爱哲学意象 ］</span><span class="i18n-hant">［ 圖 · 情愛哲學意象 ］</span><span class="i18n-en">[ Image · Philosophy of Love ]</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 汉字 ============ -->
+  <section id="children" style="padding:120px 6vw;max-width:1280px;margin:0 auto;">
+    <div data-reveal style="text-align:center;margin-bottom:70px;">
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:18px;"><span class="i18n-zh">肆 · 汉字哲学启蒙与文明编码系统</span><span class="i18n-hant">肆 · 漢字哲學啟蒙與文明編碼系統</span><span class="i18n-en">IV · HANZI PHILOSOPHY &amp; CIVILIZATIONAL ENCODING</span></div>
+      <h2 style="margin:0;font-size:clamp(32px,4.5vw,58px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">一文一世界　一字一文明</span><span class="i18n-hant">一文一世界　一字一文明</span><span class="i18n-en en-serif">One Character, One World · One Word, One Civilization</span></h2>
+      <p style="max-width:640px;margin:24px auto 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">从童蒙开始，以哲思启慧，以汉字为钥——解码文明的基因，让孩子在方块字中遇见天地与本心。</span><span class="i18n-hant">從童蒙開始，以哲思啟慧，以漢字為鑰——解碼文明的基因，讓孩子在方塊字中遇見天地與本心。</span><span class="i18n-en">Beginning in childhood — awakening wisdom through philosophy, with Hanzi as the key — decoding the genome of civilization, letting children meet Heaven, Earth and their own heart within the square characters.</span></p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:stretch;">
+      <div data-reveal style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);padding:46px 40px;display:flex;flex-direction:column;">
+        <h3 style="font-size:25px;font-weight:600;letter-spacing:2px;margin:0 0 16px;"><span class="i18n-zh">汉字哲学启蒙</span><span class="i18n-hant">漢字哲學啟蒙</span><span class="i18n-en en-serif">Hanzi Philosophy for Children</span></h3>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:2;color:#55504a;font-weight:300;margin:0;"><span class="i18n-zh">以孩子听得懂的方式追问世界：何为善恶？何为真假？何为我与他人？在提问与对话中，养成独立思考与慈悲之心。</span><span class="i18n-hant">以孩子聽得懂的方式追問世界：何為善惡？何為真假？何為我與他人？在提問與對話中，養成獨立思考與慈悲之心。</span><span class="i18n-en">Questioning the world in ways children understand: What is good and evil? What is true and false? What is self and other? Through inquiry and dialogue, cultivate independent thought and a compassionate heart.</span></p>
+        <a href="汉字哲学.dc.html" class="hv7" style="margin-top:auto;padding-top:26px;display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;color:#9c2b23;font-weight:500;"><span class="i18n-zh">进入文字探索</span><span class="i18n-hant">進入文字探索</span><span class="i18n-en">Open the Hanzi Explorer</span><span style="font-size:16px;">&#8594;</span></a>
+      </div>
+      <div data-reveal style="background:#22201d;color:#efe9dc;padding:46px 40px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3 style="font-size:25px;font-weight:600;letter-spacing:2px;margin:0 0 16px;"><span class="i18n-zh">汉字文明编码系统</span><span class="i18n-hant">漢字文明編碼系統</span><span class="i18n-en en-serif">Hanzi Civilizational Encoding System</span></h3>
+          <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:2;color:#c3bcae;font-weight:300;margin:0;"><span class="i18n-zh">将汉字视为一套文明的编码——形、音、义、源，层层解构。由字入文，由文入道，重建母语者与文明本源的连接。</span><span class="i18n-hant">將漢字視為一套文明的編碼——形、音、義、源，層層解構。由字入文，由文入道，重建母語者與文明本源的連接。</span><span class="i18n-en">Treating Hanzi as a code of civilization — form, sound, meaning, origin — deconstructed layer by layer. From character to text, from text to Dao, rebuilding the bond between native speakers and the source of their civilization.</span></p>
+          <div style="display:flex;gap:10px;margin-top:26px;">
+            <div style="flex:1;border-top:1px solid rgba(239,233,220,.2);padding-top:14px;"><div style="font-size:23px;font-weight:700;color:#d99a4e;line-height:1;">9,692</div><div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:1px;color:#b7b0a2;margin-top:7px;font-weight:300;"><span class="i18n-zh">字条目</span><span class="i18n-hant">字條目</span><span class="i18n-en">Entries</span></div></div>
+            <div style="flex:1;border-top:1px solid rgba(239,233,220,.2);padding-top:14px;"><div style="font-size:23px;font-weight:700;color:#d99a4e;line-height:1;">37,031</div><div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:1px;color:#b7b0a2;margin-top:7px;font-weight:300;"><span class="i18n-zh">关系网络</span><span class="i18n-hant">關係網絡</span><span class="i18n-en">Links</span></div></div>
+            <div style="flex:1;border-top:1px solid rgba(239,233,220,.2);padding-top:14px;"><div style="font-size:23px;font-weight:700;color:#d99a4e;line-height:1;">128</div><div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:1px;color:#b7b0a2;margin-top:7px;font-weight:300;"><span class="i18n-zh">声符系</span><span class="i18n-hant">聲符系</span><span class="i18n-en">Phonetics</span></div></div>
+          </div>
+        </div>
+        <div style="margin-top:30px;">
+          <div id="hanzi-evo" style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;">
+            <sc-for list="{{ evo }}" as="e" hint-placeholder-count="6">
+              <div class="evo-cell {{ e.activeClass }}" style="display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;">
+                <div class="evo-ring" style="width:100%;max-width:62px;aspect-ratio:1;border:1px solid rgba(239,233,220,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#22201d;">
+                  <sc-if value="{{ e.hasImg }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ e.img }}" alt="「道」{{ e.labZh }}" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" />
+                  </sc-if>
+                </div>
+                <span style="font-family:'Noto Sans SC',sans-serif;font-size:10.5px;letter-spacing:.5px;color:#b7b0a2;white-space:nowrap;"><span class="i18n-zh">{{ e.labZh }}</span><span class="i18n-hant">{{ e.labHant }}</span><span class="i18n-en">{{ e.labEn }}</span></span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#8a857c;margin-top:18px;"><span class="i18n-zh">「道」字之演变 · 金文 → 楷书　｜　源自说文解字哲学系统</span><span class="i18n-hant">「道」字之演變 · 金文 → 楷書　｜　源自說文解字哲學系統</span><span class="i18n-en">Evolution of 道 (Dao) · Bronze → Regular Script | from the Shuowen philosophical system</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 超级管理学 ============ -->
+  <section id="supermgmt" style="background:#ece5d6;padding:120px 6vw;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div data-reveal style="margin-bottom:64px;max-width:720px;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:18px;"><span class="i18n-zh">伍 · 超级管理学</span><span class="i18n-hant">伍 · 超級管理學</span><span class="i18n-en">V · SUPER-MANAGEMENT</span></div>
+        <h2 style="margin:0 0 22px;font-size:clamp(32px,4.5vw,56px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">以觉智存世<br>以修身为本</span><span class="i18n-hant">以覺智存世<br>以修身為本</span><span class="i18n-en en-serif">Sustaining the World with Awakened Wisdom:<br>Rooted in Cultivating the Self</span></h2>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:15.5px;line-height:2.1;color:#55504a;font-weight:300;"><span class="i18n-zh">觉智哲学之「用」，落于组织即「超级管理学」——不止于制度与效率，更求人心之治、境界之提。以东方智慧重塑领导力、决策与治理之道，使管理成为修行，使组织成为道场。</span><span class="i18n-hant">覺智哲學之「用」，落於組織即「超級管理學」——不止於制度與效率，更求人心之治、境界之提。以東方智慧重塑領導力、決策與治理之道，使管理成為修行，使組織成為道場。</span><span class="i18n-en">The "function" of awakened-wisdom philosophy, applied to organizations, is "Super-Management" — beyond systems and efficiency, it seeks the governance of the human heart and the elevation of one's realm. Reshaping leadership, decision-making and governance with Eastern wisdom — making management a practice, and the organization a place of cultivation.</span></p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(34,32,29,.12);margin-bottom:72px;">
+        <sc-for list="{{ govern }}" as="g" hint-placeholder-count="3">
+          <div data-reveal style="background:#ece5d6;padding:36px 32px;">
+            <div style="font-size:32px;color:#9c2b23;line-height:1;margin-bottom:16px;"><span class="i18n-zh">{{ g.zh }}</span><span class="i18n-hant">{{ g.hant }}</span><span class="i18n-en en-serif" style="font-weight:600;">{{ g.en }}</span></div>
+            <p style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;line-height:1.95;color:#55504a;font-weight:300;margin:0;"><span class="i18n-zh">{{ g.noteZh }}</span><span class="i18n-hant">{{ g.noteHant }}</span><span class="i18n-en">{{ g.noteEn }}</span></p>
+          </div>
+        </sc-for>
+      </div>
+
+      <div data-reveal style="border-top:1px solid rgba(34,32,29,.16);padding-top:52px;">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px;">
+          <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;padding:5px 14px;border:1px solid rgba(156,43,35,.4);"><span class="i18n-zh">旗舰项目</span><span class="i18n-hant">旗艦項目</span><span class="i18n-en">FLAGSHIP</span></span>
+          <h3 style="margin:0;font-size:clamp(25px,3vw,38px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">企业·家 陪伴成长计划</span><span class="i18n-hant">企業·家 陪伴成長計劃</span><span class="i18n-en en-serif">Enterprise &amp; Family — Companioned-Growth Program</span></h3>
+        </div>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#55504a;font-weight:300;max-width:680px;margin:0 0 40px;"><span class="i18n-zh">超级管理学的长程落地——不是一次讲座，而是一段陪伴。以觉智哲学为根，为企业与家庭提供长程的成长方案：修一人之心，正一家之风，理一企之治。</span><span class="i18n-hant">超級管理學的長程落地——不是一次講座，而是一段陪伴。以覺智哲學為根，為企業與家庭提供長程的成長方案：修一人之心，正一家之風，理一企之治。</span><span class="i18n-en">The long-term grounding of Super-Management — not a single lecture but a companionship. Rooted in awakened-wisdom philosophy, it offers enterprises and families a long-range path of growth: cultivate one heart, rectify one family's ethos, order one enterprise's governance.</span></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+          <sc-for list="{{ program }}" as="p" hint-placeholder-count="3">
+            <div style="background:#faf7ef;padding:40px 34px;border-top:3px solid #9c2b23;">
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;">{{ p.no }}</div>
+              <h4 style="font-size:22px;font-weight:600;letter-spacing:1px;margin:14px 0 14px;"><span class="i18n-zh">{{ p.zh }}</span><span class="i18n-hant">{{ p.hant }}</span><span class="i18n-en en-serif" style="font-size:23px;">{{ p.en }}</span></h4>
+              <p style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;line-height:1.95;color:#55504a;font-weight:300;margin:0;"><span class="i18n-zh">{{ p.noteZh }}</span><span class="i18n-hant">{{ p.noteHant }}</span><span class="i18n-en">{{ p.noteEn }}</span></p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:34px;"><a href="超级管理学.dc.html" class="hv7" style="display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:2px;color:#9c2b23;font-weight:500;"><span class="i18n-zh">详解超级管理学与陪伴计划</span><span class="i18n-hant">詳解超級管理學與陪伴計劃</span><span class="i18n-en">Explore Super-Management</span><span style="font-size:16px;">&#8594;</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 创办人 ============ -->
+  <section id="founder" style="padding:120px 6vw;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:64px;align-items:center;">
+      <div data-reveal style="display:flex;justify-content:center;">
+        <div style="width:100%;max-width:340px;">
+          <div style="aspect-ratio:4/5;border:1px solid rgba(34,32,29,.14);overflow:hidden;background:#faf7ef;">
+            <div class="img-slot" role="img" aria-label="创办人照片 · Founder portrait (placeholder)" style="width:100%;height:100%;"><span class="img-slot-label"><span class="i18n-zh">创办人照片</span><span class="i18n-hant">創辦人照片</span><span class="i18n-en">Founder Portrait</span></span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:20px;">
+            <span style="width:28px;height:1px;background:#9c2b23;"></span>
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;">觉智圆成 · 体用不二</span>
+          </div>
+        </div>
+      </div>
+      <div data-reveal>
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:18px;"><span class="i18n-zh">书院 · 创办人</span><span class="i18n-hant">書院 · 創辦人</span><span class="i18n-en">ACADEMY · FOUNDER</span></div>
+        <h2 style="margin:0 0 8px;font-size:clamp(38px,5vw,58px);font-weight:700;letter-spacing:4px;"><span class="i18n-zh">胡 勇</span><span class="i18n-hant">胡 勇</span><span class="i18n-en en-serif">Hu Yong</span></h2>
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:2px;color:#8a857c;margin-bottom:28px;"><span class="i18n-zh">勇哥</span><span class="i18n-hant">勇哥</span><span class="i18n-en">"Yong-ge"</span></div>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:15.5px;line-height:2.1;color:#3b3833;font-weight:300;max-width:540px;margin:0 0 34px;"><span class="i18n-zh">觉智哲学的理论建构者，九经书院的创办人与主讲。以哲学为业，以觉智为志——会通中西、贯穿古今，于 AI 时代重探中国心性之学。</span><span class="i18n-hant">覺智哲學的理論建構者，九經書院的創辦人與主講。以哲學為業，以覺智為志——會通中西、貫穿古今，於 AI 時代重探中國心性之學。</span><span class="i18n-en">The theoretical architect of awakened-wisdom philosophy, and the founder and principal lecturer of Jiujing Academy. Philosophy as vocation, awakened wisdom as aspiration — integrating East and West, threading past and present, re-exploring the Chinese learning of mind-nature in the age of AI.</span></p>
+        <div style="display:flex;flex-direction:column;gap:0;max-width:580px;">
+          <sc-for list="{{ credentials }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;align-items:baseline;gap:14px;padding:13px 0;border-top:1px solid rgba(34,32,29,.1);">
+              <span style="width:6px;height:6px;background:#9c2b23;border-radius:50%;flex-shrink:0;transform:translateY(-3px);"></span>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#22201d;font-weight:400;"><span class="i18n-zh">{{ c.zh }}</span><span class="i18n-hant">{{ c.hant }}</span><span class="i18n-en">{{ c.en }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;font-family:'Noto Sans SC',sans-serif;font-size:13px;">
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">中西九经</span><span class="i18n-hant">中西九經</span><span class="i18n-en">Sino-Western Nine Classics</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">中国哲学（佛学）</span><span class="i18n-hant">中國哲學（佛學）</span><span class="i18n-en">Chinese Philosophy (Buddhism)</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">AI 哲学</span><span class="i18n-hant">AI 哲學</span><span class="i18n-en">Philosophy of AI</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Philosophy of Hanzi</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></span>
+          <span style="padding:8px 18px;border:1px solid rgba(34,32,29,.2);letter-spacing:1px;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></span>
+        </div>
+        <div style="margin-top:34px;">
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;margin-bottom:14px;"><span class="i18n-zh">主要著述</span><span class="i18n-hant">主要著述</span><span class="i18n-en">SELECTED WORKS</span></div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:#9c2b23;"><span class="i18n-zh">已出版</span><span class="i18n-hant">已出版</span><span class="i18n-en">PUBLISHED</span></span>
+              <div style="font-size:16px;line-height:2;color:#3b3833;letter-spacing:1px;margin-top:4px;"><span class="i18n-zh">《中国哲学体用思想研究》 · 《弘明集译注》 · 《牛首山文学·佛禅篇》</span><span class="i18n-hant">《中國哲學體用思想研究》 · 《弘明集譯注》 · 《牛首山文學·佛禪篇》</span><span class="i18n-en en-serif" style="font-style:italic;">A Study of Substance–Function Thought in Chinese Philosophy · Annotated Translation of the Hongming Ji · Niushou Mountain Literature: Buddhist Chan Volume</span></div>
+            </div>
+            <div>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:#8a857c;"><span class="i18n-zh">待出版</span><span class="i18n-hant">待出版</span><span class="i18n-en">FORTHCOMING</span></span>
+              <div style="font-size:16px;line-height:2;color:#3b3833;letter-spacing:1px;margin-top:4px;"><span class="i18n-zh">《道与器：AI的中国哲学读法》 · 《吾丧我：AI与中国觉悟哲学》 · 《心之二阶性》 · 《金刚经心法》 · 《「之间」的功夫——情爱觉智论》 等</span><span class="i18n-hant">《道與器：AI的中國哲學讀法》 · 《吾喪我：AI與中國覺悟哲學》 · 《心之二階性》 · 《金剛經心法》 · 《「之間」的功夫——情愛覺智論》 等</span><span class="i18n-en en-serif" style="font-style:italic;">The Dao and the Instrument: A Chinese Reading of AI · I Have Lost Myself: AI and Chinese Philosophy of Awakening · The Second-Order Nature of Mind · The Heart-Method of the Diamond Sutra · The Work of the "In-Between": On the Awakened Wisdom of Love · and more</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENROLL ============ -->
+  <section id="enroll" style="background:#9c2b23;color:#f4efe4;padding:110px 6vw;text-align:center;">
+    <div data-reveal style="max-width:760px;margin:0 auto;">
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;opacity:.85;margin-bottom:22px;"><span class="i18n-zh">入 学 问 道</span><span class="i18n-hant">入 學 問 道</span><span class="i18n-en">ENROLL · SEEK THE DAO</span></div>
+      <h2 style="margin:0 0 26px;font-size:clamp(34px,5vw,64px);font-weight:700;letter-spacing:4px;"><span class="i18n-zh">与九经书院同行</span><span class="i18n-hant">與九經書院同行</span><span class="i18n-en en-serif">Walk with Jiujing Academy</span></h2>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:16px;line-height:2;font-weight:300;opacity:.9;margin:0 0 42px;"><span class="i18n-zh">无论你为求学、为修心、为齐家、为治企——这里都有一条由典籍通往觉醒的路。</span><span class="i18n-hant">無論你為求學、為修心、為齊家、為治企——這裡都有一條由典籍通往覺醒的路。</span><span class="i18n-en">Whether you come to study, to cultivate the mind, to order a family, or to govern an enterprise — here lies a path from the classics to awakening.</span></p>
+      <a href="报名入学.dc.html" style="display:inline-block;padding:16px 46px;background:#f4efe4;color:#9c2b23;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;font-weight:500;" class="hv9"><span class="i18n-zh">预约报名</span><span class="i18n-hant">預約報名</span><span class="i18n-en">Reserve a Place</span></a>
+    </div>
+  </section>
+
+  <a href="#top" ref="{{ backTopRef }}" title="回到顶部 · Top" aria-label="回到顶部 · Back to top" style="position:fixed;right:28px;bottom:28px;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:58px;height:58px;background:#22201d;color:#f4efe4;border-radius:50%;box-shadow:0 6px 22px rgba(34,32,29,.28);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s ease,transform .4s ease,visibility .4s,background .3s;" class="hv10">
+    <span style="font-size:15px;line-height:1;">↑</span>
+    <span style="font-family:'Noto Sans SC',sans-serif;font-size:10px;letter-spacing:1px;line-height:1;"><span class="i18n-zh">首页</span><span class="i18n-hant">首頁</span><span class="i18n-en">Top</span></span>
+  </a>
+
+  <footer style="background:#1a1815;color:#8a857c;padding:56px 6vw 40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" aria-label="快速导览" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="#classics" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+        <a href="觉智哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+        <a href="情爱哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></a>
+        <a href="汉字哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Hanzi Philosophy</span></a>
+        <a href="超级管理学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en">News</span></a>
+        <a href="学员风采.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+        <a href="#founder" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">创办人</span><span class="i18n-hant">創辦人</span><span class="i18n-en">Founder</span></a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en">Enroll</span></a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+        <div style="display:flex;align-items:center;gap:12px;color:#c3bcae;"><span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;">九经</span><span style="letter-spacing:3px;"><span class="i18n-zh">九经书院</span><span class="i18n-hant">九經書院</span><span class="i18n-en">Jiujing Academy</span></span></div>
+        <div style="letter-spacing:2px;"><span class="i18n-zh">儒 · 释 · 道　觉智圆成　体用不二</span><span class="i18n-hant">儒 · 釋 · 道　覺智圓成　體用不二</span><span class="i18n-en">Confucian · Buddhist · Daoist — Awakened Wisdom · Not-Two</span></div>
+        <div style="opacity:.7;">© 2026 九经书院 · JIUJING ACADEMY</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { evoActive: 0, menuOpen: false, lang: 'zh', jiujingIdx: 0 };
+
+  componentDidMount() {
+    this._jjTimer = setInterval(() => {
+      this.setState((s) => ({ jiujingIdx: (s.jiujingIdx + 1) % 9 }));
+    }, 2600);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._jjTimer);
+  }
+
+  renderVals() {
+    const jiujingData = [
+      { zh: '修身也', hant: '修身也', en: 'Cultivate the self' },
+      { zh: '尊贤也', hant: '尊賢也', en: 'Honor the worthy' },
+      { zh: '亲亲也', hant: '親親也', en: 'Cherish one\u2019s kin' },
+      { zh: '敬大臣也', hant: '敬大臣也', en: 'Respect great ministers' },
+      { zh: '体群臣也', hant: '體群臣也', en: 'Identify with officials' },
+      { zh: '子庶民也', hant: '子庶民也', en: 'Treat the people as one\u2019s children' },
+      { zh: '来百工也', hant: '來百工也', en: 'Attract the artisans' },
+      { zh: '柔远人也', hant: '柔遠人也', en: 'Show tenderness to strangers' },
+      { zh: '怀诸侯也', hant: '懷諸侯也', en: 'Cherish the feudal lords' }
+    ];
+    const jiujing = jiujingData.map((jj, i) => {
+      const active = i === this.state.jiujingIdx;
+      return {
+        ...jj,
+        style: `position:absolute;writing-mode:vertical-rl;font-size:26px;letter-spacing:6px;font-weight:600;color:#22201d;transition:opacity 1s ease,transform 1s ease;opacity:${active ? 1 : 0};transform:translateY(${active ? 0 : 14}px);`,
+        dotStyle: `width:${active ? 16 : 4}px;height:4px;background:${active ? '#9c2b23' : 'rgba(34,32,29,.25)'};transition:all .4s ease;`
+      };
+    });
+    const evoData = [
+      { labZh: '金文', labHant: '金文', labEn: 'Bronze', img: 'assets/hanzi-dao-1.png' },
+      { labZh: '楚系简帛', labHant: '楚系簡帛', labEn: 'Chu Silk', img: 'assets/hanzi-dao-2.png' },
+      { labZh: '说文（小篆）', labHant: '說文（小篆）', labEn: 'Seal', img: 'assets/hanzi-dao-3.png' },
+      { labZh: '秦系简牍', labHant: '秦系簡牘', labEn: 'Qin Slip', img: 'assets/hanzi-dao-4.png' },
+      { labZh: '隶书', labHant: '隸書', labEn: 'Clerical', img: 'assets/hanzi-dao-5.png' },
+      { labZh: '楷书', labHant: '楷書', labEn: 'Regular', img: 'assets/hanzi-dao-6.png' }
+    ];
+    const evo = evoData.map((e, i) => ({
+      ...e,
+      hasImg: true,
+      activeClass: i === this.state.evoActive ? 'active' : ''
+    }));
+
+    const navItems = [
+      { href: '#classics', zh: '九经课程', hant: '九經課程', en: 'Nine Classics' },
+      { href: '#juezhi', zh: '觉智哲学', hant: '覺智哲學', en: 'Awakened Wisdom' },
+      { href: '#qingai', zh: '情爱哲学', hant: '情愛哲學', en: 'Philosophy of Love' },
+      { href: '#children', zh: '汉字哲学启蒙', hant: '漢字哲學啟蒙', en: 'Hanzi Philosophy' },
+      { href: '#supermgmt', zh: '超级管理学', hant: '超級管理學', en: 'Super-Management' },
+      { href: '书院动态.dc.html', zh: '书院动态', hant: '書院動態', en: 'News & Writings' },
+      { href: '学员风采.dc.html', zh: '学员风采', hant: '學員風采', en: 'Student Showcase' },
+      { href: '#founder', zh: '创办人', hant: '創辦人', en: 'Founder' }
+    ];
+
+    const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
+    const langLabels = { zh: '繁', hant: 'EN', en: '简' };
+
+    return {
+      rootClass: this.state.lang === 'en' ? 'lang-en' : (this.state.lang === 'hant' ? 'lang-hant' : ''),
+      langLabel: langLabels[this.state.lang],
+      toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
+      backTopRef: (el) => { this._backTop = el; },
+      evo,
+      menuOpen: this.state.menuOpen,
+      burgerIcon: this.state.menuOpen ? '✕' : '☰',
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navItems,
+      jiujing,
+      navGuide: [
+        { no: '壹', href: '#classics', cnZh: '核心课程', cnHant: '核心課程', cnEn: 'Core Curriculum', subZh: '儒释道九经', subHant: '儒釋道九經', subEn: 'The Nine Classics' },
+        { no: '贰', href: '#juezhi', cnZh: '觉智哲学', cnHant: '覺智哲學', cnEn: 'Awakened Wisdom', subZh: '体用不二', subHant: '體用不二', subEn: 'Substance & Function' },
+        { no: '叁', href: '#qingai', cnZh: '情爱哲学', cnHant: '情愛哲學', cnEn: 'Philosophy of Love', subZh: '关系之道', subHant: '關係之道', subEn: 'The Way of Relationship' },
+        { no: '肆', href: '#children', cnZh: '汉字哲学', cnHant: '漢字哲學', cnEn: 'Hanzi Philosophy', subZh: '文明编码', subHant: '文明編碼', subEn: 'Civilizational Code' },
+        { no: '伍', href: '#supermgmt', cnZh: '超级管理学', cnHant: '超級管理學', cnEn: 'Super-Management', subZh: '管理即修行', subHant: '管理即修行', subEn: 'Management as Cultivation' }
+      ],
+      triad: [
+        { alt: '老子像 · Laozi', slotZh: '老子像', slotHant: '老子像', slotEn: 'Laozi', labZh: '道 · 超世', labHant: '道 · 超世', labEn: 'Daoist · Beyond', img: 'assets/laozi.png', hasImg: true, noImg: false },
+        { alt: '孔子像 · Confucius', slotZh: '孔子像 / 儒服', slotHant: '孔子像 / 儒服', slotEn: 'Confucius', labZh: '儒 · 入世', labHant: '儒 · 入世', labEn: 'Confucian · Engaging', img: 'assets/confucius.png', hasImg: true, noImg: false },
+        { alt: '佛陀像 · Buddha', slotZh: '佛陀像', slotHant: '佛陀像', slotEn: 'Buddha', labZh: '释 · 出世', labHant: '釋 · 出世', labEn: 'Buddhist · Transcending', img: 'assets/buddha.png', hasImg: true, noImg: false }
+      ],
+      schools: [
+        { glyph: '儒', tagZh: '入世 · 修齐治平', tagHant: '入世 · 修齊治平', tagEn: 'Engaging · Cultivate–Govern', books: [
+          { zh: '周易', hant: '周易', en: 'Book of Changes', noteZh: '天地之道，变易之理。', noteHant: '天地之道，變易之理。', noteEn: 'The Dao of Heaven and Earth; the principle of change.' },
+          { zh: '大学 · 中庸', hant: '大學 · 中庸', en: 'Great Learning · Mean', noteZh: '明德至善，中和之德。', noteHant: '明德至善，中和之德。', noteEn: 'Illustrious virtue and the highest good; centered harmony.' },
+          { zh: '传习录', hant: '傳習錄', en: 'Instructions for Living', noteZh: '阳明心学，知行合一。', noteHant: '陽明心學，知行合一。', noteEn: "Wang Yangming's mind-learning; unity of knowing and acting." }
+        ]},
+        { glyph: '释', tagZh: '出世 · 明心见性', tagHant: '出世 · 明心見性', tagEn: 'Transcending · See the Nature', books: [
+          { zh: '金刚经', hant: '金剛經', en: 'Diamond Sutra', noteZh: '般若空观，应无所住。', noteHant: '般若空觀，應無所住。', noteEn: "Prajñā's view of emptiness; abide nowhere." },
+          { zh: '坛经', hant: '壇經', en: 'Platform Sutra', noteZh: '顿悟见性，明心自度。', noteHant: '頓悟見性，明心自度。', noteEn: 'Sudden awakening; illumine the mind, liberate oneself.' },
+          { zh: '唯识三十颂', hant: '唯識三十頌', en: 'Thirty Verses', noteZh: '万法唯识，转识成智。', noteHant: '萬法唯識，轉識成智。', noteEn: 'All dharmas are consciousness-only; transform it into wisdom.' }
+        ]},
+        { glyph: '道', tagZh: '超世 · 道法自然', tagHant: '超世 · 道法自然', tagEn: 'Beyond · Dao Follows Nature', books: [
+          { zh: '道德经', hant: '道德經', en: 'Tao Te Ching', noteZh: '道法自然，无为而治。', noteHant: '道法自然，無為而治。', noteEn: 'Dao follows nature; govern through non-action.' },
+          { zh: '庄子', hant: '莊子', en: 'Zhuangzi', noteZh: '逍遥齐物，游心太虚。', noteHant: '逍遙齊物，游心太虛。', noteEn: 'Free wandering, equalizing things; roam in the great void.' },
+          { zh: '黄帝内经', hant: '黃帝內經', en: "Inner Canon", noteZh: '天人相应，形神共养。', noteHant: '天人相應，形神共養。', noteEn: 'Correspondence of Heaven and human; nourish body and spirit.' }
+        ]}
+      ],
+      awareness: [
+        { zh: '外觉', hant: '外覺', en: 'Outer', subZh: '观 物', subHant: '觀 物', subEn: 'Observing Things', color: '#efe9dc', border: 'rgba(239,233,220,.16)' },
+        { zh: '内觉', hant: '內覺', en: 'Inner', subZh: '观 心', subHant: '觀 心', subEn: 'Observing Mind', color: '#efe9dc', border: 'rgba(239,233,220,.16)' },
+        { zh: '本觉', hant: '本覺', en: 'Self', subZh: '观 我', subHant: '觀 我', subEn: 'Observing the I', color: '#d99a4e', border: 'rgba(217,154,78,.5)' }
+      ],
+      lineage: [
+        { whoZh: '管子', whoHant: '管子', whoEn: 'Guanzi', ideaZh: '心中藏心', ideaHant: '心中藏心', ideaEn: 'A mind within the mind', color: '#efe9dc' },
+        { whoZh: '荀子', whoHant: '荀子', whoEn: 'Xunzi', ideaZh: '虚壹而静', ideaHant: '虛壹而靜', ideaEn: 'Empty, unified and still', color: '#efe9dc' },
+        { whoZh: '庄子', whoHant: '莊子', whoEn: 'Zhuangzi', ideaZh: '心斋 · 坐忘', ideaHant: '心齋 · 坐忘', ideaEn: 'Fasting of the mind · Sitting in forgetfulness', color: '#efe9dc' },
+        { whoZh: '禅宗', whoHant: '禪宗', whoEn: 'Chan / Zen', ideaZh: '应无所住而生其心', ideaHant: '應無所住而生其心', ideaEn: 'Give rise to mind while abiding nowhere', color: '#efe9dc' },
+        { whoZh: '王阳明', whoHant: '王陽明', whoEn: 'Wang Yangming', ideaZh: '致良知', ideaHant: '致良知', ideaEn: 'Extend innate knowing', color: '#d99a4e' }
+      ],
+      govern: [
+        { zh: '治己', hant: '治己', en: 'Govern the Self', noteZh: '领导者的心性修炼——觉察、定力与格局，先正己而后正人。', noteHant: '領導者的心性修煉——覺察、定力與格局，先正己而後正人。', noteEn: "The leader's cultivation of mind-nature — awareness, composure and vision; rectify oneself before others." },
+        { zh: '治人', hant: '治人', en: 'Govern People', noteZh: '以人心为本的组织之道——用人、育人、聚人，成一团队之和。', noteHant: '以人心為本的組織之道——用人、育人、聚人，成一團隊之和。', noteEn: 'An organizational way rooted in the human heart — employ, nurture and unite people into a harmonious team.' },
+        { zh: '治事', hant: '治事', en: 'Govern Affairs', noteZh: '决策与治理的智慧——于变易中守常道，于无为中成有为。', noteHant: '決策與治理的智慧——於變易中守常道，於無為中成有為。', noteEn: 'The wisdom of decision and governance — hold the constant Dao amid change, achieve through non-action.' }
+      ],
+      program: [
+        { no: '01', zh: '私塾式深研', hant: '私塾式深研', en: 'Private-Academy Study', noteZh: '小班共修九经，导师随行答疑，经典入心。', noteHant: '小班共修九經，導師隨行答疑，經典入心。', noteEn: 'Small-group study of the Nine Classics, with mentors answering along the way — the classics enter the heart.' },
+        { no: '02', zh: '家风共建', hant: '家風共建', en: 'Building Family Ethos', noteZh: '亲子与家庭同修，立家训、正家风、传家道。', noteHant: '親子與家庭同修，立家訓、正家風、傳家道。', noteEn: 'Parents and family cultivate together — establish precepts, rectify ethos, transmit the family Dao.' },
+        { no: '03', zh: '超级管理陪跑', hant: '超級管理陪跑', en: 'Management Companionship', noteZh: '将觉智智慧导入组织治理，领导者长期陪伴成长。', noteHant: '將覺智智慧導入組織治理，領導者長期陪伴成長。', noteEn: 'Bring awakened wisdom into organizational governance; long-term companioned growth for leaders.' }
+      ],
+      credentials: [
+        { zh: '南京大学哲学博士', hant: '南京大學哲學博士', en: 'Ph.D. in Philosophy, Nanjing University' },
+        { zh: '江苏省社会科学院哲学研究所研究员', hant: '江蘇省社會科學院哲學研究所研究員', en: 'Research Fellow, Institute of Philosophy, Jiangsu Academy of Social Sciences' },
+        { zh: '江苏省社会科学院人工智能与社会科学创新中心执行主任', hant: '江蘇省社會科學院人工智能與社會科學創新中心執行主任', en: 'Executive Director, Center for AI & Social Science Innovation, JASS' },
+        { zh: '九经书院创办人', hant: '九經書院創辦人', en: 'Founder, Jiujing Academy' }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((e) => e.classList.add('seen'));
+    } else {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add('seen'); this._io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach((e) => this._io.observe(e));
+    }
+
+    this._evoTimer = setInterval(() => {
+      this.setState((s) => ({ evoActive: (s.evoActive + 1) % 6 }));
+    }, 1100);
+
+    this._onScroll = () => {
+      if (!this._backTop) return;
+      const show = window.scrollY > window.innerHeight * 0.6;
+      this._backTop.style.opacity = show ? '1' : '0';
+      this._backTop.style.visibility = show ? 'visible' : 'hidden';
+      this._backTop.style.transform = show ? 'translateY(0)' : 'translateY(12px)';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._evoTimer) clearInterval(this._evoTimer);
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+}
+
+</script>
+</body>
+</html>

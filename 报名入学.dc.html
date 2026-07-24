@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="description" content="九经书院 · 报名入学 — 选择修学方向，提交报名，与书院同行。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #9c2b23; color: #f4efe4; }
+  a { color: inherit; text-decoration: none; }
+  .i18n-en, .i18n-hant { display: none; }
+  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
+  .lang-hant .i18n-hant { display: inline; }
+  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
+  .lang-en .i18n-en { display: inline; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
+  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
+  .langbtn:hover { background:#22201d; color:#f4efe4; }
+  .back:hover { opacity: 1 !important; }
+  .track:hover { border-color:#9c2b23 !important; }
+  .fld { width:100%; padding:14px 15px; font-family:'Noto Sans SC',sans-serif; font-size:15px; color:#22201d; background:#faf7ef; border:1px solid rgba(34,32,29,.18); outline:none; transition:border-color .2s; }
+  .fld:focus { border-color:#9c2b23; }
+  .fld.invalid { border-color:#c0392b; background:#fbf0ee; }
+  textarea.fld { resize:vertical; min-height:110px; line-height:1.7; }
+  input::placeholder, textarea::placeholder { color:#a89f90; }
+  .submit:hover { background:#9c2b23 !important; }
+  .footnav a:hover { color:#efe9dc !important; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(14px);} to { opacity:1; transform:translateY(0);} }
+  @media (max-width: 880px) { .layout { grid-template-columns:1fr !important; } .aside-sticky { position:static !important; } }
+  @media (max-width: 560px) { .frow { grid-template-columns:1fr !important; } }
+</style>
+</helmet>
+
+<div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="九经书院.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;transition:opacity .3s;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
+      <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回书院</span><span class="i18n-hant">返回書院</span><span class="i18n-en">Academy</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">名</span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en en-serif" style="letter-spacing:1px;">Enrollment</span></span>
+    </div>
+    <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言 · Switch language" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .3s,color .3s;">{{ langLabel }}</button>
+  </header>
+
+  <section style="max-width:1180px;margin:0 auto;padding:56px 5vw 24px;">
+    <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">入 学 问 道</span><span class="i18n-hant">入 學 問 道</span><span class="i18n-en">ENROLL · SEEK THE DAO</span></div>
+    <h1 style="margin:0;font-size:clamp(34px,5.5vw,60px);font-weight:700;letter-spacing:3px;line-height:1.1;"><span class="i18n-zh">与九经书院同行</span><span class="i18n-hant">與九經書院同行</span><span class="i18n-en en-serif">Walk with Jiujing Academy</span></h1>
+    <p style="max-width:620px;margin:22px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">填写下表提交报名意向。书院将于三个工作日内与你联系，商定修学方向与入院事宜。</span><span class="i18n-hant">填寫下表提交報名意向。書院將於三個工作日內與你聯繫，商定修學方向與入院事宜。</span><span class="i18n-en">Fill in the form below to submit your interest. The academy will contact you within three working days to discuss your path of study and admission.</span></p>
+  </section>
+
+  <div class="layout" style="max-width:1180px;margin:0 auto;padding:20px 5vw 90px;display:grid;grid-template-columns:1.4fr .85fr;gap:48px;align-items:start;">
+
+    <!-- FORM / SUCCESS -->
+    <div>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#22201d;color:#efe9dc;padding:56px 48px;animation:fadeUp .5s ease;">
+          <div style="width:60px;height:60px;border-radius:50%;background:#9c2b23;display:flex;align-items:center;justify-content:center;font-size:30px;color:#f4efe4;margin-bottom:26px;">&#10003;</div>
+          <h2 style="margin:0 0 16px;font-size:30px;font-weight:700;letter-spacing:2px;"><span class="i18n-zh">报名已提交</span><span class="i18n-hant">報名已提交</span><span class="i18n-en en-serif">Application Received</span></h2>
+          <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#c3bcae;font-weight:300;margin:0 0 8px;"><span class="i18n-zh">{{ s.name }}，感谢你的向学之诚。我们已收到你对「{{ sel.track }}」的报名，书院将尽快与你联系。</span><span class="i18n-hant">{{ s.name }}，感謝你的向學之誠。我們已收到你對「{{ sel.trackHant }}」的報名，書院將盡快與你聯繫。</span><span class="i18n-en">{{ s.name }}, thank you for your sincerity in learning. We have received your application for "{{ sel.trackEn }}" and will contact you soon.</span></p>
+          <button onClick="{{ reset }}" style="margin-top:30px;background:none;border:1px solid rgba(239,233,220,.35);color:#efe9dc;padding:13px 26px;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;cursor:pointer;"><span class="i18n-zh">再填一份</span><span class="i18n-hant">再填一份</span><span class="i18n-en">Submit another</span></button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <!-- track selection -->
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">壹 · 选择修学方向</span><span class="i18n-hant">壹 · 選擇修學方向</span><span class="i18n-en">I · CHOOSE YOUR PATH</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;" class="frow">
+            <sc-for list="{{ tracks }}" as="t" hint-placeholder-count="6">
+              <button class="track" onClick="{{ t.select }}" style="text-align:left;cursor:pointer;background:{{ t.bg }};border:1.5px solid {{ t.border }};padding:20px 20px;transition:border-color .2s,background .2s;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                  <span style="font-size:19px;font-weight:600;letter-spacing:1px;color:{{ t.titleColor }};"><span class="i18n-zh">{{ t.zh }}</span><span class="i18n-hant">{{ t.hant }}</span><span class="i18n-en">{{ t.en }}</span></span>
+                  <span style="width:16px;height:16px;border-radius:50%;border:1.5px solid {{ t.dotBorder }};background:{{ t.dotBg }};flex-shrink:0;"></span>
+                </div>
+                <span style="font-family:'Noto Sans SC',sans-serif;font-size:12.5px;line-height:1.7;color:#7a7266;font-weight:300;"><span class="i18n-zh">{{ t.noteZh }}</span><span class="i18n-hant">{{ t.noteHant }}</span><span class="i18n-en">{{ t.noteEn }}</span></span>
+              </button>
+            </sc-for>
+          </div>
+
+          <!-- fields -->
+          <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin:34px 0 16px;"><span class="i18n-zh">贰 · 填写报名信息</span><span class="i18n-hant">貳 · 填寫報名信息</span><span class="i18n-en">II · YOUR DETAILS</span></div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="frow">
+              <div>
+                <label style="display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#55504a;margin-bottom:7px;"><span class="i18n-zh">姓名 *</span><span class="i18n-hant">姓名 *</span><span class="i18n-en">Name *</span></label>
+                <input value="{{ sval.name }}" onInput="{{ onName }}" class="fld {{ err.name }}" placeholder="{{ ph.name }}" />
+              </div>
+              <div>
+                <label style="display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#55504a;margin-bottom:7px;"><span class="i18n-zh">称谓</span><span class="i18n-hant">稱謂</span><span class="i18n-en">Title</span></label>
+                <input value="{{ sval.honor }}" onInput="{{ onHonor }}" class="fld" placeholder="{{ ph.honor }}" />
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="frow">
+              <div>
+                <label style="display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#55504a;margin-bottom:7px;"><span class="i18n-zh">电邮 *</span><span class="i18n-hant">電郵 *</span><span class="i18n-en">Email *</span></label>
+                <input value="{{ sval.email }}" onInput="{{ onEmail }}" class="fld {{ err.email }}" placeholder="name@example.com" />
+              </div>
+              <div>
+                <label style="display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#55504a;margin-bottom:7px;"><span class="i18n-zh">电话</span><span class="i18n-hant">電話</span><span class="i18n-en">Phone</span></label>
+                <input value="{{ sval.phone }}" onInput="{{ onPhone }}" class="fld" placeholder="{{ ph.phone }}" />
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#55504a;margin-bottom:7px;"><span class="i18n-zh">求学志趣 · 想与书院说的话</span><span class="i18n-hant">求學志趣 · 想與書院說的話</span><span class="i18n-en">Your aspiration · a note to the academy</span></label>
+              <textarea onInput="{{ onMsg }}" class="fld" placeholder="{{ ph.msg }}">{{ sval.msg }}</textarea>
+            </div>
+
+            <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;color:#c0392b;letter-spacing:.5px;"><span class="i18n-zh">请填写必填项（姓名与有效电邮）。</span><span class="i18n-hant">請填寫必填項（姓名與有效電郵）。</span><span class="i18n-en">Please complete the required fields (name and a valid email).</span></div>
+            </sc-if>
+
+            <button onClick="{{ submit }}" class="submit" style="margin-top:8px;background:#22201d;color:#f4efe4;border:none;padding:17px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;cursor:pointer;transition:background .3s;"><span class="i18n-zh">提交报名</span><span class="i18n-hant">提交報名</span><span class="i18n-en">Submit Application</span></button>
+            <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#a89f90;margin:2px 0 0;line-height:1.7;"><span class="i18n-zh">提交即表示同意书院就报名事宜与你联系。此为原型演示，资料不会被真实发送。</span><span class="i18n-hant">提交即表示同意書院就報名事宜與你聯繫。此為原型演示，資料不會被真實發送。</span><span class="i18n-en">By submitting you agree to be contacted about your application. This is a prototype demo; data is not actually sent.</span></p>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- ASIDE -->
+    <aside class="aside-sticky" style="position:sticky;top:96px;display:flex;flex-direction:column;gap:20px;">
+      <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.1);padding:32px 30px;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#9c2b23;margin-bottom:20px;"><span class="i18n-zh">入院须知</span><span class="i18n-hant">入院須知</span><span class="i18n-en">ADMISSIONS</span></div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid rgba(34,32,29,.1);">
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:2px;color:#a89f90;white-space:nowrap;min-width:56px;"><span class="i18n-zh">{{ f.kZh }}</span><span class="i18n-hant">{{ f.kHant }}</span><span class="i18n-en">{{ f.kEn }}</span></span>
+              <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#3b3833;line-height:1.6;"><span class="i18n-zh">{{ f.vZh }}</span><span class="i18n-hant">{{ f.vHant }}</span><span class="i18n-en">{{ f.vEn }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#22201d;color:#efe9dc;padding:32px 30px;">
+        <div style="font-family:'Ma Shan Zheng',cursive;font-size:40px;color:#d99a4e;line-height:1;margin-bottom:14px;">有教无类</div>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;line-height:1.95;color:#c3bcae;font-weight:300;margin:0;"><span class="i18n-zh">不论齿序、无问出身，惟以向学之诚为取。春秋两季开院，随到随考。</span><span class="i18n-hant">不論齒序、無問出身，惟以向學之誠為取。春秋兩季開院，隨到隨考。</span><span class="i18n-en">Regardless of age or origin — only sincerity in learning is asked. The academy opens each spring and autumn; apply and be examined anytime.</span></p>
+      </div>
+    </aside>
+  </div>
+
+  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" aria-label="快速导览" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="九经书院.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">首页</span><span class="i18n-hant">首頁</span><span class="i18n-en">Home</span></a>
+        <a href="九经书院.dc.html#classics" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">九经课程</span><span class="i18n-hant">九經課程</span><span class="i18n-en">Nine Classics</span></a>
+        <a href="觉智哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">觉智哲学</span><span class="i18n-hant">覺智哲學</span><span class="i18n-en">Awakened Wisdom</span></a>
+        <a href="情爱哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">情爱哲学</span><span class="i18n-hant">情愛哲學</span><span class="i18n-en">Philosophy of Love</span></a>
+        <a href="汉字哲学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">汉字哲学</span><span class="i18n-hant">漢字哲學</span><span class="i18n-en">Hanzi Philosophy</span></a>
+        <a href="超级管理学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">超级管理学</span><span class="i18n-hant">超級管理學</span><span class="i18n-en">Super-Management</span></a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">书院动态</span><span class="i18n-hant">書院動態</span><span class="i18n-en">News</span></a>
+        <a href="学员风采.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">Students</span></a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;transition:color .2s;"><span class="i18n-zh">报名入学</span><span class="i18n-hant">報名入學</span><span class="i18n-en">Enroll</span></a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;"><span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span><span style="letter-spacing:3px;"><span class="i18n-zh">九经书院</span><span class="i18n-hant">九經書院</span><span class="i18n-en">Jiujing Academy</span></span></a>
+        <div style="opacity:.7;">© 2026 九经书院 · 报名入学</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    lang: 'zh',
+    track: 'classics',
+    name: '', honor: '', email: '', phone: '', msg: '',
+    triedSubmit: false, submitted: false
+  };
+
+  trackData() {
+    return [
+      { id: 'classics', zh: '九经研习', hant: '九經研習', en: 'Nine Classics', noteZh: '儒释道经典的循序深研。', noteHant: '儒釋道經典的循序深研。', noteEn: 'Sequential study of the classics.' },
+      { id: 'juezhi', zh: '觉智哲学', hant: '覺智哲學', en: 'Awakened Wisdom', noteZh: '体用不二的哲学理论精修。', noteHant: '體用不二的哲學理論精修。', noteEn: 'The philosophy of not-two.' },
+      { id: 'qingai', zh: '情爱哲学', hant: '情愛哲學', en: 'Philosophy of Love', noteZh: '「之间」的功夫，关系中的修行。', noteHant: '「之間」的功夫，關係中的修行。', noteEn: 'The work of the "in-between" — cultivation within relationship.' },
+      { id: 'children', zh: '汉字哲学', hant: '漢字哲學', en: 'Hanzi Philosophy', noteZh: '面向孩童的哲思与文字启蒙。', noteHant: '面向孩童的哲思與文字啟蒙。', noteEn: 'Philosophy & characters for kids.' },
+      { id: 'supermgmt', zh: '超级管理学', hant: '超級管理學', en: 'Super-Management', noteZh: '企业与家庭的陪伴成长。', noteHant: '企業與家庭的陪伴成長。', noteEn: 'Companioned growth for orgs & families.' },
+      { id: 'journey', zh: '九经游学', hant: '九經遊學', en: 'Nine Classics Journey', noteZh: '寻访古迹碑刻，于行走中体认道统。', noteHant: '尋訪古蹟碑刻，於行走中體認道統。', noteEn: 'Visiting historic sites and steles — sensing the Dao\u2019s transmission on the road.' }
+    ];
+  }
+
+  emailValid() {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email.trim());
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const en = lang === 'en';
+    const hant = lang === 'hant';
+    const tracksRaw = this.trackData();
+    const sel = tracksRaw.find((t) => t.id === this.state.track) || tracksRaw[0];
+
+    const tracks = tracksRaw.map((t) => {
+      const active = t.id === this.state.track;
+      return {
+        ...t,
+        select: () => this.setState({ track: t.id }),
+        bg: active ? '#f4efe4' : '#faf7ef',
+        border: active ? '#9c2b23' : 'rgba(34,32,29,.14)',
+        titleColor: active ? '#9c2b23' : '#22201d',
+        dotBorder: active ? '#9c2b23' : 'rgba(34,32,29,.3)',
+        dotBg: active ? '#9c2b23' : 'transparent'
+      };
+    });
+
+    const nameBad = this.state.triedSubmit && !this.state.name.trim();
+    const emailBad = this.state.triedSubmit && !this.emailValid();
+
+    const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
+    const langLabels = { zh: '繁', hant: 'EN', en: '简' };
+
+    return {
+      rootClass: en ? 'lang-en' : (hant ? 'lang-hant' : ''),
+      langLabel: langLabels[lang],
+      toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
+
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      showError: this.state.triedSubmit && (!this.state.name.trim() || !this.emailValid()),
+
+      tracks,
+      sel: { track: sel.zh, trackHant: sel.hant, trackEn: sel.en },
+
+      sval: { name: this.state.name, honor: this.state.honor, email: this.state.email, phone: this.state.phone, msg: this.state.msg },
+      s: { name: this.state.name || (en ? 'Friend' : '学友') },
+      err: { name: nameBad ? 'invalid' : '', email: emailBad ? 'invalid' : '' },
+      ph: {
+        name: en ? 'Your name' : '你的姓名',
+        honor: en ? 'e.g. Mr / Ms / teacher' : (hant ? '如 先生 / 女士 / 老師' : '如 先生 / 女士 / 老师'),
+        phone: en ? 'optional' : (hant ? '選填' : '选填'),
+        msg: en ? 'Why do you wish to study here? Any questions?' : (hant ? '你為何而來？有什麼想問書院的？' : '你为何而来？有什么想问书院的？')
+      },
+
+      onName: (e) => this.setState({ name: e.target.value }),
+      onHonor: (e) => this.setState({ honor: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onMsg: (e) => this.setState({ msg: e.target.value }),
+
+      submit: () => {
+        if (!this.state.name.trim() || !this.emailValid()) {
+          this.setState({ triedSubmit: true });
+          return;
+        }
+        this.setState({ submitted: true });
+      },
+      reset: () => this.setState({ name: '', honor: '', email: '', phone: '', msg: '', triedSubmit: false, submitted: false }),
+
+      facts: [
+        { kZh: '学制', kHant: '學制', kEn: 'Term', vZh: '春秋两季开院，随到随考', vHant: '春秋兩季開院，隨到隨考', vEn: 'Spring & autumn intakes; rolling admission' },
+        { kZh: '形式', kHant: '形式', kEn: 'Format', vZh: '线下讲席 · 会讲 · 线上导读', vHant: '線下講席 · 會講 · 線上導讀', vEn: 'On-site lectures · seminars · online reading' },
+        { kZh: '对象', kHant: '對象', kEn: 'Who', vZh: '不论齿序、无问出身', vHant: '不論齒序、無問出身', vEn: 'Any age, any background' },
+        { kZh: '联络', kHant: '聯絡', kEn: 'Contact', vZh: 'shouyuAI@coze.email', vHant: 'shouyuAI@coze.email', vEn: 'shouyuAI@coze.email' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

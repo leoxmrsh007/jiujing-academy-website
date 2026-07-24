@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Project specific
+.thumbnail
+scraps/

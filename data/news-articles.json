@@ -1,0 +1,266 @@
+[
+  {
+    "id": 0,
+    "cat": "seminar",
+    "glyph": "易",
+    "glyphColor": "rgba(156,43,35,.42)",
+    "bandBg": "repeating-linear-gradient(135deg,#e6dcc6,#e6dcc6 10px,#dccfb3 10px,#dccfb3 20px)",
+    "tagBg": "#9c2b23",
+    "catZh": "会讲",
+    "catHant": "會講",
+    "catEn": "Seminar",
+    "date": "2026.08 · 丙申孟秋",
+    "titleZh": "易道与时变 · 秋季会讲预告",
+    "titleHant": "易道與時變 · 秋季會講預告",
+    "titleEn": "The Dao of Change and the Times",
+    "excZh": "以《周易》为纲，论变易之道如何应于当世之治。",
+    "excHant": "以《周易》為綱，論變易之道如何應於當世之治。",
+    "excEn": "Taking the Book of Changes as guide — how change applies to governing today.",
+    "bodyZh": [
+      "《周易》六十四卦，言变不言常。世人多误以为易学教人趋吉避凶，实则其根本关切，在于教人认清「变」本身即是常道——唯有承认一切境遇皆流转不居，人才能在变局中站稳脚跟，而非执于一时之得失。",
+      "本次秋季会讲，山长将以「时」「位」「几」三字为纲，重讲《周易》如何为治理提供一套动态的判断方法：时未至而妄动，谓之躁；时已至而不应，谓之滞。真正的智慧，在于于变易中把握恰当的时机与分寸。",
+      "会讲面向书院学员与外部旁听者开放，名额有限，报名从速。届时将设问答环节，欢迎携实际治理困惑而来，与山长当面切磋。"
+    ],
+    "bodyHant": [
+      "《周易》六十四卦，言變不言常。世人多誤以為易學教人趨吉避凶，實則其根本關切，在於教人認清「變」本身即是常道——唯有承認一切境遇皆流轉不居，人才能在變局中站穩腳跟，而非執於一時之得失。",
+      "本次秋季會講，山長將以「時」「位」「幾」三字為綱，重講《周易》如何為治理提供一套動態的判斷方法：時未至而妄動，謂之躁；時已至而不應，謂之滯。真正的智慧，在於於變易中把握恰當的時機與分寸。",
+      "會講面向書院學員與外部旁聽者開放，名額有限，報名從速。屆時將設問答環節，歡迎攜實際治理困惑而來，與山長當面切磋。"
+    ],
+    "bodyEn": [
+      "The sixty-four hexagrams of the Book of Changes speak of change, not constancy. Many mistake the study of the Changes as a way to court fortune and avoid misfortune — its deeper concern is teaching us that change itself is the constant: only by accepting every circumstance as fluid can one stand firm amid upheaval, rather than clinging to any single gain or loss.",
+      "This autumn's seminar, led by the principal, will take \"timing,\" \"position,\" and \"the incipient moment\" as its framework — re-reading the Changes as a dynamic method of judgment for governance. To act before the time has come is rashness; to fail to respond once it has is stagnation. True wisdom lies in grasping the right measure amid change.",
+      "Open to students and outside auditors alike; seats are limited. A Q&A session will follow — bring your real governance dilemmas to discuss with the principal directly."
+    ]
+  },
+  {
+    "id": 1,
+    "cat": "lecture",
+    "glyph": "礼",
+    "glyphColor": "rgba(60,56,51,.34)",
+    "bandBg": "repeating-linear-gradient(135deg,#e8e0cf,#e8e0cf 10px,#ded2b8 10px,#ded2b8 20px)",
+    "tagBg": "#3b3833",
+    "catZh": "讲座",
+    "catHant": "講座",
+    "catEn": "Lecture",
+    "date": "2026.09 · 丙申仲秋",
+    "titleZh": "礼乐与人伦 · 三礼专题第三讲",
+    "titleHant": "禮樂與人倫 · 三禮專題第三講",
+    "titleEn": "Rites, Music and Human Relations",
+    "excZh": "从三礼出发，重探礼之为序与乐之为和的当代意义。",
+    "excHant": "從三禮出發，重探禮之為序與樂之為和的當代意義。",
+    "excEn": "From the Three Ritual Classics — the order of rites and harmony of music today.",
+    "bodyZh": [
+      "「礼」常被今人误解为繁文缛节，殊不知其本义为「序」——为人伦关系划定分寸，使亲疏、尊卑、内外各得其位而不相扰。「乐」则补礼之不足，以「和」消解序中可能生出的疏离与生硬。",
+      "第三讲聚焦《仪礼》与《礼记》中论「丧礼」「冠礼」的篇章，探讨古人如何借由仪式，处理人生中最难安顿的两桩大事：成年之责任与死亡之哀恸。仪式并非形式主义，而是一套帮助情感有序流动的容器。",
+      "讲座延续前两讲脉络，建议已参与第一、二讲的学员优先报名；亦欢迎新学员随堂旁听，讲义将于会前统一发放。"
+    ],
+    "bodyHant": [
+      "「禮」常被今人誤解為繁文縟節，殊不知其本義為「序」——為人倫關係劃定分寸，使親疏、尊卑、內外各得其位而不相擾。「樂」則補禮之不足，以「和」消解序中可能生出的疏離與生硬。",
+      "第三講聚焦《儀禮》與《禮記》中論「喪禮」「冠禮」的篇章，探討古人如何藉由儀式，處理人生中最難安頓的兩樁大事：成年之責任與死亡之哀慟。儀式並非形式主義，而是一套幫助情感有序流動的容器。",
+      "講座延續前兩講脈絡，建議已參與第一、二講的學員優先報名；亦歡迎新學員隨堂旁聽，講義將於會前統一發放。"
+    ],
+    "bodyEn": [
+      "\"Rites\" (礼) are often mistaken today for empty formality, but their original sense is \"order\" — setting proper measure among human relations, so that closeness and distance, seniority and station each find their place without friction. \"Music\" (乐) supplies what rites alone cannot: harmony, dissolving the stiffness order can otherwise produce.",
+      "This third lecture focuses on the coming-of-age and mourning rites described in the Yili and Liji, examining how the ancients used ritual to hold the two hardest passages of a life: the weight of adulthood and the grief of death. Ritual, properly understood, is not formalism — it is a vessel that lets feeling move in order.",
+      "This continues directly from the first two lectures; those who attended is recommended to register first, though new students are welcome to sit in. Handouts will be distributed before the session."
+    ]
+  },
+  {
+    "id": 2,
+    "cat": "journey",
+    "glyph": "游",
+    "glyphColor": "rgba(47,69,56,.4)",
+    "bandBg": "repeating-linear-gradient(135deg,#dfe4d6,#dfe4d6 10px,#d0d8c2 10px,#d0d8c2 20px)",
+    "tagBg": "#2f4538",
+    "catZh": "游学",
+    "catHant": "遊學",
+    "catEn": "Journey",
+    "date": "2026.10 · 丙申季秋",
+    "titleZh": "文庙谒圣暨曲阜访碑游学",
+    "titleHant": "文廟謁聖暨曲阜訪碑遊學",
+    "titleEn": "Pilgrimage to the Temple & Qufu Steles",
+    "excZh": "谒圣访碑，于古迹之间体认道统之所传。",
+    "excHant": "謁聖訪碑，於古蹟之間體認道統之所傳。",
+    "excEn": "Paying homage and reading steles — sensing the transmission of the Dao.",
+    "bodyZh": [
+      "读经典而不至其地，终隔一层。此行安排三日，循先师足迹，谒文庙、观碑林、访书院旧址，让典籍中的文字重新落回具体的山川与建筑之中。",
+      "碑刻不是死的石头，是历代学人以刀笔留下的批注——某座碑记录了某次讲会的缘起，某方题字道出后人对前贤的回应。逐字辨认碑文的过程，本身就是一场缓慢的、身体力行的读书。",
+      "随行学员将分组撰写访碑札记，择优收录于书院动态「学员」分类。名额有限，配比一名助教随行答疑，建议携带舒适步鞋与笔记本。"
+    ],
+    "bodyHant": [
+      "讀經典而不至其地，終隔一層。此行安排三日，循先師足跡，謁文廟、觀碑林、訪書院舊址，讓典籍中的文字重新落回具體的山川與建築之中。",
+      "碑刻不是死的石頭，是歷代學人以刀筆留下的批註——某座碑記錄了某次講會的緣起，某方題字道出後人對前賢的回應。逐字辨認碑文的過程，本身就是一場緩慢的、身體力行的讀書。",
+      "隨行學員將分組撰寫訪碑札記，擇優收錄於書院動態「學員」分類。名額有限，配比一名助教隨行答疑，建議攜帶舒適步鞋與筆記本。"
+    ],
+    "bodyEn": [
+      "To read the classics without ever visiting their ground always leaves a layer of distance. This three-day journey follows the footsteps of the sage — paying homage at the Temple, viewing the stele forest, visiting the sites of old academies — letting the words of the texts fall back onto real mountains and real buildings.",
+      "Stone steles are not dead rock; they are annotations left by generations of scholars with chisel and brush. One stele records the origin of a lecture gathering; another's inscription is a later scholar's answer to an earlier one. Deciphering a stele character by character is itself a slow, embodied form of reading.",
+      "Students will work in small groups to write field notes, the best of which will be collected under the \"Student\" category of Academy News. Places are limited, with a teaching assistant accompanying the group — comfortable walking shoes and a notebook are recommended."
+    ]
+  },
+  {
+    "id": 3,
+    "cat": "note",
+    "glyph": "觉",
+    "glyphColor": "rgba(217,154,78,.55)",
+    "bandBg": "repeating-linear-gradient(135deg,#efe6d4,#efe6d4 10px,#e5d8bd 10px,#e5d8bd 20px)",
+    "tagBg": "#9c2b23",
+    "catZh": "札记",
+    "catHant": "札記",
+    "catEn": "Notes",
+    "date": "2026.07 · 丙申季夏",
+    "titleZh": "反思与返思 · 觉之二阶性札记",
+    "titleHant": "反思與返思 · 覺之二階性札記",
+    "titleEn": "Reflection vs. Re-flection",
+    "excZh": "辨析一阶反思与二阶返思之别，觉之实现不可摹。",
+    "excHant": "辨析一階反思與二階返思之別，覺之實現不可摹。",
+    "excEn": "On first-order reflection versus the un-modelable second order.",
+    "bodyZh": [
+      "「反思」是心对心自身活动的再度加工——我想起我昨天说错了话，进而调整今日的言行，这仍是认知层面的操作，可被模型描述、可被算法模拟。",
+      "「返思」则不同：它不是心对心的再加工，而是觉对觉自身的返照——那个正在觉知的「我」，忽然照见了「正在觉知」这件事本身。这一步，无法被表征为任何一阶机制的递归堆叠，因为它不产生新的内容，只呈现「在」本身。",
+      "王阳明临终所言「吾心光明」，正是二阶返思的结穴之语——不是想通了什么道理，而是那个能想的本身，澄然显现。这也是觉智哲学与当代认知科学、与 AI 之间，最根本的分野所在。"
+    ],
+    "bodyHant": [
+      "「反思」是心對心自身活動的再度加工——我想起我昨天說錯了話，進而調整今日的言行，這仍是認知層面的操作，可被模型描述、可被演算法模擬。",
+      "「返思」則不同：它不是心對心的再加工，而是覺對覺自身的返照——那個正在覺知的「我」，忽然照見了「正在覺知」這件事本身。這一步，無法被表徵為任何一階機制的遞迴堆疊，因為它不產生新的內容，只呈現「在」本身。",
+      "王陽明臨終所言「吾心光明」，正是二階返思的結穴之語——不是想通了什麼道理，而是那個能想的本身，澄然顯現。這也是覺智哲學與當代認知科學、與 AI 之間，最根本的分野所在。"
+    ],
+    "bodyEn": [
+      "\"Reflection\" is the mind reprocessing its own activity — I recall a misstep yesterday and adjust today's conduct accordingly. This remains a cognitive operation, one that can be described by a model or simulated by an algorithm.",
+      "\"Re-flection\" is different: it is not the mind reprocessing itself, but awareness turning back upon awareness — the very \"I\" that is aware suddenly catches sight of the fact of being aware. This step cannot be represented as any recursive stacking of first-order mechanisms, because it produces no new content — it only presents \"being\" itself.",
+      "Wang Yangming's dying words, \"my mind is luminous,\" are exactly this second-order re-flection reaching its culmination — not the resolution of some idea, but the very capacity to think, laid bare and clear. This is also the most fundamental divide between awakened-wisdom philosophy and contemporary cognitive science or AI."
+    ]
+  },
+  {
+    "id": 4,
+    "cat": "note",
+    "glyph": "字",
+    "glyphColor": "rgba(156,43,35,.42)",
+    "bandBg": "repeating-linear-gradient(135deg,#ece5d6,#ece5d6 10px,#e0d6bf 10px,#e0d6bf 20px)",
+    "tagBg": "#9c2b23",
+    "catZh": "札记",
+    "catHant": "札記",
+    "catEn": "Notes",
+    "date": "2026.06 · 丙申仲夏",
+    "titleZh": "一字一世界 · 说「道」",
+    "titleHant": "一字一世界 · 說「道」",
+    "titleEn": "One Character, One World: On 道",
+    "excZh": "从金文到楷书，看「道」字如何承载一部文明的思想。",
+    "excHant": "從金文到楷書，看「道」字如何承載一部文明的思想。",
+    "excEn": "From bronze to regular script — how 道 carries a civilization's thought.",
+    "bodyZh": [
+      "「道」字从「辵」从「首」——辵是行走之意，首是头。合而观之，道最初描绘的不是一套抽象规则，而是「行走中辨认方向」这一具体动作。这是汉字造字者留给我们的第一层提示：道，从来不是坐在原地想出来的。",
+      "金文中的「道」，字形尚见人形与道路交织，图画感极强；至小篆，笔画趋于线性抽象；至楷书，已完全符号化，行走的痕迹几乎不可辨。字形演变本身，恰好隐喻了「道」从具体践行到抽象概念的历史进程。",
+      "读《道德经》「道可道，非常道」，若只从字面的哲学思辨去理解，容易滑入纯粹形上学的空谈。若记得「道」字里藏着的「行走」二字，便知这句话首先是一句实践的提醒：真正的道，唯有在行走中才被辨认，说出来的，已是它的痕迹。"
+    ],
+    "bodyHant": [
+      "「道」字從「辵」從「首」——辵是行走之意，首是頭。合而觀之，道最初描繪的不是一套抽象規則，而是「行走中辨認方向」這一具體動作。這是漢字造字者留給我們的第一層提示：道，從來不是坐在原地想出來的。",
+      "金文中的「道」，字形尚見人形與道路交織，圖畫感極強；至小篆，筆畫趨於線性抽象；至楷書，已完全符號化，行走的痕跡幾乎不可辨。字形演變本身，恰好隱喻了「道」從具體踐行到抽象概念的歷史進程。",
+      "讀《道德經》「道可道，非常道」，若只從字面的哲學思辨去理解，容易滑入純粹形上學的空談。若記得「道」字裡藏著的「行走」二字，便知這句話首先是一句實踐的提醒：真正的道，唯有在行走中才被辨認，說出來的，已是它的痕跡。"
+    ],
+    "bodyEn": [
+      "The character 道 combines 辵 (walking) and 首 (head). Together, 道 originally depicted not an abstract set of rules but a concrete act — discerning direction while walking. This is the first clue the character's makers left us: the Dao was never something thought up while sitting still.",
+      "In bronze script, 道 still shows a human figure interwoven with a road, highly pictorial; by seal script the strokes have become linear and abstract; by regular script it is fully symbolic, the trace of walking almost illegible. The form's evolution itself mirrors the Dao's historical journey from concrete practice to abstract concept.",
+      "Reading the Tao Te Ching's opening — \"the Dao that can be spoken is not the constant Dao\" — as pure metaphysical speculation risks empty abstraction. Remembering the \"walking\" hidden inside the character reminds us this is first a practical warning: the true Dao is discerned only while walking it; what is spoken is already its trace."
+    ]
+  },
+  {
+    "id": 5,
+    "cat": "lecture",
+    "glyph": "管",
+    "glyphColor": "rgba(60,56,51,.34)",
+    "bandBg": "repeating-linear-gradient(135deg,#e8e0cf,#e8e0cf 10px,#ded2b8 10px,#ded2b8 20px)",
+    "tagBg": "#3b3833",
+    "catZh": "讲座",
+    "catHant": "講座",
+    "catEn": "Lecture",
+    "date": "2026.05 · 丙申孟夏",
+    "titleZh": "管理即修行 · 超级管理学公开课",
+    "titleHant": "管理即修行 · 超級管理學公開課",
+    "titleEn": "Management as Cultivation: Open Class",
+    "excZh": "以治己治人治事为纲，讲觉智哲学如何落地于组织。",
+    "excHant": "以治己治人治事為綱，講覺智哲學如何落地於組織。",
+    "excEn": "Self, people, affairs — how awakened wisdom grounds in organizations.",
+    "bodyZh": [
+      "多数管理课程教你如何管别人；这堂公开课反其道而行，先问：你能不能管住自己的一念之动？治人之前，先治己——这不是一句口号，而是超级管理学的第一道工序。",
+      "课上将以三个真实（脱敏处理）的企业案例，展示「治己」如何具体影响一次关键决策：一位创始人在裁员前的三天沉默、一位高管在冲突现场的一次深呼吸、一次并购谈判中主动示弱的策略选择。",
+      "本次为公开课，面向企业管理者及关注组织治理的各界人士，非书院学员亦可报名参加，名额有限，先到先得。"
+    ],
+    "bodyHant": [
+      "多數管理課程教你如何管別人；這堂公開課反其道而行，先問：你能不能管住自己的一念之動？治人之前，先治己——這不是一句口號，而是超級管理學的第一道工序。",
+      "課上將以三個真實（脫敏處理）的企業案例，展示「治己」如何具體影響一次關鍵決策：一位創辦人在裁員前的三天沉默、一位高管在衝突現場的一次深呼吸、一次併購談判中主動示弱的策略選擇。",
+      "本次為公開課，面向企業管理者及關注組織治理的各界人士，非書院學員亦可報名參加，名額有限，先到先得。"
+    ],
+    "bodyEn": [
+      "Most management courses teach you how to manage others; this open class asks the opposite question first: can you govern the single flicker of your own mind before it moves? Governing others begins with governing the self — not a slogan, but Super-Management's first procedure.",
+      "Using three real (anonymized) case studies, the class will show how \"governing the self\" concretely shapes a key decision: a founder's three days of silence before layoffs, an executive's single deep breath in the middle of a conflict, a deliberate choice to show vulnerability during an acquisition negotiation.",
+      "This is a public session, open to business leaders and anyone interested in organizational governance — non-students are welcome. Places are limited and given on a first-come basis."
+    ]
+  },
+  {
+    "id": 6,
+    "cat": "student",
+    "glyph": "悟",
+    "glyphColor": "rgba(217,154,78,.55)",
+    "bandBg": "repeating-linear-gradient(135deg,#e4dcc9,#e4dcc9 10px,#d8ceb4 10px,#d8ceb4 20px)",
+    "tagBg": "#2f4538",
+    "catZh": "学员",
+    "catHant": "學員",
+    "catEn": "Student",
+    "date": "2026.09 · 丙申仲秋",
+    "titleZh": "一位学员的札记：初读《传习录》有感",
+    "titleHant": "一位學員的札記：初讀《傳習錄》有感",
+    "titleEn": "A Student's Note: On First Reading the Instructions for Living",
+    "excZh": "从知行合一到反躬自省，记一位学员的入门体悟。",
+    "excHant": "從知行合一到反躬自省，記一位學員的入門體悟。",
+    "excEn": "From the unity of knowing and acting to inward reflection — a student's first steps.",
+    "bodyZh": [
+      "入院之前，我以为「知行合一」是一句励志口号——知道了就要做到。读到阳明先生原文才发现，误会了整整半生：他讲的不是「先知后行」，而是「知」本身就已经是「行」的一部分，二者从未分离过，分离只是我们后天想象出来的假象。",
+      "第一次在书院共修课上被问到「你此刻在想什么」，我愣住了——原来我平时几乎从不觉察自己的念头，只是被念头推着走。这一问，成了我这半年最常回想的一句话。",
+      "还没能说自己「知行合一」，但至少学会了在冲动之前，先停一停，看一眼自己心里正在发生什么。这大概就是修行的起点。"
+    ],
+    "bodyHant": [
+      "入院之前，我以為「知行合一」是一句勵志口號——知道了就要做到。讀到陽明先生原文才發現，誤會了整整半生：他講的不是「先知後行」，而是「知」本身就已經是「行」的一部分，二者從未分離過，分離只是我們後天想像出來的假象。",
+      "第一次在書院共修課上被問到「你此刻在想什麼」，我愣住了——原來我平時幾乎從不覺察自己的念頭，只是被念頭推著走。這一問，成了我這半年最常回想的一句話。",
+      "還沒能說自己「知行合一」，但至少學會了在衝動之前，先停一停，看一眼自己心裡正在發生什麼。這大概就是修行的起點。"
+    ],
+    "bodyEn": [
+      "Before joining the academy I thought \"the unity of knowing and acting\" was a motivational slogan — know it, then do it. Only reading Wang Yangming's own words did I realize I'd misunderstood for half a lifetime: he wasn't saying \"know first, then act,\" but that knowing already IS a part of acting — the two were never separate; the separation is an illusion we construct after the fact.",
+      "The first time I was asked, in a shared-study session, \"what are you thinking right now,\" I froze — I realized I almost never notice my own thoughts; I'm simply pushed along by them. That single question has stayed with me all these months.",
+      "I can't yet claim to have unified knowing and acting, but I've at least learned to pause before impulse, and glance at what's happening inside. That, I think, is where cultivation begins."
+    ]
+  },
+  {
+    "id": 7,
+    "cat": "student",
+    "glyph": "行",
+    "glyphColor": "rgba(156,43,35,.42)",
+    "bandBg": "repeating-linear-gradient(135deg,#ece5d6,#ece5d6 10px,#e0d6bf 10px,#e0d6bf 20px)",
+    "tagBg": "#2f4538",
+    "catZh": "学员",
+    "catHant": "學員",
+    "catEn": "Student",
+    "date": "2026.10 · 丙申季秋",
+    "titleZh": "曲阜访碑随行记",
+    "titleHant": "曲阜訪碑隨行記",
+    "titleEn": "Notes from the Qufu Steles Journey",
+    "excZh": "一位随行学员的游学手记与照片。",
+    "excHant": "一位隨行學員的遊學手記與照片。",
+    "excEn": "A traveling student's journal and photographs from the study trip.",
+    "bodyZh": [
+      "出发前一晚几乎没睡好——不是兴奋，是紧张。三天要读的碑文清单有整整两页，我担心自己认不出几个古体字。到了现场才发现，认字只是最外层的功夫，真正难的是站在碑前，想象刻字之人当年的心境。",
+      "同行的一位师兄指着一方残碑说：「你看，这一笔断了，不是风化，是当年刻工手抖了一下。」那一刻我忽然明白，碑刻记录的从来不只是文字内容，还有写字与刻字之人那一瞬间真实的呼吸与犹豫。",
+      "三天下来，笔记本记满了，脚也走酸了，但心里比出发前更定。回程大巴上，大家很少说话，各自望着窗外——这大概是这趟游学最好的结尾。"
+    ],
+    "bodyHant": [
+      "出發前一晚幾乎沒睡好——不是興奮，是緊張。三天要讀的碑文清單有整整兩頁，我擔心自己認不出幾個古體字。到了現場才發現，認字只是最外層的功夫，真正難的是站在碑前，想像刻字之人當年的心境。",
+      "同行的一位師兄指著一方殘碑說：「你看，這一筆斷了，不是風化，是當年刻工手抖了一下。」那一刻我忽然明白，碑刻記錄的從來不只是文字內容，還有寫字與刻字之人那一瞬間真實的呼吸與猶豫。",
+      "三天下來，筆記本記滿了，腳也走痠了，但心裡比出發前更定。回程大巴上，大家很少說話，各自望著窗外——這大概是這趟遊學最好的結尾。"
+    ],
+    "bodyEn": [
+      "I barely slept the night before departure — not from excitement, but nerves. The list of steles to read over three days ran two full pages, and I worried I wouldn't recognize half the archaic characters. Only on site did I realize that recognizing characters is the shallowest layer — the real difficulty is standing before a stele and imagining the state of mind of the person who carved it.",
+      "A fellow student pointed at a worn stele and said, \"look, this stroke breaks off — not from weathering, the carver's hand slipped that day.\" In that moment I understood: a stele records not just text, but the real breath and hesitation of the person who wrote and carved it.",
+      "By the third day my notebook was full and my feet ached, but my mind felt steadier than when we set out. On the bus back, almost no one spoke — everyone just looked out the window. Perhaps that was the best possible ending to the trip."
+    ]
+  }
+]
