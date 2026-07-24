@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="12" fill="#9c2b23"/>
+  <text x="50" y="54" font-family="'Noto Serif SC', 'SimSun', serif" font-size="48" font-weight="700" fill="#f4efe4" text-anchor="middle" dominant-baseline="central">九</text>
+  <text x="50" y="88" font-family="'Noto Serif SC', 'SimSun', serif" font-size="12" fill="#d99a4e" text-anchor="middle" font-weight="500">经</text>
+</svg>

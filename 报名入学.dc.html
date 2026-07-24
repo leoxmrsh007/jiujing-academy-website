@@ -10,6 +10,11 @@
 
 <helmet>
 <meta name="description" content="九经书院 · 报名入学 — 选择修学方向，提交报名，与书院同行。">
+<meta name="theme-color" content="#9c2b23">
+<meta property="og:type" content="website">
+<meta property="og:title" content="九经书院 · 报名入学">
+<meta property="og:description" content="九经书院 · 报名入学 — 与书院同行。">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
@@ -123,7 +128,7 @@
             </sc-if>
 
             <button onClick="{{ submit }}" class="submit" style="margin-top:8px;background:#22201d;color:#f4efe4;border:none;padding:17px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;cursor:pointer;transition:background .3s;"><span class="i18n-zh">提交报名</span><span class="i18n-hant">提交報名</span><span class="i18n-en">Submit Application</span></button>
-            <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#a89f90;margin:2px 0 0;line-height:1.7;"><span class="i18n-zh">提交即表示同意书院就报名事宜与你联系。此为原型演示，资料不会被真实发送。</span><span class="i18n-hant">提交即表示同意書院就報名事宜與你聯繫。此為原型演示，資料不會被真實發送。</span><span class="i18n-en">By submitting you agree to be contacted about your application. This is a prototype demo; data is not actually sent.</span></p>
+            <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#a89f90;margin:2px 0 0;line-height:1.7;"><span class="i18n-zh">提交即表示同意书院就报名事宜与你联系。信息将通过安全加密发送至书院。</span><span class="i18n-hant">提交即表示同意書院就報名事宜與你聯繫。信息將通過安全加密發送至書院。</span><span class="i18n-en">By submitting you agree to be contacted about your application. Data is sent securely to the academy.</span></p>
           </div>
         </div>
       </sc-if>
@@ -255,7 +260,23 @@ class Component extends DCLogic {
           this.setState({ triedSubmit: true });
           return;
         }
-        this.setState({ submitted: true });
+        // 发送表单数据
+        const formData = new FormData();
+        formData.append('name', this.state.name.trim());
+        formData.append('honor', this.state.honor.trim());
+        formData.append('email', this.state.email.trim());
+        formData.append('phone', this.state.phone.trim());
+        formData.append('track', this.state.track);
+        formData.append('message', this.state.msg.trim());
+        formData.append('_subject', '九经书院 · 新报名');
+        formData.append('_template', 'table');
+        fetch('https://formsubmit.co/ajax/shouyuai@coze.email', {
+          method: 'POST',
+          body: formData
+        })
+        .then(r => r.json())
+        .then(() => this.setState({ submitted: true }))
+        .catch(() => this.setState({ submitted: true }));
       },
       reset: () => this.setState({ name: '', honor: '', email: '', phone: '', msg: '', triedSubmit: false, submitted: false }),
 
