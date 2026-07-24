@@ -1,12 +1,11 @@
 # 九经书院 · 后台管理系统
-# 访问地址：https://jiujing-academy-website.pages.dev/admin/
+# 访问：https://jiujing-academy-website.pages.dev/admin/
 
 backend:
   name: github
   repo: leoxmrsh007/jiujing-academy-website
   branch: main
-  base_url: https://jiujing-academy-website.pages.dev
-  auth_endpoint: auth
+  auth_type: pkce
 
 media_folder: uploads
 public_folder: /uploads
@@ -25,13 +24,8 @@ collections:
     summary: "{{title}} - {{date}}"
     sortable_fields: [date, title]
     fields:
-      - label: 标题
-        name: title
-        widget: string
-      - label: 日期
-        name: date
-        widget: string
-        default: "2026.07"
+      - { label: 标题, name: title, widget: string }
+      - { label: 日期, name: date, widget: string, default: "2026.07" }
       - label: 分类
         name: cat
         widget: select
@@ -41,9 +35,7 @@ collections:
           - { label: 游学, value: journey }
           - { label: 札记, value: note }
           - { label: 学员, value: student }
-      - label: 正文
-        name: body
-        widget: markdown
+      - { label: 正文, name: body, widget: markdown }
 
   # ── 学员感悟 ──
   - name: writings
@@ -56,13 +48,6 @@ collections:
     slug: "{{slug}}"
     summary: "{{author}} - {{date}}"
     fields:
-      - label: 姓名
-        name: author
-        widget: string
-      - label: 日期
-        name: date
-        widget: string
-        default: "2026.10"
-      - label: 正文
-        name: body
-        widget: markdown
+      - { label: 姓名, name: author, widget: string }
+      - { label: 日期, name: date, widget: string, default: "2026.10" }
+      - { label: 正文, name: body, widget: markdown }
