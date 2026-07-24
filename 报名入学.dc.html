@@ -39,7 +39,9 @@
   .fld.invalid { border-color:#c0392b; background:#fbf0ee; }
   textarea.fld { resize:vertical; min-height:110px; line-height:1.7; }
   input::placeholder, textarea::placeholder { color:#a89f90; }
-  .submit:hover { background:#9c2b23 !important; }
+  .submit:hover { background:var(--accent) !important; }
+  .submit { transition: background .3s, transform .15s; }
+  .submit:active { transform: scale(.98); }
   .footnav a:hover { color:#efe9dc !important; }
   @keyframes fadeUp { from { opacity:0; transform:translateY(14px);} to { opacity:1; transform:translateY(0);} }
   @media (max-width: 880px) { .layout { grid-template-columns:1fr !important; } .aside-sticky { position:static !important; } }

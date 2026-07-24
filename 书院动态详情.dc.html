@@ -18,23 +18,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --ink: #22201d; --paper: #f4efe4; --paper-light: #faf7ef;
+    --accent: #9c2b23; --gold: #d99a4e; --gray: #8a857c;
+    --font-serif: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+    --font-sans: 'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;
+    --font-en: 'Cormorant Garamond',serif;
+  }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; }
-  ::selection { background: #9c2b23; color: #f4efe4; }
+  body { margin: 0; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--accent); color: var(--paper); }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--paper); }
+  ::-webkit-scrollbar-thumb { background: rgba(34,32,29,.18); border-radius: 4px; }
   a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .i18n-en, .i18n-hant { display: none; }
   .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; }
   .lang-hant .i18n-hant { display: inline; }
   .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; }
   .lang-en .i18n-en { display: inline; }
-  .lang-en .en-serif, .lang-hant .en-serif { font-family: 'Cormorant Garamond', serif; }
-  .lang-hant .en-serif { font-family: 'Noto Serif SC', serif; }
-  .langbtn:hover { background:#22201d; color:#f4efe4; }
+  .lang-en .en-serif, .lang-hant .en-serif { font-family: var(--font-en); }
+  .lang-hant .en-serif { font-family: var(--font-serif); }
+  .langbtn:hover { background:var(--ink); color:var(--paper); }
   .back:hover { opacity:1 !important; }
-  .navstep:hover { border-color:#9c2b23 !important; }
+  .navstep:hover { border-color:var(--accent) !important; }
   .footnav a:hover { color:#efe9dc !important; }
   @media (max-width:700px){ .navsteps{ grid-template-columns:1fr !important; } }
+  @media (prefers-reduced-motion:reduce){ html { scroll-behavior: auto; } }
 </style>
 </helmet>
 
