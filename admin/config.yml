@@ -1,0 +1,54 @@
+# 九经书院 · 后台管理系统
+# 访问地址：https://jiujing-academy-website.pages.dev/admin/
+
+backend:
+  name: github
+  repo: leoxmrsh007/jiujing-academy-website
+  branch: main
+  base_url: https://jiujing-academy-website.pages.dev
+  auth_endpoint: auth
+
+media_folder: "uploads"
+public_folder: "/uploads"
+locale: "zh_Hans"
+
+# ── 文章列表 ──
+collections:
+  # 书院动态
+  - name: "news"
+    label: "📰 书院动态"
+    label_singular: "文章"
+    folder: "_news"
+    create: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{slug}}"
+    summary: "{{title}} - {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "date", label: "日期", widget: "string", default: "2026.07" }
+      - { name: "cat", label: "分类", widget: "select",
+          options:
+            - { label: "会讲", value: "seminar" }
+            - { label: "讲座", value: "lecture" }
+            - { label: "游学", value: "journey" }
+            - { label: "札记", value: "note" }
+            - { label: "学员", value: "student" }
+      }
+      - { name: "body", label: "正文", widget: "markdown" }
+
+  # 学员感悟
+  - name: "writings"
+    label: "💬 学员感悟"
+    label_singular: "感悟"
+    folder: "_writings"
+    create: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{slug}}"
+    summary: "{{author}} - {{date}}"
+    fields:
+      - { name: "author", label: "姓名", widget: "string" }
+      - { name: "date", label: "日期", widget: "string", default: "2026.10" }
+      - { name: "body", label: "正文", widget: "markdown" }
