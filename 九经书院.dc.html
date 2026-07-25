@@ -175,16 +175,10 @@
     <div data-reveal style="position:absolute;right:6vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:row;align-items:center;gap:24px;">
       <div style="writing-mode:vertical-rl;font-size:12px;letter-spacing:8px;color:#9c2b23;font-weight:400;"><span class="i18n-zh">中庸 · 九经</span><span class="i18n-hant">中庸 · 九經</span><span class="i18n-en">The Nine Standards</span></div>
       <div style="position:relative;height:340px;width:40px;display:flex;align-items:center;justify-content:center;">
-        <sc-for list="{{ jiujing }}" as="jj" hint-placeholder-count="9">
-          <div style="{{ jj.style }}">
-            <span class="i18n-zh">{{ jj.zh }}</span><span class="i18n-hant">{{ jj.hant }}</span><span class="i18n-en">{{ jj.en }}</span>
-          </div>
-        </sc-for>
+
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <sc-for list="{{ jiujing }}" as="jj" hint-placeholder-count="9">
-          <span style="{{ jj.dotStyle }}"></span>
-        </sc-for>
+
       </div>
       <!-- 动态消息面板 -->
       <div style="margin-top:20px;width:220pxx;">
@@ -580,52 +574,9 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { evoActive: 0, menuOpen: false, lang: 'zh', jiujingIdx: 0 };
-
-  componentDidMount() {
-    this._jjTimer = setInterval(() => {
-      this.setState((s) => ({ jiujingIdx: (s.jiujingIdx + 1) % 9 }));
-    }, 2600);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this._jjTimer);
-  }
+  state = { evoActive: 0, menuOpen: false, lang: 'zh' };
 
   renderVals() {
-    const jiujingData = [
-      { zh: '修身也', hant: '修身也', en: 'Cultivate the self' },
-      { zh: '尊贤也', hant: '尊賢也', en: 'Honor the worthy' },
-      { zh: '亲亲也', hant: '親親也', en: 'Cherish one\u2019s kin' },
-      { zh: '敬大臣也', hant: '敬大臣也', en: 'Respect great ministers' },
-      { zh: '体群臣也', hant: '體群臣也', en: 'Identify with officials' },
-      { zh: '子庶民也', hant: '子庶民也', en: 'Treat the people as one\u2019s children' },
-      { zh: '来百工也', hant: '來百工也', en: 'Attract the artisans' },
-      { zh: '柔远人也', hant: '柔遠人也', en: 'Show tenderness to strangers' },
-      { zh: '怀诸侯也', hant: '懷諸侯也', en: 'Cherish the feudal lords' }
-    ];
-    const jiujing = jiujingData.map((jj, i) => {
-      const active = i === this.state.jiujingIdx;
-      return {
-        ...jj,
-        style: `position:absolute;writing-mode:vertical-rl;font-size:26px;letter-spacing:6px;font-weight:600;color:#22201d;transition:opacity 1s ease,transform 1s ease;opacity:${active ? 1 : 0};transform:translateY(${active ? 0 : 14}px);`,
-        dotStyle: `width:${active ? 16 : 4}px;height:4px;background:${active ? '#9c2b23' : 'rgba(34,32,29,.25)'};transition:all .4s ease;`
-      };
-    });
-    const evoData = [
-      { labZh: '金文', labHant: '金文', labEn: 'Bronze', img: 'assets/hanzi-dao-1.png' },
-      { labZh: '楚系简帛', labHant: '楚系簡帛', labEn: 'Chu Silk', img: 'assets/hanzi-dao-2.png' },
-      { labZh: '说文（小篆）', labHant: '說文（小篆）', labEn: 'Seal', img: 'assets/hanzi-dao-3.png' },
-      { labZh: '秦系简牍', labHant: '秦系簡牘', labEn: 'Qin Slip', img: 'assets/hanzi-dao-4.png' },
-      { labZh: '隶书', labHant: '隸書', labEn: 'Clerical', img: 'assets/hanzi-dao-5.png' },
-      { labZh: '楷书', labHant: '楷書', labEn: 'Regular', img: 'assets/hanzi-dao-6.png' }
-    ];
-    const evo = evoData.map((e, i) => ({
-      ...e,
-      hasImg: true,
-      activeClass: i === this.state.evoActive ? 'active' : ''
-    }));
-
     const navItems = [
       { href: '书院概览.dc.html', zh: '书院概览', hant: '書院概覽', en: 'Overview' },
       { href: '#classics', zh: '九经课程', hant: '九經課程', en: 'Nine Classics' },
@@ -652,7 +603,7 @@ class Component extends DCLogic {
       toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
       navItems,
-      jiujing,
+      
       navGuide: [
         { no: '壹', href: '#classics', cnZh: '核心课程', cnHant: '核心課程', cnEn: 'Core Curriculum', subZh: '儒释道九经', subHant: '儒釋道九經', subEn: 'The Nine Classics' },
         { no: '贰', href: '#juezhi', cnZh: '觉智哲学', cnHant: '覺智哲學', cnEn: 'Awakened Wisdom', subZh: '体用不二', subHant: '體用不二', subEn: 'Substance & Function' },
