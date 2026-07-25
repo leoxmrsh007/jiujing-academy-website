@@ -199,7 +199,11 @@
 
 <div id="dc-loading" class="dc-loading"><div class="dc-loading-inner"><div class="dc-loading-logo">九经</div><div class="dc-loading-dots"><span></span><span></span><span></span></div></div></div>
 
-<div class="paper-texture"></div>
+<div class="paper-texture" style="position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 20% 50%, rgba(156,43,35,.04) 0%, transparent 60%),
+  radial-gradient(ellipse at 80% 30%, rgba(217,154,78,.03) 0%, transparent 50%),
+  repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(34,32,29,.005) 3px, rgba(34,32,29,.005) 4px);
+"></div>
 
 <div class="{{ rootClass }}" style="background:radial-gradient(circle at 15% 8%,rgba(156,43,35,.025),transparent 40%), radial-gradient(circle at 85% 92%,rgba(217,154,78,.03),transparent 45%), repeating-linear-gradient(3deg,transparent,transparent 3px,rgba(34,32,29,.008) 3px,rgba(34,32,29,.008) 4px), #f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
 
@@ -208,7 +212,7 @@
   <!-- ============ NAV ============ -->
   <nav aria-label="主导览" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(244,239,228,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
     <a href="#top" aria-label="九经书院 · Jiujing Academy" style="display:flex;align-items:center;gap:12px;">
-      <span class="seal seal-sm">九经</span>
+      <span class="seal seal-sm" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid #9c2b23;border-radius:4px;font-family:'Ma Shan Zheng',cursive;font-size:16px;color:#9c2b23;transform:rotate(-3deg);opacity:.8;flex-shrink:0;">九经</span>
       <img src="assets/logo-horizontal-white.png" alt="九经书院" style="height:30px;width:auto;flex-shrink:0;" />
     </a>
     <div class="nav-desktop" style="display:flex;align-items:center;gap:30px;font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:400;letter-spacing:1px;">
@@ -240,7 +244,7 @@
   </nav>
 
   <!-- ============ HERO ============ -->
-  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:flex-start;padding:6vh 6vw;overflow:hidden;gap:30px;">
+  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:flex-start;padding:6vh 6vw;gap:30px;">
     <!-- 动态消息面板 -->
     <div style="width:280px;flex-shrink:0;align-self:flex-start;">
       <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;">
@@ -276,7 +280,7 @@
     </div>
 
     <div style="flex:1;min-width:0;text-align:center;align-self:flex-start;">
-      <div class="brush-deco" style="right:10%;top:5%;font-size:min(40vw,320px);">觉</div>
+      <div class="brush-deco" style="right:5%;top:5%;font-size:min(45vw,380px);color:rgba(156,43,35,.06);">觉</div>
       <div data-reveal style="margin-bottom:40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:5px;color:#9c2b23;">
         <span class="i18n-zh">觉智圆成 · 体用不二</span><span class="i18n-hant">覺智圓成 · 體用不二</span><span class="i18n-en" style="letter-spacing:3px;">AWAKENED WISDOM · SUBSTANCE &amp; FUNCTION, NOT-TWO</span>
       </div>
