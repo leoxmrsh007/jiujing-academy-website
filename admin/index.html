@@ -12,34 +12,38 @@
       background: #f4efe4; color: #22201d; min-height: 100vh;
     }
     .login { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:40px; }
-    .login-box {
-      background: #faf7ef; border:1px solid rgba(34,32,29,.12);
-      padding:48px 40px; max-width:420px; width:90%; text-align:center;
-    }
+    .login-box { background:#faf7ef; border:1px solid rgba(34,32,29,.12); padding:48px 40px; max-width:420px; width:90%; text-align:center; }
     .logo { font-size:36px; color:#9c2b23; margin-bottom:16px; }
     h1 { font-size:22px; font-weight:700; letter-spacing:2px; margin-bottom:8px; }
     p { font-size:14px; color:#8a857c; margin-bottom:28px; line-height:1.6; }
     input, textarea {
       width:100%; padding:12px 14px; font-size:14px; border:1px solid rgba(34,32,29,.18);
-      background:#fff; outline:none; margin-bottom:12px; box-sizing:border-box;
-      font-family: inherit; transition:border-color .2s;
+      background:#fff; outline:none; margin-bottom:12px; box-sizing:border-box; font-family:inherit;
+      transition:border-color .2s;
     }
     input:focus, textarea:focus { border-color:#9c2b23; }
     button {
-      padding:12px 28px; background:#22201d; color:#f4efe4;
-      border:none; font-size:14px; letter-spacing:2px; cursor:pointer;
-      transition:background .3s;
+      padding:12px 28px; background:#22201d; color:#f4efe4; border:none;
+      font-size:14px; letter-spacing:2px; cursor:pointer; transition:background .3s;
     }
     button:hover { background:#9c2b23; }
     button.sm { padding:8px 18px; font-size:12px; }
     button.sec { background:transparent; color:#22201d; border:1px solid rgba(34,32,29,.25); }
     button.sec:hover { background:#22201d; color:#f4efe4; }
+    button.active { background:#9c2b23; }
     .header {
       position:sticky; top:0; z-index:10;
       display:flex; align-items:center; justify-content:space-between;
       padding:16px 5vw; background:rgba(244,239,228,.92); backdrop-filter:blur(8px);
       border-bottom:1px solid rgba(34,32,29,.1);
     }
+    .tabs { display:flex; gap:0; }
+    .tab {
+      padding:10px 22px; cursor:pointer; font-size:13px; letter-spacing:1px;
+      border-bottom:2px solid transparent; transition:all .2s;
+    }
+    .tab:hover { color:#9c2b23; }
+    .tab.active { color:#9c2b23; border-bottom-color:#9c2b23; font-weight:600; }
     .content { max-width:1200px; margin:0 auto; padding:40px 5vw; }
     .card {
       background:#faf7ef; border:1px solid rgba(34,32,29,.09);
@@ -54,20 +58,26 @@
     .toast {
       position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
       background:#22201d; color:#f4efe4; padding:12px 28px; font-size:14px;
-      border-radius:4px; opacity:0; transition:opacity .3s; pointer-events:none;
-      z-index:100;
+      border-radius:4px; opacity:0; transition:opacity .3s; pointer-events:none; z-index:100;
     }
     .toast.show { opacity:1; }
     .form-group { margin-bottom:20px; }
-    .form-group label { display:block; font-size:13px; color:#55504a; margin-bottom:6px; }
+    .form-group label { display:block; font-size:13px; color:#55504a; margin-bottom:6px; font-weight:500; }
     select {
       width:100%; padding:12px 14px; font-size:14px; border:1px solid rgba(34,32,29,.18);
       background:#fff; outline:none; margin-bottom:12px; font-family:inherit;
     }
     textarea { min-height:300px; line-height:1.7; resize:vertical; }
+    textarea.short { min-height:100px; }
     .back { cursor:pointer; opacity:.7; }
     .back:hover { opacity:1; }
     .empty { text-align:center; padding:80px 0; color:#8a857c; }
+    .section-group { margin-bottom:32px; padding:24px; background:#faf7ef; border:1px solid rgba(34,32,29,.09); }
+    .section-group h3 { font-size:16px; font-weight:600; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(34,32,29,.1); }
+    .stats { display:flex; gap:28px; margin-bottom:28px; flex-wrap:wrap; }
+    .stat { }
+    .stat-num { font-size:28px; font-weight:700; }
+    .stat-label { font-size:12px; color:#8a857c; margin-top:4px; }
   </style>
 </head>
 <body>
@@ -75,180 +85,130 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const TOKEN_KEY = 'gh_token';
-    const REPO = 'leoxmrsh007/jiujing-academy-website';
-    const BRANCH = 'main';
-    const API = 'https://api.github.com';
+    const TK = 'gh_token', REPO = 'leoxmrsh007/jiujing-academy-website', BR = 'main', API = 'https://api.github.com';
+    const state = { token: null, tab: 'articles', articles: [], editor: { title:'', date:'', cat:'student', body:'', sha:null, path:'' } };
 
-    // ── 状态管理 ──
-    const state = { token: null, page: 'list', articles: [], editor: { title: '', date: '', cat: 'student', body: '', sha: null, path: '' } };
-
-    // ── 工具函数 ──
     function $(id) { return document.getElementById(id); }
-    function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
-    async function gh(url, opts = {}) {
-      const r = await fetch(API + url, {
-        ...opts,
-        headers: { 'Authorization': 'token ' + state.token, 'Accept': 'application/vnd.github.v3+json', ...opts.headers }
-      });
-      if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(e.message || r.statusText); }
-      return r.status === 204 ? null : r.json();
+    function toast(m) { const t=$('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+    async function gh(url,opts={}) {
+      const r=await fetch(API+url,{...opts,headers:{'Authorization':'token '+state.token,'Accept':'application/vnd.github.v3+json',...opts.headers}});
+      if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.message||r.statusText);}
+      return r.status===204?null:r.json();
     }
+    function b64enc(s){return btoa(unescape(encodeURIComponent(s)));}
+    function b64dec(s){return decodeURIComponent(escape(atob(s)));}
 
-    // ── 渲染 ──
     function render() {
-      const token = localStorage.getItem(TOKEN_KEY);
-      if (!token) return renderLogin();
-      state.token = token;
-      state.page === 'list' ? renderList() : renderEditor();
+      const t=localStorage.getItem(TK);
+      if(!t)return renderLogin();
+      state.token=t;
+      renderDashboard();
     }
 
     function renderLogin() {
-      $('app').innerHTML = `
-        <div class="login">
-          <div class="login-box">
-            <div class="logo">九经</div>
-            <h1>内容管理</h1>
-            <p>输入 GitHub Token 登录</p>
-            <input type="password" id="tokenInput" placeholder="粘贴 GitHub Token">
-            <button onclick="login()">登录</button>
-            <p style="margin-top:16px;font-size:12px;color:#a89f90;">
-              <a href="https://github.com/settings/tokens/new?scopes=repo&description=jiujing-cms" target="_blank" style="color:#9c2b23;">点此生成 Token</a>
-              <br>（勾选 repo 权限 → Generate token）
-            </p>
-          </div>
-        </div>
-      `;
+      $('app').innerHTML=`
+        <div class="login"><div class="login-box">
+          <div class="logo">九经</div>
+          <h1>内容管理</h1>
+          <p>输入 GitHub Token 登录</p>
+          <input type="password" id="tk" placeholder="粘贴 GitHub Token">
+          <button onclick="login()">登录</button>
+          <p style="margin-top:16px;font-size:12px;color:#a89f90;">
+            <a href="https://github.com/settings/tokens/new?scopes=repo&description=jiujing-cms" target="_blank" style="color:#9c2b23;">点此生成 Token</a>
+          </p>
+        </div></div>`;
     }
-
-    window.login = async function() {
-      const token = $('tokenInput').value.trim();
-      if (!token) return;
-      try {
-        const r = await fetch(API + '/user', { headers: { 'Authorization': 'token ' + token } });
-        if (!r.ok) throw Error();
-        localStorage.setItem(TOKEN_KEY, token);
-        state.token = token;
-        toast('登录成功');
-        renderList();
-      } catch(e) {
-        toast('Token 无效');
-      }
+    window.login=async function(){
+      const t=$('tk').value.trim();if(!t)return;
+      try{const r=await fetch(API+'/user',{headers:{'Authorization':'token '+t}});if(!r.ok)throw Error();localStorage.setItem(TK,t);state.token=t;toast('登录成功');renderDashboard();}catch(e){toast('Token无效');}
     };
 
-    // ── 文章列表 ──
-    async function renderList() {
-      $('app').innerHTML = `
+    function renderDashboard() {
+      $('app').innerHTML=`
         <div class="header">
           <div style="display:flex;align-items:center;gap:12px;">
             <span style="background:#9c2b23;color:#f4efe4;padding:4px 10px;font-size:13px;letter-spacing:2px;">九经</span>
             <span style="font-size:16px;font-weight:600;letter-spacing:1px;">内容管理</span>
           </div>
-          <div style="display:flex;gap:10px;">
-            <button class="sm sec" onclick="logout()">退出</button>
-            <button class="sm" onclick="newArticle()">+ 新建</button>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div class="tabs">
+              <div class="tab ${state.tab==='articles'?'active':''}" onclick="switchTab('articles')">文章</div>
+              <div class="tab ${state.tab==='content'?'active':''}" onclick="switchTab('content')">页面内容</div>
+            </div>
+            <button class="sm sec" onclick="logout()" style="margin-left:12px;">退出</button>
           </div>
         </div>
-        <div class="content">
-          <div style="display:flex;gap:28px;margin-bottom:28px;flex-wrap:wrap;">
-            <div><span style="font-size:28px;font-weight:700;" id="countNews">-</span><div style="font-size:12px;color:#8a857c;margin-top:4px;">动态</div></div>
-            <div><span style="font-size:28px;font-weight:700;" id="countWriting">-</span><div style="font-size:12px;color:#8a857c;margin-top:4px;">感悟</div></div>
-          </div>
-          <div id="articles"><div class="empty">加载中...</div></div>
-        </div>
-      `;
-
-      try {
-        const files = await gh('/repos/' + REPO + '/contents/_news?ref=' + BRANCH);
-        const list = document.getElementById('articles');
-        list.innerHTML = '';
-
-        if (!files || files.length === 0) {
-          list.innerHTML = '<div class="empty">暂无文章，点击右上角「+ 新建」</div>';
-          return;
-        }
-
-        let newsCount = 0, writingCount = 0;
-
-        for (const f of files) {
-          try {
-            const content = await gh('/repos/' + REPO + '/contents/_news/' + f.name + '?ref=' + BRANCH);
-            const decoded = atob(content.content);
-            const title = (decoded.match(/title:\s*"?([^"\n]+)"?/) || ['', f.name])[1];
-            const cat = (decoded.match(/cat:\s*"?([^"\n]+)"?/) || ['', ''])[1];
-            const date = (decoded.match(/date:\s*"?([^"\n]+)"?/) || ['', ''])[1];
-            const preview = decoded.split('---')[2]?.trim().slice(0, 80) || '';
-
-            if (cat === 'student') writingCount++; else newsCount++;
-
-            list.innerHTML += `
-              <div class="card" onclick="editArticle('${f.name}')">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-                  <span class="tag">${cat || 'note'}</span>
-                  <span style="font-size:12px;color:#8a857c;">${date || ''}</span>
-                </div>
-                <div style="font-size:17px;font-weight:600;letter-spacing:1px;">${title}</div>
-                <div style="font-size:13px;color:#8a857c;margin-top:6px;">${preview}...</div>
-              </div>
-            `;
-          } catch(e) { continue; }
-        }
-
-        document.getElementById('countNews').textContent = newsCount;
-        document.getElementById('countWriting').textContent = writingCount;
-      } catch(e) {
-        document.getElementById('articles').innerHTML = '<div class="empty">加载失败: ' + e.message + '</div>';
-      }
+        <div class="content" id="mainContent">加载中...</div>`;
+      if(state.tab==='articles') loadArticles();
+      else loadContent();
     }
 
-    window.newArticle = function() {
-      state.page = 'editor';
-      state.editor = { title: '', date: new Date().toISOString().slice(0,7), cat: 'seminar', body: '', sha: null, path: '' };
-      renderEditor();
-    };
+    window.switchTab=function(t){state.tab=t;renderDashboard();};
+    window.logout=function(){localStorage.removeItem(TK);renderLogin();};
 
-    window.editArticle = async function(filename) {
+    // ═══════════ 文章管理 ═══════════
+    async function loadArticles() {
+      $('mainContent').innerHTML='<div class="empty">加载中...</div>';
       try {
-        const content = await gh('/repos/' + REPO + '/contents/_news/' + filename + '?ref=' + BRANCH);
-        const decoded = atob(content.content);
-        const parts = decoded.split('---');
-        const frontmatter = parts[1] || '';
-        const body = parts.slice(2).join('---').trim();
-        const title = (frontmatter.match(/title:\s*"?([^"\n]+)"?/) || ['', ''])[1];
-        const date = (frontmatter.match(/date:\s*"?([^"\n]+)"?/) || ['', ''])[1];
-        const cat = (frontmatter.match(/cat:\s*"?([^"\n]+)"?/) || ['', ''])[1];
+        const files=await gh('/repos/'+REPO+'/contents/_news?ref='+BR);
+        let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px;">
+          <div class="stats"><div class="stat"><div class="stat-num">${files?.length||0}</div><div class="stat-label">文章</div></div></div>
+          <button onclick="newArticle()">+ 新建文章</button>
+        </div><div id="alist">`;
+        if(!files||files.length===0){html+='<div class="empty">暂无文章</div>';}
+        else{
+          for(const f of files){
+            try{
+              const c=await gh('/repos/'+REPO+'/contents/_news/'+f.name+'?ref='+BR);
+              const d=b64dec(c.content);
+              const t=(d.match(/title:\s*"?([^"\n]+)"?/)||['',f.name])[1];
+              const ct=(d.match(/cat:\s*"?([^"\n]+)"?/)||['',''])[1];
+              const dt=(d.match(/date:\s*"?([^"\n]+)"?/)||['',''])[1];
+              const pv=d.split('---')[2]?.trim().slice(0,60)||'';
+              html+=`<div class="card" onclick="editArticle('${f.name}')">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+                  <span class="tag">${ct||'note'}</span><span style="font-size:12px;color:#8a857c;">${dt||''}</span>
+                </div>
+                <div style="font-size:17px;font-weight:600;letter-spacing:1px;">${t}</div>
+                <div style="font-size:13px;color:#8a857c;margin-top:6px;">${pv}...</div>
+              </div>`;
+            }catch(e){continue;}
+          }
+        }
+        html+='</div>';
+        $('mainContent').innerHTML=html;
+      } catch(e) { $('mainContent').innerHTML='<div class="empty">加载失败: '+e.message+'</div>'; }
+    }
 
-        state.page = 'editor';
-        state.editor = { title, date, cat, body, sha: content.sha, path: filename };
+    window.newArticle=function(){state.tab='editor';state.editor={title:'',date:new Date().toISOString().slice(0,7),cat:'seminar',body:'',sha:null,path:''};renderEditor();};
+    window.editArticle=async function(fn){
+      try{
+        const c=await gh('/repos/'+REPO+'/contents/_news/'+fn+'?ref='+BR);
+        const d=b64dec(c.content),p=d.split('---');
+        const fm=p[1]||'',bd=p.slice(2).join('---').trim();
+        const t=(fm.match(/title:\s*"?([^"\n]+)"?/)||['',''])[1];
+        const dt=(fm.match(/date:\s*"?([^"\n]+)"?/)||['',''])[1];
+        const ct=(fm.match(/cat:\s*"?([^"\n]+)"?/)||['',''])[1];
+        state.tab='editor';state.editor={title:t,date:dt,cat:ct,body:bd,sha:c.sha,path:fn};
         renderEditor();
-      } catch(e) {
-        toast('加载失败: ' + e.message);
-      }
+      }catch(e){toast('加载失败');}
     };
 
-    // ── 编辑器 ──
-    function renderEditor() {
-      const e = state.editor;
-      $('app').innerHTML = `
+    function renderEditor(){
+      const e=state.editor;
+      $('app').innerHTML=`
         <div class="header">
           <div style="display:flex;align-items:center;gap:12px;">
-            <span class="back" onclick="goBack()">&#8592;</span>
-            <span style="font-size:16px;font-weight:600;letter-spacing:1px;">${e.sha ? '编辑文章' : '新建文章'}</span>
+            <span class="back" onclick="backToList()">&#8592;</span>
+            <span style="font-size:16px;font-weight:600;letter-spacing:1px;">${e.sha?'编辑文章':'新建文章'}</span>
           </div>
-          <button onclick="saveArticle()">${e.sha ? '更新' : '发布'}</button>
+          <button onclick="saveArticle()">${e.sha?'更新':'发布'}</button>
         </div>
         <div class="content" style="max-width:800px;">
-          <div class="form-group">
-            <label>标题</label>
-            <input id="edTitle" value="${e.title}">
-          </div>
+          <div class="form-group"><label>标题</label><input id="edTitle" value="${e.title}"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-            <div class="form-group">
-              <label>日期</label>
-              <input id="edDate" value="${e.date}">
-            </div>
-            <div class="form-group">
-              <label>分类</label>
+            <div class="form-group"><label>日期</label><input id="edDate" value="${e.date}"></div>
+            <div class="form-group"><label>分类</label>
               <select id="edCat">
                 <option value="seminar" ${e.cat==='seminar'?'selected':''}>会讲</option>
                 <option value="lecture" ${e.cat==='lecture'?'selected':''}>讲座</option>
@@ -258,48 +218,128 @@
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label>正文 (Markdown)</label>
-            <textarea id="edBody">${e.body}</textarea>
-          </div>
-        </div>
-      `;
+          <div class="form-group"><label>正文 (Markdown)</label><textarea id="edBody">${e.body}</textarea></div>
+        </div>`;
     }
-
-    window.goBack = function() { state.page = 'list'; render(); };
-
-    window.saveArticle = async function() {
-      const title = $('edTitle').value.trim();
-      const date = $('edDate').value.trim();
-      const cat = $('edCat').value;
-      const body = $('edBody').value;
-
-      if (!title) { toast('请输入标题'); return; }
-
-      const slug = title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5_-]/g, '-').replace(/-+/g, '-').slice(0, 50);
-      const filename = state.editor.path || (date.slice(0,4) + '-' + date.slice(5,7) + '-' + slug + '.md');
-      const content = `---\ntitle: ${title}\ndate: "${date}"\ncat: "${cat}"\n---\n\n${body}\n`;
-
-      const payload = {
-        message: state.editor.sha ? '更新: ' + title : '新增: ' + title,
-        content: btoa(unescape(encodeURIComponent(content))),
-        branch: BRANCH
-      };
-      if (state.editor.sha) payload.sha = state.editor.sha;
-
-      try {
-        await gh('/repos/' + REPO + '/contents/_news/' + filename, { method: 'PUT', body: JSON.stringify(payload) });
-        toast(state.editor.sha ? '更新成功！网站将自动部署' : '发布成功！网站将自动部署');
-        state.page = 'list';
-        renderList();
-      } catch(e) {
-        toast('保存失败: ' + e.message);
-      }
+    window.backToList=function(){state.tab='articles';renderDashboard();};
+    window.saveArticle=async function(){
+      const title=$('edTitle').value.trim(),date=$('edDate').value.trim(),cat=$('edCat').value,body=$('edBody').value;
+      if(!title){toast('请输入标题');return;}
+      const slug=title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5_-]/g,'-').replace(/-+/g,'-').slice(0,50);
+      const fn=state.editor.path||(date.slice(0,4)+'-'+date.slice(5,7)+'-'+slug+'.md');
+      const content=`---\ntitle: ${title}\ndate: "${date}"\ncat: "${cat}"\n---\n\n${body}\n`;
+      const payload={message:state.editor.sha?'更新: '+title:'新增: '+title,content:b64enc(content),branch:BR};
+      if(state.editor.sha)payload.sha=state.editor.sha;
+      try{await gh('/repos/'+REPO+'/contents/_news/'+fn,{method:'PUT',body:JSON.stringify(payload)});toast(state.editor.sha?'更新成功！':'发布成功！');state.tab='articles';renderDashboard();}catch(e){toast('保存失败: '+e.message);}
     };
 
-    window.logout = function() {
-      localStorage.removeItem(TOKEN_KEY);
-      renderLogin();
+    // ═══════════ 页面内容管理 ═══════════
+    let contentData = null;
+
+    async function loadContent() {
+      $('mainContent').innerHTML='<div class="empty">加载中...</div>';
+      try {
+        const c=await gh('/repos/'+REPO+'/contents/data/content.json?ref='+BR);
+        contentData = JSON.parse(b64dec(c.content));
+        contentData._sha = c.sha;
+        renderContentEditor();
+      } catch(e) {
+        $('mainContent').innerHTML='<div class="empty">加载失败: '+e.message+'</div>';
+      }
+    }
+
+    function renderContentEditor() {
+      const d = contentData;
+      $('mainContent').innerHTML=`
+        <div style="margin-bottom:28px;">
+          <div style="font-size:20px;font-weight:700;letter-spacing:1px;">编辑页面文字内容</div>
+          <p style="font-size:13px;color:#8a857c;margin-top:6px;">修改后保存，我会帮你更新到网站页面中</p>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 首页 - Hero 区域</h3>
+          <div class="form-group"><label>副标题</label><input id="c_h_sub" value="${d.homepage.hero.subtitle}"></div>
+          <div class="form-group"><label>描述文字</label><textarea class="short" id="c_h_desc">${d.homepage.hero.description}</textarea></div>
+          <div class="form-group"><label>经典引用</label><textarea class="short" id="c_h_quote">${d.homepage.hero.quote}</textarea></div>
+          <div class="form-group"><label>引用出处</label><input id="c_h_qsrc" value="${d.homepage.hero.quoteSource}"></div>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 九经课程</h3>
+          <div class="form-group"><label>副标题</label><input id="c_cl_sub" value="${d.homepage.classics.subtitle}"></div>
+          <div class="form-group"><label>标题</label><input id="c_cl_title" value="${d.homepage.classics.title}"></div>
+          <div class="form-group"><label>描述</label><textarea class="short" id="c_cl_desc">${d.homepage.classics.description}</textarea></div>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 觉智哲学</h3>
+          <div class="form-group"><label>副标题</label><input id="c_jz_sub" value="${d.homepage.juezhi.subtitle}"></div>
+          <div class="form-group"><label>标题</label><input id="c_jz_title" value="${d.homepage.juezhi.title}"></div>
+          <div class="form-group"><label>描述</label><textarea class="short" id="c_jz_desc">${d.homepage.juezhi.description}</textarea></div>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 情爱哲学</h3>
+          <div class="form-group"><label>副标题</label><input id="c_qa_sub" value="${d.homepage.qingai.subtitle}"></div>
+          <div class="form-group"><label>标题</label><input id="c_qa_title" value="${d.homepage.qingai.title}"></div>
+          <div class="form-group"><label>描述</label><textarea class="short" id="c_qa_desc">${d.homepage.qingai.description}</textarea></div>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 汉字哲学</h3>
+          <div class="form-group"><label>副标题</label><input id="c_hz_sub" value="${d.homepage.hanzi.subtitle}"></div>
+          <div class="form-group"><label>标题</label><input id="c_hz_title" value="${d.homepage.hanzi.title}"></div>
+          <div class="form-group"><label>描述</label><textarea class="short" id="c_hz_desc">${d.homepage.hanzi.description}</textarea></div>
+        </div>
+
+        <div class="section-group">
+          <h3>🏠 超级管理学</h3>
+          <div class="form-group"><label>副标题</label><input id="c_sm_sub" value="${d.homepage.supermgmt.subtitle}"></div>
+          <div class="form-group"><label>标题</label><input id="c_sm_title" value="${d.homepage.supermgmt.title}"></div>
+          <div class="form-group"><label>描述</label><textarea class="short" id="c_sm_desc">${d.homepage.supermgmt.description}</textarea></div>
+        </div>
+
+        <div style="text-align:center;margin-top:32px;">
+          <button onclick="saveContent()">保存所有内容</button>
+        </div>`;
+    }
+
+    window.saveContent = async function() {
+      const d = contentData;
+      d.homepage.hero.subtitle = $('c_h_sub')?.value || d.homepage.hero.subtitle;
+      d.homepage.hero.description = $('c_h_desc')?.value || d.homepage.hero.description;
+      d.homepage.hero.quote = $('c_h_quote')?.value || d.homepage.hero.quote;
+      d.homepage.hero.quoteSource = $('c_h_qsrc')?.value || d.homepage.hero.quoteSource;
+      d.homepage.classics.subtitle = $('c_cl_sub')?.value || d.homepage.classics.subtitle;
+      d.homepage.classics.title = $('c_cl_title')?.value || d.homepage.classics.title;
+      d.homepage.classics.description = $('c_cl_desc')?.value || d.homepage.classics.description;
+      d.homepage.juezhi.subtitle = $('c_jz_sub')?.value || d.homepage.juezhi.subtitle;
+      d.homepage.juezhi.title = $('c_jz_title')?.value || d.homepage.juezhi.title;
+      d.homepage.juezhi.description = $('c_jz_desc')?.value || d.homepage.juezhi.description;
+      d.homepage.qingai.subtitle = $('c_qa_sub')?.value || d.homepage.qingai.subtitle;
+      d.homepage.qingai.title = $('c_qa_title')?.value || d.homepage.qingai.title;
+      d.homepage.qingai.description = $('c_qa_desc')?.value || d.homepage.qingai.description;
+      d.homepage.hanzi.subtitle = $('c_hz_sub')?.value || d.homepage.hanzi.subtitle;
+      d.homepage.hanzi.title = $('c_hz_title')?.value || d.homepage.hanzi.title;
+      d.homepage.hanzi.description = $('c_hz_desc')?.value || d.homepage.hanzi.description;
+      d.homepage.supermgmt.subtitle = $('c_sm_sub')?.value || d.homepage.supermgmt.subtitle;
+      d.homepage.supermgmt.title = $('c_sm_title')?.value || d.homepage.supermgmt.title;
+      d.homepage.supermgmt.description = $('c_sm_desc')?.value || d.homepage.supermgmt.description;
+
+      const json = JSON.stringify({...d, _sha: undefined}, null, 2);
+      const payload = {
+        message: '更新页面内容',
+        content: b64enc(json),
+        sha: d._sha,
+        branch: BR
+      };
+
+      try {
+        await gh('/repos/'+REPO+'/contents/data/content.json', {method:'PUT', body:JSON.stringify(payload)});
+        toast('内容已保存！请通知我帮你部署到页面');
+      } catch(e) {
+        toast('保存失败: '+e.message);
+      }
     };
 
     // ── 启动 ──
