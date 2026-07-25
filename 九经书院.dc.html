@@ -143,8 +143,12 @@
     html { scroll-behavior: auto; }
   }
   @media (max-width: 860px) {
+    header#top { flex-direction:column !important; gap:20px !important; }
+    header#top > div:last-child { max-width:100% !important; }
+    .nav-desktop { display:none !important; }
     .nav-desktop { display:none !important; }
     .nav-burger { display:flex !important; }
+
     header#top > div:first-child { display: none !important; }
     header#top { min-height: 84vh !important; padding-top: 40px !important; }
   }
@@ -190,7 +194,7 @@
   </nav>
 
   <!-- ============ HERO ============ -->
-  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:center;padding:0 6vw;overflow:hidden;">
+  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:center;padding:0 6vw;overflow:hidden;gap:40px;">
     <div data-reveal style="position:absolute;right:calc(6vw - 100px);top:38%;transform:translateY(-50%);display:flex;flex-direction:row;align-items:center;gap:24px;">
       <!-- 动态消息面板 -->
       <div style="margin-top:20px;width:300px;">
@@ -258,21 +262,23 @@
 
     </div>
 
+    <!-- 书院导览（与内容平列） -->
+    <div style="max-width:360px;margin-left:auto;align-self:center;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(34,32,29,.12);border:1px solid rgba(34,32,29,.12);">
+        <sc-for list="{{ navGuide }}" as="g" hint-placeholder-count="5">
+          <a href="{{ g.href }}" class="nav-guide-cell" style="background:#f4efe4;padding:18px 16px;display:flex;flex-direction:column;gap:5px;transition:background .3s ease;">
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:10px;letter-spacing:2px;color:#9c2b23;">{{ g.no }}</span>
+            <span style="font-size:16px;font-weight:600;letter-spacing:1px;color:#22201d;"><span class="i18n-zh">{{ g.cnZh }}</span><span class="i18n-hant">{{ g.cnHant }}</span><span class="i18n-en">{{ g.cnEn }}</span></span>
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:1px;color:#8a857c;font-weight:300;"><span class="i18n-zh">{{ g.subZh }}</span><span class="i18n-hant">{{ g.subHant }}</span><span class="i18n-en">{{ g.subEn }}</span></span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+
     <div aria-hidden="true" style="position:absolute;left:-2vw;bottom:-8vh;font-size:min(52vh,540px);line-height:1;color:rgba(34,32,29,0.035);font-weight:900;pointer-events:none;user-select:none;font-family:'Ma Shan Zheng',cursive;">觉</div>
   </header>
 
-  <!-- ============ 书院导览 ============ -->
-  <nav aria-label="书院导览 · Overview" style="max-width:1280px;margin:-1px auto 0;padding:0 6vw;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(34,32,29,.12);border-left:1px solid rgba(34,32,29,.12);border-right:1px solid rgba(34,32,29,.12);">
-      <sc-for list="{{ navGuide }}" as="g" hint-placeholder-count="5">
-        <a href="{{ g.href }}" class="nav-guide-cell" style="background:#f4efe4;padding:20px 22px;display:flex;flex-direction:column;gap:7px;transition:background .3s ease;">
-          <span style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:3px;color:#9c2b23;">{{ g.no }}</span>
-          <span style="font-size:19px;font-weight:600;letter-spacing:1px;color:#22201d;"><span class="i18n-zh">{{ g.cnZh }}</span><span class="i18n-hant">{{ g.cnHant }}</span><span class="i18n-en">{{ g.cnEn }}</span></span>
-          <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#8a857c;font-weight:300;"><span class="i18n-zh">{{ g.subZh }}</span><span class="i18n-hant">{{ g.subHant }}</span><span class="i18n-en">{{ g.subEn }}</span></span>
-        </a>
-      </sc-for>
-    </div>
-  </nav>
+
 
   <!-- ============ 三教符号 DIVIDER ============ -->
   <div style="display:flex;justify-content:center;align-items:center;gap:48px;padding:60px 0 60px;flex-wrap:wrap;">
