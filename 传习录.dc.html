@@ -8,108 +8,112 @@
 <body>
 <x-dc>
 <helmet>
-<meta name="description" content="">
+<meta name="description" content="九经书院 - 传习录">
 <meta name="theme-color" content="#9c2b23">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#22201d; --paper:#f4efe4; --paper-light:#faf7ef; --accent:#9c2b23; --gold:#d99a4e; --gray:#8a857c;
-    --font-serif:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    --font-sans:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif; --font-en:'Cormorant Garamond',serif; }
-  * { box-sizing: border-box; } html { scroll-behavior: smooth; }
-  body { margin: 0; -webkit-font-smoothing: antialiased; background: var(--paper); color: var(--ink); font-family: var(--font-serif); }
-  ::selection { background: var(--accent); color: var(--paper); }
-  ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--paper); }
-  ::-webkit-scrollbar-thumb { background: rgba(34,32,29,.18); border-radius: 4px; }
-  a { color: inherit; text-decoration: none; } img { max-width:100%; height:auto; }
-  .i18n-en, .i18n-hant { display: none; }
-  .lang-hant .i18n-zh, .lang-hant .i18n-en { display: none; } .lang-hant .i18n-hant { display: inline; }
-  .lang-en .i18n-zh, .lang-en .i18n-hant { display: none; } .lang-en .i18n-en { display: inline; }
-  .lang-en .en-serif, .lang-hant .en-serif { font-family: var(--font-en); }
-  .lang-hant .en-serif { font-family: var(--font-serif); }
-  .langbtn:hover { background:var(--ink); color:var(--paper); }
-  .back:hover { opacity:1 !important; }
-  [data-reveal] { opacity:0; will-change:transform,opacity; }
-  [data-reveal].seen { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
-  @keyframes rise { from { opacity:0; transform:translateY(24px);} to { opacity:1; transform:translateY(0);} }
-  h1,h2 { text-wrap:balance; } section[id]{ scroll-margin-top:80px; }
-  .footnav a:hover { color:#efe9dc !important; }
-  @media (prefers-reduced-motion:reduce){ [data-reveal]{ opacity:1!important; animation:none!important; } }
+:root{--ink:#22201d;--paper:#f4efe4;--paper-light:#faf7ef;--accent:#9c2b23;--gold:#d99a4e;--gray:#8a857c;--font-serif:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;--font-sans:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;--font-en:'Cormorant Garamond',serif;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink);font-family:var(--font-serif)}
+::selection{background:var(--accent);color:var(--paper)}
+a{color:inherit;text-decoration:none}img{max-width:100%;height:auto}
+.i18n-en,.i18n-hant{display:none}
+.lang-hant .i18n-zh,.lang-hant .i18n-en{display:none}.lang-hant .i18n-hant{display:inline}
+.lang-en .i18n-zh,.lang-en .i18n-hant{display:none}.lang-en .i18n-en{display:inline}
+.lang-en .en-serif,.lang-hant .en-serif{font-family:var(--font-en)}
+.lang-hant .en-serif{font-family:var(--font-serif)}
+.langbtn:hover{background:var(--ink);color:var(--paper)}
+.back:hover{opacity:1!important}
+[data-reveal]{opacity:0;will-change:transform,opacity}
+[data-reveal].seen{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+h1,h2{text-wrap:balance}
+.footnav a:hover{color:#efe9dc!important}
 </style>
 </helmet>
-<div class="{{ rootClass }}" style="min-height:100vh;">
-  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
-    <a href="九经课程.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
-      <span style="font-size:16px;">←;</span><span class="i18n-zh">返回九经课程</span><span class="i18n-hant">返回九经课程</span><span class="i18n-en">Back</span>
-    </a>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">儒</span>
-      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">传习录</span><span class="i18n-hant">传习录</span><span class="i18n-en en-serif">Instructions for Living</span></span>
-    </div>
-    <button onClick="{{ toggleLang }}" class="langbtn" aria-label="切换语言" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;">{{ langLabel }}</button>
-  </header>
+<div class="{{ rootClass }}" style="min-height:100vh;background:var(--paper);color:var(--ink);font-family:var(--font-serif);-webkit-font-smoothing:antialiased;">
 
-  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw 40px;text-align:center;">
-    <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">儒 · Instructions for Living</div>
-    <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:2px solid rgba(156,43,35,.15);">
-      <img src="assets/classics/chuanxilu.jpg" alt="传习录" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <h1 style="margin:0;font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:3px;line-height:1.2;"><span class="i18n-zh">传习录</span><span class="i18n-hant">传习录</span><span class="i18n-en en-serif">Instructions for Living</span></h1>
-    <p style="margin:12px 0 0;color:#8a857c;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;">阳明心学 · 知行合一 · 12课时</p>
-  </section>
-  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
-  <section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
-    <div data-reveal>
-      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:10px;">壹</div>
-      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程定位</h2>
-      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">从二阶性哲学框架精读《传习录》，以「心即理→知行合一→致良知→四句教」为经线，贯通阳明心学从奠基到完成的完整图景。核心线索：传习录是中国哲学史上最完整的「二阶性」教学记录——致良知就是觉的二阶实现的操作化。</p>
-    </div>
-  </section><div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
-  <section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
-    <div data-reveal>
-      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:10px;">贰</div>
-      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程大纲</h2>
-      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">Day 1：阳明心学的奠基——心即理·知行合一·心外无物<br>Day 2：致良知——二阶性的完成形态</p>
-    </div>
-  </section><div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
-  <section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
-    <div data-reveal>
-      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:10px;">叁</div>
-      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">核心概念</h2>
-      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">心即理·知行合一·致良知·四句教·事上磨炼·二阶性·吾心光明</p>
-    </div>
-  </section>  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
-    <div style="max-width:1280px;margin:0 auto;">
-      <nav class="footnav" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
-        <a href="九经书院.dc.html" style="color:#c3bcae;">首页</a>
-        <a href="书院概览.dc.html#intro" style="color:#c3bcae;">书院简介</a>
-        <a href="书院概览.dc.html#founder" style="color:#c3bcae;">创始人</a>
-        <a href="九经课程.dc.html" style="color:#c3bcae;">九经课程</a>
-        <a href="书院动态.dc.html" style="color:#c3bcae;">书院动态</a>
-        <a href="报名入学.dc.html" style="color:#c3bcae;">报名入学</a>
-      </nav>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-        <a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;">
-          <span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span>
-          <span style="letter-spacing:3px;">九经书院</span>
-        </a>
-        <div style="opacity:.7;">(c) 2026 九经书院</div>
-      </div>
-    </div>
-  </footer>
+<header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
+<a href="九经课程.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
+<span style="font-size:16px;">←</span><span class="i18n-zh">返回九经课程</span><span class="i18n-en">Back</span>
+</a>
+<div style="display:flex;align-items:center;gap:12px;">
+<span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">儒</span>
+<span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">传习录</span><span class="i18n-en en-serif">Instructions for Living</span></span>
+</div>
+<button onClick="{{ toggleLang }}" class="langbtn" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;">{{ langLabel }}</button>
+</header>
+
+<section style="max-width:1080px;margin:0 auto;padding:60px 5vw 40px;text-align:center;">
+<div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">儒 &middot; Instructions for Living</div>
+<div style="width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:2px solid rgba(156,43,35,.15);">
+<img src="assets/classics/chuanxilu.jpg" alt="传习录" style="width:100%;height:100%;object-fit:cover;">
+</div>
+<h1 style="margin:0;font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">传习录</span><span class="i18n-en en-serif">Instructions for Living</span></h1>
+<p style="margin:12px 0 0;color:#8a857c;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;">阳明心学 · 知行合一 &middot; 12学时</p>
+</section>
+
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+<section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
+<div data-reveal>
+<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程定位</h2>
+<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">从二阶性哲学框架精读《传习录》，以「心即理→知行合一→致良知→四句教」为经线。</p>
+</div>
+</section>
+
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+<section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
+<div data-reveal>
+<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程大纲</h2>
+<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">Day 1：阳明心学的奠基——心即理·知行合一
+Day 2：致良知——二阶性的完成形态</p>
+</div>
+</section>
+
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+<section style="max-width:1080px;margin:0 auto;padding:50px 5vw 80px;">
+<div data-reveal>
+<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">核心概念</h2>
+<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">心即理·知行合一·致良知·四句教·事上磨炼·二阶性·吾心光明</p>
+</div>
+</section>
+
+<footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+<div style="max-width:1280px;margin:0 auto;">
+<nav class="footnav" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+<a href="九经书院.dc.html" style="color:#c3bcae;">首页</a>
+<a href="书院概览.dc.html" style="color:#c3bcae;">书院简介</a>
+<a href="九经课程.dc.html" style="color:#c3bcae;">九经课程</a>
+<a href="书院动态.dc.html" style="color:#c3bcae;">动态</a>
+<a href="报名入学.dc.html" style="color:#c3bcae;">报名</a>
+</nav>
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+<a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;">
+<span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span>
+<span style="letter-spacing:3px;">九经书院</span>
+</a>
+<div style="opacity:.7;">&copy; 2026 九经书院</div>
+</div>
+</div>
+</footer>
+
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script>
 class Component extends DCLogic {
   state = { lang: 'zh' };
   renderVals() {
-    const lang = this.state.lang, en = lang === 'en', hant = lang === 'hant';
+    const lang = this.state.lang, en = lang === 'en';
     const cycle = { zh: 'hant', hant: 'en', en: 'zh' };
     const labels = { zh: '繁', hant: 'EN', en: '简' };
     return {
-      rootClass: en ? 'lang-en' : (hant ? 'lang-hant' : ''),
+      rootClass: en ? 'lang-en' : (lang === 'hant' ? 'lang-hant' : ''),
       langLabel: labels[lang],
       toggleLang: () => this.setState((s) => ({ lang: cycle[s.lang] }))
     };
