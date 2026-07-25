@@ -46,6 +46,7 @@ const server = createServer(async (req, res) => {
 
 const X_DC = /<x-dc(?:\s[^>]*)?>([\s\S]*)<\/x-dc>/;
 const TPL = /<script type="text\/plain" data-dc-template>([\s\S]*?)<\/script>\s*/;
+const HELMET = /<helmet>([\s\S]*?)<\/helmet>\s*/;
 
 // 取模板源：已预渲染过的取 script 里的，否则取 x-dc 内的
 function templateOf(src) {
@@ -83,12 +84,23 @@ for (const f of files) {
     if (/\{\{[^}]*\}\}/.test(rendered)) throw new Error('渲染结果仍含未求值的占位符');
     if (errors.length) throw new Error('页面报错: ' + errors[0]);
 
+    // helmet 原本位于 <x-dc> 内（即 body），meta description / og:* / 站内样式
+    // 全都不在真正的 <head> 里。不执行 JS 的抓取器（微信链接预览、Twitter 卡片、
+    // 百度等）因此读不到这些标签，样式也不生效。此处把 helmet 静态提升进 <head>，
+    // 并从模板中移除，既让抓取器读到，又避免运行时重复注入同名标签。
+    let out = src;
+    let tpl = template;
+    const hm = tpl.match(HELMET);
+    if (hm) {
+      tpl = tpl.replace(HELMET, '');
+      out = out.replace('</head>', `${hm[1].trim()}\n</head>`);
+    }
+
     // 组装：惰性 script 承载真模板 + x-dc 承载预渲染结果
     const block =
-      `<script type="text/plain" data-dc-template>${template}</script>\n` +
+      `<script type="text/plain" data-dc-template>${tpl}</script>\n` +
       `<x-dc>${rendered}</x-dc>`;
 
-    let out = src;
     out = TPL.test(out) ? out.replace(TPL, '') : out;   // 移除旧的模板 script
     out = out.replace(X_DC, block);
 
