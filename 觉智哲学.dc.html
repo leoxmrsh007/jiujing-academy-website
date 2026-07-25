@@ -27,7 +27,7 @@
     --font-en: 'Cormorant Garamond',serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
   body { margin: 0; -webkit-font-smoothing: antialiased; }
   ::selection { background: var(--accent); color: var(--ink); }
   ::-webkit-scrollbar { width: 8px; }
@@ -52,7 +52,9 @@
   @media (max-width:860px){ .two{ grid-template-columns:1fr !important; } }
   .footnav a:hover { color:#efe9dc !important; }
   @media (prefers-reduced-motion:reduce){ [data-reveal]{ opacity:1!important; animation:none!important; } }
-</style>
+
+  @media (max-width:900px){ .two-col,.three-col{grid-template-columns:1fr!important} .footnav{gap:6px 14px!important} .footnav a{font-size:12px!important} }
+  @media (max-width:600px){ body{padding:0} img{height:auto} }</style>
 </helmet>
 
 <div class="{{ rootClass }}" style="background:#22201d;color:#efe9dc;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">

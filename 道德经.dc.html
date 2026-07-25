@@ -42,7 +42,9 @@
   .tag{display:inline-block;padding:3px 10px;font-size:11px;letter-spacing:1px;background:var(--accent);color:var(--paper);margin-right:6px}
   @media(max-width:860px){.two-col{grid-template-columns:1fr!important}}
   @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;animation:none!important}}
-</style>
+
+  @media (max-width:900px){ .two-col,.three-col{grid-template-columns:1fr!important} .footnav{gap:6px 14px!important} .footnav a{font-size:12px!important} }
+  @media (max-width:600px){ body{padding:0} img{height:auto} }</style>
 </helmet>
 <div class="{{ rootClass }}" style="min-height:100vh;">
 

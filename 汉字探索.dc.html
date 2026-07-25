@@ -26,7 +26,7 @@
     --font-en: 'Cormorant Garamond',serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
   body { margin: 0; -webkit-font-smoothing: antialiased; }
   ::selection { background: var(--accent); color: var(--paper); }
   ::-webkit-scrollbar { width: 8px; }
@@ -55,7 +55,9 @@
   }
   .footnav a:hover { color:#efe9dc !important; }
   @media (prefers-reduced-motion:reduce){ html { scroll-behavior: auto; } }
-</style>
+
+  @media (max-width:900px){ .two-col,.three-col{grid-template-columns:1fr!important} .footnav{gap:6px 14px!important} .footnav a{font-size:12px!important} }
+  @media (max-width:600px){ body{padding:0} img{height:auto} }</style>
 </helmet>
 
 <div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
