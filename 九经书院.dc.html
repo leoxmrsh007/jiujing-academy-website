@@ -102,6 +102,10 @@
   .dc-loading-dots span:nth-child(1) { animation-delay:0s; }
   .dc-loading-dots span:nth-child(2) { animation-delay:.2s; }
   .dc-loading-dots span:nth-child(3) { animation-delay:.4s; }
+  @keyframes scrollText { 
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
   @keyframes dotPulse { 0%,80%,100% { opacity:.3; transform:scale(.8); } 40% { opacity:.8; transform:scale(1.2); } }
   /* ── i18n ── */
   .i18n-en, .i18n-hant { display: none; }
@@ -244,8 +248,12 @@
         <p style="margin:0 0 8px;font-size:16px;line-height:1.9;color:#3b3833;font-style:italic;letter-spacing:.5px;"><span class="i18n-zh">「凡为天下国家有九经，曰：修身也，尊贤也，亲亲也，敬大臣也，体群臣也，子庶民也，来百工也，柔远人也，怀诸侯也。」</span><span class="i18n-hant">「凡為天下國家有九經，曰：修身也，尊賢也，親親也，敬大臣也，體群臣也，子庶民也，來百工也，柔遠人也，懷諸侯也。」</span><span class="i18n-en en-serif">"In governing the world and the state there are Nine Standards: cultivating the self; honoring the worthy; cherishing one's kin; respecting great ministers; identifying with the body of officials; treating the common people as one's own children; attracting the artisans; showing tenderness to strangers from afar; and cherishing the feudal lords."</span></p>
         <p style="margin:0;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;color:#8a857c;text-align:right;"><span class="i18n-zh">——《中庸》第二十章</span><span class="i18n-hant">——《中庸》第二十章</span><span class="i18n-en">— The Doctrine of the Mean, Chapter 20</span></p>
       </div>
-      <div data-reveal style="margin-top:38px;">
-        <img src="assets/logo-tagline.png" alt="精读经典·真做真人·实干实事" style="height:34px;width:auto;" />
+      <div data-reveal style="margin-top:30px;overflow:hidden;white-space:nowrap;">
+        <div style="display:inline-block;animation:scrollText 12s linear infinite;font-family:'Ma Shan Zheng',cursive;font-size:clamp(24px,3vw,40px);color:#9c2b23;letter-spacing:8px;opacity:.85;">
+          <span class="i18n-zh">精读经典 · 真做真人 · 实干实事</span>
+          <span class="i18n-hant">精讀經典 · 真做真人 · 實幹實事</span>
+          <span class="i18n-en" style="font-family:'Cormorant Garamond',serif;letter-spacing:3px;">Read Deeply · Live Truly · Act Earnestly</span>
+        </div>
       </div>
 
     </div>
@@ -291,6 +299,7 @@
         <h2 style="margin:0;font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">儒 · 释 · 道　九经</span><span class="i18n-hant">儒 · 釋 · 道　九經</span><span class="i18n-en en-serif">The Nine Classics</span></h2>
       </div>
       <p data-reveal style="max-width:400px;margin:0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">三教九经，各三部而成一体。由入世之学而心性之觉，而返于自然之道。</span><span class="i18n-hant">三教九經，各三部而成一體。由入世之學而心性之覺，而返於自然之道。</span><span class="i18n-en">Three teachings, nine classics — three works each, forming one whole. From worldly learning to the awakening of mind-nature, returning to the Dao of nature.</span></p>
+      <div data-reveal style="margin-top:24px;"><a href="九经课程.dc.html" style="display:inline-block;padding:12px 28px;background:#22201d;color:#f4efe4;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:3px;transition:background .3s;" class="hv7"><span class="i18n-zh">深入九经课程 →</span><span class="i18n-hant">深入九經課程 →</span><span class="i18n-en">Explore the Nine Classics →</span></a></div>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
