@@ -52,7 +52,17 @@
   section[id]{ scroll-margin-top:80px; }
   .footnav a:hover { color:#efe9dc !important; }
   @media (prefers-reduced-motion:reduce){ [data-reveal]{ opacity:1!important; animation:none!important; } }
-</style>
+
+  /* 返回下拉菜单 */
+  .back-wrap { position:relative; display:inline-block; }
+  .back-wrap:hover .back-dd-menu { display:block !important; }
+  .back-dd-menu { display:none; position:absolute; top:100%; left:0; z-index:50;
+    background:#faf7ef; border:1px solid rgba(34,32,29,.09);
+    box-shadow:0 8px 24px rgba(34,32,29,.08); min-width:150px; padding:6px 0; }
+  .back-dd-menu a { display:block; padding:10px 18px; font-family:'Noto Sans SC',sans-serif;
+    font-size:13px; color:#22201d; letter-spacing:1px; text-decoration:none;
+    transition:background .2s; }
+  .back-dd-menu a:hover { background:#f4efe4; }</style>
 </helmet>
 
 <div class="{{ rootClass }}" style="background:#f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;min-height:100vh;">
