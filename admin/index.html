@@ -6,197 +6,75 @@
   <title>九经书院 · 内容管理</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f4efe4;
-      color: #22201d;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
     }
-    .login-box {
-      background: #faf7ef;
-      border: 1px solid rgba(34,32,29,.12);
-      padding: 48px 40px;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-    }
-    .login-box h1 {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-    .login-box p {
-      font-size: 14px;
-      color: #8a857c;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    .login-box input {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 14px;
-      border: 1px solid rgba(34,32,29,.18);
-      background: #fff;
-      outline: none;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-      font-family: 'SF Mono', Monaco, monospace;
-      transition: border-color .2s;
-    }
-    .login-box input:focus {
-      border-color: #9c2b23;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 14px;
-      background: #22201d;
-      color: #f4efe4;
-      border: none;
-      font-size: 15px;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: background .3s;
-    }
-    .login-box button:hover { background: #9c2b23; }
-    .login-box button:disabled { opacity: .5; cursor: not-allowed; }
-    .error { color: #c0392b; font-size: 13px; margin-top: 12px; display: none; }
-    .hint {
-      font-size: 12px;
-      color: #a89f90;
-      margin-top: 20px;
-      line-height: 1.7;
-    }
-    .hint a { color: #9c2b23; }
-    .logo { font-size: 36px; margin-bottom: 16px; color: #9c2b23; }
   </style>
 </head>
 <body>
-  <div class="login-box" id="loginForm">
-    <div class="logo">九经</div>
-    <h1>内容管理</h1>
-    <p>输入 GitHub Token 登录后即可编辑网站内容</p>
-    <input type="password" id="tokenInput" placeholder="粘贴你的 GitHub Token 在这里" />
-    <button id="loginBtn" onclick="login()">登录</button>
-    <div class="error" id="errorMsg">Token 无效，请检查后重试</div>
-    <div class="hint">
-      没有 Token？
-      <a href="https://github.com/settings/tokens/new?scopes=repo&description=jiujing-academy-cms" target="_blank">
-        点此生成
-      </a>
-      <br>（只需勾选 repo 权限，创建后复制粘贴即可）
-    </div>
-  </div>
-
+  <script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script>
   <script>
-    // 检查是否已有 token
-    const savedToken = localStorage.getItem('github_token');
-    if (savedToken) {
-      // 已经有 token，直接进入 CMS
-      initCMS(savedToken);
-    }
-
-    function login() {
-      const token = document.getElementById('tokenInput').value.trim();
-      if (!token) {
-        document.getElementById('errorMsg').style.display = 'block';
-        return;
-      }
-      // 验证 token
-      document.getElementById('loginBtn').disabled = true;
-      document.getElementById('loginBtn').textContent = '验证中...';
-
-      fetch('https://api.github.com/user', {
-        headers: { 'Authorization': 'token ' + token }
-      })
-      .then(r => {
-        if (!r.ok) throw new Error('Invalid token');
-        return r.json();
-      })
-      .then(user => {
-        localStorage.setItem('github_token', token);
-        initCMS(token);
-      })
-      .catch(() => {
-        document.getElementById('loginBtn').disabled = false;
-        document.getElementById('loginBtn').textContent = '登录';
-        document.getElementById('errorMsg').style.display = 'block';
-      });
-    }
-
-    function initCMS(token) {
-      // 隐藏登录表单
-      document.getElementById('loginForm').innerHTML = '<p style="padding:40px 0;color:#8a857c;">加载管理界面中...</p>';
-
-      // 配置 Decap CMS 使用 token
-      window.CMS_MANUAL_INIT = true;
-      window.CMS_CONFIG = {
-        backend: {
-          name: 'github',
-          repo: 'leoxmrsh007/jiujing-academy-website',
-          branch: 'main'
+    // 配置 Decap CMS
+    window.CMS_MANUAL_INIT = true;
+    window.CMS_CONFIG = {
+      backend: {
+        name: 'github',
+        repo: 'leoxmrsh007/jiujing-academy-website',
+        branch: 'main',
+        auth_type: 'pkce',
+        app_id: 'Ov23liW78Dqr2GogKVSY'
+      },
+      media_folder: 'uploads',
+      public_folder: '/uploads',
+      locale: 'zh_Hans',
+      collections: [
+        {
+          name: 'news',
+          label: '📰 书院动态',
+          label_singular: '文章',
+          folder: '_news',
+          create: true,
+          format: 'frontmatter',
+          extension: 'md',
+          slug: '{{year}}-{{month}}-{{slug}}',
+          summary: '{{title}} - {{date}}',
+          sortable_fields: ['date', 'title'],
+          fields: [
+            { label: '标题', name: 'title', widget: 'string' },
+            { label: '日期', name: 'date', widget: 'string' },
+            { label: '分类', name: 'cat', widget: 'select',
+              options: [
+                { label: '会讲', value: 'seminar' },
+                { label: '讲座', value: 'lecture' },
+                { label: '游学', value: 'journey' },
+                { label: '札记', value: 'note' },
+                { label: '学员', value: 'student' }
+              ]
+            },
+            { label: '正文', name: 'body', widget: 'markdown' }
+          ]
         },
-        media_folder: 'uploads',
-        public_folder: '/uploads',
-        locale: 'zh_Hans',
-        collections: [
-          {
-            name: 'news',
-            label: '📰 书院动态',
-            label_singular: '文章',
-            folder: '_news',
-            create: true,
-            format: 'frontmatter',
-            extension: 'md',
-            slug: '{{year}}-{{month}}-{{slug}}',
-            summary: '{{title}} - {{date}}',
-            sortable_fields: ['date', 'title'],
-            fields: [
-              { label: '标题', name: 'title', widget: 'string' },
-              { label: '日期', name: 'date', widget: 'string', default: new Date().toISOString().slice(0,7) },
-              { label: '分类', name: 'cat', widget: 'select',
-                options: [
-                  { label: '会讲', value: 'seminar' },
-                  { label: '讲座', value: 'lecture' },
-                  { label: '游学', value: 'journey' },
-                  { label: '札记', value: 'note' },
-                  { label: '学员', value: 'student' }
-                ]
-              },
-              { label: '正文', name: 'body', widget: 'markdown' }
-            ]
-          },
-          {
-            name: 'writings',
-            label: '💬 学员感悟',
-            label_singular: '感悟',
-            folder: '_writings',
-            create: true,
-            format: 'frontmatter',
-            extension: 'md',
-            slug: '{{slug}}',
-            summary: '{{author}} - {{date}}',
-            fields: [
-              { label: '姓名', name: 'author', widget: 'string' },
-              { label: '日期', name: 'date', widget: 'string', default: new Date().toISOString().slice(0,7) },
-              { label: '正文', name: 'body', widget: 'markdown' }
-            ]
-          }
-        ]
-      };
-
-      // 设置全局 API 认证
-      window.localStorage.setItem('github_token', token);
-
-      // 加载 CMS
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/decap-cms@3/dist/decap-cms.js';
-      document.body.appendChild(script);
-    }
+        {
+          name: 'writings',
+          label: '💬 学员感悟',
+          label_singular: '感悟',
+          folder: '_writings',
+          create: true,
+          format: 'frontmatter',
+          extension: 'md',
+          slug: '{{slug}}',
+          summary: '{{author}} - {{date}}',
+          fields: [
+            { label: '姓名', name: 'author', widget: 'string' },
+            { label: '日期', name: 'date', widget: 'string' },
+            { label: '正文', name: 'body', widget: 'markdown' }
+          ]
+        }
+      ]
+    };
   </script>
 </body>
 </html>
