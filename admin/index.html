@@ -314,11 +314,14 @@
         </div>
 
         <div class="section-group">
+          <h3>📖 书院概览 - 简介</h3>
+          <div class="form-group"><label>简介文字</label><textarea class="short" id="c_ov_intro">${d.overview?.intro?.text||''}</textarea></div>
+        </div>
+        <div class="section-group">
           <h3>🏢 书院CEO</h3>
-          <div class="form-group"><label>姓名</label><input id="c_ceo_name" value="${d.ceo?.name||''}"></div>
-          <div class="form-group"><label>头衔</label><input id="c_ceo_title" value="${d.ceo?.title||''}"></div>
-          <div class="form-group"><label>简介</label><textarea class="short" id="c_ceo_intro">${d.ceo?.intro||''}</textarea></div>
-          <div class="form-group"><label>邮箱</label><input id="c_ceo_email" value="${d.ceo?.email||''}"></div>
+          <div class="form-group"><label>姓名</label><input id="c_ceo_name" value="${d.overview?.ceo?.name||d.ceo?.name||''}"></div>
+          <div class="form-group"><label>头衔</label><input id="c_ceo_title" value="${d.overview?.ceo?.title||d.ceo?.title||''}"></div>
+          <div class="form-group"><label>邮箱</label><input id="c_ceo_email" value="${d.overview?.ceo?.email||d.ceo?.email||''}"></div>
         </div>
 
         <div style="text-align:center;margin-top:32px;">
@@ -347,11 +350,13 @@
       d.homepage.supermgmt.subtitle = $('c_sm_sub')?.value || d.homepage.supermgmt.subtitle;
       d.homepage.supermgmt.title = $('c_sm_title')?.value || d.homepage.supermgmt.title;
       d.homepage.supermgmt.description = $('c_sm_desc')?.value || d.homepage.supermgmt.description;
-      if(!d.ceo) d.ceo={};
-      d.ceo.name = $('c_ceo_name')?.value || d.ceo.name||'';
-      d.ceo.title = $('c_ceo_title')?.value || d.ceo.title||'';
-      d.ceo.intro = $('c_ceo_intro')?.value || d.ceo.intro||'';
-      d.ceo.email = $('c_ceo_email')?.value || d.ceo.email||'';
+      if(!d.overview) d.overview={};
+      if(!d.overview.intro) d.overview.intro={};
+      d.overview.intro.text = $('c_ov_intro')?.value || '';
+      if(!d.overview.ceo) d.overview.ceo={};
+      d.overview.ceo.name = $('c_ceo_name')?.value || '';
+      d.overview.ceo.title = $('c_ceo_title')?.value || '';
+      d.overview.ceo.email = $('c_ceo_email')?.value || '';
 
       const json = JSON.stringify({...d, _sha: undefined}, null, 2);
       const payload = {

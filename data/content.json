@@ -55,5 +55,28 @@
     "intro": "九经书院CEO，负责书院运营、课程体系管理、文化交流与对外合作。秉承「觉智圆成·体用不二」的理念，致力于将东方智慧与现代实践相融合，推动经典文化的当代传播与创新。",
     "email": "zhiwei@jiujing.academy",
     "photo": "uploads/ceo-photo.png"
+  },
+  "overview": {
+    "intro": {
+      "title": "书院简介",
+      "text": "九经书院，以「觉智圆成·体用不二」为宗旨，融通儒释道三教经典，会通中西智慧。书院之名源自《中庸》「凡为天下国家有九经」。"
+    },
+    "organization": {
+      "title": "机构设置",
+      "departments": [
+        "教学部",
+        "文化传播部",
+        "运营部"
+      ]
+    },
+    "founder": {
+      "name": "胡勇 · 勇哥",
+      "title": "书院院长 · 创始人"
+    },
+    "ceo": {
+      "name": "黄智威",
+      "title": "书院CEO · 联合创始人",
+      "email": "zhiwei@jiujing.academy"
+    }
   }
 }
