@@ -134,6 +134,14 @@
               <div style="font-family:'Noto Sans SC',sans-serif;font-size:13.5px;color:#c0392b;letter-spacing:.5px;"><span class="i18n-zh">请填写必填项（姓名与有效电邮）。</span><span class="i18n-hant">請填寫必填項（姓名與有效電郵）。</span><span class="i18n-en">Please complete the required fields (name and a valid email).</span></div>
             </sc-if>
 
+            <sc-if value="{{ sendFailed }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid rgba(192,57,43,.45);background:rgba(192,57,43,.06);padding:18px 20px;font-family:'Noto Sans SC',sans-serif;">
+                <div style="font-size:14px;font-weight:500;color:#c0392b;letter-spacing:.5px;margin-bottom:8px;"><span class="i18n-zh">提交未成功，你的报名尚未送达书院。</span><span class="i18n-hant">提交未成功，你的報名尚未送達書院。</span><span class="i18n-en">Submission failed — your application has NOT reached the academy.</span></div>
+                <div style="font-size:13px;line-height:1.9;color:#55504a;font-weight:300;"><span class="i18n-zh">你填写的内容仍保留在页面上。可稍后重试「提交报名」，或直接发邮件给书院（点下方链接将自动带上你已填的内容）。</span><span class="i18n-hant">你填寫的內容仍保留在頁面上。可稍後重試「提交報名」，或直接發郵件給書院（點下方連結將自動帶上你已填的內容）。</span><span class="i18n-en">Your entries are preserved on this page. Please retry, or email the academy directly (the link below pre-fills what you entered).</span></div>
+                <a href="{{ mailtoFallback }}" style="display:inline-block;margin-top:12px;padding:10px 20px;background:#9c2b23;color:#f4efe4;font-size:13px;letter-spacing:2px;">shouyuAI@coze.email →</a>
+              </div>
+            </sc-if>
+
             <button onClick="{{ submit }}" class="submit" style="margin-top:8px;background:#22201d;color:#f4efe4;border:none;padding:17px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:3px;cursor:pointer;transition:background .3s;"><span class="i18n-zh">提交报名</span><span class="i18n-hant">提交報名</span><span class="i18n-en">Submit Application</span></button>
             <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#a89f90;margin:2px 0 0;line-height:1.7;"><span class="i18n-zh">提交即表示同意书院就报名事宜与你联系。信息将通过安全加密发送至书院。</span><span class="i18n-hant">提交即表示同意書院就報名事宜與你聯繫。信息將通過安全加密發送至書院。</span><span class="i18n-en">By submitting you agree to be contacted about your application. Data is sent securely to the academy.</span></p>
           </div>
@@ -191,7 +199,7 @@ class Component extends DCLogic {
     lang: 'zh',
     track: 'classics',
     name: '', honor: '', email: '', phone: '', msg: '',
-    triedSubmit: false, submitted: false
+    triedSubmit: false, submitted: false, sending: false, sendFailed: false
   };
 
   trackData() {
@@ -244,6 +252,19 @@ class Component extends DCLogic {
       notSubmitted: !this.state.submitted,
       showError: this.state.triedSubmit && (!this.state.name.trim() || !this.emailValid()),
 
+      // 发送失败：不谎报成功，保留已填内容，并给出可直接发信的兜底
+      sendFailed: this.state.sendFailed,
+      mailtoFallback: 'mailto:shouyuAI@coze.email?subject=' +
+        encodeURIComponent('九经书院 · 报名（表单提交失败，改由邮件补交）') +
+        '&body=' + encodeURIComponent(
+          '姓名：' + this.state.name + '\n' +
+          '称谓：' + this.state.honor + '\n' +
+          '电邮：' + this.state.email + '\n' +
+          '电话：' + this.state.phone + '\n' +
+          '修学方向：' + sel.zh + '\n' +
+          '求学志趣：' + this.state.msg + '\n'
+        ),
+
       tracks,
       sel: { track: sel.zh, trackHant: sel.hant, trackEn: sel.en },
 
@@ -268,6 +289,8 @@ class Component extends DCLogic {
           this.setState({ triedSubmit: true });
           return;
         }
+        if (this.state.sending) return;
+        this.setState({ sending: true, sendFailed: false });
         // 发送表单数据
         const formData = new FormData();
         formData.append('name', this.state.name.trim());
@@ -282,11 +305,21 @@ class Component extends DCLogic {
           method: 'POST',
           body: formData
         })
-        .then(r => r.json())
-        .then(() => this.setState({ submitted: true }))
-        .catch(() => this.setState({ submitted: true }));
+        .then((r) => {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then((d) => {
+          // formsubmit 返回 success:"true"；任何非成功一律视为失败，不谎报已收到
+          if (d && String(d.success) === 'true') {
+            this.setState({ sending: false, submitted: true, sendFailed: false });
+          } else {
+            throw new Error('submit rejected');
+          }
+        })
+        .catch(() => this.setState({ sending: false, sendFailed: true }));
       },
-      reset: () => this.setState({ name: '', honor: '', email: '', phone: '', msg: '', triedSubmit: false, submitted: false }),
+      reset: () => this.setState({ name: '', honor: '', email: '', phone: '', msg: '', triedSubmit: false, submitted: false, sending: false, sendFailed: false }),
 
       facts: [
         { kZh: '学制', kHant: '學制', kEn: 'Term', vZh: '春秋两季开院，随到随考', vHant: '春秋兩季開院，隨到隨考', vEn: 'Spring & autumn intakes; rolling admission' },

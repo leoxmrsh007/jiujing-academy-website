@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="九经书院 · Jiujing Academy">
 <meta property="og:description" content="通中西智慧之九经，立觉智圆成之体，行弘扬治理之用。">
-<meta property="og:image" content="https://leoxmrsh007.github.io/jiujing-academy-website/assets/logo-tagline.png">
-<meta property="og:url" content="https://leoxmrsh007.github.io/jiujing-academy-website/">
+<meta property="og:image" content="https://jiujing-academy-website.pages.dev/assets/logo-tagline.png">
+<meta property="og:url" content="https://jiujing-academy-website.pages.dev/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="/favicon.ico">
@@ -186,12 +186,13 @@
   }
   @media (max-width: 860px) {
     header#top { flex-direction:column !important; gap:20px !important; }
-    header#top > div:last-child { max-width:100% !important; }
-    .nav-desktop { display:none !important; }
     .nav-desktop { display:none !important; }
     .nav-burger { display:flex !important; }
 
-    header#top > div:first-child { display: none !important; }
+    /* 移动端不再隐藏动态消息：改为移到正文之后、占满宽度 */
+    header#top > div:first-child  { order:3; width:100% !important; }
+    header#top > div:nth-child(2) { order:1; }
+    header#top > div:nth-child(3) { order:2; max-width:100% !important; width:100%; }
     header#top { min-height: 84vh !important; padding-top: 40px !important; }
   }
 </style>
@@ -211,7 +212,7 @@
 
 <div class="{{ rootClass }}" style="background:radial-gradient(circle at 15% 8%,rgba(156,43,35,.025),transparent 40%), radial-gradient(circle at 85% 92%,rgba(217,154,78,.03),transparent 45%), repeating-linear-gradient(3deg,transparent,transparent 3px,rgba(34,32,29,.008) 3px,rgba(34,32,29,.008) 4px), #f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
 
-  <a href="九经课程.dc.html" class="skip-link"><span class="i18n-zh">跳至主要内容</span><span class="i18n-hant">跳至主要內容</span><span class="i18n-en">Skip to content</span></a>
+  <a href="#top" class="skip-link"><span class="i18n-zh">跳至主要内容</span><span class="i18n-hant">跳至主要內容</span><span class="i18n-en">Skip to content</span></a>
 
   <!-- ============ NAV ============ -->
   <nav aria-label="主导览" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(244,239,228,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
