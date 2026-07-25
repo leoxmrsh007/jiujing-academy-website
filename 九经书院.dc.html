@@ -194,47 +194,42 @@
   </nav>
 
   <!-- ============ HERO ============ -->
-  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:center;padding:0 6vw;overflow:hidden;gap:40px;">
-    <div data-reveal style="position:absolute;right:calc(6vw - 100px);top:38%;transform:translateY(-50%);display:flex;flex-direction:row;align-items:center;gap:24px;">
-      <!-- 动态消息面板 -->
-      <div style="margin-top:20px;width:300px;">
-        <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;">
-          <div style="background:#9c2b23;color:#f4efe4;padding:10px 14px;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:3px;text-align:center;">
-            <span class="i18n-zh">动态消息</span><span class="i18n-hant">動態消息</span><span class="i18n-en">NEWS & EVENTS</span>
-          </div>
-          <div class="news-scroll-wrap" style="padding:0 18px;height:220px;">
-            <div class="news-scroll-inner">
-              <a href="书院动态详情.dc.html?id=0" style="display:block;padding:12px 0;border-top:1px solid rgba(34,32,29,.06);transition:background .2s;">
-                <div style="font-size:15px;font-weight:500;letter-spacing:.5px;color:#22201d;"><span class="i18n-zh">「易道与时变」秋季会讲</span><span class="i18n-hant">「易道與時變」秋季會講</span><span class="i18n-en">Autumn Seminar</span></div>
-                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;margin-top:4px;">2026.08 · 丙申孟秋 →</div>
-              </a>
-              <a href="书院动态.dc.html" style="display:block;padding:12px 0;border-top:1px solid rgba(34,32,29,.06);transition:background .2s;">
-                <div style="font-size:15px;font-weight:500;letter-spacing:.5px;color:#22201d;"><span class="i18n-zh">礼乐在野 · 曲阜访碑</span><span class="i18n-hant">禮樂在野 · 曲阜訪碑</span><span class="i18n-en">Qufu Journey</span></div>
-                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;margin-top:4px;">2026.09 · 丙申仲秋 →</div>
-              </a>
-              <a href="学员-嘉琪.html" style="display:block;padding:12px 0;border-top:1px solid rgba(34,32,29,.06);transition:background .2s;">
-                <div style="font-size:15px;font-weight:500;letter-spacing:.5px;color:#22201d;"><span class="i18n-zh">学员感悟 · 嘉琪</span><span class="i18n-hant">學員感悟 · 嘉琪</span><span class="i18n-en">Reflection: Jiaqi</span></div>
-                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;margin-top:4px;">2026.10 · 丙申季秋 →</div>
-              </a>
-              <a href="学员-杨国茂.html" style="display:block;padding:12px 0;border-top:1px solid rgba(34,32,29,.06);transition:background .2s;">
-                <div style="font-size:15px;font-weight:500;letter-spacing:.5px;color:#22201d;"><span class="i18n-zh">学员感悟 · 杨国茂</span><span class="i18n-hant">學員感悟 · 楊國茂</span><span class="i18n-en">Reflection: Yang Guomao</span></div>
-                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;margin-top:4px;">2026.10 · 丙申季秋 →</div>
-              </a>
-              <!-- 重复第一项形成无缝循环 -->
-              <a href="书院动态详情.dc.html?id=0" style="display:block;padding:12px 0;border-top:1px solid rgba(34,32,29,.06);transition:background .2s;">
-                <div style="font-size:15px;font-weight:500;letter-spacing:.5px;color:#22201d;"><span class="i18n-zh">「易道与时变」秋季会讲</span><span class="i18n-hant">「易道與時變」秋季會講</span><span class="i18n-en">Autumn Seminar</span></div>
-                <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;margin-top:4px;">2026.08 · 丙申孟秋 →</div>
-              </a>
-            </div>
-          </div>
-          <a href="书院动态.dc.html" style="display:block;text-align:center;padding:10px;border-top:1px solid rgba(34,32,29,.08);font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;letter-spacing:2px;transition:background .2s;" class="hv6">
-            <span class="i18n-zh">查看全部动态 →</span><span class="i18n-hant">查看全部動態 →</span><span class="i18n-en">All News →</span>
-          </a>
+  <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:flex-start;padding:6vh 6vw;overflow:hidden;gap:30px;">
+    <!-- 动态消息面板 -->
+    <div style="width:280px;flex-shrink:0;">
+      <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;">
+        <div style="background:#9c2b23;color:#f4efe4;padding:10px 14px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:3px;text-align:center;">
+          <span class="i18n-zh">动态消息</span><span class="i18n-hant">動態消息</span><span class="i18n-en">NEWS & EVENTS</span>
         </div>
+        <div class="news-scroll-wrap" style="padding:0 14px;height:200px;">
+          <div class="news-scroll-inner">
+            <a href="书院动态详情.dc.html?id=0" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
+              <div style="font-size:14px;font-weight:500;color:#22201d;">「易道与时变」秋季会讲</div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.08 →</div>
+            </a>
+            <a href="书院动态.dc.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
+              <div style="font-size:14px;font-weight:500;color:#22201d;">礼乐在野 · 曲阜访碑</div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.09 →</div>
+            </a>
+            <a href="学员-嘉琪.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
+              <div style="font-size:14px;font-weight:500;color:#22201d;">学员感悟 · 嘉琪</div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.10 →</div>
+            </a>
+            <a href="学员-杨国茂.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
+              <div style="font-size:14px;font-weight:500;color:#22201d;">学员感悟 · 杨国茂</div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.10 →</div>
+            </a>
+            <a href="书院动态详情.dc.html?id=0" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
+              <div style="font-size:14px;font-weight:500;color:#22201d;">「易道与时变」秋季会讲</div>
+              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.08 →</div>
+            </a>
+          </div>
+        </div>
+        <a href="书院动态.dc.html" style="display:block;text-align:center;padding:8px;border-top:1px solid rgba(34,32,29,.08);font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;letter-spacing:2px;" class="hv6">查看全部 →</a>
       </div>
     </div>
 
-    <div style="max-width:840px;position:relative;z-index:2;text-align:center;">
+    <div style="flex:1;min-width:0;text-align:center;">
       <div data-reveal style="margin-bottom:40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:5px;color:#9c2b23;">
         <span class="i18n-zh">觉智圆成 · 体用不二</span><span class="i18n-hant">覺智圓成 · 體用不二</span><span class="i18n-en" style="letter-spacing:3px;">AWAKENED WISDOM · SUBSTANCE &amp; FUNCTION, NOT-TWO</span>
       </div>
@@ -262,8 +257,8 @@
 
     </div>
 
-    <!-- 书院导览（与内容平列） -->
-    <div style="max-width:360px;margin-left:auto;align-self:center;">
+    <!-- 书院导览 -->
+    <div style="max-width:320px;flex-shrink:0;align-self:center;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(34,32,29,.12);border:1px solid rgba(34,32,29,.12);">
         <sc-for list="{{ navGuide }}" as="g" hint-placeholder-count="5">
           <a href="{{ g.href }}" class="nav-guide-cell" style="background:#f4efe4;padding:18px 16px;display:flex;flex-direction:column;gap:5px;transition:background .3s ease;">
