@@ -25,6 +25,8 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://unpkg.com">
+<link rel="preload" href="https://unpkg.com/decap-cms@3/dist/decap-cms.js" as="script">
+<link rel="preconnect" href="https://raw.githubusercontent.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
   /* ── Design Tokens ── */
@@ -61,6 +63,13 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(156,43,35,.15); } 50% { box-shadow: 0 0 0 8px rgba(156,43,35,0); } }
   @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  /* Card hover lift */
+  .card-lift { transition: transform .3s ease, box-shadow .3s ease; }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  /* Subtle shimmer for loading */
+  .shimmer { background: linear-gradient(90deg, transparent 0%, rgba(244,239,228,.4) 50%, transparent 100%); background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; }
   [data-reveal] { opacity: 0; will-change: transform, opacity; }
   [data-reveal].seen { animation: riseIn var(--transition-reveal) both; }
   /* staggered children */
