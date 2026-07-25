@@ -197,7 +197,7 @@
   <!-- ============ HERO ============ -->
   <header id="top" style="position:relative;min-height:92vh;display:flex;align-items:flex-start;padding:6vh 6vw;overflow:hidden;gap:30px;">
     <!-- 动态消息面板 -->
-    <div style="width:280px;flex-shrink:0;">
+    <div style="width:280px;flex-shrink:0;align-self:flex-start;">
       <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;">
         <div style="background:#9c2b23;color:#f4efe4;padding:10px 14px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:3px;text-align:center;">
           <span class="i18n-zh">动态消息</span><span class="i18n-hant">動態消息</span><span class="i18n-en">NEWS & EVENTS</span>
@@ -230,7 +230,7 @@
       </div>
     </div>
 
-    <div style="flex:1;min-width:0;text-align:center;">
+    <div style="flex:1;min-width:0;text-align:center;align-self:flex-start;">
       <div data-reveal style="margin-bottom:40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:5px;color:#9c2b23;">
         <span class="i18n-zh">觉智圆成 · 体用不二</span><span class="i18n-hant">覺智圓成 · 體用不二</span><span class="i18n-en" style="letter-spacing:3px;">AWAKENED WISDOM · SUBSTANCE &amp; FUNCTION, NOT-TWO</span>
       </div>
@@ -259,7 +259,7 @@
     </div>
 
     <!-- 书院导览 -->
-    <div style="max-width:320px;flex-shrink:0;align-self:center;">
+    <div style="max-width:320px;flex-shrink:0;align-self:flex-start;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(34,32,29,.12);border:1px solid rgba(34,32,29,.12);">
         <sc-for list="{{ navGuide }}" as="g" hint-placeholder-count="5">
           <a href="{{ g.href }}" class="nav-guide-cell" style="background:#f4efe4;padding:18px 16px;display:flex;flex-direction:column;gap:5px;transition:background .3s ease;">
