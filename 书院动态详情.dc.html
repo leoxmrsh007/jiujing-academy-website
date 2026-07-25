@@ -56,17 +56,7 @@
     <div style="position:relative;display:inline-block;" onmouseover="this.querySelector('.back-dropdown').style.display='block'" onmouseout="this.querySelector('.back-dropdown').style.display='none'">
       <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回书院动态</span><span class="i18n-hant">返回書院動態</span><span class="i18n-en">Academy News</span>
     </a>
-        <div class="back-dd-menu">
-          <a href="书院概览.dc.html">书院概览</a>
-          <a href="九经课程.dc.html">九经课程</a>
-          <a href="觉智哲学.dc.html">觉智哲学</a>
-          <a href="情爱哲学.dc.html">情爱哲学</a>
-          <a href="汉字哲学.dc.html">汉字哲学</a>
-          <a href="超级管理学.dc.html">超级管理学</a>
-          <a href="书院动态.dc.html">书院动态</a>
-          <a href="报名入学.dc.html">报名入学</a>
-        </div>
-      </div><div class="back-dropdown" style="display:none;position:absolute;top:100%;left:0;z-index:50;background:#faf7ef;border:1px solid rgba(34,32,29,.09);box-shadow:0 8px 24px rgba(34,32,29,.08);min-width:140px;padding:6px 0;">
+        </div><div class="back-dropdown" style="display:none;position:absolute;top:100%;left:0;z-index:50;background:#faf7ef;border:1px solid rgba(34,32,29,.09);box-shadow:0 8px 24px rgba(34,32,29,.08);min-width:140px;padding:6px 0;">
             <a href="书院概览.dc.html" style="display:block;padding:10px 18px;font-size:13px;color:#22201d;letter-spacing:1px;transition:background .2s;" onmouseover="this.style.background='#f4efe4'" onmouseout="this.style.background='transparent'">书院概览</a>
             <a href="九经课程.dc.html" style="display:block;padding:10px 18px;font-size:13px;color:#22201d;letter-spacing:1px;transition:background .2s;" onmouseover="this.style.background='#f4efe4'" onmouseout="this.style.background='transparent'">九经课程</a>
             <a href="觉智哲学.dc.html" style="display:block;padding:10px 18px;font-size:13px;color:#22201d;letter-spacing:1px;transition:background .2s;" onmouseover="this.style.background='#f4efe4'" onmouseout="this.style.background='transparent'">觉智哲学</a>
@@ -220,45 +210,5 @@ class Component extends DCLogic {
 </script>
 
 <script>
-// 页面加载后，为所有"返回"链接添加下拉菜单
-document.addEventListener('DOMContentLoaded', function() {
-  var backLinks = document.querySelectorAll('a.back');
-  backLinks.forEach(function(link) {
-    var wrap = document.createElement('div');
-    wrap.style.cssText = 'position:relative;display:inline-block;';
-    link.parentNode.insertBefore(wrap, link);
-    wrap.appendChild(link);
-    
-    var menu = document.createElement('div');
-    menu.style.cssText = 'display:none;position:absolute;top:100%;left:0;z-index:50;background:#faf7ef;border:1px solid rgba(34,32,29,.09);box-shadow:0 8px 24px rgba(34,32,29,.08);min-width:150px;padding:6px 0;';
-    menu.className = 'back-dd-menu';
-    
-    var items = [
-      ['书院概览', '书院概览.dc.html'],
-      ['九经课程', '九经课程.dc.html'],
-      ['觉智哲学', '觉智哲学.dc.html'],
-      ['情爱哲学', '情爱哲学.dc.html'],
-      ['汉字哲学', '汉字哲学.dc.html'],
-      ['超级管理学', '超级管理学.dc.html'],
-      ['书院动态', '书院动态.dc.html'],
-      ['报名入学', '报名入学.dc.html'],
-    ];
-    items.forEach(function(item) {
-      var a = document.createElement('a');
-      a.href = item[1];
-      a.textContent = item[0];
-      a.style.cssText = 'display:block;padding:10px 18px;font-family:sans-serif;font-size:13px;color:#22201d;letter-spacing:1px;text-decoration:none;';
-      a.onmouseover = function() { this.style.background = '#f4efe4'; };
-      a.onmouseout = function() { this.style.background = 'transparent'; };
-      menu.appendChild(a);
-    });
-    
-    wrap.appendChild(menu);
-    
-    wrap.onmouseover = function() { menu.style.display = 'block'; };
-    wrap.onmouseout = function() { menu.style.display = 'none'; };
-  });
-});
-</script>
 </body>
 </html>
