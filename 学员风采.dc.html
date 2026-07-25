@@ -75,8 +75,8 @@
   <!-- INTRO -->
   <section style="max-width:1200px;margin:0 auto;padding:56px 5vw 20px;">
     <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:6px;color:#9c2b23;margin-bottom:16px;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en">STUDENT SHOWCASE</span></div>
-    <h1 style="margin:0;font-size:clamp(34px,5.5vw,60px);font-weight:700;letter-spacing:3px;line-height:1.1;"><span class="i18n-zh">课堂剪影 · 游学纪行 · 学员文稿</span><span class="i18n-hant">課堂剪影 · 遊學紀行 · 學員文稿</span><span class="i18n-en en-serif">Classroom · Journeys · Student Voices</span></h1>
-    <p style="max-width:640px;margin:22px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">记录学员在书院共修、游学与写作中的身影与心得——这里的照片与文字皆待补充，随每一期研习更新。</span><span class="i18n-hant">記錄學員在書院共修、遊學與寫作中的身影與心得——這裡的照片與文字皆待補充，隨每一期研習更新。</span><span class="i18n-en">A record of students in shared study, travel and writing at the academy — photos and writing here await filling in, updated with each cohort.</span></p>
+    <h1 style="margin:0;font-size:clamp(34px,5.5vw,60px);font-weight:700;letter-spacing:3px;line-height:1.1;"><span class="i18n-zh">学员风采</span><span class="i18n-hant">學員風采</span><span class="i18n-en en-serif">Student Showcase</span></h1>
+    <p style="max-width:640px;margin:22px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">点击学员卡片，阅读他们的学习感悟与心得。课堂与游学的影像记录亦在此呈现。</span><span class="i18n-hant">點擊學員卡片，閱讀他們的學習感悟與心得。課堂與遊學的影像記錄亦在此呈現。</span><span class="i18n-en">Click a student card to read their reflections. Classroom and journey photos are also featured here.</span></p>
   </section>
 
   <!-- 课堂剪影 -->
@@ -142,89 +142,10 @@
     <div data-reveal style="text-align:center;margin-top:32px;font-family:&#39;Noto Sans SC&#39;,sans-serif;font-size:14px;color:#8a857c;">—— 更多学员风采，持续更新中 ——</div>
   </section>
 
-  <!-- 学员文稿 -->
+  <!-- 课堂剪影（保留） -->
   <section id="writings" style="background:#22201d;color:#efe9dc;padding:80px 5vw;margin-top:56px;">
     <div style="max-width:1000px;margin:0 auto;">
       <div data-reveal style="margin-bottom:40px;">
-        <h2 style="margin:0;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">学员文稿</span><span class="i18n-hant">學員文稿</span><span class="i18n-en en-serif">Student Writings</span></h2>
-        <p style="max-width:640px;margin:14px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:14.5px;line-height:2;color:#c3bcae;font-weight:300;"><span class="i18n-zh">学员研习心得、游学手记，收录于书院动态「学员」分类，随时更新。</span><span class="i18n-hant">學員研習心得、遊學手記，收錄於書院動態「學員」分類，隨時更新。</span><span class="i18n-en">Student reflections and travel notes are collected under the "Student" category in Academy News, updated continually.</span></p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:36px;">
-        <sc-for list="{{ writings }}" as="w" hint-placeholder-count="2">
-          <div data-reveal style="border:1px solid rgba(239,233,220,.16);padding:26px 24px;">
-            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#d99a4e;margin-bottom:10px;">{{ w.date }}</div>
-            <h3 style="margin:0 0 8px;font-size:17px;font-weight:600;letter-spacing:1px;line-height:1.5;"><span class="i18n-zh">{{ w.titleZh }}</span><span class="i18n-hant">{{ w.titleHant }}</span><span class="i18n-en en-serif" style="font-style:italic;">{{ w.titleEn }}</span></h3>
-            <p style="margin:0;font-family:'Noto Sans SC',sans-serif;font-size:13px;line-height:1.85;color:#c3bcae;font-weight:300;"><span class="i18n-zh">{{ w.excZh }}</span><span class="i18n-hant">{{ w.excHant }}</span><span class="i18n-en">{{ w.excEn }}</span></p>
-          </div>
-        </sc-for>
-      </div>
-      <!-- Featured: 杨国茂全文 -->
-      <div data-reveal style="margin-top:40px;padding:40px 36px;background:rgba(217,154,78,.06);border-left:3px solid #d99a4e;">
-        <div style="display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;">
-          <div style="flex-shrink:0;">
-            <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:2px solid rgba(217,154,78,.3);">
-              <img src="uploads/杨茂国.png" alt="杨国茂" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-          </div>
-          <div style="flex:1;min-width:200px;">
-            <div style="font-size:20px;font-weight:600;letter-spacing:1px;"><span class="i18n-zh">杨国茂学习感悟</span><span class="i18n-hant">楊國茂學習感悟</span><span class="i18n-en en-serif">Yang Guomao's Reflections</span></div>
-            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#d99a4e;margin-top:4px;">2026.10 · 丙申季秋</div>
-          </div>
-        </div>
-        <div style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#c3bcae;font-weight:300;">
-          <p class="i18n-zh" style="margin:0 0 20px;">在我看来，九经书院并不是一个简单讲授经典的培训课程，而是一套帮助我们重新理解人生、觉察自己、安顿身心的学习体系，更像是一所真正的「人生学院」。</p>
-          <p class="i18n-hant" style="margin:0 0 20px;">在我看來，九經書院並不是一個簡單講授經典的培訓課程，而是一套幫助我們重新理解人生、覺察自己、安頓身心的學習體系，更像是一所真正的「人生學院」。</p>
-          <p class="i18n-en" style="margin:0 0 20px;">In my view, Jiujing Academy is not a simple training course on the classics, but a system of learning that helps us re-understand life, awaken to ourselves, and settle body and mind — a true "school of life."</p>
-
-          <p class="i18n-zh" style="margin:0 0 20px;">跟随胡勇院长学习儒、释、道经典的过程中，我不仅感受到东方哲学的深邃与魅力，也有幸见识了一位博学、通达而又仁爱的老师。胡勇院长讲经典，不是停留在知识和文字层面，而是将经典与人生、家庭和事业相连接，让古老的智慧真正回到现实生活之中。</p>
-          <p class="i18n-hant" style="margin:0 0 20px;">跟隨胡勇院長學習儒、釋、道經典的過程中，我不僅感受到東方哲學的深邃與魅力，也有幸見識了一位博學、通達而又仁愛的老師。胡勇院長講經典，不是停留在知識和文字層面，而是將經典與人生、家庭和事業相連接，讓古老的智慧真正回到現實生活之中。</p>
-          <p class="i18n-en" style="margin:0 0 20px;">In studying the Confucian, Buddhist, and Daoist classics under Principal Hu Yong, I not only felt the depth and appeal of Eastern philosophy, but also had the privilege of encountering a teacher who is learned, penetrating, and benevolent. He does not stop at knowledge and words — he connects the classics to life, family, and work, bringing ancient wisdom back into everyday reality.</p>
-
-          <p class="i18n-zh" style="margin:0 0 20px;">更打动我的，是在胡勇院长身上看到了一种明达、从容而有温度的生命状态。经典不再只是书本里的道理，而成为一个人真实的精神气象。</p>
-          <p class="i18n-hant" style="margin:0 0 20px;">更打動我的，是在胡勇院長身上看到了一種明達、從容而有溫度的生命狀態。經典不再只是書本裏的道理，而成爲一個人真實的精神氣象。</p>
-          <p class="i18n-en" style="margin:0 0 20px;">What moved me even more was seeing in Principal Hu Yong a life of clarity, ease, and warmth. The classics are no longer just principles in books — they have become a person's true spiritual bearing.</p>
-
-          <p class="i18n-zh" style="margin:0 0 0;">希望自己能够在持续学习中，少一些浅薄与浮躁，多一些清醒与清净；也希望这些古老而恒新的智慧，能够让我更好地认识自己、善待家人、面对事业，成为一个更加明白、从容而有益于他人的人。</p>
-          <p class="i18n-hant" style="margin:0 0 0;">希望自己能夠在持續學習中，少一些淺薄與浮躁，多一些清醒與清淨；也希望這些古老而恒新的智慧，能夠讓我更好地認識自己、善待家人、面對事業，成爲一個更加明白、從容而有益於他人的人。</p>
-          <p class="i18n-en" style="margin:0 0 0;">I hope that through continued study, I can become less shallow and restless, and more clear and serene. May these timeless yet ever-fresh wisdoms help me better know myself, treat my family with kindness, face my work with purpose — and become a person who is clearer, calmer, and of greater benefit to others.</p>
-        </div>
-        <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(239,233,220,.12);font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8a857c;letter-spacing:1px;">—— <span class="i18n-zh">杨国茂</span><span class="i18n-hant">楊國茂</span><span class="i18n-en">Yang Guomao</span></div>
-      </div>
-
-      <!-- Featured: 嘉琪全文 -->
-      <div data-reveal style="margin-top:40px;padding:40px 36px;background:rgba(156,43,35,.06);border-left:3px solid #9c2b23;">
-        <div style="display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;">
-          <div style="flex-shrink:0;">
-            <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:2px solid rgba(156,43,35,.3);">
-              <img src="uploads/嘉琪.png" alt="嘉琪" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-          </div>
-          <div style="flex:1;min-width:200px;">
-            <div style="font-size:20px;font-weight:600;letter-spacing:1px;"><span class="i18n-zh">嘉琪的学习感悟</span><span class="i18n-hant">嘉琪的學習感悟</span><span class="i18n-en en-serif">Jiaqi's Reflections on Study</span></div>
-            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:1px;color:#9c2b23;margin-top:4px;">2026.10 · 丙申季秋</div>
-          </div>
-        </div>
-        <div style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#c3bcae;font-weight:300;">
-          <p class="i18n-zh" style="margin:0 0 20px;">本想着来书院只为一窥国学门径，却不曾想，胡院有一种近乎超能力的磁场——他虽不刻意说教，却总在无形中将我们引入对生命的沉思。那些典册中晦涩的文字，经他风趣而赤诚的演绎，竟成了照见自我的明镜。我忽然懂了什么叫「真人」：那不是高悬的理想，而是真诚到能触动人心的日常。他活出了古卷中的风骨，那种境界令人向往，老师如是，同窗亦如是，于是书院成了让人一坐下来便心安的地方。</p>
-          <p class="i18n-hant" style="margin:0 0 20px;">本想著來書院只為一窺國學門徑，卻不曾想，胡院有一種近乎超能力的磁場——他雖不刻意說教，卻總在無形中將我們引入對生命的沉思。那些典冊中晦澀的文字，經他風趣而赤誠的演繹，竟成了照見自我的明鏡。我忽然懂了什麼叫「真人」：那不是高懸的理想，而是真誠到能觸動人心的日常。他活出了古卷中的風骨，那種境界令人嚮往，老師如是，同窗亦如是，於是書院成了讓人一坐下來便心安的地方。</p>
-          <p class="i18n-en" style="margin:0 0 20px;">I came to the academy hoping only to glimpse the gateway to Chinese classical learning — yet I found that Principal Hu has an almost uncanny presence. Without ever lecturing, he quietly draws us into a contemplation of life itself. The obscure words in those ancient texts, brought to life by his wit and sincerity, became mirrors in which I could see myself. I suddenly understood what a "true person" means: not some lofty ideal, but a sincerity so deep it touches the heart in everyday life. He lives the spirit of the ancient scrolls — a state that inspires longing. As with the teacher, so with fellow students; thus the academy becomes a place where the heart finds peace the moment you sit down.</p>
-
-          <p class="i18n-zh" style="margin:0 0 20px;">课程的滋养如细雨润物，让感性的我渐渐养成了「以终为始」的思维刻度，也终于辨认出那个久被遮蔽的、真实的、我真正喜欢的自己。这场身心的洗礼，把我从焦灼的涡流中轻轻托起，送至从容的岸上。而这份安然，又化作对家人的柔光——让孩子不必迎合，只须以她自己的节奏舒展生长。</p>
-          <p class="i18n-hant" style="margin:0 0 20px;">課程的滋養如細雨潤物，讓感性的我漸漸養成了「以終為始」的思維刻度，也終於辨認出那個久被遮蔽的、真實的、我真正喜歡的自己。這場身心的洗禮，把我從焦灼的渦流中輕輕托起，送至從容的岸上。而這份安然，又化作對家人的柔光——讓孩子不必迎合，只須以她自己的節奏舒展生長。</p>
-          <p class="i18n-en" style="margin:0 0 20px;">The nourishment of the courses fell like gentle rain, gradually cultivating in my emotional self a habit of thinking "beginning with the end in mind." At last I recognized the long-obscured, authentic self I truly like. This baptism of body and mind gently lifted me from the vortex of anxiety and set me on the shore of ease. And this peace in turn became a gentle light for my family — allowing my child not to conform, but simply to grow at her own pace.</p>
-
-          <p class="i18n-zh" style="margin:0 0 0;">感恩书院，感恩一路同行的同窗。开悟也许是瞬间，但实修没有终点，愿往后朝夕，与良师益友继续共修，日日精进。</p>
-          <p class="i18n-hant" style="margin:0 0 0;">感恩書院，感恩一路同行的同窗。開悟也許是瞬間，但實修沒有終點，願往後朝夕，與良師益友繼續共修，日日精進。</p>
-          <p class="i18n-en" style="margin:0 0 0;">Grateful to the academy, grateful to the fellow students who walk this path together. Awakening may come in an instant, but true practice has no end. May we continue to cultivate together, day by day, ever advancing.</p>
-        </div>
-        <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(239,233,220,.12);font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8a857c;letter-spacing:1px;">—— <span class="i18n-zh">嘉琪</span><span class="i18n-hant">嘉琪</span><span class="i18n-en">Jiaqi</span></div>
-      </div>
-
-
-      <div style="margin-top:24px;"><a href="书院动态.dc.html" style="display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:15px;letter-spacing:2px;color:#d99a4e;font-weight:500;"><span class="i18n-zh">查看全部学员文稿 →</span><span class="i18n-hant">查看全部學員文稿 →</span><span class="i18n-en">See all student writings →</span></a></div>
-    </div>
-  </section>
-
   <!-- 影像记录 -->
   <section id="videos" style="max-width:1200px;margin:0 auto;padding:80px 5vw 100px;">
     <div data-reveal style="margin-bottom:30px;">
