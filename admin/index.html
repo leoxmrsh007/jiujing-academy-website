@@ -134,6 +134,7 @@
             <div class="tabs">
               <div class="tab ${state.tab==='articles'?'active':''}" onclick="switchTab('articles')">文章</div>
               <div class="tab ${state.tab==='content'?'active':''}" onclick="switchTab('content')">页面内容</div>
+              <div class="tab ${state.tab==='images'?'active':''}" onclick="switchTab('images')">图片</div>
             </div>
             <button class="sm sec" onclick="logout()" style="margin-left:12px;">退出</button>
           </div>
@@ -143,7 +144,7 @@
       else loadContent();
     }
 
-    window.switchTab=function(t){state.tab=t;renderDashboard();};
+    window.switchTab=function(t){state.tab=t;renderDashboard();if(t==='images')loadImages();};
     window.logout=function(){localStorage.removeItem(TK);renderLogin();};
 
     // ═══════════ 文章管理 ═══════════
@@ -299,6 +300,14 @@
           <div class="form-group"><label>描述</label><textarea class="short" id="c_sm_desc">${d.homepage.supermgmt.description}</textarea></div>
         </div>
 
+        <div class="section-group">
+          <h3>🏢 书院CEO</h3>
+          <div class="form-group"><label>姓名</label><input id="c_ceo_name" value="${d.ceo?.name||''}"></div>
+          <div class="form-group"><label>头衔</label><input id="c_ceo_title" value="${d.ceo?.title||''}"></div>
+          <div class="form-group"><label>简介</label><textarea class="short" id="c_ceo_intro">${d.ceo?.intro||''}</textarea></div>
+          <div class="form-group"><label>邮箱</label><input id="c_ceo_email" value="${d.ceo?.email||''}"></div>
+        </div>
+
         <div style="text-align:center;margin-top:32px;">
           <button onclick="saveContent()">保存所有内容</button>
         </div>`;
@@ -325,6 +334,11 @@
       d.homepage.supermgmt.subtitle = $('c_sm_sub')?.value || d.homepage.supermgmt.subtitle;
       d.homepage.supermgmt.title = $('c_sm_title')?.value || d.homepage.supermgmt.title;
       d.homepage.supermgmt.description = $('c_sm_desc')?.value || d.homepage.supermgmt.description;
+      if(!d.ceo) d.ceo={};
+      d.ceo.name = $('c_ceo_name')?.value || d.ceo.name||'';
+      d.ceo.title = $('c_ceo_title')?.value || d.ceo.title||'';
+      d.ceo.intro = $('c_ceo_intro')?.value || d.ceo.intro||'';
+      d.ceo.email = $('c_ceo_email')?.value || d.ceo.email||'';
 
       const json = JSON.stringify({...d, _sha: undefined}, null, 2);
       const payload = {
@@ -340,6 +354,76 @@
       } catch(e) {
         toast('保存失败: '+e.message);
       }
+    };
+
+    // ═══════════ 图片管理 ═══════════
+    async function loadImages() {
+      $('mainContent').innerHTML='<div class="empty">加载中...</div>';
+      try {
+        const files=await gh('/repos/'+REPO+'/contents/uploads?ref='+BR);
+        const imgs=files.filter(f=>/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f.name));
+        let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px;">
+          <div class="stats"><div class="stat"><div class="stat-num">${imgs.length}</div><div class="stat-label">图片</div></div></div>
+        </div>
+        <div style="margin-bottom:24px;padding:24px;background:#faf7ef;border:1px solid rgba(34,32,29,.09);">
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:12px;">上传新图片</h3>
+          <input type="file" id="uploadInput" accept="image/*" style="margin-bottom:12px;" onchange="uploadImage()">
+          <div id="uploadStatus" style="font-size:13px;color:#8a857c;"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">`;
+        for(const img of imgs){
+          const url='https://raw.githubusercontent.com/'+REPO+'/'+BR+'/uploads/'+img.name;
+          html+=`<div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;">
+            <div style="aspect-ratio:1;background:#ece5d6;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <img src="${url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+            </div>
+            <div style="padding:10px 12px;">
+              <div style="font-size:11px;color:#55504a;word-break:break-all;margin-bottom:6px;">${img.name}</div>
+              <div style="display:flex;gap:6px;">
+                <button class="sm" onclick="copyUrl('${url}')">复制链接</button>
+                <button class="sm sec" onclick="deleteImage('${img.name}')">删除</button>
+              </div>
+            </div>
+          </div>`;
+        }
+        html+='</div>';
+        $('mainContent').innerHTML=html;
+      } catch(e) {
+        $('mainContent').innerHTML='<div class="empty">加载失败: '+e.message+'</div>';
+      }
+    }
+
+    window.copyUrl=function(url){
+      navigator.clipboard.writeText(url).then(()=>toast('链接已复制')).catch(()=>toast('复制失败'));
+    };
+
+    window.uploadImage=async function(){
+      const file=$('uploadInput').files[0];
+      if(!file)return;
+      $('uploadStatus').textContent='上传中...';
+      try{
+        const reader=new FileReader();
+        reader.onload=async function(){
+          const base64=reader.result.split(',')[1];
+          const payload={message:'上传图片: '+file.name,content:base64,branch:BR};
+          try{
+            await gh('/repos/'+REPO+'/contents/uploads/'+file.name,{method:'PUT',body:JSON.stringify(payload)});
+            toast('上传成功！');
+            loadImages();
+          }catch(e){$('uploadStatus').textContent='上传失败: '+e.message;}
+        };
+        reader.readAsDataURL(file);
+      }catch(e){$('uploadStatus').textContent='读取失败';}
+    };
+
+    window.deleteImage=async function(name){
+      if(!confirm('确定删除 '+name+' ？'))return;
+      try{
+        const info=await gh('/repos/'+REPO+'/contents/uploads/'+name+'?ref='+BR);
+        await gh('/repos/'+REPO+'/contents/uploads/'+name,{method:'DELETE',body:JSON.stringify({message:'删除: '+name,sha:info.sha,branch:BR})});
+        toast('已删除');
+        loadImages();
+      }catch(e){toast('删除失败');}
     };
 
     // ── 启动 ──

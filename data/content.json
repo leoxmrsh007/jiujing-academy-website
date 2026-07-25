@@ -48,5 +48,12 @@
   "supermgmt": {
     "title": "超级管理学",
     "description": "以觉智存世，以修身为本。治己·治人·治事，企业·家陪伴成长计划。"
+  },
+  "ceo": {
+    "name": "陆敏慎（Andrew Lu）",
+    "title": "书院CEO · 运营负责人",
+    "intro": "九经书院CEO，负责书院运营、课程体系管理、文化交流与对外合作。秉承「觉智圆成·体用不二」的理念，致力于将东方智慧与现代实践相融合，推动经典文化的当代传播与创新。",
+    "email": "andrew@jiujing.academy",
+    "photo": "uploads/ceo-photo.png"
   }
 }
