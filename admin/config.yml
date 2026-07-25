@@ -1,20 +1,17 @@
-# 九经书院 · 后台管理系统
-# 访问：https://jiujing-academy-website.pages.dev/admin/
-
 backend:
   name: github
   repo: leoxmrsh007/jiujing-academy-website
   branch: main
   auth_type: pkce
+  app_id: Ov23liW78Dqr2GogKVSY
 
 media_folder: uploads
 public_folder: /uploads
 locale: zh_Hans
 
 collections:
-  # ── 书院动态 ──
   - name: news
-    label: "📰 书院动态"
+    label: "\U0001F4F0 书院动态"
     label_singular: 文章
     folder: _news
     create: true
@@ -22,10 +19,16 @@ collections:
     extension: md
     slug: "{{year}}-{{month}}-{{slug}}"
     summary: "{{title}} - {{date}}"
-    sortable_fields: [date, title]
+    sortable_fields:
+      - date
+      - title
     fields:
-      - { label: 标题, name: title, widget: string }
-      - { label: 日期, name: date, widget: string, default: "2026.07" }
+      - label: 标题
+        name: title
+        widget: string
+      - label: 日期
+        name: date
+        widget: string
       - label: 分类
         name: cat
         widget: select
@@ -35,11 +38,12 @@ collections:
           - { label: 游学, value: journey }
           - { label: 札记, value: note }
           - { label: 学员, value: student }
-      - { label: 正文, name: body, widget: markdown }
+      - label: 正文
+        name: body
+        widget: markdown
 
-  # ── 学员感悟 ──
   - name: writings
-    label: "💬 学员感悟"
+    label: "\U0001F4AC 学员感悟"
     label_singular: 感悟
     folder: _writings
     create: true
@@ -48,6 +52,12 @@ collections:
     slug: "{{slug}}"
     summary: "{{author}} - {{date}}"
     fields:
-      - { label: 姓名, name: author, widget: string }
-      - { label: 日期, name: date, widget: string, default: "2026.10" }
-      - { label: 正文, name: body, widget: markdown }
+      - label: 姓名
+        name: author
+        widget: string
+      - label: 日期
+        name: date
+        widget: string
+      - label: 正文
+        name: body
+        widget: markdown
