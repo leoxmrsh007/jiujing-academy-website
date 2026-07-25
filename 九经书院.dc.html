@@ -146,6 +146,39 @@
   .news-scroll-wrap { overflow: hidden; position: relative; }
   .news-scroll-inner { animation: newsScroll 12s ease-in-out infinite; }
   .news-scroll-inner:hover { animation-play-state: paused; }
+  /* ── 书院气质：宣纸纹理 ── */
+  .paper-texture { position:fixed; inset:0; z-index:-1; pointer-events:none; 
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(156,43,35,.015) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(217,154,78,.012) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(34,32,29,.004) 2px, rgba(34,32,29,.004) 3px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(34,32,29,.003) 2px, rgba(34,32,29,.003) 3px);
+  }
+  /* ── 印章效果 ── */
+  .seal { display:inline-flex; align-items:center; justify-content:center;
+    width:48px; height:48px; border:2px solid #9c2b23; border-radius:4px;
+    font-family:'Ma Shan Zheng',cursive; font-size:22px; color:#9c2b23;
+    transform:rotate(-3deg); opacity:.75; flex-shrink:0; }
+  .seal-sm { width:36px; height:36px; font-size:16px; }
+  /* ── 书法装饰元素 ── */
+  .brush-deco { font-family:'Ma Shan Zheng',cursive; position:absolute; 
+    pointer-events:none; user-select:none; opacity:.035; font-weight:900;
+    color:var(--ink); line-height:1; z-index:0; }
+  /* ── 边框花纹 ── */
+  .border-classic { position:relative; }
+  .border-classic::before { content:''; position:absolute; top:-8px; left:50%;
+    transform:translateX(-50%); width:60px; height:1px;
+    background:linear-gradient(to right,transparent,var(--accent),transparent); }
+  .border-classic::after { content:''; position:absolute; bottom:-8px; left:50%;
+    transform:translateX(-50%); width:60px; height:1px;
+    background:linear-gradient(to right,transparent,var(--accent),transparent); }
+  /* ── 古籍章节标记 ── */
+  .chapter-mark { font-family:'Ma Shan Zheng',cursive; font-size:clamp(60px,8vw,100px);
+    color:rgba(156,43,35,.08); line-height:1; position:absolute; left:-20px; top:-20px;
+    pointer-events:none; user-select:none; z-index:0; }
+  /* ── 墨迹渐变动画 ── */
+  @keyframes inkSpread { from { clip-path:circle(0% at 50% 50%); } to { clip-path:circle(100% at 50% 50%); } }
+  .ink-reveal { animation: inkSpread 1.5s cubic-bezier(.2,.7,.2,1) both; }
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] { opacity:1 !important; animation:none !important; }
     [data-reveal-stagger] > * { opacity:1 !important; animation:none !important; }
@@ -166,6 +199,8 @@
 
 <div id="dc-loading" class="dc-loading"><div class="dc-loading-inner"><div class="dc-loading-logo">九经</div><div class="dc-loading-dots"><span></span><span></span><span></span></div></div></div>
 
+<div class="paper-texture"></div>
+
 <div class="{{ rootClass }}" style="background:radial-gradient(circle at 15% 8%,rgba(156,43,35,.025),transparent 40%), radial-gradient(circle at 85% 92%,rgba(217,154,78,.03),transparent 45%), repeating-linear-gradient(3deg,transparent,transparent 3px,rgba(34,32,29,.008) 3px,rgba(34,32,29,.008) 4px), #f4efe4;color:#22201d;font-family:'Noto Serif SC',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
 
   <a href="九经课程.dc.html" class="skip-link"><span class="i18n-zh">跳至主要内容</span><span class="i18n-hant">跳至主要內容</span><span class="i18n-en">Skip to content</span></a>
@@ -173,6 +208,7 @@
   <!-- ============ NAV ============ -->
   <nav aria-label="主导览" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(244,239,228,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
     <a href="#top" aria-label="九经书院 · Jiujing Academy" style="display:flex;align-items:center;gap:12px;">
+      <span class="seal seal-sm">九经</span>
       <img src="assets/logo-horizontal-white.png" alt="九经书院" style="height:30px;width:auto;flex-shrink:0;" />
     </a>
     <div class="nav-desktop" style="display:flex;align-items:center;gap:30px;font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:400;letter-spacing:1px;">
@@ -240,6 +276,7 @@
     </div>
 
     <div style="flex:1;min-width:0;text-align:center;align-self:flex-start;">
+      <div class="brush-deco" style="right:10%;top:5%;font-size:min(40vw,320px);">觉</div>
       <div data-reveal style="margin-bottom:40px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:5px;color:#9c2b23;">
         <span class="i18n-zh">觉智圆成 · 体用不二</span><span class="i18n-hant">覺智圓成 · 體用不二</span><span class="i18n-en" style="letter-spacing:3px;">AWAKENED WISDOM · SUBSTANCE &amp; FUNCTION, NOT-TWO</span>
       </div>
