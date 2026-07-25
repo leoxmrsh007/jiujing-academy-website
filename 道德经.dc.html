@@ -8,100 +8,251 @@
 <body>
 <x-dc>
 <helmet>
-<meta name="description" content="九经书院 - 道德经">
+<meta name="description" content="九经书院 · 道德经 — 道法自然，无为而治。课程定位、两天大纲、核心概念、章节精读与版本学研究。">
 <meta name="theme-color" content="#9c2b23">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#22201d;--paper:#f4efe4;--paper-light:#faf7ef;--accent:#9c2b23;--gold:#d99a4e;--gray:#8a857c;--font-serif:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;--font-sans:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;--font-en:'Cormorant Garamond',serif;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink);font-family:var(--font-serif)}
-::selection{background:var(--accent);color:var(--paper)}
-a{color:inherit;text-decoration:none}img{max-width:100%;height:auto}
-.i18n-en,.i18n-hant{display:none}
-.lang-hant .i18n-zh,.lang-hant .i18n-en{display:none}.lang-hant .i18n-hant{display:inline}
-.lang-en .i18n-zh,.lang-en .i18n-hant{display:none}.lang-en .i18n-en{display:inline}
-.lang-en .en-serif,.lang-hant .en-serif{font-family:var(--font-en)}
-.lang-hant .en-serif{font-family:var(--font-serif)}
-.langbtn:hover{background:var(--ink);color:var(--paper)}
-.back:hover{opacity:1!important}
-[data-reveal]{opacity:0;will-change:transform,opacity}
-[data-reveal].seen{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-h1,h2{text-wrap:balance}
-.footnav a:hover{color:#efe9dc!important}
+  :root{--ink:#22201d;--paper:#f4efe4;--paper-light:#faf7ef;--accent:#9c2b23;--gold:#d99a4e;--gray:#8a857c;--font-serif:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;--font-sans:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;--font-en:'Cormorant Garamond',serif;--font-logo:'Ma Shan Zheng',cursive;--shadow-sm:0 2px 8px rgba(34,32,29,.06);--shadow-md:0 4px 16px rgba(34,32,29,.08)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink);font-family:var(--font-serif)}
+  ::selection{background:var(--accent);color:var(--paper)}
+  ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--paper)}::-webkit-scrollbar-thumb{background:rgba(34,32,29,.18);border-radius:4px}
+  a{color:inherit;text-decoration:none}img{max-width:100%;height:auto}
+  .i18n-en,.i18n-hant{display:none}
+  .lang-hant .i18n-zh,.lang-hant .i18n-en{display:none}.lang-hant .i18n-hant{display:inline}
+  .lang-en .i18n-zh,.lang-en .i18n-hant{display:none}.lang-en .i18n-en{display:inline}
+  .lang-en .en-serif,.lang-hant .en-serif{font-family:var(--font-en)}
+  .lang-hant .en-serif{font-family:var(--font-serif)}
+  .langbtn:hover{background:var(--ink);color:var(--paper)}.back:hover{opacity:1!important}
+  [data-reveal]{opacity:0;will-change:transform,opacity}
+  [data-reveal].seen{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  h1,h2{text-wrap:balance}section[id]{scroll-margin-top:80px}
+  .card-lift{transition:transform .3s ease,box-shadow .3s ease}
+  .card-lift:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .footnav a:hover{color:#efe9dc!important}
+  .verse-block{font-family:var(--font-serif);font-size:17px;line-height:2.2;color:#3b3833;padding:20px 24px;background:var(--paper-light);border-left:3px solid var(--accent);margin:20px 0}
+  .table-comp{width:100%;border-collapse:collapse;font-family:var(--font-sans);font-size:13px;margin:20px 0}
+  .table-comp td,.table-comp th{border:1px solid rgba(34,32,29,.1);padding:10px 14px;text-align:left}
+  .table-comp th{background:var(--accent);color:var(--paper);font-weight:500;letter-spacing:1px}
+  .table-comp tr:nth-child(even){background:var(--paper-light)}
+  .tag{display:inline-block;padding:3px 10px;font-size:11px;letter-spacing:1px;background:var(--accent);color:var(--paper);margin-right:6px}
+  @media(max-width:860px){.two-col{grid-template-columns:1fr!important}}
+  @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;animation:none!important}}
 </style>
 </helmet>
-<div class="{{ rootClass }}" style="min-height:100vh;background:var(--paper);color:var(--ink);font-family:var(--font-serif);-webkit-font-smoothing:antialiased;">
+<div class="{{ rootClass }}" style="min-height:100vh;">
 
-<header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,29,0.10);">
-<a href="九经课程.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;">
-<span style="font-size:16px;">←</span><span class="i18n-zh">返回九经课程</span><span class="i18n-en">Back</span>
-</a>
-<div style="display:flex;align-items:center;gap:12px;">
-<span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">道</span>
-<span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">道德经</span><span class="i18n-en en-serif">Tao Te Ching</span></span>
-</div>
-<button onClick="{{ toggleLang }}" class="langbtn" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;">{{ langLabel }}</button>
-</header>
+  <!-- ===== HEADER ===== -->
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(244,239,228,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(34,32,29,0.10);">
+    <a href="九经课程.dc.html" class="back" style="display:flex;align-items:center;gap:10px;opacity:.7;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:1px;transition:opacity .3s;">
+      <span style="font-size:16px;">&#8592;</span><span class="i18n-zh">返回九经课程</span><span class="i18n-en">Back</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#9c2b23;color:#f4efe4;font-size:15px;font-weight:600;">道</span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:2px;"><span class="i18n-zh">道德经</span><span class="i18n-en en-serif">Tao Te Ching</span></span>
+    </div>
+    <button onClick="{{ toggleLang }}" class="langbtn" style="font-family:'Noto Sans SC',sans-serif;background:none;border:1px solid rgba(34,32,29,.28);color:#22201d;padding:7px 13px;font-size:13px;letter-spacing:2px;cursor:pointer;">{{ langLabel }}</button>
+  </header>
 
-<section style="max-width:1080px;margin:0 auto;padding:60px 5vw 40px;text-align:center;">
-<div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">道 &middot; Tao Te Ching</div>
-<div style="width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:2px solid rgba(156,43,35,.15);">
-<img src="assets/classics/daodejing.jpg" alt="道德经" style="width:100%;height:100%;object-fit:cover;">
-</div>
-<h1 style="margin:0;font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:3px;"><span class="i18n-zh">道德经</span><span class="i18n-en en-serif">Tao Te Ching</span></h1>
-<p style="margin:12px 0 0;color:#8a857c;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:2px;">道法自然 · 无为而治 &middot; 12学时</p>
-</section>
+  <!-- ===== HERO ===== -->
+  <section style="max-width:1200px;margin:0 auto;padding:80px 5vw 40px;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;right:-4vw;top:-6vw;font-size:min(50vw,420px);line-height:1;color:rgba(34,32,29,0.025);font-weight:900;font-family:'Ma Shan Zheng',cursive;pointer-events:none;">道</div>
+    <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:6px;color:#9c2b23;margin-bottom:12px;">道 · TAO TE CHING</div>
+        <h1 style="margin:0;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:4px;line-height:1.1;"><span class="i18n-zh">道德经</span><span class="i18n-en en-serif" style="letter-spacing:2px;">Tao Te Ching</span></h1>
+        <p style="margin:16px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:16px;line-height:2;color:#55504a;font-weight:300;">道法自然 · 无为而治 &nbsp;|&nbsp; 12学时</p>
+        <p style="margin:12px 0 0;font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;">
+          <span class="i18n-zh">老子五千言，道尽天地玄机与处世智慧。勇哥以「觉智」之眼重读道德经——无为不是不为，而是不妄为；自然不是放任，而是顺其本性而成就。</span>
+          <span class="i18n-en">Laozi's five thousand words reveal the mysteries of heaven and earth. Yong-ge reads through awakened-wisdom — non-action is not inaction, but acting without forcing.</span>
+        </p>
+      </div>
+      <div style="flex-shrink:0;">
+        <div style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid rgba(34,32,29,.1);box-shadow:var(--shadow-md);">
+          <img src="assets/classics/daodejing.jpg" alt="道德经" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
 
-<section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
-<div data-reveal>
-<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程定位</h2>
-<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">老子五千言，道尽天地玄机。勇哥以「觉智」之眼重读——无为不是不为，而是不妄为。</p>
-</div>
-</section>
+  <!-- ===== 课程定位 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">壹</div>
+      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">课程定位</span><span class="i18n-en en-serif">Course Orientation</span></h2>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.1;color:#55504a;font-weight:300;">
+        <span class="i18n-zh">以「觉智哲学」框架重读《道德经》——不只讲解字面意思，而是深入老子「道」「德」「无为」「自然」四大核心概念，揭示其作为中国哲学最高智慧范式的当代意义。勇哥以二阶性哲学贯通全书：道是觉的宇宙论表达，德是觉在人生中的落实，无为是觉的自然运作方式。</span>
+        <span class="i18n-en">Re-reading the Tao Te Ching through the awakened-wisdom framework — not just explaining the literal meaning, but revealing the contemporary significance of Laozi's four core concepts: Dao, De, Wuwei, and Ziran.</span>
+      </p>
+    </div>
+  </section>
 
-<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
 
-<section style="max-width:1080px;margin:0 auto;padding:50px 5vw;">
-<div data-reveal>
-<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">课程大纲</h2>
-<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">Day 1：道经精读——道可道·无名天地之始
-Day 2：德经精读——上德不德·反者道之动</p>
-</div>
-</section>
+  <!-- ===== 两天课程大纲 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">贰</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">两天课程大纲</span><span class="i18n-en en-serif">Course Syllabus</span></h2>
 
-<div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <!-- Day 1 -->
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:28px 24px;box-shadow:var(--shadow-sm);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <span style="background:#9c2b23;color:#f4efe4;padding:3px 10px;font-size:12px;letter-spacing:2px;font-family:'Noto Sans SC',sans-serif;">DAY 1</span>
+            <span style="font-size:16px;font-weight:600;">道经精读</span>
+          </div>
+          <table class="table-comp" style="font-size:12px;">
+            <tr><th style="width:50px;">课时</th><th>主题</th></tr>
+            <tr><td>01</td><td>道德经导论：版本·结构·核心问题</td></tr>
+            <tr><td>02</td><td>第一章精读：道可道，非常道</td></tr>
+            <tr><td>03</td><td>第二至七章：无为之用·天地不仁</td></tr>
+            <tr><td>—</td><td style="color:#8a857c;">午餐休息</td></tr>
+            <tr><td>04</td><td>第八至十五章：上善若水·谷神不死</td></tr>
+            <tr><td>05</td><td>第十六至二十五章：致虚守静·道法自然</td></tr>
+            <tr><td>06</td><td>Day 1 总结：道的二阶性哲学阐释</td></tr>
+          </table>
+        </div>
+        <!-- Day 2 -->
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:28px 24px;box-shadow:var(--shadow-sm);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <span style="background:#9c2b23;color:#f4efe4;padding:3px 10px;font-size:12px;letter-spacing:2px;font-family:'Noto Sans SC',sans-serif;">DAY 2</span>
+            <span style="font-size:16px;font-weight:600;">德经精读</span>
+          </div>
+          <table class="table-comp" style="font-size:12px;">
+            <tr><th style="width:50px;">课时</th><th>主题</th></tr>
+            <tr><td>07</td><td>第三十八至四十二章：上德不德·反者道之动</td></tr>
+            <tr><td>08</td><td>第四十三至五十六章：知者不言·塞其兑</td></tr>
+            <tr><td>09</td><td>第五十七至六十六章：以正治国·小国寡民</td></tr>
+            <tr><td>—</td><td style="color:#8a857c;">午餐休息</td></tr>
+            <tr><td>10</td><td>第六十七至七十五章：三宝·不敢为天下先</td></tr>
+            <tr><td>11</td><td>第七十六至八十一章：柔弱胜刚强·信言不美</td></tr>
+            <tr><td>12</td><td>总结：道德经的当代意义与功夫实践</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section style="max-width:1080px;margin:0 auto;padding:50px 5vw 80px;">
-<div data-reveal>
-<h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;">核心概念</h2>
-<p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2.05;color:#55504a;font-weight:300;">道·德·无为·自然·柔弱胜刚强·无为而治</p>
-</div>
-</section>
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
 
-<footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
-<div style="max-width:1280px;margin:0 auto;">
-<nav class="footnav" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
-<a href="九经书院.dc.html" style="color:#c3bcae;">首页</a>
-<a href="书院概览.dc.html" style="color:#c3bcae;">书院简介</a>
-<a href="九经课程.dc.html" style="color:#c3bcae;">九经课程</a>
-<a href="书院动态.dc.html" style="color:#c3bcae;">动态</a>
-<a href="报名入学.dc.html" style="color:#c3bcae;">报名</a>
-</nav>
-<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-<a href="九经书院.dc.html" style="display:flex;align-items:center;gap:10px;color:#c3bcae;">
-<span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:#9c2b23;color:#f4efe4;font-size:14px;">九经</span>
-<span style="letter-spacing:3px;">九经书院</span>
-</a>
-<div style="opacity:.7;">&copy; 2026 九经书院</div>
-</div>
-</div>
-</footer>
+  <!-- ===== 核心概念 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">叁</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">核心概念</span><span class="i18n-en en-serif">Core Concepts</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:24px 22px;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:36px;color:#9c2b23;line-height:1;margin-bottom:8px;">道</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:8px;">DAO · THE WAY</div>
+          <p style="font-family:var(--font-sans);font-size:13px;line-height:1.85;color:#55504a;font-weight:300;margin:0;">宇宙万物的本源与运作规律。不可道、不可名，却是一切存在的根基。勇哥以「觉」解「道」——道是觉的宇宙论表达。</p>
+        </div>
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:24px 22px;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:36px;color:#9c2b23;line-height:1;margin-bottom:8px;">德</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:8px;">DE · VIRTUE</div>
+          <p style="font-family:var(--font-sans);font-size:13px;line-height:1.85;color:#55504a;font-weight:300;margin:0;">道在人生与社会中的落实。上德不德，是以有德——真正的德不刻意彰显，而是自然流露。</p>
+        </div>
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:24px 22px;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:36px;color:#9c2b23;line-height:1;margin-bottom:8px;">无为</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:8px;">WUWEI · NON-ACTION</div>
+          <p style="font-family:var(--font-sans);font-size:13px;line-height:1.85;color:#55504a;font-weight:300;margin:0;">不是不为，而是不妄为。顺万物之本性而行，不加私意干预。勇哥以「觉的自然运作」解无为。</p>
+        </div>
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:24px 22px;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:36px;color:#9c2b23;line-height:1;margin-bottom:8px;">自然</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:8px;">ZIRAN · NATURALNESS</div>
+          <p style="font-family:var(--font-sans);font-size:13px;line-height:1.85;color:#55504a;font-weight:300;margin:0;">自己如此、本来如是。不是放任自流，而是让每一事物按其本性成就自身。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+  <!-- ===== 章节精读示例 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">肆</div>
+      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">第一章精读</span><span class="i18n-en en-serif">Chapter 1 Close Reading</span></h2>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8a857c;margin-bottom:16px;">王弼本 · 帛书本 · 楚简本版本比照</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px;">
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:16px 20px;">
+          <div style="font-family:var(--font-sans);font-size:11px;color:#9c2b23;letter-spacing:1px;margin-bottom:6px;">王弼本</div>
+          <p style="font-family:var(--font-serif);font-size:15px;line-height:2;color:#3b3833;margin:0;">道可道，非常道；名可名，非常名。<br>无名天地之始；有名万物之母。<br>故常无，欲以观其妙；常有，欲以观其徼。<br>此两者，同出而异名，同谓之玄。玄之又玄，众妙之门。</p>
+        </div>
+        <div style="background:var(--paper-light);border:1px solid rgba(34,32,29,.09);padding:16px 20px;">
+          <div style="font-family:var(--font-sans);font-size:11px;color:#6b4a7a;letter-spacing:1px;margin-bottom:6px;">马王堆帛书</div>
+          <p style="font-family:var(--font-serif);font-size:15px;line-height:2;color:#3b3833;margin:0;">道，可道也，非恒道也；名，可名也，非恒名也。<br>无名，万物之始也；有名，万物之母也。<br>故恒无欲也，以观其妙；恒有欲也，以观其曒。<br>两者同出，异名同谓，玄之又玄，众妙之门。</p>
+        </div>
+      </div>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.9;color:#55504a;font-weight:300;"><span class="i18n-zh">帛书「恒」字为正——汉朝避汉文帝刘恒讳改为「常」。句末语气词「也」的存废，反映了从战国到魏晋的汉语演变。勇哥以「元语言」概念解读首句：道可道，非常道——对道的任何言说都不等于道本身，但言说又是接近道的必要途径。</span><span class="i18n-en">The Mawangdui silk text uses 'heng' (constant) instead of 'chang' — due to a Han dynasty naming taboo. Yong-ge interprets the opening through the concept of 'meta-language.'</span></p>
+
+      <div style="margin-top:20px;padding:16px 20px;background:rgba(156,43,35,.04);border-left:3px solid var(--accent);">
+        <div style="font-family:'Ma Shan Zheng',cursive;font-size:20px;color:#9c2b23;margin-bottom:6px;">勇哥说</div>
+        <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.9;color:#55504a;font-weight:300;margin:0;font-style:italic;">「道可道，非常道」——这七个字本身就是对自身的否定。如果道不可道，那这句话说的「道不可道」又是怎么被说出来的？这是中国哲学最深刻的悖论，也是二阶性思考的起点。</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+  <!-- ===== 版本学 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">伍</div>
+      <h2 style="margin:0 0 20px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">版本学研究</span><span class="i18n-en en-serif">Textual Research</span></h2>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:2;color:#55504a;font-weight:300;"><span class="i18n-zh">《道德经》在四百年间经历了从郭店楚简（公元前300年）到马王堆帛书（公元前168年）再到王弼本（公元3世纪）的演变。这不仅是文本流传问题，更反映了从战国到魏晋道家思想的系统转向。勇哥以31个有郭店对应文本的章节为核心样本，揭示版本差异背后的哲学演变逻辑。</span><span class="i18n-en">The Tao Te Ching underwent four centuries of evolution from the Guodian bamboo slips to the Mawangdui silk text to the Wang Bi edition — reflecting a systematic shift in Daoist thought.</span></p>
+      <table class="table-comp">
+        <tr><th>时期</th><th>版本</th><th>特征</th></tr>
+        <tr><td>公元前300年</td><td>郭店楚简</td><td>最早文本，约30章，无德经顺序</td></tr>
+        <tr><td>公元前168年</td><td>马王堆帛书</td><td>最早完整本，甲乙两种，81章</td></tr>
+        <tr><td>公元3世纪</td><td>王弼本</td><td>通行本，哲学注疏合一</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
+  <!-- ===== 师资 ===== -->
+  <section style="max-width:1080px;margin:0 auto;padding:60px 5vw 80px;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">陆</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">主讲老师</span><span class="i18n-en en-serif">Teacher</span></h2>
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;padding:28px 24px;background:var(--paper-light);border:1px solid rgba(34,32,29,.09);">
+        <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(156,43,35,.15);">
+          <img src="uploads/huyong.jpg" alt="胡勇" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:18px;font-weight:600;letter-spacing:1px;">胡勇 · 勇哥</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:#9c2b23;letter-spacing:2px;margin-top:4px;">书院院长 · 主讲</div>
+          <p style="font-family:var(--font-sans);font-size:13px;line-height:1.8;color:#55504a;font-weight:300;margin:8px 0 0;">南京大学哲学博士，江苏省社会科学院哲学研究所研究员。觉智哲学的理论建构者，以二阶性框架统摄儒释道经典，会通中西哲学。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#1a1815;color:#8a857c;padding:40px 5vw 32px;font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:1px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <nav class="footnav" style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(239,233,220,.12);">
+        <a href="九经书院.dc.html" style="color:#c3bcae;">首页</a>
+        <a href="书院概览.dc.html" style="color:#c3bcae;">书院概览</a>
+        <a href="九经课程.dc.html" style="color:#c3bcae;">九经课程</a>
+        <a href="书院动态.dc.html" style="color:#c3bcae;">书院动态</a>
+        <a href="报名入学.dc.html" style="color:#c3bcae;">报名</a>
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <span style="letter-spacing:3px;">九经书院</span>
+        <div style="opacity:.7;">&copy; 2026 九经书院</div>
+      </div>
+    </div>
+  </footer>
 
 </div>
 </x-dc>
@@ -111,7 +262,7 @@ class Component extends DCLogic {
   renderVals() {
     const lang = this.state.lang, en = lang === 'en';
     const cycle = { zh: 'hant', hant: 'en', en: 'zh' };
-    const labels = { zh: '繁', hant: 'EN', en: '简' };
+    const labels = { zh: '\u7e41', hant: 'EN', en: '\u7b80' };
     return {
       rootClass: en ? 'lang-en' : (lang === 'hant' ? 'lang-hant' : ''),
       langLabel: labels[lang],
