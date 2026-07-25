@@ -275,10 +275,10 @@
   </nav>
 
   <!-- ============ 三教符号 DIVIDER ============ -->
-  <div style="display:flex;justify-content:center;align-items:center;gap:30px;padding:52px 0 60px;flex-wrap:wrap;">
+  <div style="display:flex;justify-content:center;align-items:center;gap:48px;padding:60px 0 60px;flex-wrap:wrap;">
     <sc-for list="{{ triad }}" as="t" hint-placeholder-count="3">
       <div style="display:flex;flex-direction:column;align-items:center;gap:13px;">
-        <div style="width:84px;height:84px;border-radius:50%;border:1.5px solid rgba(34,32,29,.26);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#faf7ef;">
+        <div style="width:120px;height:120px;border-radius:50%;border:2px solid rgba(34,32,29,.15);box-shadow:0 4px 16px rgba(34,32,29,.06);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#faf7ef;">
           <sc-if value="{{ t.hasImg }}" hint-placeholder-val="{{ false }}">
             <img src="{{ t.img }}" alt="{{ t.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:sepia(.12) saturate(.9) brightness(1.02);" />
           </sc-if>
@@ -286,7 +286,7 @@
             <div class="img-slot" role="img" aria-label="{{ t.alt }}" style="width:100%;height:100%;"><span class="img-slot-label"><span class="i18n-zh">{{ t.slotZh }}</span><span class="i18n-hant">{{ t.slotHant }}</span><span class="i18n-en">{{ t.slotEn }}</span></span></div>
           </sc-if>
         </div>
-        <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:3px;color:#8a857c;"><span class="i18n-zh">{{ t.labZh }}</span><span class="i18n-hant">{{ t.labHant }}</span><span class="i18n-en">{{ t.labEn }}</span></span>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:4px;color:#8a857c;"><span class="i18n-zh">{{ t.labZh }}</span><span class="i18n-hant">{{ t.labHant }}</span><span class="i18n-en">{{ t.labEn }}</span></span>
       </div>
     </sc-for>
   </div>
