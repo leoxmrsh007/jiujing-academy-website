@@ -9,4 +9,5 @@ Thumbs.db
 scraps/
 
 # 防止 AI 对话/账号导出文件再次落入图床目录
+uploads/**/*.json
 uploads/*.json
