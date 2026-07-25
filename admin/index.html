@@ -219,7 +219,20 @@
               </select>
             </div>
           </div>
-          <div class="form-group"><label>正文 (Markdown)</label><textarea id="edBody">${e.body}</textarea></div>
+          <div class="form-group">
+            <label>正文 (Markdown) <span style="font-weight:400;font-size:12px;color:#8a857c;cursor:pointer;" onclick="showImagePicker()">[插入图片]</span></label>
+            <textarea id="edBody">${e.body}</textarea>
+          </div>
+          <!-- 图片选择弹窗 -->
+          <div id="imgPicker" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.4);overflow-y:auto;">
+            <div style="max-width:800px;margin:40px auto;background:#f4efe4;padding:32px;border-radius:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h3 style="font-size:18px;">选择图片</h3>
+                <span style="cursor:pointer;font-size:24px;opacity:.5;" onclick="closeImagePicker()">&times;</span>
+              </div>
+              <div id="imgGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;">加载中...</div>
+            </div>
+          </div>
         </div>`;
     }
     window.backToList=function(){state.tab='articles';renderDashboard();};
@@ -354,6 +367,33 @@
       } catch(e) {
         toast('保存失败: '+e.message);
       }
+    };
+
+    // ═══════════ 图片选择器 ═══════════
+    window.showImagePicker=async function(){
+      document.getElementById('imgPicker').style.display='block';
+      document.getElementById('imgGrid').innerHTML='加载中...';
+      try{
+        const files=await gh('/repos/'+REPO+'/contents/uploads?ref='+BR);
+        const imgs=files.filter(f=>/\.(jpg|jpeg|png|gif|webp)$/i.test(f.name));
+        let html='';
+        for(const img of imgs){
+          const url='https://raw.githubusercontent.com/'+REPO+'/'+BR+'/uploads/'+img.name;
+          html+=`<div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);overflow:hidden;cursor:pointer;" onclick="insertImage('${url}')">
+            <div style="aspect-ratio:1;overflow:hidden;"><img src="${url}" style="width:100%;height:100%;object-fit:cover;"></div>
+            <div style="padding:6px 8px;font-size:10px;color:#55504a;">${img.name}</div>
+          </div>`;
+        }
+        document.getElementById('imgGrid').innerHTML=html;
+      }catch(e){document.getElementById('imgGrid').innerHTML='加载失败';}
+    };
+    window.closeImagePicker=function(){document.getElementById('imgPicker').style.display='none';};
+    window.insertImage=function(url){
+      const ta=document.getElementById('edBody');
+      ta.value+=`
+![图片](${url})
+`;
+      closeImagePicker();
     };
 
     // ═══════════ 图片管理 ═══════════
