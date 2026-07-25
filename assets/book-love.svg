@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9c2b23"/>
+      <stop offset="100%" stop-color="#6b1a14"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d99a4e"/>
+      <stop offset="100%" stop-color="#b8863c"/>
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="400" height="560" rx="8" fill="url(#bg)"/>
+  <!-- 装饰边框 -->
+  <rect x="15" y="15" width="370" height="530" rx="4" fill="none" stroke="rgba(217,154,78,.25)" stroke-width="1"/>
+  <rect x="22" y="22" width="356" height="516" rx="3" fill="none" stroke="rgba(217,154,78,.12)" stroke-width="0.5"/>
+  <!-- 上部装饰线 -->
+  <line x1="60" y1="70" x2="340" y2="70" stroke="rgba(217,154,78,.2)" stroke-width="0.5"/>
+  <!-- 标题：情爱哲学导论 -->
+  <text x="200" y="160" font-family="'Ma Shan Zheng','Noto Serif SC',serif" font-size="52" fill="#f4efe4" text-anchor="middle" font-weight="700">情爱哲学</text>
+  <text x="200" y="215" font-family="'Ma Shan Zheng','Noto Serif SC',serif" font-size="38" fill="#d99a4e" text-anchor="middle" font-weight="600">导论</text>
+  <!-- 英文副标题 -->
+  <text x="200" y="260" font-family="'Cormorant Garamond',serif" font-size="18" fill="rgba(244,239,228,.55)" text-anchor="middle" font-style="italic">Introduction to Philosophy of Love</text>
+  <!-- 装饰心形 -->
+  <text x="200" y="340" font-family="serif" font-size="80" fill="rgba(217,154,78,.15)" text-anchor="middle">&#x2764;</text>
+  <!-- "之间"的功夫 -->
+  <text x="200" y="400" font-family="'Ma Shan Zheng',cursive" font-size="28" fill="rgba(244,239,228,.35)" text-anchor="middle">「之间」的功夫</text>
+  <!-- 下部装饰线 -->
+  <line x1="60" y1="440" x2="340" y2="440" stroke="rgba(217,154,78,.15)" stroke-width="0.5"/>
+  <!-- 作者 -->
+  <text x="200" y="475" font-family="'Noto Serif SC',serif" font-size="16" fill="rgba(244,239,228,.5)" text-anchor="middle">胡勇 著</text>
+  <text x="200" y="500" font-family="'Cormorant Garamond',serif" font-size="12" fill="rgba(244,239,228,.35)" text-anchor="middle">Hu Yong</text>
+  <!-- 出版社 -->
+  <text x="200" y="535" font-family="'Noto Serif SC',serif" font-size="11" fill="rgba(244,239,228,.25)" text-anchor="middle" letter-spacing="3">九经书院</text>
+</svg>
