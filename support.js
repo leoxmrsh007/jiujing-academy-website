@@ -28,8 +28,11 @@
     const { props, preview } = parseDataProps(
       scriptEl?.getAttribute("data-props") ?? null
     );
+    // 预渲染页面把原模板搬到 <script data-dc-template> 中，<x-dc> 内改放渲染好的
+    // 静态 HTML 供爬虫读取。此时模板须从该 script 取，否则会把渲染结果当模板。
+    const tplEl = doc.querySelector("script[data-dc-template]");
     return {
-      template: dc.innerHTML,
+      template: tplEl ? tplEl.textContent || "" : dc.innerHTML,
       js: scriptEl ? scriptEl.textContent || "" : "",
       props,
       preview
@@ -46,8 +49,12 @@
     const { props, preview } = parseDataProps(
       scriptEl?.getAttribute("data-props") ?? null
     );
+    // 同 parseDcDocument：预渲染页面的真模板在 <script data-dc-template> 里。
+    // boot() 会重新 fetch 自身 HTML 并经此函数覆盖模板，此处不改会导致模板被
+    // 渲染结果覆盖，页面在二次渲染时崩坏。
+    const tplEl = doc.querySelector("script[data-dc-template]");
     return {
-      template,
+      template: tplEl ? tplEl.textContent || "" : template,
       js: scriptEl ? scriptEl.textContent || "" : "",
       props,
       preview
