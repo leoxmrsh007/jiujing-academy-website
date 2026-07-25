@@ -614,6 +614,20 @@ class Component extends DCLogic {
       { href: '报名入学.dc.html', zh: '报名入学', hant: '報名入學', en: 'Enroll' }
     ];
 
+    const evoData = [
+      { labZh: '金文', labHant: '金文', labEn: 'Bronze', img: 'assets/hanzi-dao-1.png' },
+      { labZh: '楚系简帛', labHant: '楚系簡帛', labEn: 'Chu Silk', img: 'assets/hanzi-dao-2.png' },
+      { labZh: '说文（小篆）', labHant: '說文（小篆）', labEn: 'Seal', img: 'assets/hanzi-dao-3.png' },
+      { labZh: '秦系简牍', labHant: '秦系簡牘', labEn: 'Qin Slip', img: 'assets/hanzi-dao-4.png' },
+      { labZh: '隶书', labHant: '隸書', labEn: 'Clerical', img: 'assets/hanzi-dao-5.png' },
+      { labZh: '楷书', labHant: '楷書', labEn: 'Regular', img: 'assets/hanzi-dao-6.png' }
+    ];
+    const evo = evoData.map((e, i) => ({
+      ...e,
+      hasImg: true,
+      activeClass: i === this.state.evoActive ? 'active' : ''
+    }));
+
     const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
     const langLabels = { zh: '繁', hant: 'EN', en: '简' };
 
