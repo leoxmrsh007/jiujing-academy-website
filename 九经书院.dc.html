@@ -255,26 +255,15 @@
         </div>
         <div class="news-scroll-wrap" style="padding:0 14px;height:200px;">
           <div class="news-scroll-inner">
-            <a href="书院动态详情.dc.html?id=0" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
-              <div style="font-size:14px;font-weight:500;color:#22201d;">「易道与时变」秋季会讲</div>
-              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.08 →</div>
-            </a>
-            <a href="书院动态.dc.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
-              <div style="font-size:14px;font-weight:500;color:#22201d;">礼乐在野 · 曲阜访碑</div>
-              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.09 →</div>
-            </a>
-            <a href="学员-嘉琪.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
-              <div style="font-size:14px;font-weight:500;color:#22201d;">学员感悟 · 嘉琪</div>
-              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.10 →</div>
-            </a>
-            <a href="学员-杨国茂.html" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
-              <div style="font-size:14px;font-weight:500;color:#22201d;">学员感悟 · 杨国茂</div>
-              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.10 →</div>
-            </a>
-            <a href="书院动态详情.dc.html?id=0" style="display:block;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);">
-              <div style="font-size:14px;font-weight:500;color:#22201d;">「易道与时变」秋季会讲</div>
-              <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">2026.08 →</div>
-            </a>
+            <!-- 数据源：data/news-articles.json（与书院动态页、Decap CMS 同一份）
+                 每条固定 60px 高，与 newsScroll 关键帧的位移步长严格对应；
+                 标题单行截断，避免长标题换行导致滚动错位 -->
+            <sc-for list="{{ newsItems }}" as="n" hint-placeholder-count="5">
+              <a href="{{ n.href }}" style="display:block;height:60px;box-sizing:border-box;padding:10px 0;border-top:1px solid rgba(34,32,29,.06);overflow:hidden;">
+                <div style="font-size:14px;font-weight:500;color:#22201d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span class="i18n-zh">{{ n.zh }}</span><span class="i18n-hant">{{ n.hant }}</span><span class="i18n-en">{{ n.en }}</span></div>
+                <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;margin-top:3px;">{{ n.date }} →</div>
+              </a>
+            </sc-for>
           </div>
         </div>
         <a href="书院动态.dc.html" style="display:block;text-align:center;padding:8px;border-top:1px solid rgba(34,32,29,.08);font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#9c2b23;letter-spacing:2px;" class="hv6">查看全部 →</a>
@@ -334,7 +323,7 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:13px;">
         <div style="width:120px;height:120px;border-radius:50%;border:2px solid rgba(34,32,29,.15);box-shadow:0 4px 16px rgba(34,32,29,.06);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#faf7ef;">
           <sc-if value="{{ t.hasImg }}" hint-placeholder-val="{{ false }}">
-            <img src="{{ t.img }}" alt="{{ t.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:sepia(.12) saturate(.9) brightness(1.02);" />
+            <img src="{{ t.img }}" alt="{{ t.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:sepia(.12) saturate(.9) brightness(1.02);" loading="lazy" decoding="async" />
           </sc-if>
           <sc-if value="{{ t.noImg }}" hint-placeholder-val="{{ true }}">
             <div class="img-slot" role="img" aria-label="{{ t.alt }}" style="width:100%;height:100%;"><span class="img-slot-label"><span class="i18n-zh">{{ t.slotZh }}</span><span class="i18n-hant">{{ t.slotHant }}</span><span class="i18n-en">{{ t.slotEn }}</span></span></div>
@@ -349,7 +338,7 @@
   <section id="classics" style="padding:40px 6vw 110px;max-width:1280px;margin:0 auto;position:relative;">
     <div style="position:absolute;left:-4vw;top:10%;font-size:min(35vw,280px);font-family:'Ma Shan Zheng',cursive;color:rgba(34,32,29,.02);pointer-events:none;user-select:none;transform:rotate(-10deg);">经</div>
     <div style="position:absolute;right:3vw;top:20px;width:200px;height:200px;border-radius:50%;overflow:hidden;opacity:.12;">
-      <img src="assets/book-tiyong.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+      <img src="assets/book-tiyong.png" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
     </div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:64px;">
       <div data-reveal>
@@ -486,7 +475,7 @@
               <div class="evo-cell {{ e.activeClass }}" style="display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;">
                 <div class="evo-ring" style="width:100%;max-width:62px;aspect-ratio:1;border:1px solid rgba(239,233,220,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#22201d;">
                   <sc-if value="{{ e.hasImg }}" hint-placeholder-val="{{ false }}">
-                    <img src="{{ e.img }}" alt="「道」{{ e.labZh }}" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" />
+                    <img src="{{ e.img }}" alt="「道」{{ e.labZh }}" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" loading="lazy" decoding="async" />
                   </sc-if>
                 </div>
                 <span style="font-family:'Noto Sans SC',sans-serif;font-size:10.5px;letter-spacing:.5px;color:#b7b0a2;white-space:nowrap;"><span class="i18n-zh">{{ e.labZh }}</span><span class="i18n-hant">{{ e.labHant }}</span><span class="i18n-en">{{ e.labEn }}</span></span>
@@ -543,7 +532,7 @@
       <div data-reveal style="display:flex;justify-content:center;">
         <div style="width:100%;max-width:340px;">
           <div style="aspect-ratio:4/5;border:1px solid rgba(34,32,29,.14);overflow:hidden;background:#faf7ef;">
-            <img src="uploads/huyong.jpg" alt="胡勇" style="width:100%;height:100%;object-fit:cover;">
+            <img src="uploads/huyong.jpg" alt="胡勇" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin-top:20px;">
             <span style="width:28px;height:1px;background:#9c2b23;"></span>
@@ -595,7 +584,7 @@
       <div data-reveal style="display:flex;justify-content:center;">
         <div style="width:100%;max-width:300px;">
           <div style="aspect-ratio:4/5;border:1px solid rgba(34,32,29,.14);overflow:hidden;background:#faf7ef;border-radius:8px;">
-            <img src="uploads/黄智威.jpg" alt="黄智威" style="width:100%;height:100%;object-fit:cover;">
+            <img src="uploads/黄智威.jpg" alt="黄智威" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin-top:20px;">
             <span style="width:28px;height:1px;background:#9c2b23;"></span>
@@ -657,7 +646,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { evoActive: 0, menuOpen: false, lang: 'zh' };
+  state = { evoActive: 0, menuOpen: false, lang: 'zh', news: null };
 
   renderVals() {
     const navItems = [
@@ -690,7 +679,22 @@ class Component extends DCLogic {
     const langCycle = { zh: 'hant', hant: 'en', en: 'zh' };
     const langLabels = { zh: '繁', hant: 'EN', en: '简' };
 
+    // 取最新 4 条；末尾重复首条，供 newsScroll 关键帧回到起点时无缝衔接
+    const newsRaw = Array.isArray(this.state.news) ? this.state.news : [];
+    const newsTop = newsRaw
+      .slice()
+      .sort((a, b) => String(b.date).localeCompare(String(a.date)))
+      .slice(0, 4);
+    const newsItems = (newsTop.length ? newsTop.concat(newsTop.slice(0, 1)) : []).map((a) => ({
+      href: '书院动态详情.dc.html?id=' + a.id,
+      zh: a.titleZh,
+      hant: a.titleHant,
+      en: a.titleEn,
+      date: String(a.date || '').split('·')[0].trim()
+    }));
+
     return {
+      newsItems,
       rootClass: this.state.lang === 'en' ? 'lang-en' : (this.state.lang === 'hant' ? 'lang-hant' : ''),
       langLabel: langLabels[this.state.lang],
       toggleLang: () => this.setState((s) => ({ lang: langCycle[s.lang] })),
@@ -764,6 +768,12 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    // 动态消息：与书院动态页、Decap CMS 共用 data/news-articles.json 单一数据源
+    fetch('data/news-articles.json')
+      .then((r) => { if (!r.ok) throw new Error('load failed'); return r.json(); })
+      .then((news) => this.setState({ news }))
+      .catch(() => this.setState({ news: [] }));
+
     // Hide loading screen
     const loadingEl = document.getElementById('dc-loading');
     if (loadingEl) { setTimeout(() => loadingEl.classList.add('hidden'), 300); }

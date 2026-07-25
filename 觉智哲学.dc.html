@@ -151,7 +151,7 @@
     <div style="max-width:1080px;margin:0 auto;">
       <div data-reveal style="margin-bottom:44px;">
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:1px solid rgba(217,154,78,.2);flex-shrink:0;"><img src="assets/philosophers/wangyangming.jpg" alt="王阳明" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:1px solid rgba(217,154,78,.2);flex-shrink:0;"><img src="assets/philosophers/wangyangming.jpg" alt="王阳明" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div>
           <div style="font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:4px;color:#d99a4e;"><span class="i18n-zh">理论渊薮 · 勇哥专著</span><span class="i18n-hant">理論淵藪 · 勇哥專著</span><span class="i18n-en">SOURCE TEXTS · FOUNDER'S WORKS</span></div>
         </div>
         <h2 style="margin:0;font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">觉智哲学的文本根柢</span><span class="i18n-hant">覺智哲學的文本根柢</span><span class="i18n-en en-serif">The Textual Roots</span></h2>
@@ -161,7 +161,7 @@
         <sc-for list="{{ published }}" as="w" hint-placeholder-count="3">
           <div data-reveal style="border:1px solid rgba(239,233,220,.14);padding:30px 28px;display:flex;gap:20px;align-items:flex-start;">
             <sc-if value="{{ w.hasCover }}" hint-placeholder-val="{{ false }}">
-              <img src="{{ w.cover }}" alt="{{ w.zh }}" style="width:44px;height:58px;object-fit:cover;flex-shrink:0;box-shadow:0 3px 8px rgba(0,0,0,.3);filter:sepia(.1) saturate(.92) brightness(1.02);" />
+              <img src="{{ w.cover }}" alt="{{ w.zh }}" style="width:44px;height:58px;object-fit:cover;flex-shrink:0;box-shadow:0 3px 8px rgba(0,0,0,.3);filter:sepia(.1) saturate(.92) brightness(1.02);" loading="lazy" decoding="async" />
             </sc-if>
             <sc-if value="{{ w.noCover }}" hint-placeholder-val="{{ true }}">
               <div style="width:44px;height:58px;background:#d99a4e;color:#22201d;display:flex;align-items:center;justify-content:center;font-family:'Ma Shan Zheng',cursive;font-size:24px;flex-shrink:0;">{{ w.glyph }}</div>
