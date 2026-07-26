@@ -29,6 +29,7 @@ collections:
       - label: 日期
         name: date
         widget: string
+        hint: "格式如：2026.10 · 丙申季秋。开头的年月用于排序，务必保留。"
       - label: 分类
         name: cat
         widget: select
@@ -38,9 +39,39 @@ collections:
           - { label: 游学, value: journey }
           - { label: 札记, value: note }
           - { label: 学员, value: student }
+      - label: 摘要
+        name: excerpt
+        widget: text
+        required: false
+        hint: "列表页显示的一两句话。留空则自动取正文首段。"
       - label: 正文
         name: body
         widget: markdown
+      # 以下为可选的繁体／英文版本，留空时自动回落到上面的简体内容
+      - label: 标题（繁体）
+        name: title_hant
+        widget: string
+        required: false
+      - label: 标题（英文）
+        name: title_en
+        widget: string
+        required: false
+      - label: 摘要（繁体）
+        name: excerpt_hant
+        widget: text
+        required: false
+      - label: 摘要（英文）
+        name: excerpt_en
+        widget: text
+        required: false
+      - label: 正文（繁体）
+        name: body_hant
+        widget: text
+        required: false
+      - label: 正文（英文）
+        name: body_en
+        widget: text
+        required: false
 
   - name: writings
     label: "\U0001F4AC 学员感悟"

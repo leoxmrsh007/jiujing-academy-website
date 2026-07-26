@@ -1,0 +1,15 @@
+{
+  "name": "jiujing-academy-website",
+  "private": true,
+  "type": "module",
+  "description": "九经书院官网。构建链路：_news/*.md -> data/news-articles.json -> 预渲染 -> 部署",
+  "scripts": {
+    "build:news": "node tools/build-news.mjs",
+    "prerender": "node tools/prerender.mjs",
+    "build": "npm run build:news && npm run prerender",
+    "deploy": "npm run build && wrangler pages deploy . --project-name=jiujing-academy-website --branch=main"
+  },
+  "devDependencies": {
+    "playwright": "^1.57.0"
+  }
+}

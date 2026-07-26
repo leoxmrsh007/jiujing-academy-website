@@ -1,0 +1,52 @@
+name: 构建并部署到 Cloudflare Pages
+
+# 触发时机：
+#   - 推送到 main（包括 Decap CMS 后台发布产生的提交）
+#   - 也可在 Actions 页面手动运行
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# 只保留最新一次运行，避免连续提交时并发部署互相覆盖
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 安装依赖
+        run: npm install --no-audit --no-fund
+
+      - name: 安装 Chromium（预渲染需要真实浏览器）
+        run: npx playwright install --with-deps chromium
+
+      # _news/*.md 是唯一数据源；此步生成网站实际读取的 data/news-articles.json
+      - name: 编译书院动态
+        run: npm run build:news
+
+      # 把每页渲染成静态 HTML，供不执行 JS 的爬虫读取
+      - name: 预渲染
+        run: npm run prerender
+
+      # node_modules 仅构建期需要，务必在部署前删除，否则会被一并上传
+      - name: 清理构建产物
+        run: rm -rf node_modules package-lock.json
+
+      - name: 部署
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=jiujing-academy-website --branch=main
