@@ -25,6 +25,8 @@
   .langbtn:hover{background:var(--ink);color:var(--paper)}.back:hover{opacity:1!important}
   [data-reveal]{opacity:0;will-change:transform,opacity}
   [data-reveal].seen{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .ch-card { cursor: default; }
+  .ch-card:hover { border-color: rgba(156,43,35,.35); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34,32,29,.08); }
   @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   h1,h2{text-wrap:balance}section[id]{scroll-margin-top:80px}
   .card-lift{transition:transform .3s ease,box-shadow .3s ease}
@@ -154,6 +156,65 @@
 
   <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
 
+  <!-- ===== 八十一章总览 ===== -->
+  <section id="chapters" style="max-width:1200px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">叁</div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px;">
+        <h2 style="margin:0;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">八十一章总览</span><span class="i18n-en en-serif">Eighty-One Chapters Overview</span></h2>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8a857c;letter-spacing:1px;"><span class="i18n-zh">上篇·道经 37 章　下篇·德经 44 章</span><span class="i18n-en">Upper 37 chapters · Lower 44 chapters</span></span>
+      </div>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.9;color:#55504a;font-weight:300;margin:0 0 30px;max-width:760px;">
+        <span class="i18n-zh">每章以文字学(说文解字哲学系统)为根基,兼及版本校勘、章节逻辑、哲学要义、阐释辨析,形成「音形义-结构-哲学-史诠」四维立体解析。</span>
+        <span class="i18n-en">Each chapter is analyzed through four dimensions: philology, structure, philosophy, and historical exegesis.</span>
+      </p>
+    </div>
+
+    <!-- 上篇·道经 -->
+    <div data-reveal style="margin-bottom:36px;">
+      <div style="display:flex;align-items:baseline;gap:12px;padding-bottom:10px;margin-bottom:18px;border-bottom:2px solid #9c2b23;">
+        <span style="font-family:'Ma Shan Zheng',cursive;font-size:22px;color:#9c2b23;">道</span>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:3px;color:#22201d;font-weight:500;"><span class="i18n-zh">上篇 · 道经</span><span class="i18n-en">Upper · Dao</span></span>
+        <span style="font-family:ui-monospace,monospace;font-size:11px;color:#b0a99c;letter-spacing:1px;">37</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+        <sc-for list="{{ chaptersUpper }}" as="c" hint-placeholder-count="37">
+          <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.08);padding:14px 16px;transition:border-color .2s,transform .2s;" class="ch-card">
+            <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
+              <span style="font-family:ui-monospace,monospace;font-size:11px;color:#9c2b23;letter-spacing:.5px;min-width:22px;">{{ c.n }}</span>
+              <span style="font-size:15px;font-weight:600;color:#22201d;letter-spacing:.5px;">{{ c.name }}</span>
+            </div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12.5px;color:#55504a;line-height:1.7;font-weight:300;margin-bottom:5px;">{{ c.gist }}</div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#9c2b23;letter-spacing:.5px;opacity:.75;">{{ c.chars }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- 下篇·德经 -->
+    <div data-reveal>
+      <div style="display:flex;align-items:baseline;gap:12px;padding-bottom:10px;margin-bottom:18px;border-bottom:2px solid #d99a4e;">
+        <span style="font-family:'Ma Shan Zheng',cursive;font-size:22px;color:#d99a4e;">德</span>
+        <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:3px;color:#22201d;font-weight:500;"><span class="i18n-zh">下篇 · 德经</span><span class="i18n-en">Lower · De</span></span>
+        <span style="font-family:ui-monospace,monospace;font-size:11px;color:#b0a99c;letter-spacing:1px;">44</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+        <sc-for list="{{ chaptersLower }}" as="c" hint-placeholder-count="44">
+          <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.08);padding:14px 16px;transition:border-color .2s,transform .2s;" class="ch-card">
+            <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
+              <span style="font-family:ui-monospace,monospace;font-size:11px;color:#d99a4e;letter-spacing:.5px;min-width:22px;">{{ c.n }}</span>
+              <span style="font-size:15px;font-weight:600;color:#22201d;letter-spacing:.5px;">{{ c.name }}</span>
+            </div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:12.5px;color:#55504a;line-height:1.7;font-weight:300;margin-bottom:5px;">{{ c.gist }}</div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#d99a4e;letter-spacing:.5px;opacity:.85;">{{ c.chars }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
   <!-- ===== 核心概念 ===== -->
   <section style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
     <div data-reveal>
@@ -231,6 +292,35 @@
 
   <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
 
+  <!-- ===== 核心字词考释 ===== -->
+  <section id="keychars" style="max-width:1080px;margin:0 auto;padding:60px 5vw;">
+    <div data-reveal>
+      <div style="font-family:'Noto Sans SC',sans-serif;font-size:11px;letter-spacing:4px;color:#9c2b23;margin-bottom:12px;">陆</div>
+      <h2 style="margin:0 0 12px;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:2px;"><span class="i18n-zh">核心字词考释</span><span class="i18n-en en-serif">Key Character Studies</span></h2>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.9;color:#55504a;font-weight:300;margin:0 0 28px;max-width:700px;">
+        <span class="i18n-zh">以说文解字哲学系统为工具,追溯核心字的音形义源流,证古音、辨异读、明本义,还原老子的原初语言。</span>
+        <span class="i18n-en">Tracing the phonetic, graphic, and semantic origins of key characters, restoring Laozi's original linguistic context.</span>
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
+        <sc-for list="{{ keyChars }}" as="k" hint-placeholder-count="8">
+          <div style="background:#faf7ef;border:1px solid rgba(34,32,29,.09);padding:22px 20px;position:relative;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+              <span style="font-family:'Ma Shan Zheng',cursive;font-size:44px;color:#22201d;line-height:1;letter-spacing:0;">{{ k.char }}</span>
+              <span style="font-family:ui-monospace,monospace;font-size:11px;color:#9c2b23;letter-spacing:1px;">{{ k.reading }}</span>
+            </div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:13px;line-height:1.85;color:#3b3833;font-weight:300;">{{ k.gist }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#8a857c;letter-spacing:1px;margin:20px 0 0;">
+        <span class="i18n-zh">数据来源:shuowen.db · 马王堆帛书 · 郭店楚简 · 王弼本 · 河上公本</span>
+        <span class="i18n-en">Sources: shuowen.db · Mawangdui silk texts · Guodian bamboo slips · Wang Bi · Heshanggong</span>
+      </p>
+    </div>
+  </section>
+
+  <div style="height:1px;background:linear-gradient(to right,transparent,rgba(34,32,29,.06),transparent);max-width:80%;margin:0 auto;"></div>
+
   <!-- ===== 师资 ===== -->
   <section style="max-width:1080px;margin:0 auto;padding:60px 5vw 80px;">
     <div data-reveal>
@@ -268,7 +358,7 @@
 
 </div>
 </script>
-<x-dc><div class="sc-host" data-sc-name="道德经"><div data-dc-tpl="0" class="paper-texture"></div><div data-dc-tpl="1" style="min-height: 100vh;">
+<x-dc><div class="sc-host" data-sc-name="道德经"><div data-dc-tpl="0" class="paper-texture"></div><div data-dc-tpl="1" class="" style="min-height: 100vh;">
 
   
   <header data-dc-tpl="2" style="position: sticky; top: 0px; z-index: 40; display: flex; align-items: center; justify-content: space-between; padding: 16px 5vw; background: rgba(244, 239, 228, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(34, 32, 29, 0.1);">
@@ -279,7 +369,7 @@
       <span data-dc-tpl="8" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgb(156, 43, 35); color: rgb(244, 239, 228); font-size: 15px; font-weight: 600;">道</span>
       <span data-dc-tpl="9" style="font-size: 16px; font-weight: 600; letter-spacing: 2px;"><span data-dc-tpl="10" class="i18n-zh">道德经</span><span data-dc-tpl="11" class="i18n-en en-serif">Tao Te Ching</span></span>
     </div>
-    <button data-dc-tpl="12" class="langbtn" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; background: none; border: 1px solid rgba(34, 32, 29, 0.28); color: rgb(34, 32, 29); padding: 7px 13px; font-size: 13px; letter-spacing: 2px; cursor: pointer;"></button>
+    <button data-dc-tpl="12" class="langbtn" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; background: none; border: 1px solid rgba(34, 32, 29, 0.28); color: rgb(34, 32, 29); padding: 7px 13px; font-size: 13px; letter-spacing: 2px; cursor: pointer;"><span class="sc-interp">繁</span></button>
   </header>
 
   
@@ -307,7 +397,7 @@
 
   
   <section data-dc-tpl="29" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
-    <div data-dc-tpl="30" data-reveal="">
+    <div data-dc-tpl="30" data-reveal="" class="seen">
       <div data-dc-tpl="31" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">壹</div>
       <h2 data-dc-tpl="32" style="margin: 0px 0px 20px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="33" class="i18n-zh">课程定位</span><span data-dc-tpl="34" class="i18n-en en-serif">Course Orientation</span></h2>
       <p data-dc-tpl="35" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2.1; color: rgb(85, 80, 74); font-weight: 300;">
@@ -321,7 +411,7 @@
 
   
   <section data-dc-tpl="39" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
-    <div data-dc-tpl="40" data-reveal="">
+    <div data-dc-tpl="40" data-reveal="" class="seen">
       <div data-dc-tpl="41" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">贰</div>
       <h2 data-dc-tpl="42" style="margin: 0px 0px 24px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="43" class="i18n-zh">两天课程大纲</span><span data-dc-tpl="44" class="i18n-en en-serif">Course Syllabus</span></h2>
 
@@ -367,127 +457,1086 @@
   <div data-dc-tpl="104" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
 
   
-  <section data-dc-tpl="105" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
+  <section data-dc-tpl="105" id="chapters" style="max-width: 1200px; margin: 0px auto; padding: 60px 5vw;">
     <div data-dc-tpl="106" data-reveal="">
       <div data-dc-tpl="107" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">叁</div>
-      <h2 data-dc-tpl="108" style="margin: 0px 0px 24px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="109" class="i18n-zh">核心概念</span><span data-dc-tpl="110" class="i18n-en en-serif">Core Concepts</span></h2>
-      <div data-dc-tpl="111" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-        <div data-dc-tpl="112" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
-          <div data-dc-tpl="113" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">道</div>
-          <div data-dc-tpl="114" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">DAO · THE WAY</div>
-          <p data-dc-tpl="115" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">宇宙万物的本源与运作规律。不可道、不可名，却是一切存在的根基。勇哥以「觉」解「道」——道是觉的宇宙论表达。</p>
+      <div data-dc-tpl="108" style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 18px;">
+        <h2 data-dc-tpl="109" style="margin: 0px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="110" class="i18n-zh">八十一章总览</span><span data-dc-tpl="111" class="i18n-en en-serif">Eighty-One Chapters Overview</span></h2>
+        <span data-dc-tpl="112" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; color: rgb(138, 133, 124); letter-spacing: 1px;"><span data-dc-tpl="113" class="i18n-zh">上篇·道经 37 章　下篇·德经 44 章</span><span data-dc-tpl="114" class="i18n-en">Upper 37 chapters · Lower 44 chapters</span></span>
+      </div>
+      <p data-dc-tpl="115" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300; margin: 0px 0px 30px; max-width: 760px;">
+        <span data-dc-tpl="116" class="i18n-zh">每章以文字学(说文解字哲学系统)为根基,兼及版本校勘、章节逻辑、哲学要义、阐释辨析,形成「音形义-结构-哲学-史诠」四维立体解析。</span>
+        <span data-dc-tpl="117" class="i18n-en">Each chapter is analyzed through four dimensions: philology, structure, philosophy, and historical exegesis.</span>
+      </p>
+    </div>
+
+    
+    <div data-dc-tpl="118" data-reveal="" style="margin-bottom: 36px;">
+      <div data-dc-tpl="119" style="display: flex; align-items: baseline; gap: 12px; padding-bottom: 10px; margin-bottom: 18px; border-bottom: 2px solid rgb(156, 43, 35);">
+        <span data-dc-tpl="120" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 22px; color: rgb(156, 43, 35);">道</span>
+        <span data-dc-tpl="121" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; color: rgb(34, 32, 29); font-weight: 500;"><span data-dc-tpl="122" class="i18n-zh">上篇 · 道经</span><span data-dc-tpl="123" class="i18n-en">Upper · Dao</span></span>
+        <span data-dc-tpl="124" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(176, 169, 156); letter-spacing: 1px;">37</span>
+      </div>
+      <div data-dc-tpl="125" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">1</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道可道</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道的不可言说性</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">道·名·无·有</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">2</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天下皆知</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">对立统一</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">美·恶·有·无·难·易</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">3</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">不尚贤</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">无为政治</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">贤·争·圣</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">4</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道冲</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道的虚无性</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">冲·渊·宗</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">5</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天地不仁</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">天地无偏</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">仁·刍狗·橐龠</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">6</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">谷神不死</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">玄牝之门</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">谷神·玄牝·门</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">7</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天长地久</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不自生故长生</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">长·久·私·成</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">8</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">上善若水</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">水之七德</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">若·善·水·争</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">9</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">持而盈之</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">功成身退</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">盈·锐·揣·骄</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">10</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">载营魄</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">抱一致柔</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">营魄·一·气·柔</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">11</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">三十辐</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">有无相生之用</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">辐·毂·器·用</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">12</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">五色令人</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">为腹不为目</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">色·音·味·腹·目</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">13</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">宠辱若惊</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">贵身以托天下</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">宠·辱·贵·患</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">14</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">视之不见</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道纪不可见</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">夷·希·微·纪</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">15</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">古之善为士</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">微妙玄通</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">微妙·玄通·豫·涣</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">16</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">致虚极</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">归根复命</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">虚·静·根·常</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">17</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">太上下知有之</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">四等治道</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">太上·亲誉·畏·侮</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">18</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">大道废</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">仁义出于失道</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">仁义·智慧·孝慈·忠臣</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">19</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">绝圣弃智</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">见素抱朴</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">绝·弃·素·朴·私</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">20</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">绝学无忧</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">我独异于人</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">学·忧·俗·独</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">21</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">孔德之容</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道之为物</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">孔·德·恍惚·精·信</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">22</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">曲则全</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不争之德</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">曲·枉·敝·多·争</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">23</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">希言自然</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">言与道同</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">希·飘风·骤雨·同</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">24</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">企者不立</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">余食赘行</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">企·跨·自见·自伐</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">25</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">有物混成</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道法自然</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">混成·大·逝·反·自然</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">26</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">重为轻根</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">静为躁君</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">重·轻·静·躁·辎重</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">27</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">善行无辙</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">袭明与要妙</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">善行·善言·袭明·要妙</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">28</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">知雄守雌</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">复归于朴</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">雄·雌·白·黑·朴</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">29</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">将欲取天下</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">去甚去奢</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">取·为·执·失·甚</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">30</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">以道佐人主</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不以兵强天下</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">兵·强·壮·老</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">31</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">夫兵者</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">兵为不祥之器</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">兵·祥·左·右·丧礼</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">32</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道常无名</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">始制有名</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">朴·名·止·川谷</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">33</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">知人者智</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">自知自胜</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">智·明·力·强·久·寿</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">34</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">大道泛兮</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">大道左右皆宜</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">泛·左右·衣养·成大</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">35</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">执大象</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道之用无穷</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">大象·安平太·味·听</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">36</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">将欲歙之</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">柔弱胜刚强</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">歙张·弱强·废兴·夺与</span></div>
+          </div>
+        
+          <div data-dc-tpl="127" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="128" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="129" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">37</span></span>
+              <span data-dc-tpl="130" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道常无为</span></span>
+            </div>
+            <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">无为而无不为</span></div>
+            <div data-dc-tpl="132" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 0.5px; opacity: 0.75;"><span class="sc-interp">无为·化·作·静</span></div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+    <div data-dc-tpl="133" data-reveal="">
+      <div data-dc-tpl="134" style="display: flex; align-items: baseline; gap: 12px; padding-bottom: 10px; margin-bottom: 18px; border-bottom: 2px solid rgb(217, 154, 78);">
+        <span data-dc-tpl="135" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 22px; color: rgb(217, 154, 78);">德</span>
+        <span data-dc-tpl="136" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; color: rgb(34, 32, 29); font-weight: 500;"><span data-dc-tpl="137" class="i18n-zh">下篇 · 德经</span><span data-dc-tpl="138" class="i18n-en">Lower · De</span></span>
+        <span data-dc-tpl="139" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(176, 169, 156); letter-spacing: 1px;">44</span>
+      </div>
+      <div data-dc-tpl="140" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">38</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">上德不德</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">德的四层次</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">上德·下德·仁·义·礼</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">39</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">昔之得一</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">万物得一</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">一·天·地·神·谷</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">40</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">反者道之动</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">弱者道之用</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">反·弱·动·用·生</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">41</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">上士闻道</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">大器晚成</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">上士·中士·下士·大方·大器</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">42</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道生一</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">三生万物</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">一·二·三·冲气·和</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">43</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">至柔驰骋</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不言之教</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">至柔·无有·不言·无为</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">44</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">名与身孰亲</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">知足知止</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">名·身·货·得·亡·足·止</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">45</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">大成若缺</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">清静为天下正</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">成·缺·盈·冲·清静</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">46</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天下有道</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">知足常足</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">走马·戎马·罪·祸·咎</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">47</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">不出户</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不行而知</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">户·天下·牖·天道·知</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">48</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">为学日益</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">为道日损</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">学·益·道·损·无为</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">49</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">圣人常无心</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">以百姓心为心</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">圣人·百姓·善·信·浑</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">50</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">出生入死</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">善摄生者</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">生·死·徒·摄生·兕虎</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">51</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道生之</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">玄德</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">道·德·生·畜·玄德</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">52</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天下有始</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">袭常</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">始·母·子·塞兑·闭门·袭常</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">53</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">使我介然</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">大道甚夷</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">介然·大道·施·夷·径·盗夸</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">54</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">善建不拔</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">修之家国天下</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">建·抱·修·身·家·乡·国·天下</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">55</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">含德之厚</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">比于赤子</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">赤子·毒虫·骨弱·牝牡·和</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">56</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">知者不言</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">玄同</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">知·言·塞兑·挫锐·玄同</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">57</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">以正治国</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">我无为而民自化</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">正·奇·无事·忌讳·法令</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">58</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">其政闷闷</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">祸福相倚</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">闷闷·察察·福·祸·倚·伏</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">59</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">治人事天</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">长生久视之道</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">啬·早服·重积德·长生久视</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">60</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">治大国</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">若烹小鲜</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">烹·小鲜·鬼·神·两不相伤</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">61</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">大国者下流</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">大者宜为下</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">下流·牝·大国·小国·下</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">62</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">道者万物之奥</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">道之贵</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">奥·善人·宝·美言·尊行</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">63</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">为无为</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">图难于易</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">为无为·事无事·味无味·难·易</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">64</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">其安易持</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">慎终如始</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">安·兆·脆·微·九层·千里·慎终</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">65</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">古之善为道者</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">非以明民</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">愚·智·稽式·玄德·大顺</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">66</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">江海所以为百谷王</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">处下不争</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">江海·百谷·下·后·不争</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">67</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">我有三宝</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">慈·俭·不敢为先</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">慈·俭·不敢为天下先·勇·广·长</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">68</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">善为士者</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">不争之德</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">士·战·怒·用·下·配天</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">69</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">用兵有言</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">哀者胜</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">客·主·退·无敌·哀</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">70</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">吾言甚易知</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">被褐怀玉</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">易知·易行·宗·君·褐·玉</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">71</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">知不知</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">圣人不病</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">知·不知·上·病·圣人</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">72</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">民不畏威</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">自知自爱</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">威·大威·自知·自爱·自见</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">73</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">勇于敢则杀</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">天网恢恢</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">勇·敢·活·天之所恶·天网</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">74</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">民不畏死</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">代大匠斫</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">死·畏·执·司杀·大匠</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">75</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">民之饥</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">无以生为</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">饥·税·治·轻死·无以生为</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">76</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">人之生也柔弱</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">柔弱处上</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">生·柔弱·死·坚强·兵·木</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">77</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天之道</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">损有余补不足</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">张弓·高·下·余·不足·天道·人道</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">78</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">天下莫柔弱于水</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">弱之胜强</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">水·柔弱·坚强·社稷·天下王</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">79</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">和大怨</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">天道无亲</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">和·怨·契·左契·天道·亲</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">80</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">小国寡民</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">理想社会</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">小国·寡民·什伯·甘食·美服</span></div>
+          </div>
+        
+          <div data-dc-tpl="142" class="ch-card" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.08); padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;">
+            <div data-dc-tpl="143" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span data-dc-tpl="144" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; min-width: 22px;"><span class="sc-interp">81</span></span>
+              <span data-dc-tpl="145" style="font-size: 15px; font-weight: 600; color: rgb(34, 32, 29); letter-spacing: 0.5px;"><span class="sc-interp">信言不美</span></span>
+            </div>
+            <div data-dc-tpl="146" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12.5px; color: rgb(85, 80, 74); line-height: 1.7; font-weight: 300; margin-bottom: 5px;"><span class="sc-interp">终篇纲领</span></div>
+            <div data-dc-tpl="147" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; color: rgb(217, 154, 78); letter-spacing: 0.5px; opacity: 0.85;"><span class="sc-interp">信言·善言·博辩·圣人不积</span></div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <div data-dc-tpl="148" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
+
+  
+  <section data-dc-tpl="149" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
+    <div data-dc-tpl="150" data-reveal="">
+      <div data-dc-tpl="151" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">叁</div>
+      <h2 data-dc-tpl="152" style="margin: 0px 0px 24px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="153" class="i18n-zh">核心概念</span><span data-dc-tpl="154" class="i18n-en en-serif">Core Concepts</span></h2>
+      <div data-dc-tpl="155" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div data-dc-tpl="156" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
+          <div data-dc-tpl="157" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">道</div>
+          <div data-dc-tpl="158" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">DAO · THE WAY</div>
+          <p data-dc-tpl="159" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">宇宙万物的本源与运作规律。不可道、不可名，却是一切存在的根基。勇哥以「觉」解「道」——道是觉的宇宙论表达。</p>
         </div>
-        <div data-dc-tpl="116" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
-          <div data-dc-tpl="117" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">德</div>
-          <div data-dc-tpl="118" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">DE · VIRTUE</div>
-          <p data-dc-tpl="119" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">道在人生与社会中的落实。上德不德，是以有德——真正的德不刻意彰显，而是自然流露。</p>
+        <div data-dc-tpl="160" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
+          <div data-dc-tpl="161" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">德</div>
+          <div data-dc-tpl="162" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">DE · VIRTUE</div>
+          <p data-dc-tpl="163" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">道在人生与社会中的落实。上德不德，是以有德——真正的德不刻意彰显，而是自然流露。</p>
         </div>
-        <div data-dc-tpl="120" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
-          <div data-dc-tpl="121" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">无为</div>
-          <div data-dc-tpl="122" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">WUWEI · NON-ACTION</div>
-          <p data-dc-tpl="123" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">不是不为，而是不妄为。顺万物之本性而行，不加私意干预。勇哥以「觉的自然运作」解无为。</p>
+        <div data-dc-tpl="164" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
+          <div data-dc-tpl="165" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">无为</div>
+          <div data-dc-tpl="166" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">WUWEI · NON-ACTION</div>
+          <p data-dc-tpl="167" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">不是不为，而是不妄为。顺万物之本性而行，不加私意干预。勇哥以「觉的自然运作」解无为。</p>
         </div>
-        <div data-dc-tpl="124" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
-          <div data-dc-tpl="125" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">自然</div>
-          <div data-dc-tpl="126" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">ZIRAN · NATURALNESS</div>
-          <p data-dc-tpl="127" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">自己如此、本来如是。不是放任自流，而是让每一事物按其本性成就自身。</p>
+        <div data-dc-tpl="168" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 24px 22px; box-shadow: var(--shadow-sm);">
+          <div data-dc-tpl="169" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 36px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 8px;">自然</div>
+          <div data-dc-tpl="170" style="font-family: var(--font-sans); font-size: 12px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px;">ZIRAN · NATURALNESS</div>
+          <p data-dc-tpl="171" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.85; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;">自己如此、本来如是。不是放任自流，而是让每一事物按其本性成就自身。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div data-dc-tpl="128" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
+  <div data-dc-tpl="172" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
 
   
-  <section data-dc-tpl="129" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
-    <div data-dc-tpl="130" data-reveal="">
-      <div data-dc-tpl="131" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">肆</div>
-      <h2 data-dc-tpl="132" style="margin: 0px 0px 20px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="133" class="i18n-zh">第一章精读</span><span data-dc-tpl="134" class="i18n-en en-serif">Chapter 1 Close Reading</span></h2>
-      <p data-dc-tpl="135" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; color: rgb(138, 133, 124); margin-bottom: 16px;">王弼本 · 帛书本 · 楚简本版本比照</p>
+  <section data-dc-tpl="173" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
+    <div data-dc-tpl="174" data-reveal="">
+      <div data-dc-tpl="175" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">肆</div>
+      <h2 data-dc-tpl="176" style="margin: 0px 0px 20px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="177" class="i18n-zh">第一章精读</span><span data-dc-tpl="178" class="i18n-en en-serif">Chapter 1 Close Reading</span></h2>
+      <p data-dc-tpl="179" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; color: rgb(138, 133, 124); margin-bottom: 16px;">王弼本 · 帛书本 · 楚简本版本比照</p>
 
-      <div data-dc-tpl="136" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
-        <div data-dc-tpl="137" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 16px 20px;">
-          <div data-dc-tpl="138" style="font-family: var(--font-sans); font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px; margin-bottom: 6px;">王弼本</div>
-          <p data-dc-tpl="139" style="font-family: var(--font-serif); font-size: 15px; line-height: 2; color: rgb(59, 56, 51); margin: 0px;">道可道，非常道；名可名，非常名。<br data-dc-tpl="140">无名天地之始；有名万物之母。<br data-dc-tpl="141">故常无，欲以观其妙；常有，欲以观其徼。<br data-dc-tpl="142">此两者，同出而异名，同谓之玄。玄之又玄，众妙之门。</p>
+      <div data-dc-tpl="180" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div data-dc-tpl="181" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 16px 20px;">
+          <div data-dc-tpl="182" style="font-family: var(--font-sans); font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px; margin-bottom: 6px;">王弼本</div>
+          <p data-dc-tpl="183" style="font-family: var(--font-serif); font-size: 15px; line-height: 2; color: rgb(59, 56, 51); margin: 0px;">道可道，非常道；名可名，非常名。<br data-dc-tpl="184">无名天地之始；有名万物之母。<br data-dc-tpl="185">故常无，欲以观其妙；常有，欲以观其徼。<br data-dc-tpl="186">此两者，同出而异名，同谓之玄。玄之又玄，众妙之门。</p>
         </div>
-        <div data-dc-tpl="143" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 16px 20px;">
-          <div data-dc-tpl="144" style="font-family: var(--font-sans); font-size: 11px; color: rgb(107, 74, 122); letter-spacing: 1px; margin-bottom: 6px;">马王堆帛书</div>
-          <p data-dc-tpl="145" style="font-family: var(--font-serif); font-size: 15px; line-height: 2; color: rgb(59, 56, 51); margin: 0px;">道，可道也，非恒道也；名，可名也，非恒名也。<br data-dc-tpl="146">无名，万物之始也；有名，万物之母也。<br data-dc-tpl="147">故恒无欲也，以观其妙；恒有欲也，以观其曒。<br data-dc-tpl="148">两者同出，异名同谓，玄之又玄，众妙之门。</p>
+        <div data-dc-tpl="187" style="background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09); padding: 16px 20px;">
+          <div data-dc-tpl="188" style="font-family: var(--font-sans); font-size: 11px; color: rgb(107, 74, 122); letter-spacing: 1px; margin-bottom: 6px;">马王堆帛书</div>
+          <p data-dc-tpl="189" style="font-family: var(--font-serif); font-size: 15px; line-height: 2; color: rgb(59, 56, 51); margin: 0px;">道，可道也，非恒道也；名，可名也，非恒名也。<br data-dc-tpl="190">无名，万物之始也；有名，万物之母也。<br data-dc-tpl="191">故恒无欲也，以观其妙；恒有欲也，以观其曒。<br data-dc-tpl="192">两者同出，异名同谓，玄之又玄，众妙之门。</p>
         </div>
       </div>
-      <p data-dc-tpl="149" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="150" class="i18n-zh">帛书「恒」字为正——汉朝避汉文帝刘恒讳改为「常」。句末语气词「也」的存废，反映了从战国到魏晋的汉语演变。勇哥以「元语言」概念解读首句：道可道，非常道——对道的任何言说都不等于道本身，但言说又是接近道的必要途径。</span><span data-dc-tpl="151" class="i18n-en">The Mawangdui silk text uses 'heng' (constant) instead of 'chang' — due to a Han dynasty naming taboo. Yong-ge interprets the opening through the concept of 'meta-language.'</span></p>
+      <p data-dc-tpl="193" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="194" class="i18n-zh">帛书「恒」字为正——汉朝避汉文帝刘恒讳改为「常」。句末语气词「也」的存废，反映了从战国到魏晋的汉语演变。勇哥以「元语言」概念解读首句：道可道，非常道——对道的任何言说都不等于道本身，但言说又是接近道的必要途径。</span><span data-dc-tpl="195" class="i18n-en">The Mawangdui silk text uses 'heng' (constant) instead of 'chang' — due to a Han dynasty naming taboo. Yong-ge interprets the opening through the concept of 'meta-language.'</span></p>
 
-      <div data-dc-tpl="152" style="margin-top: 20px; padding: 16px 20px; background: rgba(156, 43, 35, 0.04); border-left: 3px solid var(--accent);">
-        <div data-dc-tpl="153" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 20px; color: rgb(156, 43, 35); margin-bottom: 6px;">勇哥说</div>
-        <p data-dc-tpl="154" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300; margin: 0px; font-style: italic;">「道可道，非常道」——这七个字本身就是对自身的否定。如果道不可道，那这句话说的「道不可道」又是怎么被说出来的？这是中国哲学最深刻的悖论，也是二阶性思考的起点。</p>
+      <div data-dc-tpl="196" style="margin-top: 20px; padding: 16px 20px; background: rgba(156, 43, 35, 0.04); border-left: 3px solid var(--accent);">
+        <div data-dc-tpl="197" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 20px; color: rgb(156, 43, 35); margin-bottom: 6px;">勇哥说</div>
+        <p data-dc-tpl="198" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300; margin: 0px; font-style: italic;">「道可道，非常道」——这七个字本身就是对自身的否定。如果道不可道，那这句话说的「道不可道」又是怎么被说出来的？这是中国哲学最深刻的悖论，也是二阶性思考的起点。</p>
       </div>
     </div>
   </section>
 
-  <div data-dc-tpl="155" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
+  <div data-dc-tpl="199" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
 
   
-  <section data-dc-tpl="156" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
-    <div data-dc-tpl="157" data-reveal="">
-      <div data-dc-tpl="158" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">伍</div>
-      <h2 data-dc-tpl="159" style="margin: 0px 0px 20px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="160" class="i18n-zh">版本学研究</span><span data-dc-tpl="161" class="i18n-en en-serif">Textual Research</span></h2>
-      <p data-dc-tpl="162" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="163" class="i18n-zh">《道德经》在四百年间经历了从郭店楚简（公元前300年）到马王堆帛书（公元前168年）再到王弼本（公元3世纪）的演变。这不仅是文本流传问题，更反映了从战国到魏晋道家思想的系统转向。勇哥以31个有郭店对应文本的章节为核心样本，揭示版本差异背后的哲学演变逻辑。</span><span data-dc-tpl="164" class="i18n-en">The Tao Te Ching underwent four centuries of evolution from the Guodian bamboo slips to the Mawangdui silk text to the Wang Bi edition — reflecting a systematic shift in Daoist thought.</span></p>
-      <table data-dc-tpl="165" class="table-comp">
-        <tr data-dc-tpl="166"><th data-dc-tpl="167">时期</th><th data-dc-tpl="168">版本</th><th data-dc-tpl="169">特征</th></tr>
-        <tr data-dc-tpl="170"><td data-dc-tpl="171">公元前300年</td><td data-dc-tpl="172">郭店楚简</td><td data-dc-tpl="173">最早文本，约30章，无德经顺序</td></tr>
-        <tr data-dc-tpl="174"><td data-dc-tpl="175">公元前168年</td><td data-dc-tpl="176">马王堆帛书</td><td data-dc-tpl="177">最早完整本，甲乙两种，81章</td></tr>
-        <tr data-dc-tpl="178"><td data-dc-tpl="179">公元3世纪</td><td data-dc-tpl="180">王弼本</td><td data-dc-tpl="181">通行本，哲学注疏合一</td></tr>
+  <section data-dc-tpl="200" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
+    <div data-dc-tpl="201" data-reveal="">
+      <div data-dc-tpl="202" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">伍</div>
+      <h2 data-dc-tpl="203" style="margin: 0px 0px 20px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="204" class="i18n-zh">版本学研究</span><span data-dc-tpl="205" class="i18n-en en-serif">Textual Research</span></h2>
+      <p data-dc-tpl="206" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="207" class="i18n-zh">《道德经》在四百年间经历了从郭店楚简（公元前300年）到马王堆帛书（公元前168年）再到王弼本（公元3世纪）的演变。这不仅是文本流传问题，更反映了从战国到魏晋道家思想的系统转向。勇哥以31个有郭店对应文本的章节为核心样本，揭示版本差异背后的哲学演变逻辑。</span><span data-dc-tpl="208" class="i18n-en">The Tao Te Ching underwent four centuries of evolution from the Guodian bamboo slips to the Mawangdui silk text to the Wang Bi edition — reflecting a systematic shift in Daoist thought.</span></p>
+      <table data-dc-tpl="209" class="table-comp">
+        <tr data-dc-tpl="210"><th data-dc-tpl="211">时期</th><th data-dc-tpl="212">版本</th><th data-dc-tpl="213">特征</th></tr>
+        <tr data-dc-tpl="214"><td data-dc-tpl="215">公元前300年</td><td data-dc-tpl="216">郭店楚简</td><td data-dc-tpl="217">最早文本，约30章，无德经顺序</td></tr>
+        <tr data-dc-tpl="218"><td data-dc-tpl="219">公元前168年</td><td data-dc-tpl="220">马王堆帛书</td><td data-dc-tpl="221">最早完整本，甲乙两种，81章</td></tr>
+        <tr data-dc-tpl="222"><td data-dc-tpl="223">公元3世纪</td><td data-dc-tpl="224">王弼本</td><td data-dc-tpl="225">通行本，哲学注疏合一</td></tr>
       </table>
     </div>
   </section>
 
-  <div data-dc-tpl="182" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
+  <div data-dc-tpl="226" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
 
   
-  <section data-dc-tpl="183" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw 80px;">
-    <div data-dc-tpl="184" data-reveal="">
-      <div data-dc-tpl="185" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">陆</div>
-      <h2 data-dc-tpl="186" style="margin: 0px 0px 24px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="187" class="i18n-zh">主讲老师</span><span data-dc-tpl="188" class="i18n-en en-serif">Teacher</span></h2>
-      <div data-dc-tpl="189" style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; padding: 28px 24px; background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09);">
-        <div data-dc-tpl="190" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(156, 43, 35, 0.15);">
-          <img data-dc-tpl="191" src="uploads/huyong.jpg" alt="胡勇" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+  <section data-dc-tpl="227" id="keychars" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw;">
+    <div data-dc-tpl="228" data-reveal="">
+      <div data-dc-tpl="229" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">陆</div>
+      <h2 data-dc-tpl="230" style="margin: 0px 0px 12px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="231" class="i18n-zh">核心字词考释</span><span data-dc-tpl="232" class="i18n-en en-serif">Key Character Studies</span></h2>
+      <p data-dc-tpl="233" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 1.9; color: rgb(85, 80, 74); font-weight: 300; margin: 0px 0px 28px; max-width: 700px;">
+        <span data-dc-tpl="234" class="i18n-zh">以说文解字哲学系统为工具,追溯核心字的音形义源流,证古音、辨异读、明本义,还原老子的原初语言。</span>
+        <span data-dc-tpl="235" class="i18n-en">Tracing the phonetic, graphic, and semantic origins of key characters, restoring Laozi's original linguistic context.</span>
+      </p>
+      <div data-dc-tpl="236" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px;">
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">若</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">如、比况</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">「上善若水」的比况张力——不是等式,是"存在方式遵循水的运行逻辑"</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">善</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">shàn 好</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">不是道德判断,是"契合"——七善:居·心·与·言·政·事·动</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">道</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">dào</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">可言的道非常道;宇宙论表达,觉的最高范式</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">德</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">dé</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">道在人生中的落实;上德不德</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">无</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">wú</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">无非空虚;有无相生之用</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">有</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">yǒu</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">有无相生;有之以为利</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">自然</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">zì-rán</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">不是自然界;是"自己如此"、本性使然</span></div>
+          </div>
+        
+          <div data-dc-tpl="238" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 22px 20px; position: relative;">
+            <div data-dc-tpl="239" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+              <span data-dc-tpl="240" style="font-family: &quot;Ma Shan Zheng&quot;, cursive; font-size: 44px; color: rgb(34, 32, 29); line-height: 1; letter-spacing: 0px;"><span class="sc-interp">无为</span></span>
+              <span data-dc-tpl="241" style="font-family: ui-monospace, monospace; font-size: 11px; color: rgb(156, 43, 35); letter-spacing: 1px;"><span class="sc-interp">wú-wéi</span></span>
+            </div>
+            <div data-dc-tpl="242" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; line-height: 1.85; color: rgb(59, 56, 51); font-weight: 300;"><span class="sc-interp">不是不为;是不妄为、不违背本性而为</span></div>
+          </div>
+        
+      </div>
+      <p data-dc-tpl="243" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; color: rgb(138, 133, 124); letter-spacing: 1px; margin: 20px 0px 0px;">
+        <span data-dc-tpl="244" class="i18n-zh">数据来源:shuowen.db · 马王堆帛书 · 郭店楚简 · 王弼本 · 河上公本</span>
+        <span data-dc-tpl="245" class="i18n-en">Sources: shuowen.db · Mawangdui silk texts · Guodian bamboo slips · Wang Bi · Heshanggong</span>
+      </p>
+    </div>
+  </section>
+
+  <div data-dc-tpl="246" style="height: 1px; background: linear-gradient(to right, transparent, rgba(34, 32, 29, 0.06), transparent); max-width: 80%; margin: 0px auto;"></div>
+
+  
+  <section data-dc-tpl="247" style="max-width: 1080px; margin: 0px auto; padding: 60px 5vw 80px;">
+    <div data-dc-tpl="248" data-reveal="">
+      <div data-dc-tpl="249" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgb(156, 43, 35); margin-bottom: 12px;">陆</div>
+      <h2 data-dc-tpl="250" style="margin: 0px 0px 24px; font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="251" class="i18n-zh">主讲老师</span><span data-dc-tpl="252" class="i18n-en en-serif">Teacher</span></h2>
+      <div data-dc-tpl="253" style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; padding: 28px 24px; background: var(--paper-light); border: 1px solid rgba(34, 32, 29, 0.09);">
+        <div data-dc-tpl="254" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(156, 43, 35, 0.15);">
+          <img data-dc-tpl="255" src="uploads/huyong.jpg" alt="胡勇" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-        <div data-dc-tpl="192" style="flex: 1 1 0%; min-width: 200px;">
-          <div data-dc-tpl="193" style="font-size: 18px; font-weight: 600; letter-spacing: 1px;">胡勇 · 勇哥</div>
-          <div data-dc-tpl="194" style="font-family: var(--font-sans); font-size: 12px; color: rgb(156, 43, 35); letter-spacing: 2px; margin-top: 4px;">书院院长 · 主讲</div>
-          <p data-dc-tpl="195" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.8; color: rgb(85, 80, 74); font-weight: 300; margin: 8px 0px 0px;">南京大学哲学博士，九经书院创始人。觉智哲学的理论建构者，以二阶性框架统摄儒释道经典，会通中西哲学。</p>
+        <div data-dc-tpl="256" style="flex: 1 1 0%; min-width: 200px;">
+          <div data-dc-tpl="257" style="font-size: 18px; font-weight: 600; letter-spacing: 1px;">胡勇 · 勇哥</div>
+          <div data-dc-tpl="258" style="font-family: var(--font-sans); font-size: 12px; color: rgb(156, 43, 35); letter-spacing: 2px; margin-top: 4px;">书院院长 · 主讲</div>
+          <p data-dc-tpl="259" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.8; color: rgb(85, 80, 74); font-weight: 300; margin: 8px 0px 0px;">南京大学哲学博士，九经书院创始人。觉智哲学的理论建构者，以二阶性框架统摄儒释道经典，会通中西哲学。</p>
         </div>
       </div>
     </div>
   </section>
 
   
-  <footer data-dc-tpl="196" style="background: rgb(26, 24, 21); color: rgb(138, 133, 124); padding: 40px 5vw 32px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 1px;">
-    <div data-dc-tpl="197" style="max-width: 1280px; margin: 0px auto;">
-      <nav data-dc-tpl="198" class="footnav" style="display: flex; flex-wrap: wrap; gap: 10px 24px; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid rgba(239, 233, 220, 0.12);">
-        <a data-dc-tpl="199" href="九经书院.dc.html" style="color: rgb(195, 188, 174);">首页</a>
-        <a data-dc-tpl="200" href="书院概览.dc.html" style="color: rgb(195, 188, 174);">书院概览</a>
-        <a data-dc-tpl="201" href="九经课程.dc.html" style="color: rgb(195, 188, 174);">九经课程</a>
-        <a data-dc-tpl="202" href="书院动态.dc.html" style="color: rgb(195, 188, 174);">书院动态</a>
-        <a data-dc-tpl="203" href="报名入学.dc.html" style="color: rgb(195, 188, 174);">报名</a>
+  <footer data-dc-tpl="260" style="background: rgb(26, 24, 21); color: rgb(138, 133, 124); padding: 40px 5vw 32px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 1px;">
+    <div data-dc-tpl="261" style="max-width: 1280px; margin: 0px auto;">
+      <nav data-dc-tpl="262" class="footnav" style="display: flex; flex-wrap: wrap; gap: 10px 24px; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid rgba(239, 233, 220, 0.12);">
+        <a data-dc-tpl="263" href="九经书院.dc.html" style="color: rgb(195, 188, 174);">首页</a>
+        <a data-dc-tpl="264" href="书院概览.dc.html" style="color: rgb(195, 188, 174);">书院概览</a>
+        <a data-dc-tpl="265" href="九经课程.dc.html" style="color: rgb(195, 188, 174);">九经课程</a>
+        <a data-dc-tpl="266" href="书院动态.dc.html" style="color: rgb(195, 188, 174);">书院动态</a>
+        <a data-dc-tpl="267" href="报名入学.dc.html" style="color: rgb(195, 188, 174);">报名</a>
       </nav>
-      <div data-dc-tpl="204" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-        <span data-dc-tpl="205" style="letter-spacing: 3px;">九经书院</span>
-        <div data-dc-tpl="206" style="opacity: 0.7;">© 2026 九经书院</div>
+      <div data-dc-tpl="268" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <span data-dc-tpl="269" style="letter-spacing: 3px;">九经书院</span>
+        <div data-dc-tpl="270" style="opacity: 0.7;">© 2026 九经书院</div>
       </div>
     </div>
   </footer></div></div></x-dc>
-<script>
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { lang: 'zh' };
   renderVals() {
     const lang = this.state.lang, en = lang === 'en';
     const cycle = { zh: 'hant', hant: 'en', en: 'zh' };
     const labels = { zh: '\u7e41', hant: 'EN', en: '\u7b80' };
+
+    // \u516b\u5341\u4e00\u7ae0\u603b\u89c8\u6570\u636e(\u6765\u6e90:04-\u6559\u80b2\u4ea7\u54c1/\u4e5d\u7ecf\u8bfe\u7a0b/\u9053\u5fb7\u7ecf/\u9053\u5fb7\u7ecf\u516b\u5341\u4e00\u7ae0\u9610\u91ca\u7d22\u5f15.md)
+    // \u6bcf\u9879: n=\u7ae0\u53f7 name=\u9898\u540d gist=\u4e3b\u65e8 chars=\u6838\u5fc3\u5b57
+    const chaptersRaw = [
+      {n:1,name:'\u9053\u53ef\u9053',gist:'\u9053\u7684\u4e0d\u53ef\u8a00\u8bf4\u6027',chars:'\u9053\u00b7\u540d\u00b7\u65e0\u00b7\u6709'},
+      {n:2,name:'\u5929\u4e0b\u7686\u77e5',gist:'\u5bf9\u7acb\u7edf\u4e00',chars:'\u7f8e\u00b7\u6076\u00b7\u6709\u00b7\u65e0\u00b7\u96be\u00b7\u6613'},
+      {n:3,name:'\u4e0d\u5c1a\u8d24',gist:'\u65e0\u4e3a\u653f\u6cbb',chars:'\u8d24\u00b7\u4e89\u00b7\u5723'},
+      {n:4,name:'\u9053\u51b2',gist:'\u9053\u7684\u865a\u65e0\u6027',chars:'\u51b2\u00b7\u6e0a\u00b7\u5b97'},
+      {n:5,name:'\u5929\u5730\u4e0d\u4ec1',gist:'\u5929\u5730\u65e0\u504f',chars:'\u4ec1\u00b7\u520d\u72d7\u00b7\u6a50\u9fa0'},
+      {n:6,name:'\u8c37\u795e\u4e0d\u6b7b',gist:'\u7384\u725d\u4e4b\u95e8',chars:'\u8c37\u795e\u00b7\u7384\u725d\u00b7\u95e8'},
+      {n:7,name:'\u5929\u957f\u5730\u4e45',gist:'\u4e0d\u81ea\u751f\u6545\u957f\u751f',chars:'\u957f\u00b7\u4e45\u00b7\u79c1\u00b7\u6210'},
+      {n:8,name:'\u4e0a\u5584\u82e5\u6c34',gist:'\u6c34\u4e4b\u4e03\u5fb7',chars:'\u82e5\u00b7\u5584\u00b7\u6c34\u00b7\u4e89'},
+      {n:9,name:'\u6301\u800c\u76c8\u4e4b',gist:'\u529f\u6210\u8eab\u9000',chars:'\u76c8\u00b7\u9510\u00b7\u63e3\u00b7\u9a84'},
+      {n:10,name:'\u8f7d\u8425\u9b44',gist:'\u62b1\u4e00\u81f4\u67d4',chars:'\u8425\u9b44\u00b7\u4e00\u00b7\u6c14\u00b7\u67d4'},
+      {n:11,name:'\u4e09\u5341\u8f90',gist:'\u6709\u65e0\u76f8\u751f\u4e4b\u7528',chars:'\u8f90\u00b7\u6bc2\u00b7\u5668\u00b7\u7528'},
+      {n:12,name:'\u4e94\u8272\u4ee4\u4eba',gist:'\u4e3a\u8179\u4e0d\u4e3a\u76ee',chars:'\u8272\u00b7\u97f3\u00b7\u5473\u00b7\u8179\u00b7\u76ee'},
+      {n:13,name:'\u5ba0\u8fb1\u82e5\u60ca',gist:'\u8d35\u8eab\u4ee5\u6258\u5929\u4e0b',chars:'\u5ba0\u00b7\u8fb1\u00b7\u8d35\u00b7\u60a3'},
+      {n:14,name:'\u89c6\u4e4b\u4e0d\u89c1',gist:'\u9053\u7eaa\u4e0d\u53ef\u89c1',chars:'\u5937\u00b7\u5e0c\u00b7\u5fae\u00b7\u7eaa'},
+      {n:15,name:'\u53e4\u4e4b\u5584\u4e3a\u58eb',gist:'\u5fae\u5999\u7384\u901a',chars:'\u5fae\u5999\u00b7\u7384\u901a\u00b7\u8c6b\u00b7\u6da3'},
+      {n:16,name:'\u81f4\u865a\u6781',gist:'\u5f52\u6839\u590d\u547d',chars:'\u865a\u00b7\u9759\u00b7\u6839\u00b7\u5e38'},
+      {n:17,name:'\u592a\u4e0a\u4e0b\u77e5\u6709\u4e4b',gist:'\u56db\u7b49\u6cbb\u9053',chars:'\u592a\u4e0a\u00b7\u4eb2\u8a89\u00b7\u754f\u00b7\u4fae'},
+      {n:18,name:'\u5927\u9053\u5e9f',gist:'\u4ec1\u4e49\u51fa\u4e8e\u5931\u9053',chars:'\u4ec1\u4e49\u00b7\u667a\u6167\u00b7\u5b5d\u6148\u00b7\u5fe0\u81e3'},
+      {n:19,name:'\u7edd\u5723\u5f03\u667a',gist:'\u89c1\u7d20\u62b1\u6734',chars:'\u7edd\u00b7\u5f03\u00b7\u7d20\u00b7\u6734\u00b7\u79c1'},
+      {n:20,name:'\u7edd\u5b66\u65e0\u5fe7',gist:'\u6211\u72ec\u5f02\u4e8e\u4eba',chars:'\u5b66\u00b7\u5fe7\u00b7\u4fd7\u00b7\u72ec'},
+      {n:21,name:'\u5b54\u5fb7\u4e4b\u5bb9',gist:'\u9053\u4e4b\u4e3a\u7269',chars:'\u5b54\u00b7\u5fb7\u00b7\u604d\u60da\u00b7\u7cbe\u00b7\u4fe1'},
+      {n:22,name:'\u66f2\u5219\u5168',gist:'\u4e0d\u4e89\u4e4b\u5fb7',chars:'\u66f2\u00b7\u6789\u00b7\u655d\u00b7\u591a\u00b7\u4e89'},
+      {n:23,name:'\u5e0c\u8a00\u81ea\u7136',gist:'\u8a00\u4e0e\u9053\u540c',chars:'\u5e0c\u00b7\u98d8\u98ce\u00b7\u9aa4\u96e8\u00b7\u540c'},
+      {n:24,name:'\u4f01\u8005\u4e0d\u7acb',gist:'\u4f59\u98df\u8d58\u884c',chars:'\u4f01\u00b7\u8de8\u00b7\u81ea\u89c1\u00b7\u81ea\u4f10'},
+      {n:25,name:'\u6709\u7269\u6df7\u6210',gist:'\u9053\u6cd5\u81ea\u7136',chars:'\u6df7\u6210\u00b7\u5927\u00b7\u901d\u00b7\u53cd\u00b7\u81ea\u7136'},
+      {n:26,name:'\u91cd\u4e3a\u8f7b\u6839',gist:'\u9759\u4e3a\u8e81\u541b',chars:'\u91cd\u00b7\u8f7b\u00b7\u9759\u00b7\u8e81\u00b7\u8f8e\u91cd'},
+      {n:27,name:'\u5584\u884c\u65e0\u8f99',gist:'\u88ad\u660e\u4e0e\u8981\u5999',chars:'\u5584\u884c\u00b7\u5584\u8a00\u00b7\u88ad\u660e\u00b7\u8981\u5999'},
+      {n:28,name:'\u77e5\u96c4\u5b88\u96cc',gist:'\u590d\u5f52\u4e8e\u6734',chars:'\u96c4\u00b7\u96cc\u00b7\u767d\u00b7\u9ed1\u00b7\u6734'},
+      {n:29,name:'\u5c06\u6b32\u53d6\u5929\u4e0b',gist:'\u53bb\u751a\u53bb\u5962',chars:'\u53d6\u00b7\u4e3a\u00b7\u6267\u00b7\u5931\u00b7\u751a'},
+      {n:30,name:'\u4ee5\u9053\u4f50\u4eba\u4e3b',gist:'\u4e0d\u4ee5\u5175\u5f3a\u5929\u4e0b',chars:'\u5175\u00b7\u5f3a\u00b7\u58ee\u00b7\u8001'},
+      {n:31,name:'\u592b\u5175\u8005',gist:'\u5175\u4e3a\u4e0d\u7965\u4e4b\u5668',chars:'\u5175\u00b7\u7965\u00b7\u5de6\u00b7\u53f3\u00b7\u4e27\u793c'},
+      {n:32,name:'\u9053\u5e38\u65e0\u540d',gist:'\u59cb\u5236\u6709\u540d',chars:'\u6734\u00b7\u540d\u00b7\u6b62\u00b7\u5ddd\u8c37'},
+      {n:33,name:'\u77e5\u4eba\u8005\u667a',gist:'\u81ea\u77e5\u81ea\u80dc',chars:'\u667a\u00b7\u660e\u00b7\u529b\u00b7\u5f3a\u00b7\u4e45\u00b7\u5bff'},
+      {n:34,name:'\u5927\u9053\u6cdb\u516e',gist:'\u5927\u9053\u5de6\u53f3\u7686\u5b9c',chars:'\u6cdb\u00b7\u5de6\u53f3\u00b7\u8863\u517b\u00b7\u6210\u5927'},
+      {n:35,name:'\u6267\u5927\u8c61',gist:'\u9053\u4e4b\u7528\u65e0\u7a77',chars:'\u5927\u8c61\u00b7\u5b89\u5e73\u592a\u00b7\u5473\u00b7\u542c'},
+      {n:36,name:'\u5c06\u6b32\u6b59\u4e4b',gist:'\u67d4\u5f31\u80dc\u521a\u5f3a',chars:'\u6b59\u5f20\u00b7\u5f31\u5f3a\u00b7\u5e9f\u5174\u00b7\u593a\u4e0e'},
+      {n:37,name:'\u9053\u5e38\u65e0\u4e3a',gist:'\u65e0\u4e3a\u800c\u65e0\u4e0d\u4e3a',chars:'\u65e0\u4e3a\u00b7\u5316\u00b7\u4f5c\u00b7\u9759'},
+      {n:38,name:'\u4e0a\u5fb7\u4e0d\u5fb7',gist:'\u5fb7\u7684\u56db\u5c42\u6b21',chars:'\u4e0a\u5fb7\u00b7\u4e0b\u5fb7\u00b7\u4ec1\u00b7\u4e49\u00b7\u793c'},
+      {n:39,name:'\u6614\u4e4b\u5f97\u4e00',gist:'\u4e07\u7269\u5f97\u4e00',chars:'\u4e00\u00b7\u5929\u00b7\u5730\u00b7\u795e\u00b7\u8c37'},
+      {n:40,name:'\u53cd\u8005\u9053\u4e4b\u52a8',gist:'\u5f31\u8005\u9053\u4e4b\u7528',chars:'\u53cd\u00b7\u5f31\u00b7\u52a8\u00b7\u7528\u00b7\u751f'},
+      {n:41,name:'\u4e0a\u58eb\u95fb\u9053',gist:'\u5927\u5668\u665a\u6210',chars:'\u4e0a\u58eb\u00b7\u4e2d\u58eb\u00b7\u4e0b\u58eb\u00b7\u5927\u65b9\u00b7\u5927\u5668'},
+      {n:42,name:'\u9053\u751f\u4e00',gist:'\u4e09\u751f\u4e07\u7269',chars:'\u4e00\u00b7\u4e8c\u00b7\u4e09\u00b7\u51b2\u6c14\u00b7\u548c'},
+      {n:43,name:'\u81f3\u67d4\u9a70\u9a8b',gist:'\u4e0d\u8a00\u4e4b\u6559',chars:'\u81f3\u67d4\u00b7\u65e0\u6709\u00b7\u4e0d\u8a00\u00b7\u65e0\u4e3a'},
+      {n:44,name:'\u540d\u4e0e\u8eab\u5b70\u4eb2',gist:'\u77e5\u8db3\u77e5\u6b62',chars:'\u540d\u00b7\u8eab\u00b7\u8d27\u00b7\u5f97\u00b7\u4ea1\u00b7\u8db3\u00b7\u6b62'},
+      {n:45,name:'\u5927\u6210\u82e5\u7f3a',gist:'\u6e05\u9759\u4e3a\u5929\u4e0b\u6b63',chars:'\u6210\u00b7\u7f3a\u00b7\u76c8\u00b7\u51b2\u00b7\u6e05\u9759'},
+      {n:46,name:'\u5929\u4e0b\u6709\u9053',gist:'\u77e5\u8db3\u5e38\u8db3',chars:'\u8d70\u9a6c\u00b7\u620e\u9a6c\u00b7\u7f6a\u00b7\u7978\u00b7\u548e'},
+      {n:47,name:'\u4e0d\u51fa\u6237',gist:'\u4e0d\u884c\u800c\u77e5',chars:'\u6237\u00b7\u5929\u4e0b\u00b7\u7256\u00b7\u5929\u9053\u00b7\u77e5'},
+      {n:48,name:'\u4e3a\u5b66\u65e5\u76ca',gist:'\u4e3a\u9053\u65e5\u635f',chars:'\u5b66\u00b7\u76ca\u00b7\u9053\u00b7\u635f\u00b7\u65e0\u4e3a'},
+      {n:49,name:'\u5723\u4eba\u5e38\u65e0\u5fc3',gist:'\u4ee5\u767e\u59d3\u5fc3\u4e3a\u5fc3',chars:'\u5723\u4eba\u00b7\u767e\u59d3\u00b7\u5584\u00b7\u4fe1\u00b7\u6d51'},
+      {n:50,name:'\u51fa\u751f\u5165\u6b7b',gist:'\u5584\u6444\u751f\u8005',chars:'\u751f\u00b7\u6b7b\u00b7\u5f92\u00b7\u6444\u751f\u00b7\u5155\u864e'},
+      {n:51,name:'\u9053\u751f\u4e4b',gist:'\u7384\u5fb7',chars:'\u9053\u00b7\u5fb7\u00b7\u751f\u00b7\u755c\u00b7\u7384\u5fb7'},
+      {n:52,name:'\u5929\u4e0b\u6709\u59cb',gist:'\u88ad\u5e38',chars:'\u59cb\u00b7\u6bcd\u00b7\u5b50\u00b7\u585e\u5151\u00b7\u95ed\u95e8\u00b7\u88ad\u5e38'},
+      {n:53,name:'\u4f7f\u6211\u4ecb\u7136',gist:'\u5927\u9053\u751a\u5937',chars:'\u4ecb\u7136\u00b7\u5927\u9053\u00b7\u65bd\u00b7\u5937\u00b7\u5f84\u00b7\u76d7\u5938'},
+      {n:54,name:'\u5584\u5efa\u4e0d\u62d4',gist:'\u4fee\u4e4b\u5bb6\u56fd\u5929\u4e0b',chars:'\u5efa\u00b7\u62b1\u00b7\u4fee\u00b7\u8eab\u00b7\u5bb6\u00b7\u4e61\u00b7\u56fd\u00b7\u5929\u4e0b'},
+      {n:55,name:'\u542b\u5fb7\u4e4b\u539a',gist:'\u6bd4\u4e8e\u8d64\u5b50',chars:'\u8d64\u5b50\u00b7\u6bd2\u866b\u00b7\u9aa8\u5f31\u00b7\u725d\u7261\u00b7\u548c'},
+      {n:56,name:'\u77e5\u8005\u4e0d\u8a00',gist:'\u7384\u540c',chars:'\u77e5\u00b7\u8a00\u00b7\u585e\u5151\u00b7\u632b\u9510\u00b7\u7384\u540c'},
+      {n:57,name:'\u4ee5\u6b63\u6cbb\u56fd',gist:'\u6211\u65e0\u4e3a\u800c\u6c11\u81ea\u5316',chars:'\u6b63\u00b7\u5947\u00b7\u65e0\u4e8b\u00b7\u5fcc\u8bb3\u00b7\u6cd5\u4ee4'},
+      {n:58,name:'\u5176\u653f\u95f7\u95f7',gist:'\u7978\u798f\u76f8\u501a',chars:'\u95f7\u95f7\u00b7\u5bdf\u5bdf\u00b7\u798f\u00b7\u7978\u00b7\u501a\u00b7\u4f0f'},
+      {n:59,name:'\u6cbb\u4eba\u4e8b\u5929',gist:'\u957f\u751f\u4e45\u89c6\u4e4b\u9053',chars:'\u556c\u00b7\u65e9\u670d\u00b7\u91cd\u79ef\u5fb7\u00b7\u957f\u751f\u4e45\u89c6'},
+      {n:60,name:'\u6cbb\u5927\u56fd',gist:'\u82e5\u70f9\u5c0f\u9c9c',chars:'\u70f9\u00b7\u5c0f\u9c9c\u00b7\u9b3c\u00b7\u795e\u00b7\u4e24\u4e0d\u76f8\u4f24'},
+      {n:61,name:'\u5927\u56fd\u8005\u4e0b\u6d41',gist:'\u5927\u8005\u5b9c\u4e3a\u4e0b',chars:'\u4e0b\u6d41\u00b7\u725d\u00b7\u5927\u56fd\u00b7\u5c0f\u56fd\u00b7\u4e0b'},
+      {n:62,name:'\u9053\u8005\u4e07\u7269\u4e4b\u5965',gist:'\u9053\u4e4b\u8d35',chars:'\u5965\u00b7\u5584\u4eba\u00b7\u5b9d\u00b7\u7f8e\u8a00\u00b7\u5c0a\u884c'},
+      {n:63,name:'\u4e3a\u65e0\u4e3a',gist:'\u56fe\u96be\u4e8e\u6613',chars:'\u4e3a\u65e0\u4e3a\u00b7\u4e8b\u65e0\u4e8b\u00b7\u5473\u65e0\u5473\u00b7\u96be\u00b7\u6613'},
+      {n:64,name:'\u5176\u5b89\u6613\u6301',gist:'\u614e\u7ec8\u5982\u59cb',chars:'\u5b89\u00b7\u5146\u00b7\u8106\u00b7\u5fae\u00b7\u4e5d\u5c42\u00b7\u5343\u91cc\u00b7\u614e\u7ec8'},
+      {n:65,name:'\u53e4\u4e4b\u5584\u4e3a\u9053\u8005',gist:'\u975e\u4ee5\u660e\u6c11',chars:'\u611a\u00b7\u667a\u00b7\u7a3d\u5f0f\u00b7\u7384\u5fb7\u00b7\u5927\u987a'},
+      {n:66,name:'\u6c5f\u6d77\u6240\u4ee5\u4e3a\u767e\u8c37\u738b',gist:'\u5904\u4e0b\u4e0d\u4e89',chars:'\u6c5f\u6d77\u00b7\u767e\u8c37\u00b7\u4e0b\u00b7\u540e\u00b7\u4e0d\u4e89'},
+      {n:67,name:'\u6211\u6709\u4e09\u5b9d',gist:'\u6148\u00b7\u4fed\u00b7\u4e0d\u6562\u4e3a\u5148',chars:'\u6148\u00b7\u4fed\u00b7\u4e0d\u6562\u4e3a\u5929\u4e0b\u5148\u00b7\u52c7\u00b7\u5e7f\u00b7\u957f'},
+      {n:68,name:'\u5584\u4e3a\u58eb\u8005',gist:'\u4e0d\u4e89\u4e4b\u5fb7',chars:'\u58eb\u00b7\u6218\u00b7\u6012\u00b7\u7528\u00b7\u4e0b\u00b7\u914d\u5929'},
+      {n:69,name:'\u7528\u5175\u6709\u8a00',gist:'\u54c0\u8005\u80dc',chars:'\u5ba2\u00b7\u4e3b\u00b7\u9000\u00b7\u65e0\u654c\u00b7\u54c0'},
+      {n:70,name:'\u543e\u8a00\u751a\u6613\u77e5',gist:'\u88ab\u8910\u6000\u7389',chars:'\u6613\u77e5\u00b7\u6613\u884c\u00b7\u5b97\u00b7\u541b\u00b7\u8910\u00b7\u7389'},
+      {n:71,name:'\u77e5\u4e0d\u77e5',gist:'\u5723\u4eba\u4e0d\u75c5',chars:'\u77e5\u00b7\u4e0d\u77e5\u00b7\u4e0a\u00b7\u75c5\u00b7\u5723\u4eba'},
+      {n:72,name:'\u6c11\u4e0d\u754f\u5a01',gist:'\u81ea\u77e5\u81ea\u7231',chars:'\u5a01\u00b7\u5927\u5a01\u00b7\u81ea\u77e5\u00b7\u81ea\u7231\u00b7\u81ea\u89c1'},
+      {n:73,name:'\u52c7\u4e8e\u6562\u5219\u6740',gist:'\u5929\u7f51\u6062\u6062',chars:'\u52c7\u00b7\u6562\u00b7\u6d3b\u00b7\u5929\u4e4b\u6240\u6076\u00b7\u5929\u7f51'},
+      {n:74,name:'\u6c11\u4e0d\u754f\u6b7b',gist:'\u4ee3\u5927\u5320\u65ab',chars:'\u6b7b\u00b7\u754f\u00b7\u6267\u00b7\u53f8\u6740\u00b7\u5927\u5320'},
+      {n:75,name:'\u6c11\u4e4b\u9965',gist:'\u65e0\u4ee5\u751f\u4e3a',chars:'\u9965\u00b7\u7a0e\u00b7\u6cbb\u00b7\u8f7b\u6b7b\u00b7\u65e0\u4ee5\u751f\u4e3a'},
+      {n:76,name:'\u4eba\u4e4b\u751f\u4e5f\u67d4\u5f31',gist:'\u67d4\u5f31\u5904\u4e0a',chars:'\u751f\u00b7\u67d4\u5f31\u00b7\u6b7b\u00b7\u575a\u5f3a\u00b7\u5175\u00b7\u6728'},
+      {n:77,name:'\u5929\u4e4b\u9053',gist:'\u635f\u6709\u4f59\u8865\u4e0d\u8db3',chars:'\u5f20\u5f13\u00b7\u9ad8\u00b7\u4e0b\u00b7\u4f59\u00b7\u4e0d\u8db3\u00b7\u5929\u9053\u00b7\u4eba\u9053'},
+      {n:78,name:'\u5929\u4e0b\u83ab\u67d4\u5f31\u4e8e\u6c34',gist:'\u5f31\u4e4b\u80dc\u5f3a',chars:'\u6c34\u00b7\u67d4\u5f31\u00b7\u575a\u5f3a\u00b7\u793e\u7a37\u00b7\u5929\u4e0b\u738b'},
+      {n:79,name:'\u548c\u5927\u6028',gist:'\u5929\u9053\u65e0\u4eb2',chars:'\u548c\u00b7\u6028\u00b7\u5951\u00b7\u5de6\u5951\u00b7\u5929\u9053\u00b7\u4eb2'},
+      {n:80,name:'\u5c0f\u56fd\u5be1\u6c11',gist:'\u7406\u60f3\u793e\u4f1a',chars:'\u5c0f\u56fd\u00b7\u5be1\u6c11\u00b7\u4ec0\u4f2f\u00b7\u7518\u98df\u00b7\u7f8e\u670d'},
+      {n:81,name:'\u4fe1\u8a00\u4e0d\u7f8e',gist:'\u7ec8\u7bc7\u7eb2\u9886',chars:'\u4fe1\u8a00\u00b7\u5584\u8a00\u00b7\u535a\u8fa9\u00b7\u5723\u4eba\u4e0d\u79ef'}
+    ];
+    const chaptersUpper = chaptersRaw.filter((c) => c.n <= 37);
+    const chaptersLower = chaptersRaw.filter((c) => c.n >= 38);
+
+    // \u6838\u5fc3\u5b57\u8bcd\u8003\u91ca\u5361\u7247(\u524d\u4e24\u4e2a\u5df2\u6709 obsidian \u6df1\u7814,\u540e\u7eed\u5f85\u8865\u5145)
+    const keyChars = [
+      { char: '\u82e5', reading: '\u5982\u3001\u6bd4\u51b5', gist: '\u300c\u4e0a\u5584\u82e5\u6c34\u300d\u7684\u6bd4\u51b5\u5f20\u529b\u2014\u2014\u4e0d\u662f\u7b49\u5f0f,\u662f"\u5b58\u5728\u65b9\u5f0f\u9075\u5faa\u6c34\u7684\u8fd0\u884c\u903b\u8f91"', status: 'ready' },
+      { char: '\u5584', reading: 'sh\u00e0n \u597d', gist: '\u4e0d\u662f\u9053\u5fb7\u5224\u65ad,\u662f"\u5951\u5408"\u2014\u2014\u4e03\u5584:\u5c45\u00b7\u5fc3\u00b7\u4e0e\u00b7\u8a00\u00b7\u653f\u00b7\u4e8b\u00b7\u52a8', status: 'ready' },
+      { char: '\u9053', reading: 'd\u00e0o', gist: '\u53ef\u8a00\u7684\u9053\u975e\u5e38\u9053;\u5b87\u5b99\u8bba\u8868\u8fbe,\u89c9\u7684\u6700\u9ad8\u8303\u5f0f', status: 'core' },
+      { char: '\u5fb7', reading: 'd\u00e9', gist: '\u9053\u5728\u4eba\u751f\u4e2d\u7684\u843d\u5b9e;\u4e0a\u5fb7\u4e0d\u5fb7', status: 'core' },
+      { char: '\u65e0', reading: 'w\u00fa', gist: '\u65e0\u975e\u7a7a\u865a;\u6709\u65e0\u76f8\u751f\u4e4b\u7528', status: 'core' },
+      { char: '\u6709', reading: 'y\u01d2u', gist: '\u6709\u65e0\u76f8\u751f;\u6709\u4e4b\u4ee5\u4e3a\u5229', status: 'core' },
+      { char: '\u81ea\u7136', reading: 'z\u00ec-r\u00e1n', gist: '\u4e0d\u662f\u81ea\u7136\u754c;\u662f"\u81ea\u5df1\u5982\u6b64"\u3001\u672c\u6027\u4f7f\u7136', status: 'core' },
+      { char: '\u65e0\u4e3a', reading: 'w\u00fa-w\u00e9i', gist: '\u4e0d\u662f\u4e0d\u4e3a;\u662f\u4e0d\u5984\u4e3a\u3001\u4e0d\u8fdd\u80cc\u672c\u6027\u800c\u4e3a', status: 'core' }
+    ];
+
     return {
       rootClass: en ? 'lang-en' : (lang === 'hant' ? 'lang-hant' : ''),
       langLabel: labels[lang],
-      toggleLang: () => this.setState((s) => ({ lang: cycle[s.lang] }))
+      toggleLang: () => this.setState((s) => ({ lang: cycle[s.lang] })),
+      chaptersUpper: chaptersUpper,
+      chaptersLower: chaptersLower,
+      keyChars: keyChars
     };
   }
   componentDidMount() {
