@@ -55,11 +55,12 @@ async function whiteToAlpha(file, crop = { top: 0, bot: 0, left: 0, right: 0 }) 
   console.log(`  ${file}  ${meta.width}x${meta.height} -> ${w}x${h}  ${(before/1024).toFixed(1)}KB -> ${(after/1024).toFixed(1)}KB`);
 }
 
-// 各 logo 的边框噪点厚度（此前用采样脚本测得，见 build-logos 注释）：
-//   logo-horizontal-white: 右侧 3px
-//   logo-tagline         : 上 2px，左 7px
-// 首次运行会裁掉；后续运行会因文件已洁净而裁 0px。
-await whiteToAlpha('assets/logo-horizontal-white.png', { top: 0, bot: 0, left: 0, right: 3 });
+// 各 logo 的边框噪点厚度（此前用采样脚本测得）：
+//   logo-horizontal-white: 右侧 3px 纯黑边 + 紧邻 2~3px 灰色反锯齿（黑边在，
+//     反锯齿隐没不显；只裁黑边则反锯齿单独现形为一条竖线）→ 一并裁 6px
+//   logo-tagline         : 上 2px、左 7px
+// 首次运行会裁掉；后续运行因文件已洁净而裁 0px（幂等）。
+await whiteToAlpha('assets/logo-horizontal-white.png', { top: 0, bot: 0, left: 0, right: 6 });
 await whiteToAlpha('assets/logo-tagline.png',          { top: 2, bot: 0, left: 7, right: 0 });
 
 // 四角与四边中点 alpha 全 0 才算真正无白底
