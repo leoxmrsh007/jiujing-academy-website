@@ -83,6 +83,19 @@
   .evo-ring { transition: border-color .55s ease, box-shadow .55s ease; }
   .evo-cell.active .evo-ring { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,154,78,.20); }
   h1, h2 { text-wrap: balance; }
+  /* ── 情爱哲学书封面(滚动进入时浮起+旋正+淡入,像从桌上被拿起来) ── */
+  .qingai-book { opacity: 0; transform: translateY(48px) rotate(-8deg) scale(.92); transform-origin: 50% 100%; will-change: transform, opacity; }
+  .qingai-slot.seen .qingai-book { animation: qingaiRise 1.4s cubic-bezier(.2,.75,.2,1) .18s both; }
+  @keyframes qingaiRise {
+    0%   { opacity: 0; transform: translateY(48px) rotate(-8deg) scale(.92); }
+    60%  { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0)    rotate(-1.5deg) scale(1); }
+  }
+  .qingai-book { transition: transform .55s cubic-bezier(.2,.75,.2,1); }
+  .qingai-slot.seen .qingai-book:hover { transform: translateY(-8px) rotate(0deg) scale(1.02); }
+  @media (prefers-reduced-motion: reduce) {
+    .qingai-book { opacity: 1; transform: none; animation: none !important; }
+  }
   /* ── Image Slot ── */
   .img-slot { display:flex; align-items:center; justify-content:center; text-align:center; background: radial-gradient(circle at 30% 25%,rgba(156,43,35,.05),transparent 45%), radial-gradient(circle at 75% 70%,rgba(217,154,78,.06),transparent 50%), repeating-linear-gradient(4deg,transparent,transparent 3px,rgba(34,32,29,.015) 3px,rgba(34,32,29,.015) 4px), #f2ece0; color:var(--gray); font-family:var(--font-sans); font-size:12px; letter-spacing:1px; line-height:1.6; padding: 6px; }
   .img-slot-label { opacity:.85; }
@@ -442,30 +455,13 @@
         </div>
         <div style="margin-top:34px;"><a href="情爱哲学.dc.html" style="display:inline-block;padding:13px 32px;background:#22201d;color:#f4efe4;font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:3px;transition:background .3s;" class="hv7"><span class="i18n-zh">进入情爱哲学 →</span><span class="i18n-hant">進入情愛哲學 →</span><span class="i18n-en">Explore Love →</span></a></div>
       </div>
-      <div data-reveal style="position:relative;aspect-ratio:4/3;align-self:stretch;background:radial-gradient(circle at 30% 25%,rgba(156,43,35,.06),transparent 45%), radial-gradient(circle at 75% 70%,rgba(217,154,78,.08),transparent 50%), repeating-linear-gradient(4deg,transparent,transparent 3px,rgba(34,32,29,.015) 3px,rgba(34,32,29,.015) 4px), #f2ece0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+      <div data-reveal class="qingai-slot" style="position:relative;aspect-ratio:4/3;align-self:stretch;background:radial-gradient(circle at 30% 25%,rgba(156,43,35,.06),transparent 45%), radial-gradient(circle at 75% 70%,rgba(217,154,78,.08),transparent 50%), repeating-linear-gradient(4deg,transparent,transparent 3px,rgba(34,32,29,.015) 3px,rgba(34,32,29,.015) 4px), #f2ece0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:24px;">
         <!-- 背景水印:巨大的「情」字,压在右下角边缘,与首页「觉」字水印同风格 -->
         <span aria-hidden="true" style="position:absolute;right:-10%;bottom:-28%;font-size:min(60vw,460px);font-family:'Ma Shan Zheng',cursive;color:rgba(156,43,35,.05);line-height:1;pointer-events:none;user-select:none;transform:rotate(-4deg);">情</span>
-        <!-- 中央意象:两笔在中心相触又分离,隐喻「之间」的功夫。渐变笔锋模拟毛笔顿挫 -->
-        <svg viewBox="0 0 400 300" style="position:relative;width:72%;height:auto;overflow:visible;" xmlns="http://www.w3.org/2000/svg" aria-label="两笔相触,隐喻「之间」的功夫">
-          <defs>
-            <linearGradient id="stroke-red" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#9c2b23" stop-opacity=".35"/>
-              <stop offset="50%" stop-color="#9c2b23" stop-opacity=".88"/>
-              <stop offset="100%" stop-color="#9c2b23" stop-opacity=".28"/>
-            </linearGradient>
-            <linearGradient id="stroke-ink" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#22201d" stop-opacity=".32"/>
-              <stop offset="50%" stop-color="#22201d" stop-opacity=".9"/>
-              <stop offset="100%" stop-color="#22201d" stop-opacity=".28"/>
-            </linearGradient>
-          </defs>
-          <path d="M 55 92 Q 155 42 209 150 T 335 168" fill="none" stroke="url(#stroke-red)" stroke-width="9" stroke-linecap="round"/>
-          <circle cx="55" cy="92" r="6" fill="#9c2b23" opacity=".55"/>
-          <path d="M 75 214 Q 170 262 209 150 T 348 128" fill="none" stroke="url(#stroke-ink)" stroke-width="9" stroke-linecap="round"/>
-          <circle cx="75" cy="214" r="6" fill="#22201d" opacity=".55"/>
-          <circle cx="209" cy="150" r="6" fill="#9c2b23" opacity=".92"/>
-          <circle cx="209" cy="150" r="18" fill="none" stroke="#9c2b23" stroke-width="1" stroke-opacity=".28"/>
-        </svg>
+        <!-- 主视觉:《情爱哲学导论》书封面。滚动进入时从下方浮起+旋正+淡入 -->
+        <a href="情爱哲学.dc.html" class="qingai-book" aria-label="进入情爱哲学 —— 《情爱哲学导论》" style="position:relative;display:block;height:92%;">
+          <img src="assets/qingai-book.jpg" alt="《情爱哲学导论》九经书院 · 守愚 著" loading="lazy" decoding="async" style="display:block;height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 22px 40px rgba(34,32,29,.32)) drop-shadow(0 6px 12px rgba(34,32,29,.16));"/>
+        </a>
       </div>
     </div>
   </section>
@@ -1047,307 +1043,290 @@
         </div>
         <div data-dc-tpl="321" style="margin-top: 34px;"><a data-dc-tpl="322" href="情爱哲学.dc.html" class="hv7" style="display: inline-block; padding: 13px 32px; background: rgb(34, 32, 29); color: rgb(244, 239, 228); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; transition: background 0.3s;"><span data-dc-tpl="323" class="i18n-zh">进入情爱哲学 →</span><span data-dc-tpl="324" class="i18n-hant">進入情愛哲學 →</span><span data-dc-tpl="325" class="i18n-en">Explore Love →</span></a></div>
       </div>
-      <div data-dc-tpl="326" data-reveal="" style="position: relative; aspect-ratio: 4 / 3; align-self: stretch; background: radial-gradient(circle at 30% 25%, rgba(156, 43, 35, 0.06), transparent 45%), radial-gradient(circle at 75% 70%, rgba(217, 154, 78, 0.08), transparent 50%), repeating-linear-gradient(4deg, transparent, transparent 3px, rgba(34, 32, 29, 0.016) 3px, rgba(34, 32, 29, 0.016) 4px), rgb(242, 236, 224); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <div data-dc-tpl="326" data-reveal="" class="qingai-slot" style="position: relative; aspect-ratio: 4 / 3; align-self: stretch; background: radial-gradient(circle at 30% 25%, rgba(156, 43, 35, 0.06), transparent 45%), radial-gradient(circle at 75% 70%, rgba(217, 154, 78, 0.08), transparent 50%), repeating-linear-gradient(4deg, transparent, transparent 3px, rgba(34, 32, 29, 0.016) 3px, rgba(34, 32, 29, 0.016) 4px), rgb(242, 236, 224); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 24px;">
         
         <span data-dc-tpl="327" aria-hidden="true" style="position: absolute; right: -10%; bottom: -28%; font-size: min(60vw, 460px); font-family: &quot;Ma Shan Zheng&quot;, cursive; color: rgba(156, 43, 35, 0.05); line-height: 1; pointer-events: none; user-select: none; transform: rotate(-4deg);">情</span>
         
-        <svg data-dc-tpl="328" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="两笔相触,隐喻「之间」的功夫" style="position: relative; width: 72%; height: auto; overflow: visible;">
-          <defs data-dc-tpl="329">
-            <linearGradient data-dc-tpl="330" id="stroke-red" x1="0" y1="0" x2="1" y2="1">
-              <stop data-dc-tpl="331" offset="0%" stop-color="#9c2b23" stop-opacity=".35"></stop>
-              <stop data-dc-tpl="332" offset="50%" stop-color="#9c2b23" stop-opacity=".88"></stop>
-              <stop data-dc-tpl="333" offset="100%" stop-color="#9c2b23" stop-opacity=".28"></stop>
-            </linearGradient>
-            <linearGradient data-dc-tpl="334" id="stroke-ink" x1="0" y1="1" x2="1" y2="0">
-              <stop data-dc-tpl="335" offset="0%" stop-color="#22201d" stop-opacity=".32"></stop>
-              <stop data-dc-tpl="336" offset="50%" stop-color="#22201d" stop-opacity=".9"></stop>
-              <stop data-dc-tpl="337" offset="100%" stop-color="#22201d" stop-opacity=".28"></stop>
-            </linearGradient>
-          </defs>
-          <path data-dc-tpl="338" d="M 55 92 Q 155 42 209 150 T 335 168" fill="none" stroke="url(#stroke-red)" stroke-width="9" stroke-linecap="round"></path>
-          <circle data-dc-tpl="339" cx="55" cy="92" r="6" fill="#9c2b23" opacity=".55"></circle>
-          <path data-dc-tpl="340" d="M 75 214 Q 170 262 209 150 T 348 128" fill="none" stroke="url(#stroke-ink)" stroke-width="9" stroke-linecap="round"></path>
-          <circle data-dc-tpl="341" cx="75" cy="214" r="6" fill="#22201d" opacity=".55"></circle>
-          <circle data-dc-tpl="342" cx="209" cy="150" r="6" fill="#9c2b23" opacity=".92"></circle>
-          <circle data-dc-tpl="343" cx="209" cy="150" r="18" fill="none" stroke="#9c2b23" stroke-width="1" stroke-opacity=".28"></circle>
-        </svg>
+        <a data-dc-tpl="328" href="情爱哲学.dc.html" class="qingai-book" aria-label="进入情爱哲学 —— 《情爱哲学导论》" style="position: relative; display: block; height: 92%;">
+          <img data-dc-tpl="329" src="assets/qingai-book.jpg" alt="《情爱哲学导论》九经书院 · 守愚 著" loading="lazy" decoding="async" style="display: block; height: 100%; width: auto; object-fit: contain; filter: drop-shadow(rgba(34, 32, 29, 0.32) 0px 22px 40px) drop-shadow(rgba(34, 32, 29, 0.16) 0px 6px 12px);">
+        </a>
       </div>
     </div>
   </section>
 
   
-  <section data-dc-tpl="344" id="children" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
-    <div data-dc-tpl="345" data-reveal="" style="text-align: center; margin-bottom: 70px;">
-      <div data-dc-tpl="346" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="347" class="i18n-zh">肆 · 汉字哲学启蒙与文明编码系统</span><span data-dc-tpl="348" class="i18n-hant">肆 · 漢字哲學啟蒙與文明編碼系統</span><span data-dc-tpl="349" class="i18n-en">IV · HANZI PHILOSOPHY &amp; CIVILIZATIONAL ENCODING</span></div>
-      <h2 data-dc-tpl="350" style="margin: 0px; font-size: clamp(32px, 4.5vw, 58px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="351" class="i18n-zh">一文一世界　一字一文明</span><span data-dc-tpl="352" class="i18n-hant">一文一世界　一字一文明</span><span data-dc-tpl="353" class="i18n-en en-serif">One Character, One World · One Word, One Civilization</span></h2>
-      <p data-dc-tpl="354" style="max-width: 640px; margin: 24px auto 0px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="355" class="i18n-zh">从童蒙开始，以哲思启慧，以汉字为钥——解码文明的基因，让孩子在方块字中遇见天地与本心。</span><span data-dc-tpl="356" class="i18n-hant">從童蒙開始，以哲思啟慧，以漢字為鑰——解碼文明的基因，讓孩子在方塊字中遇見天地與本心。</span><span data-dc-tpl="357" class="i18n-en">Beginning in childhood — awakening wisdom through philosophy, with Hanzi as the key — decoding the genome of civilization, letting children meet Heaven, Earth and their own heart within the square characters.</span></p>
+  <section data-dc-tpl="330" id="children" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
+    <div data-dc-tpl="331" data-reveal="" style="text-align: center; margin-bottom: 70px;">
+      <div data-dc-tpl="332" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="333" class="i18n-zh">肆 · 汉字哲学启蒙与文明编码系统</span><span data-dc-tpl="334" class="i18n-hant">肆 · 漢字哲學啟蒙與文明編碼系統</span><span data-dc-tpl="335" class="i18n-en">IV · HANZI PHILOSOPHY &amp; CIVILIZATIONAL ENCODING</span></div>
+      <h2 data-dc-tpl="336" style="margin: 0px; font-size: clamp(32px, 4.5vw, 58px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="337" class="i18n-zh">一文一世界　一字一文明</span><span data-dc-tpl="338" class="i18n-hant">一文一世界　一字一文明</span><span data-dc-tpl="339" class="i18n-en en-serif">One Character, One World · One Word, One Civilization</span></h2>
+      <p data-dc-tpl="340" style="max-width: 640px; margin: 24px auto 0px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="341" class="i18n-zh">从童蒙开始，以哲思启慧，以汉字为钥——解码文明的基因，让孩子在方块字中遇见天地与本心。</span><span data-dc-tpl="342" class="i18n-hant">從童蒙開始，以哲思啟慧，以漢字為鑰——解碼文明的基因，讓孩子在方塊字中遇見天地與本心。</span><span data-dc-tpl="343" class="i18n-en">Beginning in childhood — awakening wisdom through philosophy, with Hanzi as the key — decoding the genome of civilization, letting children meet Heaven, Earth and their own heart within the square characters.</span></p>
     </div>
-    <div data-dc-tpl="358" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; align-items: stretch;">
-      <div data-dc-tpl="359" data-reveal="" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 46px 40px; display: flex; flex-direction: column;">
-        <h3 data-dc-tpl="360" style="font-size: 25px; font-weight: 600; letter-spacing: 2px; margin: 0px 0px 16px;"><span data-dc-tpl="361" class="i18n-zh">汉字哲学启蒙</span><span data-dc-tpl="362" class="i18n-hant">漢字哲學啟蒙</span><span data-dc-tpl="363" class="i18n-en en-serif">Hanzi Philosophy for Children</span></h3>
-        <p data-dc-tpl="364" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="365" class="i18n-zh">以孩子听得懂的方式追问世界：何为善恶？何为真假？何为我与他人？在提问与对话中，养成独立思考与慈悲之心。</span><span data-dc-tpl="366" class="i18n-hant">以孩子聽得懂的方式追問世界：何為善惡？何為真假？何為我與他人？在提問與對話中，養成獨立思考與慈悲之心。</span><span data-dc-tpl="367" class="i18n-en">Questioning the world in ways children understand: What is good and evil? What is true and false? What is self and other? Through inquiry and dialogue, cultivate independent thought and a compassionate heart.</span></p>
-        <a data-dc-tpl="368" href="汉字哲学.dc.html" class="hv7" style="margin-top: auto; padding: 12px 28px; display: inline-block; background: rgb(34, 32, 29); color: rgb(244, 239, 228); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; transition: background 0.3s; text-align: center;"><span data-dc-tpl="369" class="i18n-zh">进入汉字哲学 →</span><span data-dc-tpl="370" class="i18n-hant">進入漢字哲學 →</span><span data-dc-tpl="371" class="i18n-en">Explore Hanzi →</span></a>
+    <div data-dc-tpl="344" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; align-items: stretch;">
+      <div data-dc-tpl="345" data-reveal="" style="background: rgb(250, 247, 239); border: 1px solid rgba(34, 32, 29, 0.09); padding: 46px 40px; display: flex; flex-direction: column;">
+        <h3 data-dc-tpl="346" style="font-size: 25px; font-weight: 600; letter-spacing: 2px; margin: 0px 0px 16px;"><span data-dc-tpl="347" class="i18n-zh">汉字哲学启蒙</span><span data-dc-tpl="348" class="i18n-hant">漢字哲學啟蒙</span><span data-dc-tpl="349" class="i18n-en en-serif">Hanzi Philosophy for Children</span></h3>
+        <p data-dc-tpl="350" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 2; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="351" class="i18n-zh">以孩子听得懂的方式追问世界：何为善恶？何为真假？何为我与他人？在提问与对话中，养成独立思考与慈悲之心。</span><span data-dc-tpl="352" class="i18n-hant">以孩子聽得懂的方式追問世界：何為善惡？何為真假？何為我與他人？在提問與對話中，養成獨立思考與慈悲之心。</span><span data-dc-tpl="353" class="i18n-en">Questioning the world in ways children understand: What is good and evil? What is true and false? What is self and other? Through inquiry and dialogue, cultivate independent thought and a compassionate heart.</span></p>
+        <a data-dc-tpl="354" href="汉字哲学.dc.html" class="hv7" style="margin-top: auto; padding: 12px 28px; display: inline-block; background: rgb(34, 32, 29); color: rgb(244, 239, 228); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; transition: background 0.3s; text-align: center;"><span data-dc-tpl="355" class="i18n-zh">进入汉字哲学 →</span><span data-dc-tpl="356" class="i18n-hant">進入漢字哲學 →</span><span data-dc-tpl="357" class="i18n-en">Explore Hanzi →</span></a>
       </div>
-      <div data-dc-tpl="372" data-reveal="" style="background: rgb(34, 32, 29); color: rgb(239, 233, 220); padding: 46px 40px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div data-dc-tpl="373">
-          <h3 data-dc-tpl="374" style="font-size: 25px; font-weight: 600; letter-spacing: 2px; margin: 0px 0px 16px;"><span data-dc-tpl="375" class="i18n-zh">汉字文明编码系统</span><span data-dc-tpl="376" class="i18n-hant">漢字文明編碼系統</span><span data-dc-tpl="377" class="i18n-en en-serif">Hanzi Civilizational Encoding System</span></h3>
-          <p data-dc-tpl="378" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 2; color: rgb(195, 188, 174); font-weight: 300; margin: 0px;"><span data-dc-tpl="379" class="i18n-zh">将汉字视为一套文明的编码——形、音、义、源，层层解构。由字入文，由文入道，重建母语者与文明本源的连接。</span><span data-dc-tpl="380" class="i18n-hant">將漢字視為一套文明的編碼——形、音、義、源，層層解構。由字入文，由文入道，重建母語者與文明本源的連接。</span><span data-dc-tpl="381" class="i18n-en">Treating Hanzi as a code of civilization — form, sound, meaning, origin — deconstructed layer by layer. From character to text, from text to Dao, rebuilding the bond between native speakers and the source of their civilization.</span></p>
-          <div data-dc-tpl="382" style="display: flex; gap: 10px; margin-top: 26px;">
-            <div data-dc-tpl="383" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="384" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">9,692</div><div data-dc-tpl="385" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="386" class="i18n-zh">字条目</span><span data-dc-tpl="387" class="i18n-hant">字條目</span><span data-dc-tpl="388" class="i18n-en">Entries</span></div></div>
-            <div data-dc-tpl="389" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="390" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">37,031</div><div data-dc-tpl="391" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="392" class="i18n-zh">关系网络</span><span data-dc-tpl="393" class="i18n-hant">關係網絡</span><span data-dc-tpl="394" class="i18n-en">Links</span></div></div>
-            <div data-dc-tpl="395" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="396" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">128</div><div data-dc-tpl="397" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="398" class="i18n-zh">声符系</span><span data-dc-tpl="399" class="i18n-hant">聲符系</span><span data-dc-tpl="400" class="i18n-en">Phonetics</span></div></div>
+      <div data-dc-tpl="358" data-reveal="" style="background: rgb(34, 32, 29); color: rgb(239, 233, 220); padding: 46px 40px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div data-dc-tpl="359">
+          <h3 data-dc-tpl="360" style="font-size: 25px; font-weight: 600; letter-spacing: 2px; margin: 0px 0px 16px;"><span data-dc-tpl="361" class="i18n-zh">汉字文明编码系统</span><span data-dc-tpl="362" class="i18n-hant">漢字文明編碼系統</span><span data-dc-tpl="363" class="i18n-en en-serif">Hanzi Civilizational Encoding System</span></h3>
+          <p data-dc-tpl="364" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; line-height: 2; color: rgb(195, 188, 174); font-weight: 300; margin: 0px;"><span data-dc-tpl="365" class="i18n-zh">将汉字视为一套文明的编码——形、音、义、源，层层解构。由字入文，由文入道，重建母语者与文明本源的连接。</span><span data-dc-tpl="366" class="i18n-hant">將漢字視為一套文明的編碼——形、音、義、源，層層解構。由字入文，由文入道，重建母語者與文明本源的連接。</span><span data-dc-tpl="367" class="i18n-en">Treating Hanzi as a code of civilization — form, sound, meaning, origin — deconstructed layer by layer. From character to text, from text to Dao, rebuilding the bond between native speakers and the source of their civilization.</span></p>
+          <div data-dc-tpl="368" style="display: flex; gap: 10px; margin-top: 26px;">
+            <div data-dc-tpl="369" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="370" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">9,692</div><div data-dc-tpl="371" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="372" class="i18n-zh">字条目</span><span data-dc-tpl="373" class="i18n-hant">字條目</span><span data-dc-tpl="374" class="i18n-en">Entries</span></div></div>
+            <div data-dc-tpl="375" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="376" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">37,031</div><div data-dc-tpl="377" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="378" class="i18n-zh">关系网络</span><span data-dc-tpl="379" class="i18n-hant">關係網絡</span><span data-dc-tpl="380" class="i18n-en">Links</span></div></div>
+            <div data-dc-tpl="381" style="flex: 1 1 0%; border-top: 1px solid rgba(239, 233, 220, 0.2); padding-top: 14px;"><div data-dc-tpl="382" style="font-size: 23px; font-weight: 700; color: rgb(217, 154, 78); line-height: 1;">128</div><div data-dc-tpl="383" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 11px; letter-spacing: 1px; color: rgb(183, 176, 162); margin-top: 7px; font-weight: 300;"><span data-dc-tpl="384" class="i18n-zh">声符系</span><span data-dc-tpl="385" class="i18n-hant">聲符系</span><span data-dc-tpl="386" class="i18n-en">Phonetics</span></div></div>
           </div>
         </div>
-        <div data-dc-tpl="401" style="margin-top: 30px;">
-          <div data-dc-tpl="402" id="hanzi-evo" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;">
+        <div data-dc-tpl="387" style="margin-top: 30px;">
+          <div data-dc-tpl="388" id="hanzi-evo" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;">
             
-              <div data-dc-tpl="404" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell active" style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-1.png" alt="「道」金文" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-1.png" alt="「道」金文" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">金文</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">金文</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Bronze</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">金文</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">金文</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Bronze</span></span></span>
               </div>
             
-              <div data-dc-tpl="404" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-2.png" alt="「道」楚系简帛" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-2.png" alt="「道」楚系简帛" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">楚系简帛</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">楚系簡帛</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Chu Silk</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">楚系简帛</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">楚系簡帛</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Chu Silk</span></span></span>
               </div>
             
-              <div data-dc-tpl="404" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-3.png" alt="「道」说文（小篆）" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-3.png" alt="「道」说文（小篆）" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">说文（小篆）</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">說文（小篆）</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Seal</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">说文（小篆）</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">說文（小篆）</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Seal</span></span></span>
               </div>
             
-              <div data-dc-tpl="404" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-4.png" alt="「道」秦系简牍" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-4.png" alt="「道」秦系简牍" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">秦系简牍</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">秦系簡牘</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Qin Slip</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">秦系简牍</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">秦系簡牘</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Qin Slip</span></span></span>
               </div>
             
-              <div data-dc-tpl="404" class="evo-cell active" style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-5.png" alt="「道」隶书" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-5.png" alt="「道」隶书" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">隶书</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">隸書</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Clerical</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">隶书</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">隸書</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Clerical</span></span></span>
               </div>
             
-              <div data-dc-tpl="404" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
-                <div data-dc-tpl="405" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
+              <div data-dc-tpl="390" class="evo-cell " style="display: flex; flex-direction: column; align-items: center; gap: 9px; flex: 1 1 0%;">
+                <div data-dc-tpl="391" class="evo-ring" style="width: 100%; max-width: 62px; aspect-ratio: 1 / 1; border: 1px solid rgba(239, 233, 220, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgb(34, 32, 29);">
                   
-                    <img data-dc-tpl="407" src="assets/hanzi-dao-6.png" alt="「道」楷书" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    <img data-dc-tpl="393" src="assets/hanzi-dao-6.png" alt="「道」楷书" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
                   
                 </div>
-                <span data-dc-tpl="408" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="409" class="i18n-zh"><span class="sc-interp">楷书</span></span><span data-dc-tpl="410" class="i18n-hant"><span class="sc-interp">楷書</span></span><span data-dc-tpl="411" class="i18n-en"><span class="sc-interp">Regular</span></span></span>
+                <span data-dc-tpl="394" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10.5px; letter-spacing: 0.5px; color: rgb(183, 176, 162); white-space: nowrap;"><span data-dc-tpl="395" class="i18n-zh"><span class="sc-interp">楷书</span></span><span data-dc-tpl="396" class="i18n-hant"><span class="sc-interp">楷書</span></span><span data-dc-tpl="397" class="i18n-en"><span class="sc-interp">Regular</span></span></span>
               </div>
             
           </div>
-          <div data-dc-tpl="412" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 1px; color: rgb(138, 133, 124); margin-top: 18px;"><span data-dc-tpl="413" class="i18n-zh">「道」字之演变 · 金文 → 楷书　｜　源自说文解字哲学系统</span><span data-dc-tpl="414" class="i18n-hant">「道」字之演變 · 金文 → 楷書　｜　源自說文解字哲學系統</span><span data-dc-tpl="415" class="i18n-en">Evolution of 道 (Dao) · Bronze → Regular Script | from the Shuowen philosophical system</span></div>
+          <div data-dc-tpl="398" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 1px; color: rgb(138, 133, 124); margin-top: 18px;"><span data-dc-tpl="399" class="i18n-zh">「道」字之演变 · 金文 → 楷书　｜　源自说文解字哲学系统</span><span data-dc-tpl="400" class="i18n-hant">「道」字之演變 · 金文 → 楷書　｜　源自說文解字哲學系統</span><span data-dc-tpl="401" class="i18n-en">Evolution of 道 (Dao) · Bronze → Regular Script | from the Shuowen philosophical system</span></div>
         </div>
       </div>
     </div>
   </section>
 
   
-  <section data-dc-tpl="416" id="supermgmt" style="background: rgb(236, 229, 214); padding: 120px 6vw;">
-    <div data-dc-tpl="417" style="max-width: 1280px; margin: 0px auto;">
-      <div data-dc-tpl="418" data-reveal="" style="margin-bottom: 64px; max-width: 720px;">
-        <div data-dc-tpl="419" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="420" class="i18n-zh">伍 · 超级管理学</span><span data-dc-tpl="421" class="i18n-hant">伍 · 超級管理學</span><span data-dc-tpl="422" class="i18n-en">V · SUPER-MANAGEMENT</span></div>
-        <h2 data-dc-tpl="423" style="margin: 0px 0px 22px; font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="424" class="i18n-zh">以觉智存世<br data-dc-tpl="425">以修身为本</span><span data-dc-tpl="426" class="i18n-hant">以覺智存世<br data-dc-tpl="427">以修身為本</span><span data-dc-tpl="428" class="i18n-en en-serif">Sustaining the World with Awakened Wisdom:<br data-dc-tpl="429">Rooted in Cultivating the Self</span></h2>
-        <p data-dc-tpl="430" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15.5px; line-height: 2.1; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="431" class="i18n-zh">觉智哲学之「用」，落于组织即「超级管理学」——不止于制度与效率，更求人心之治、境界之提。以东方智慧重塑领导力、决策与治理之道，使管理成为修行，使组织成为道场。</span><span data-dc-tpl="432" class="i18n-hant">覺智哲學之「用」，落於組織即「超級管理學」——不止於制度與效率，更求人心之治、境界之提。以東方智慧重塑領導力、決策與治理之道，使管理成為修行，使組織成為道場。</span><span data-dc-tpl="433" class="i18n-en">The "function" of awakened-wisdom philosophy, applied to organizations, is "Super-Management" — beyond systems and efficiency, it seeks the governance of the human heart and the elevation of one's realm. Reshaping leadership, decision-making and governance with Eastern wisdom — making management a practice, and the organization a place of cultivation.</span></p>
+  <section data-dc-tpl="402" id="supermgmt" style="background: rgb(236, 229, 214); padding: 120px 6vw;">
+    <div data-dc-tpl="403" style="max-width: 1280px; margin: 0px auto;">
+      <div data-dc-tpl="404" data-reveal="" style="margin-bottom: 64px; max-width: 720px;">
+        <div data-dc-tpl="405" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="406" class="i18n-zh">伍 · 超级管理学</span><span data-dc-tpl="407" class="i18n-hant">伍 · 超級管理學</span><span data-dc-tpl="408" class="i18n-en">V · SUPER-MANAGEMENT</span></div>
+        <h2 data-dc-tpl="409" style="margin: 0px 0px 22px; font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="410" class="i18n-zh">以觉智存世<br data-dc-tpl="411">以修身为本</span><span data-dc-tpl="412" class="i18n-hant">以覺智存世<br data-dc-tpl="413">以修身為本</span><span data-dc-tpl="414" class="i18n-en en-serif">Sustaining the World with Awakened Wisdom:<br data-dc-tpl="415">Rooted in Cultivating the Self</span></h2>
+        <p data-dc-tpl="416" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15.5px; line-height: 2.1; color: rgb(85, 80, 74); font-weight: 300;"><span data-dc-tpl="417" class="i18n-zh">觉智哲学之「用」，落于组织即「超级管理学」——不止于制度与效率，更求人心之治、境界之提。以东方智慧重塑领导力、决策与治理之道，使管理成为修行，使组织成为道场。</span><span data-dc-tpl="418" class="i18n-hant">覺智哲學之「用」，落於組織即「超級管理學」——不止於制度與效率，更求人心之治、境界之提。以東方智慧重塑領導力、決策與治理之道，使管理成為修行，使組織成為道場。</span><span data-dc-tpl="419" class="i18n-en">The "function" of awakened-wisdom philosophy, applied to organizations, is "Super-Management" — beyond systems and efficiency, it seeks the governance of the human heart and the elevation of one's realm. Reshaping leadership, decision-making and governance with Eastern wisdom — making management a practice, and the organization a place of cultivation.</span></p>
       </div>
 
-      <div data-dc-tpl="434" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: rgba(34, 32, 29, 0.12); margin-bottom: 72px;">
+      <div data-dc-tpl="420" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: rgba(34, 32, 29, 0.12); margin-bottom: 72px;">
         
-          <div data-dc-tpl="436" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
-            <div data-dc-tpl="437" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="438" class="i18n-zh"><span class="sc-interp">治己</span></span><span data-dc-tpl="439" class="i18n-hant"><span class="sc-interp">治己</span></span><span data-dc-tpl="440" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern the Self</span></span></div>
-            <p data-dc-tpl="441" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="442" class="i18n-zh"><span class="sc-interp">领导者的心性修炼——觉察、定力与格局，先正己而后正人。</span></span><span data-dc-tpl="443" class="i18n-hant"><span class="sc-interp">領導者的心性修煉——覺察、定力與格局，先正己而後正人。</span></span><span data-dc-tpl="444" class="i18n-en"><span class="sc-interp">The leader's cultivation of mind-nature — awareness, composure and vision; rectify oneself before others.</span></span></p>
+          <div data-dc-tpl="422" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
+            <div data-dc-tpl="423" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="424" class="i18n-zh"><span class="sc-interp">治己</span></span><span data-dc-tpl="425" class="i18n-hant"><span class="sc-interp">治己</span></span><span data-dc-tpl="426" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern the Self</span></span></div>
+            <p data-dc-tpl="427" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="428" class="i18n-zh"><span class="sc-interp">领导者的心性修炼——觉察、定力与格局，先正己而后正人。</span></span><span data-dc-tpl="429" class="i18n-hant"><span class="sc-interp">領導者的心性修煉——覺察、定力與格局，先正己而後正人。</span></span><span data-dc-tpl="430" class="i18n-en"><span class="sc-interp">The leader's cultivation of mind-nature — awareness, composure and vision; rectify oneself before others.</span></span></p>
           </div>
         
-          <div data-dc-tpl="436" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
-            <div data-dc-tpl="437" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="438" class="i18n-zh"><span class="sc-interp">治人</span></span><span data-dc-tpl="439" class="i18n-hant"><span class="sc-interp">治人</span></span><span data-dc-tpl="440" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern People</span></span></div>
-            <p data-dc-tpl="441" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="442" class="i18n-zh"><span class="sc-interp">以人心为本的组织之道——用人、育人、聚人，成一团队之和。</span></span><span data-dc-tpl="443" class="i18n-hant"><span class="sc-interp">以人心為本的組織之道——用人、育人、聚人，成一團隊之和。</span></span><span data-dc-tpl="444" class="i18n-en"><span class="sc-interp">An organizational way rooted in the human heart — employ, nurture and unite people into a harmonious team.</span></span></p>
+          <div data-dc-tpl="422" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
+            <div data-dc-tpl="423" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="424" class="i18n-zh"><span class="sc-interp">治人</span></span><span data-dc-tpl="425" class="i18n-hant"><span class="sc-interp">治人</span></span><span data-dc-tpl="426" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern People</span></span></div>
+            <p data-dc-tpl="427" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="428" class="i18n-zh"><span class="sc-interp">以人心为本的组织之道——用人、育人、聚人，成一团队之和。</span></span><span data-dc-tpl="429" class="i18n-hant"><span class="sc-interp">以人心為本的組織之道——用人、育人、聚人，成一團隊之和。</span></span><span data-dc-tpl="430" class="i18n-en"><span class="sc-interp">An organizational way rooted in the human heart — employ, nurture and unite people into a harmonious team.</span></span></p>
           </div>
         
-          <div data-dc-tpl="436" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
-            <div data-dc-tpl="437" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="438" class="i18n-zh"><span class="sc-interp">治事</span></span><span data-dc-tpl="439" class="i18n-hant"><span class="sc-interp">治事</span></span><span data-dc-tpl="440" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern Affairs</span></span></div>
-            <p data-dc-tpl="441" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="442" class="i18n-zh"><span class="sc-interp">决策与治理的智慧——于变易中守常道，于无为中成有为。</span></span><span data-dc-tpl="443" class="i18n-hant"><span class="sc-interp">決策與治理的智慧——於變易中守常道，於無為中成有為。</span></span><span data-dc-tpl="444" class="i18n-en"><span class="sc-interp">The wisdom of decision and governance — hold the constant Dao amid change, achieve through non-action.</span></span></p>
+          <div data-dc-tpl="422" data-reveal="" style="background: rgb(236, 229, 214); padding: 36px 32px;">
+            <div data-dc-tpl="423" style="font-size: 32px; color: rgb(156, 43, 35); line-height: 1; margin-bottom: 16px;"><span data-dc-tpl="424" class="i18n-zh"><span class="sc-interp">治事</span></span><span data-dc-tpl="425" class="i18n-hant"><span class="sc-interp">治事</span></span><span data-dc-tpl="426" class="i18n-en en-serif" style="font-weight: 600;"><span class="sc-interp">Govern Affairs</span></span></div>
+            <p data-dc-tpl="427" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="428" class="i18n-zh"><span class="sc-interp">决策与治理的智慧——于变易中守常道，于无为中成有为。</span></span><span data-dc-tpl="429" class="i18n-hant"><span class="sc-interp">決策與治理的智慧——於變易中守常道，於無為中成有為。</span></span><span data-dc-tpl="430" class="i18n-en"><span class="sc-interp">The wisdom of decision and governance — hold the constant Dao amid change, achieve through non-action.</span></span></p>
           </div>
         
       </div>
 
-      <div data-dc-tpl="445" data-reveal="" style="border-top: 1px solid rgba(34, 32, 29, 0.16); padding-top: 52px;">
-        <div data-dc-tpl="446" style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 12px;">
-          <span data-dc-tpl="447" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(156, 43, 35); padding: 5px 14px; border: 1px solid rgba(156, 43, 35, 0.4);"><span data-dc-tpl="448" class="i18n-zh">旗舰项目</span><span data-dc-tpl="449" class="i18n-hant">旗艦項目</span><span data-dc-tpl="450" class="i18n-en">FLAGSHIP</span></span>
-          <h3 data-dc-tpl="451" style="margin: 0px; font-size: clamp(25px, 3vw, 38px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="452" class="i18n-zh">企业·家 陪伴成长计划</span><span data-dc-tpl="453" class="i18n-hant">企業·家 陪伴成長計劃</span><span data-dc-tpl="454" class="i18n-en en-serif">Enterprise &amp; Family — Companioned-Growth Program</span></h3>
+      <div data-dc-tpl="431" data-reveal="" style="border-top: 1px solid rgba(34, 32, 29, 0.16); padding-top: 52px;">
+        <div data-dc-tpl="432" style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 12px;">
+          <span data-dc-tpl="433" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(156, 43, 35); padding: 5px 14px; border: 1px solid rgba(156, 43, 35, 0.4);"><span data-dc-tpl="434" class="i18n-zh">旗舰项目</span><span data-dc-tpl="435" class="i18n-hant">旗艦項目</span><span data-dc-tpl="436" class="i18n-en">FLAGSHIP</span></span>
+          <h3 data-dc-tpl="437" style="margin: 0px; font-size: clamp(25px, 3vw, 38px); font-weight: 700; letter-spacing: 2px;"><span data-dc-tpl="438" class="i18n-zh">企业·家 陪伴成长计划</span><span data-dc-tpl="439" class="i18n-hant">企業·家 陪伴成長計劃</span><span data-dc-tpl="440" class="i18n-en en-serif">Enterprise &amp; Family — Companioned-Growth Program</span></h3>
         </div>
-        <p data-dc-tpl="455" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2.1; color: rgb(85, 80, 74); font-weight: 300; max-width: 680px; margin: 0px 0px 40px;"><span data-dc-tpl="456" class="i18n-zh">超级管理学的长程落地——不是一次讲座，而是一段陪伴。以觉智哲学为根，为企业与家庭提供长程的成长方案：修一人之心，正一家之风，理一企之治。</span><span data-dc-tpl="457" class="i18n-hant">超級管理學的長程落地——不是一次講座，而是一段陪伴。以覺智哲學為根，為企業與家庭提供長程的成長方案：修一人之心，正一家之風，理一企之治。</span><span data-dc-tpl="458" class="i18n-en">The long-term grounding of Super-Management — not a single lecture but a companionship. Rooted in awakened-wisdom philosophy, it offers enterprises and families a long-range path of growth: cultivate one heart, rectify one family's ethos, order one enterprise's governance.</span></p>
-        <div data-dc-tpl="459" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+        <p data-dc-tpl="441" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2.1; color: rgb(85, 80, 74); font-weight: 300; max-width: 680px; margin: 0px 0px 40px;"><span data-dc-tpl="442" class="i18n-zh">超级管理学的长程落地——不是一次讲座，而是一段陪伴。以觉智哲学为根，为企业与家庭提供长程的成长方案：修一人之心，正一家之风，理一企之治。</span><span data-dc-tpl="443" class="i18n-hant">超級管理學的長程落地——不是一次講座，而是一段陪伴。以覺智哲學為根，為企業與家庭提供長程的成長方案：修一人之心，正一家之風，理一企之治。</span><span data-dc-tpl="444" class="i18n-en">The long-term grounding of Super-Management — not a single lecture but a companionship. Rooted in awakened-wisdom philosophy, it offers enterprises and families a long-range path of growth: cultivate one heart, rectify one family's ethos, order one enterprise's governance.</span></p>
+        <div data-dc-tpl="445" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
           
-            <div data-dc-tpl="461" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
-              <div data-dc-tpl="462" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">01</span></div>
-              <h4 data-dc-tpl="463" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="464" class="i18n-zh"><span class="sc-interp">私塾式深研</span></span><span data-dc-tpl="465" class="i18n-hant"><span class="sc-interp">私塾式深研</span></span><span data-dc-tpl="466" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Private-Academy Study</span></span></h4>
-              <p data-dc-tpl="467" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="468" class="i18n-zh"><span class="sc-interp">小班共修九经，导师随行答疑，经典入心。</span></span><span data-dc-tpl="469" class="i18n-hant"><span class="sc-interp">小班共修九經，導師隨行答疑，經典入心。</span></span><span data-dc-tpl="470" class="i18n-en"><span class="sc-interp">Small-group study of the Nine Classics, with mentors answering along the way — the classics enter the heart.</span></span></p>
+            <div data-dc-tpl="447" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
+              <div data-dc-tpl="448" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">01</span></div>
+              <h4 data-dc-tpl="449" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="450" class="i18n-zh"><span class="sc-interp">私塾式深研</span></span><span data-dc-tpl="451" class="i18n-hant"><span class="sc-interp">私塾式深研</span></span><span data-dc-tpl="452" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Private-Academy Study</span></span></h4>
+              <p data-dc-tpl="453" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="454" class="i18n-zh"><span class="sc-interp">小班共修九经，导师随行答疑，经典入心。</span></span><span data-dc-tpl="455" class="i18n-hant"><span class="sc-interp">小班共修九經，導師隨行答疑，經典入心。</span></span><span data-dc-tpl="456" class="i18n-en"><span class="sc-interp">Small-group study of the Nine Classics, with mentors answering along the way — the classics enter the heart.</span></span></p>
             </div>
           
-            <div data-dc-tpl="461" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
-              <div data-dc-tpl="462" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">02</span></div>
-              <h4 data-dc-tpl="463" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="464" class="i18n-zh"><span class="sc-interp">家风共建</span></span><span data-dc-tpl="465" class="i18n-hant"><span class="sc-interp">家風共建</span></span><span data-dc-tpl="466" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Building Family Ethos</span></span></h4>
-              <p data-dc-tpl="467" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="468" class="i18n-zh"><span class="sc-interp">亲子与家庭同修，立家训、正家风、传家道。</span></span><span data-dc-tpl="469" class="i18n-hant"><span class="sc-interp">親子與家庭同修，立家訓、正家風、傳家道。</span></span><span data-dc-tpl="470" class="i18n-en"><span class="sc-interp">Parents and family cultivate together — establish precepts, rectify ethos, transmit the family Dao.</span></span></p>
+            <div data-dc-tpl="447" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
+              <div data-dc-tpl="448" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">02</span></div>
+              <h4 data-dc-tpl="449" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="450" class="i18n-zh"><span class="sc-interp">家风共建</span></span><span data-dc-tpl="451" class="i18n-hant"><span class="sc-interp">家風共建</span></span><span data-dc-tpl="452" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Building Family Ethos</span></span></h4>
+              <p data-dc-tpl="453" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="454" class="i18n-zh"><span class="sc-interp">亲子与家庭同修，立家训、正家风、传家道。</span></span><span data-dc-tpl="455" class="i18n-hant"><span class="sc-interp">親子與家庭同修，立家訓、正家風、傳家道。</span></span><span data-dc-tpl="456" class="i18n-en"><span class="sc-interp">Parents and family cultivate together — establish precepts, rectify ethos, transmit the family Dao.</span></span></p>
             </div>
           
-            <div data-dc-tpl="461" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
-              <div data-dc-tpl="462" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">03</span></div>
-              <h4 data-dc-tpl="463" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="464" class="i18n-zh"><span class="sc-interp">超级管理陪跑</span></span><span data-dc-tpl="465" class="i18n-hant"><span class="sc-interp">超級管理陪跑</span></span><span data-dc-tpl="466" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Management Companionship</span></span></h4>
-              <p data-dc-tpl="467" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="468" class="i18n-zh"><span class="sc-interp">将觉智智慧导入组织治理，领导者长期陪伴成长。</span></span><span data-dc-tpl="469" class="i18n-hant"><span class="sc-interp">將覺智智慧導入組織治理，領導者長期陪伴成長。</span></span><span data-dc-tpl="470" class="i18n-en"><span class="sc-interp">Bring awakened wisdom into organizational governance; long-term companioned growth for leaders.</span></span></p>
+            <div data-dc-tpl="447" style="background: rgb(250, 247, 239); padding: 40px 34px; border-top: 3px solid rgb(156, 43, 35);">
+              <div data-dc-tpl="448" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span class="sc-interp">03</span></div>
+              <h4 data-dc-tpl="449" style="font-size: 22px; font-weight: 600; letter-spacing: 1px; margin: 14px 0px;"><span data-dc-tpl="450" class="i18n-zh"><span class="sc-interp">超级管理陪跑</span></span><span data-dc-tpl="451" class="i18n-hant"><span class="sc-interp">超級管理陪跑</span></span><span data-dc-tpl="452" class="i18n-en en-serif" style="font-size: 23px;"><span class="sc-interp">Management Companionship</span></span></h4>
+              <p data-dc-tpl="453" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13.5px; line-height: 1.95; color: rgb(85, 80, 74); font-weight: 300; margin: 0px;"><span data-dc-tpl="454" class="i18n-zh"><span class="sc-interp">将觉智智慧导入组织治理，领导者长期陪伴成长。</span></span><span data-dc-tpl="455" class="i18n-hant"><span class="sc-interp">將覺智智慧導入組織治理，領導者長期陪伴成長。</span></span><span data-dc-tpl="456" class="i18n-en"><span class="sc-interp">Bring awakened wisdom into organizational governance; long-term companioned growth for leaders.</span></span></p>
             </div>
           
         </div>
-        <div data-dc-tpl="471" style="margin-top: 34px;"><a data-dc-tpl="472" href="超级管理学.dc.html" class="hv7" style="display: inline-block; padding: 13px 32px; background: rgb(34, 32, 29); color: rgb(244, 239, 228); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; transition: background 0.3s;"><span data-dc-tpl="473" class="i18n-zh">进入超级管理学 →</span><span data-dc-tpl="474" class="i18n-hant">進入超級管理學 →</span><span data-dc-tpl="475" class="i18n-en">Explore Super-Mgmt →</span></a></div>
+        <div data-dc-tpl="457" style="margin-top: 34px;"><a data-dc-tpl="458" href="超级管理学.dc.html" class="hv7" style="display: inline-block; padding: 13px 32px; background: rgb(34, 32, 29); color: rgb(244, 239, 228); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 3px; transition: background 0.3s;"><span data-dc-tpl="459" class="i18n-zh">进入超级管理学 →</span><span data-dc-tpl="460" class="i18n-hant">進入超級管理學 →</span><span data-dc-tpl="461" class="i18n-en">Explore Super-Mgmt →</span></a></div>
       </div>
     </div>
   </section>
 
   
-  <section data-dc-tpl="476" id="founder" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
-    <div data-dc-tpl="477" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
-      <div data-dc-tpl="478" data-reveal="" style="display: flex; justify-content: center;">
-        <div data-dc-tpl="479" style="width: 100%; max-width: 340px;">
-          <div data-dc-tpl="480" style="aspect-ratio: 4 / 5; border: 1px solid rgba(34, 32, 29, 0.14); overflow: hidden; background: rgb(250, 247, 239);">
-            <img data-dc-tpl="481" src="uploads/huyong.jpg" alt="胡勇" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+  <section data-dc-tpl="462" id="founder" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
+    <div data-dc-tpl="463" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
+      <div data-dc-tpl="464" data-reveal="" style="display: flex; justify-content: center;">
+        <div data-dc-tpl="465" style="width: 100%; max-width: 340px;">
+          <div data-dc-tpl="466" style="aspect-ratio: 4 / 5; border: 1px solid rgba(34, 32, 29, 0.14); overflow: hidden; background: rgb(250, 247, 239);">
+            <img data-dc-tpl="467" src="uploads/huyong.jpg" alt="胡勇" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <div data-dc-tpl="482" style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
-            <span data-dc-tpl="483" style="width: 28px; height: 1px; background: rgb(156, 43, 35);"></span>
-            <span data-dc-tpl="484" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);">觉智圆成 · 体用不二</span>
-          </div>
-        </div>
-      </div>
-      <div data-dc-tpl="485" data-reveal="">
-        <div data-dc-tpl="486" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="487" class="i18n-zh">书院 · 院长</span><span data-dc-tpl="488" class="i18n-hant">書院 · 院長</span><span data-dc-tpl="489" class="i18n-en">ACADEMY · PRINCIPAL</span></div>
-        <h2 data-dc-tpl="490" style="margin: 0px 0px 8px; font-size: clamp(38px, 5vw, 58px); font-weight: 700; letter-spacing: 4px;"><span data-dc-tpl="491" class="i18n-zh">胡 勇</span><span data-dc-tpl="492" class="i18n-hant">胡 勇</span><span data-dc-tpl="493" class="i18n-en en-serif">Hu Yong</span></h2>
-        <div data-dc-tpl="494" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; letter-spacing: 2px; color: rgb(138, 133, 124); margin-bottom: 28px;"><span data-dc-tpl="495" class="i18n-zh">勇哥 · 创始人</span><span data-dc-tpl="496" class="i18n-hant">勇哥 · 創始人</span><span data-dc-tpl="497" class="i18n-en">Yong-ge · Founder</span></div>
-        <p data-dc-tpl="498" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15.5px; line-height: 2.1; color: rgb(59, 56, 51); font-weight: 300; max-width: 540px; margin: 0px 0px 34px;"><span data-dc-tpl="499" class="i18n-zh">觉智哲学的理论建构者，九经书院的创办人与主讲。以哲学为业，以觉智为志——会通中西、贯穿古今，于 AI 时代重探中国心性之学。</span><span data-dc-tpl="500" class="i18n-hant">覺智哲學的理論建構者，九經書院的創辦人與主講。以哲學為業，以覺智為志——會通中西、貫穿古今，於 AI 時代重探中國心性之學。</span><span data-dc-tpl="501" class="i18n-en">The theoretical architect of awakened-wisdom philosophy, and the founder and principal lecturer of Jiujing Academy. Philosophy as vocation, awakened wisdom as aspiration — integrating East and West, threading past and present, re-exploring the Chinese learning of mind-nature in the age of AI.</span></p>
-        <div data-dc-tpl="502" style="display: flex; flex-direction: column; gap: 0px; max-width: 580px;">
-          
-            <div data-dc-tpl="504" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
-              <span data-dc-tpl="505" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
-              <span data-dc-tpl="506" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="507" class="i18n-zh"><span class="sc-interp">南京大学哲学博士</span></span><span data-dc-tpl="508" class="i18n-hant"><span class="sc-interp">南京大學哲學博士</span></span><span data-dc-tpl="509" class="i18n-en"><span class="sc-interp">Ph.D. in Philosophy, Nanjing University</span></span></span>
-            </div>
-          
-            <div data-dc-tpl="504" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
-              <span data-dc-tpl="505" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
-              <span data-dc-tpl="506" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="507" class="i18n-zh"><span class="sc-interp">江苏省社会科学院哲学研究所研究员</span></span><span data-dc-tpl="508" class="i18n-hant"><span class="sc-interp">江蘇省社會科學院哲學研究所研究員</span></span><span data-dc-tpl="509" class="i18n-en"><span class="sc-interp">Research Fellow, Institute of Philosophy, Jiangsu Academy of Social Sciences</span></span></span>
-            </div>
-          
-            <div data-dc-tpl="504" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
-              <span data-dc-tpl="505" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
-              <span data-dc-tpl="506" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="507" class="i18n-zh"><span class="sc-interp">江苏省社会科学院人工智能与社会科学创新中心执行主任</span></span><span data-dc-tpl="508" class="i18n-hant"><span class="sc-interp">江蘇省社會科學院人工智能與社會科學創新中心執行主任</span></span><span data-dc-tpl="509" class="i18n-en"><span class="sc-interp">Executive Director, Center for AI &amp; Social Science Innovation, JASS</span></span></span>
-            </div>
-          
-            <div data-dc-tpl="504" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
-              <span data-dc-tpl="505" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
-              <span data-dc-tpl="506" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="507" class="i18n-zh"><span class="sc-interp">九经书院创始人</span></span><span data-dc-tpl="508" class="i18n-hant"><span class="sc-interp">九經書院創始人</span></span><span data-dc-tpl="509" class="i18n-en"><span class="sc-interp">Founder, Jiujing Academy</span></span></span>
-            </div>
-          
-        </div>
-        <div data-dc-tpl="510" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px;">
-          <span data-dc-tpl="511" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="512" class="i18n-zh">中西九经</span><span data-dc-tpl="513" class="i18n-hant">中西九經</span><span data-dc-tpl="514" class="i18n-en">Sino-Western Nine Classics</span></span>
-          <span data-dc-tpl="515" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="516" class="i18n-zh">中国哲学（佛学）</span><span data-dc-tpl="517" class="i18n-hant">中國哲學（佛學）</span><span data-dc-tpl="518" class="i18n-en">Chinese Philosophy (Buddhism)</span></span>
-          <span data-dc-tpl="519" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="520" class="i18n-zh">AI 哲学</span><span data-dc-tpl="521" class="i18n-hant">AI 哲學</span><span data-dc-tpl="522" class="i18n-en">Philosophy of AI</span></span>
-          <span data-dc-tpl="523" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="524" class="i18n-zh">汉字哲学</span><span data-dc-tpl="525" class="i18n-hant">漢字哲學</span><span data-dc-tpl="526" class="i18n-en">Philosophy of Hanzi</span></span>
-          <span data-dc-tpl="527" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="528" class="i18n-zh">情爱哲学</span><span data-dc-tpl="529" class="i18n-hant">情愛哲學</span><span data-dc-tpl="530" class="i18n-en">Philosophy of Love</span></span>
-          <span data-dc-tpl="531" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="532" class="i18n-zh">超级管理学</span><span data-dc-tpl="533" class="i18n-hant">超級管理學</span><span data-dc-tpl="534" class="i18n-en">Super-Management</span></span>
-        </div>
-        <div data-dc-tpl="535" style="margin-top: 34px;">
-          <div data-dc-tpl="536" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124); margin-bottom: 14px;"><span data-dc-tpl="537" class="i18n-zh">主要著述</span><span data-dc-tpl="538" class="i18n-hant">主要著述</span><span data-dc-tpl="539" class="i18n-en">SELECTED WORKS</span></div>
-          <div data-dc-tpl="540" style="display: flex; flex-direction: column; gap: 14px;">
-            <div data-dc-tpl="541">
-              <span data-dc-tpl="542" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 2px; color: rgb(156, 43, 35);"><span data-dc-tpl="543" class="i18n-zh">已出版</span><span data-dc-tpl="544" class="i18n-hant">已出版</span><span data-dc-tpl="545" class="i18n-en">PUBLISHED</span></span>
-              <div data-dc-tpl="546" style="font-size: 16px; line-height: 2; color: rgb(59, 56, 51); letter-spacing: 1px; margin-top: 4px;"><span data-dc-tpl="547" class="i18n-zh">《中国哲学体用思想研究》 · 《弘明集译注》 · 《牛首山文学·佛禅篇》</span><span data-dc-tpl="548" class="i18n-hant">《中國哲學體用思想研究》 · 《弘明集譯注》 · 《牛首山文學·佛禪篇》</span><span data-dc-tpl="549" class="i18n-en en-serif" style="font-style: italic;">A Study of Substance–Function Thought in Chinese Philosophy · Annotated Translation of the Hongming Ji · Niushou Mountain Literature: Buddhist Chan Volume</span></div>
-            </div>
-            <div data-dc-tpl="550">
-              <span data-dc-tpl="551" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 2px; color: rgb(138, 133, 124);"><span data-dc-tpl="552" class="i18n-zh">待出版</span><span data-dc-tpl="553" class="i18n-hant">待出版</span><span data-dc-tpl="554" class="i18n-en">FORTHCOMING</span></span>
-              <div data-dc-tpl="555" style="font-size: 16px; line-height: 2; color: rgb(59, 56, 51); letter-spacing: 1px; margin-top: 4px;"><span data-dc-tpl="556" class="i18n-zh">《道与器：AI的中国哲学读法》 · 《吾丧我：AI与中国觉悟哲学》 · 《心之二阶性》 · 《金刚经心法》 · 《「之间」的功夫——情爱觉智论》 等</span><span data-dc-tpl="557" class="i18n-hant">《道與器：AI的中國哲學讀法》 · 《吾喪我：AI與中國覺悟哲學》 · 《心之二階性》 · 《金剛經心法》 · 《「之間」的功夫——情愛覺智論》 等</span><span data-dc-tpl="558" class="i18n-en en-serif" style="font-style: italic;">The Dao and the Instrument: A Chinese Reading of AI · I Have Lost Myself: AI and Chinese Philosophy of Awakening · The Second-Order Nature of Mind · The Heart-Method of the Diamond Sutra · The Work of the "In-Between": On the Awakened Wisdom of Love · and more</span></div>
-            </div>
+          <div data-dc-tpl="468" style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+            <span data-dc-tpl="469" style="width: 28px; height: 1px; background: rgb(156, 43, 35);"></span>
+            <span data-dc-tpl="470" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);">觉智圆成 · 体用不二</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  
-  <section data-dc-tpl="559" id="ceo" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
-    <div data-dc-tpl="560" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
-      <div data-dc-tpl="561" data-reveal="" style="display: flex; justify-content: center;">
-        <div data-dc-tpl="562" style="width: 100%; max-width: 300px;">
-          <div data-dc-tpl="563" style="aspect-ratio: 4 / 5; border: 1px solid rgba(34, 32, 29, 0.14); overflow: hidden; background: rgb(250, 247, 239); border-radius: 8px;">
-            <img data-dc-tpl="564" src="uploads/黄智威.jpg" alt="黄智威" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div data-dc-tpl="565" style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
-            <span data-dc-tpl="566" style="width: 28px; height: 1px; background: rgb(156, 43, 35);"></span>
-            <span data-dc-tpl="567" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span data-dc-tpl="568" class="i18n-zh">书院 · 运营</span><span data-dc-tpl="569" class="i18n-hant">書院 · 運營</span><span data-dc-tpl="570" class="i18n-en">ACADEMY · OPERATIONS</span></span>
-          </div>
+      <div data-dc-tpl="471" data-reveal="">
+        <div data-dc-tpl="472" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="473" class="i18n-zh">书院 · 院长</span><span data-dc-tpl="474" class="i18n-hant">書院 · 院長</span><span data-dc-tpl="475" class="i18n-en">ACADEMY · PRINCIPAL</span></div>
+        <h2 data-dc-tpl="476" style="margin: 0px 0px 8px; font-size: clamp(38px, 5vw, 58px); font-weight: 700; letter-spacing: 4px;"><span data-dc-tpl="477" class="i18n-zh">胡 勇</span><span data-dc-tpl="478" class="i18n-hant">胡 勇</span><span data-dc-tpl="479" class="i18n-en en-serif">Hu Yong</span></h2>
+        <div data-dc-tpl="480" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; letter-spacing: 2px; color: rgb(138, 133, 124); margin-bottom: 28px;"><span data-dc-tpl="481" class="i18n-zh">勇哥 · 创始人</span><span data-dc-tpl="482" class="i18n-hant">勇哥 · 創始人</span><span data-dc-tpl="483" class="i18n-en">Yong-ge · Founder</span></div>
+        <p data-dc-tpl="484" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15.5px; line-height: 2.1; color: rgb(59, 56, 51); font-weight: 300; max-width: 540px; margin: 0px 0px 34px;"><span data-dc-tpl="485" class="i18n-zh">觉智哲学的理论建构者，九经书院的创办人与主讲。以哲学为业，以觉智为志——会通中西、贯穿古今，于 AI 时代重探中国心性之学。</span><span data-dc-tpl="486" class="i18n-hant">覺智哲學的理論建構者，九經書院的創辦人與主講。以哲學為業，以覺智為志——會通中西、貫穿古今，於 AI 時代重探中國心性之學。</span><span data-dc-tpl="487" class="i18n-en">The theoretical architect of awakened-wisdom philosophy, and the founder and principal lecturer of Jiujing Academy. Philosophy as vocation, awakened wisdom as aspiration — integrating East and West, threading past and present, re-exploring the Chinese learning of mind-nature in the age of AI.</span></p>
+        <div data-dc-tpl="488" style="display: flex; flex-direction: column; gap: 0px; max-width: 580px;">
+          
+            <div data-dc-tpl="490" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
+              <span data-dc-tpl="491" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
+              <span data-dc-tpl="492" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="493" class="i18n-zh"><span class="sc-interp">南京大学哲学博士</span></span><span data-dc-tpl="494" class="i18n-hant"><span class="sc-interp">南京大學哲學博士</span></span><span data-dc-tpl="495" class="i18n-en"><span class="sc-interp">Ph.D. in Philosophy, Nanjing University</span></span></span>
+            </div>
+          
+            <div data-dc-tpl="490" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
+              <span data-dc-tpl="491" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
+              <span data-dc-tpl="492" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="493" class="i18n-zh"><span class="sc-interp">江苏省社会科学院哲学研究所研究员</span></span><span data-dc-tpl="494" class="i18n-hant"><span class="sc-interp">江蘇省社會科學院哲學研究所研究員</span></span><span data-dc-tpl="495" class="i18n-en"><span class="sc-interp">Research Fellow, Institute of Philosophy, Jiangsu Academy of Social Sciences</span></span></span>
+            </div>
+          
+            <div data-dc-tpl="490" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
+              <span data-dc-tpl="491" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
+              <span data-dc-tpl="492" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="493" class="i18n-zh"><span class="sc-interp">江苏省社会科学院人工智能与社会科学创新中心执行主任</span></span><span data-dc-tpl="494" class="i18n-hant"><span class="sc-interp">江蘇省社會科學院人工智能與社會科學創新中心執行主任</span></span><span data-dc-tpl="495" class="i18n-en"><span class="sc-interp">Executive Director, Center for AI &amp; Social Science Innovation, JASS</span></span></span>
+            </div>
+          
+            <div data-dc-tpl="490" style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0px; border-top: 1px solid rgba(34, 32, 29, 0.1);">
+              <span data-dc-tpl="491" style="width: 6px; height: 6px; background: rgb(156, 43, 35); border-radius: 50%; flex-shrink: 0; transform: translateY(-3px);"></span>
+              <span data-dc-tpl="492" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; color: rgb(34, 32, 29); font-weight: 400;"><span data-dc-tpl="493" class="i18n-zh"><span class="sc-interp">九经书院创始人</span></span><span data-dc-tpl="494" class="i18n-hant"><span class="sc-interp">九經書院創始人</span></span><span data-dc-tpl="495" class="i18n-en"><span class="sc-interp">Founder, Jiujing Academy</span></span></span>
+            </div>
+          
         </div>
-      </div>
-      <div data-dc-tpl="571" data-reveal="">
-        <div data-dc-tpl="572" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="573" class="i18n-zh">书院 · CEO</span><span data-dc-tpl="574" class="i18n-hant">書院 · CEO</span><span data-dc-tpl="575" class="i18n-en">ACADEMY · CEO</span></div>
-        <h2 data-dc-tpl="576" style="margin: 0px 0px 8px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="577" class="i18n-zh">黄智威</span><span data-dc-tpl="578" class="i18n-hant">黃智威</span><span data-dc-tpl="579" class="i18n-en en-serif">Huang Zhiwei</span></h2>
-        <div data-dc-tpl="580" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 2px; color: rgb(138, 133, 124); margin-bottom: 24px;"><span data-dc-tpl="581" class="i18n-zh">书院CEO · 联合创始人</span><span data-dc-tpl="582" class="i18n-hant">書院CEO · 聯合創始人</span><span data-dc-tpl="583" class="i18n-en">CEO · Co-founder</span></div>
-        <p data-dc-tpl="584" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2.1; color: rgb(59, 56, 51); font-weight: 300; max-width: 540px; margin: 0px 0px 24px;"><span data-dc-tpl="585" class="i18n-zh">九经书院CEO，负责书院运营、课程体系管理、文化交流与对外合作。秉承「觉智圆成·体用不二」的理念，致力于将东方智慧与现代实践相融合，推动经典文化的当代传播与创新。</span><span data-dc-tpl="586" class="i18n-hant">九經書院CEO，負責書院運營、課程體系管理、文化交流與對外合作。秉承「覺智圓成·體用不二」的理念，致力於將東方智慧與現代實踐相融合，推動經典文化的當代傳播與創新。</span><span data-dc-tpl="587" class="i18n-en">CEO of Jiujing Academy, responsible for operations, curriculum management, cultural exchange and external cooperation. Upholding the philosophy of 'Consummate Awakened Wisdom · Substance and Function as One,' he is dedicated to integrating Eastern wisdom with modern practice.</span></p>
-        <div data-dc-tpl="588" style="display: flex; gap: 16px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; flex-wrap: wrap;">
-          <span data-dc-tpl="589" style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;">✉️ <span data-dc-tpl="590" class="i18n-zh">zhiwei@jiujing.academy</span><span data-dc-tpl="591" class="i18n-hant">zhiwei@jiujing.academy</span><span data-dc-tpl="592" class="i18n-en">zhiwei@jiujing.academy</span></span>
+        <div data-dc-tpl="496" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px;">
+          <span data-dc-tpl="497" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="498" class="i18n-zh">中西九经</span><span data-dc-tpl="499" class="i18n-hant">中西九經</span><span data-dc-tpl="500" class="i18n-en">Sino-Western Nine Classics</span></span>
+          <span data-dc-tpl="501" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="502" class="i18n-zh">中国哲学（佛学）</span><span data-dc-tpl="503" class="i18n-hant">中國哲學（佛學）</span><span data-dc-tpl="504" class="i18n-en">Chinese Philosophy (Buddhism)</span></span>
+          <span data-dc-tpl="505" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="506" class="i18n-zh">AI 哲学</span><span data-dc-tpl="507" class="i18n-hant">AI 哲學</span><span data-dc-tpl="508" class="i18n-en">Philosophy of AI</span></span>
+          <span data-dc-tpl="509" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="510" class="i18n-zh">汉字哲学</span><span data-dc-tpl="511" class="i18n-hant">漢字哲學</span><span data-dc-tpl="512" class="i18n-en">Philosophy of Hanzi</span></span>
+          <span data-dc-tpl="513" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="514" class="i18n-zh">情爱哲学</span><span data-dc-tpl="515" class="i18n-hant">情愛哲學</span><span data-dc-tpl="516" class="i18n-en">Philosophy of Love</span></span>
+          <span data-dc-tpl="517" style="padding: 8px 18px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;"><span data-dc-tpl="518" class="i18n-zh">超级管理学</span><span data-dc-tpl="519" class="i18n-hant">超級管理學</span><span data-dc-tpl="520" class="i18n-en">Super-Management</span></span>
+        </div>
+        <div data-dc-tpl="521" style="margin-top: 34px;">
+          <div data-dc-tpl="522" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124); margin-bottom: 14px;"><span data-dc-tpl="523" class="i18n-zh">主要著述</span><span data-dc-tpl="524" class="i18n-hant">主要著述</span><span data-dc-tpl="525" class="i18n-en">SELECTED WORKS</span></div>
+          <div data-dc-tpl="526" style="display: flex; flex-direction: column; gap: 14px;">
+            <div data-dc-tpl="527">
+              <span data-dc-tpl="528" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 2px; color: rgb(156, 43, 35);"><span data-dc-tpl="529" class="i18n-zh">已出版</span><span data-dc-tpl="530" class="i18n-hant">已出版</span><span data-dc-tpl="531" class="i18n-en">PUBLISHED</span></span>
+              <div data-dc-tpl="532" style="font-size: 16px; line-height: 2; color: rgb(59, 56, 51); letter-spacing: 1px; margin-top: 4px;"><span data-dc-tpl="533" class="i18n-zh">《中国哲学体用思想研究》 · 《弘明集译注》 · 《牛首山文学·佛禅篇》</span><span data-dc-tpl="534" class="i18n-hant">《中國哲學體用思想研究》 · 《弘明集譯注》 · 《牛首山文學·佛禪篇》</span><span data-dc-tpl="535" class="i18n-en en-serif" style="font-style: italic;">A Study of Substance–Function Thought in Chinese Philosophy · Annotated Translation of the Hongming Ji · Niushou Mountain Literature: Buddhist Chan Volume</span></div>
+            </div>
+            <div data-dc-tpl="536">
+              <span data-dc-tpl="537" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 2px; color: rgb(138, 133, 124);"><span data-dc-tpl="538" class="i18n-zh">待出版</span><span data-dc-tpl="539" class="i18n-hant">待出版</span><span data-dc-tpl="540" class="i18n-en">FORTHCOMING</span></span>
+              <div data-dc-tpl="541" style="font-size: 16px; line-height: 2; color: rgb(59, 56, 51); letter-spacing: 1px; margin-top: 4px;"><span data-dc-tpl="542" class="i18n-zh">《道与器：AI的中国哲学读法》 · 《吾丧我：AI与中国觉悟哲学》 · 《心之二阶性》 · 《金刚经心法》 · 《「之间」的功夫——情爱觉智论》 等</span><span data-dc-tpl="543" class="i18n-hant">《道與器：AI的中國哲學讀法》 · 《吾喪我：AI與中國覺悟哲學》 · 《心之二階性》 · 《金剛經心法》 · 《「之間」的功夫——情愛覺智論》 等</span><span data-dc-tpl="544" class="i18n-en en-serif" style="font-style: italic;">The Dao and the Instrument: A Chinese Reading of AI · I Have Lost Myself: AI and Chinese Philosophy of Awakening · The Second-Order Nature of Mind · The Heart-Method of the Diamond Sutra · The Work of the "In-Between": On the Awakened Wisdom of Love · and more</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   
-  <section data-dc-tpl="593" id="enroll" style="background: rgb(156, 43, 35); color: rgb(244, 239, 228); padding: 110px 6vw; text-align: center;">
-    <div data-dc-tpl="594" data-reveal="" style="max-width: 760px; margin: 0px auto;">
-      <div data-dc-tpl="595" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; opacity: 0.85; margin-bottom: 22px;"><span data-dc-tpl="596" class="i18n-zh">入 学 问 道</span><span data-dc-tpl="597" class="i18n-hant">入 學 問 道</span><span data-dc-tpl="598" class="i18n-en">ENROLL · SEEK THE DAO</span></div>
-      <h2 data-dc-tpl="599" style="margin: 0px 0px 26px; font-size: clamp(34px, 5vw, 64px); font-weight: 700; letter-spacing: 4px;"><span data-dc-tpl="600" class="i18n-zh">与九经书院同行</span><span data-dc-tpl="601" class="i18n-hant">與九經書院同行</span><span data-dc-tpl="602" class="i18n-en en-serif">Walk with Jiujing Academy</span></h2>
-      <p data-dc-tpl="603" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 16px; line-height: 2; font-weight: 300; opacity: 0.9; margin: 0px 0px 42px;"><span data-dc-tpl="604" class="i18n-zh">无论你为求学、为修心、为齐家、为治企——这里都有一条由典籍通往觉醒的路。</span><span data-dc-tpl="605" class="i18n-hant">無論你為求學、為修心、為齊家、為治企——這裡都有一條由典籍通往覺醒的路。</span><span data-dc-tpl="606" class="i18n-en">Whether you come to study, to cultivate the mind, to order a family, or to govern an enterprise — here lies a path from the classics to awakening.</span></p>
-      <a data-dc-tpl="607" href="报名入学.dc.html" class="hv9" style="display: inline-block; padding: 16px 46px; background: rgb(244, 239, 228); color: rgb(156, 43, 35); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; letter-spacing: 3px; font-weight: 500;"><span data-dc-tpl="608" class="i18n-zh">预约报名</span><span data-dc-tpl="609" class="i18n-hant">預約報名</span><span data-dc-tpl="610" class="i18n-en">Reserve a Place</span></a>
+  <section data-dc-tpl="545" id="ceo" style="padding: 120px 6vw; max-width: 1280px; margin: 0px auto;">
+    <div data-dc-tpl="546" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
+      <div data-dc-tpl="547" data-reveal="" style="display: flex; justify-content: center;">
+        <div data-dc-tpl="548" style="width: 100%; max-width: 300px;">
+          <div data-dc-tpl="549" style="aspect-ratio: 4 / 5; border: 1px solid rgba(34, 32, 29, 0.14); overflow: hidden; background: rgb(250, 247, 239); border-radius: 8px;">
+            <img data-dc-tpl="550" src="uploads/黄智威.jpg" alt="黄智威" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div data-dc-tpl="551" style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+            <span data-dc-tpl="552" style="width: 28px; height: 1px; background: rgb(156, 43, 35);"></span>
+            <span data-dc-tpl="553" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 12px; letter-spacing: 3px; color: rgb(138, 133, 124);"><span data-dc-tpl="554" class="i18n-zh">书院 · 运营</span><span data-dc-tpl="555" class="i18n-hant">書院 · 運營</span><span data-dc-tpl="556" class="i18n-en">ACADEMY · OPERATIONS</span></span>
+          </div>
+        </div>
+      </div>
+      <div data-dc-tpl="557" data-reveal="">
+        <div data-dc-tpl="558" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; color: rgb(156, 43, 35); margin-bottom: 18px;"><span data-dc-tpl="559" class="i18n-zh">书院 · CEO</span><span data-dc-tpl="560" class="i18n-hant">書院 · CEO</span><span data-dc-tpl="561" class="i18n-en">ACADEMY · CEO</span></div>
+        <h2 data-dc-tpl="562" style="margin: 0px 0px 8px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 3px;"><span data-dc-tpl="563" class="i18n-zh">黄智威</span><span data-dc-tpl="564" class="i18n-hant">黃智威</span><span data-dc-tpl="565" class="i18n-en en-serif">Huang Zhiwei</span></h2>
+        <div data-dc-tpl="566" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 14px; letter-spacing: 2px; color: rgb(138, 133, 124); margin-bottom: 24px;"><span data-dc-tpl="567" class="i18n-zh">书院CEO · 联合创始人</span><span data-dc-tpl="568" class="i18n-hant">書院CEO · 聯合創始人</span><span data-dc-tpl="569" class="i18n-en">CEO · Co-founder</span></div>
+        <p data-dc-tpl="570" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; line-height: 2.1; color: rgb(59, 56, 51); font-weight: 300; max-width: 540px; margin: 0px 0px 24px;"><span data-dc-tpl="571" class="i18n-zh">九经书院CEO，负责书院运营、课程体系管理、文化交流与对外合作。秉承「觉智圆成·体用不二」的理念，致力于将东方智慧与现代实践相融合，推动经典文化的当代传播与创新。</span><span data-dc-tpl="572" class="i18n-hant">九經書院CEO，負責書院運營、課程體系管理、文化交流與對外合作。秉承「覺智圓成·體用不二」的理念，致力於將東方智慧與現代實踐相融合，推動經典文化的當代傳播與創新。</span><span data-dc-tpl="573" class="i18n-en">CEO of Jiujing Academy, responsible for operations, curriculum management, cultural exchange and external cooperation. Upholding the philosophy of 'Consummate Awakened Wisdom · Substance and Function as One,' he is dedicated to integrating Eastern wisdom with modern practice.</span></p>
+        <div data-dc-tpl="574" style="display: flex; gap: 16px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; flex-wrap: wrap;">
+          <span data-dc-tpl="575" style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(34, 32, 29, 0.2); letter-spacing: 1px;">✉️ <span data-dc-tpl="576" class="i18n-zh">zhiwei@jiujing.academy</span><span data-dc-tpl="577" class="i18n-hant">zhiwei@jiujing.academy</span><span data-dc-tpl="578" class="i18n-en">zhiwei@jiujing.academy</span></span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <a data-dc-tpl="611" href="#top" title="回到顶部 · Top" aria-label="回到顶部 · Back to top" class="hv10" style="position: fixed; right: 28px; bottom: 28px; z-index: 60; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 58px; height: 58px; background: rgb(34, 32, 29); color: rgb(244, 239, 228); border-radius: 50%; box-shadow: rgba(34, 32, 29, 0.28) 0px 6px 22px; opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity 0.4s, transform 0.4s, visibility 0.4s, background 0.3s;">
-    <span data-dc-tpl="612" style="font-size: 15px; line-height: 1;">↑</span>
-    <span data-dc-tpl="613" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10px; letter-spacing: 1px; line-height: 1;"><span data-dc-tpl="614" class="i18n-zh">首页</span><span data-dc-tpl="615" class="i18n-hant">首頁</span><span data-dc-tpl="616" class="i18n-en">Top</span></span>
+  
+  <section data-dc-tpl="579" id="enroll" style="background: rgb(156, 43, 35); color: rgb(244, 239, 228); padding: 110px 6vw; text-align: center;">
+    <div data-dc-tpl="580" data-reveal="" style="max-width: 760px; margin: 0px auto;">
+      <div data-dc-tpl="581" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 6px; opacity: 0.85; margin-bottom: 22px;"><span data-dc-tpl="582" class="i18n-zh">入 学 问 道</span><span data-dc-tpl="583" class="i18n-hant">入 學 問 道</span><span data-dc-tpl="584" class="i18n-en">ENROLL · SEEK THE DAO</span></div>
+      <h2 data-dc-tpl="585" style="margin: 0px 0px 26px; font-size: clamp(34px, 5vw, 64px); font-weight: 700; letter-spacing: 4px;"><span data-dc-tpl="586" class="i18n-zh">与九经书院同行</span><span data-dc-tpl="587" class="i18n-hant">與九經書院同行</span><span data-dc-tpl="588" class="i18n-en en-serif">Walk with Jiujing Academy</span></h2>
+      <p data-dc-tpl="589" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 16px; line-height: 2; font-weight: 300; opacity: 0.9; margin: 0px 0px 42px;"><span data-dc-tpl="590" class="i18n-zh">无论你为求学、为修心、为齐家、为治企——这里都有一条由典籍通往觉醒的路。</span><span data-dc-tpl="591" class="i18n-hant">無論你為求學、為修心、為齊家、為治企——這裡都有一條由典籍通往覺醒的路。</span><span data-dc-tpl="592" class="i18n-en">Whether you come to study, to cultivate the mind, to order a family, or to govern an enterprise — here lies a path from the classics to awakening.</span></p>
+      <a data-dc-tpl="593" href="报名入学.dc.html" class="hv9" style="display: inline-block; padding: 16px 46px; background: rgb(244, 239, 228); color: rgb(156, 43, 35); font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 15px; letter-spacing: 3px; font-weight: 500;"><span data-dc-tpl="594" class="i18n-zh">预约报名</span><span data-dc-tpl="595" class="i18n-hant">預約報名</span><span data-dc-tpl="596" class="i18n-en">Reserve a Place</span></a>
+    </div>
+  </section>
+
+  <a data-dc-tpl="597" href="#top" title="回到顶部 · Top" aria-label="回到顶部 · Back to top" class="hv10" style="position: fixed; right: 28px; bottom: 28px; z-index: 60; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 58px; height: 58px; background: rgb(34, 32, 29); color: rgb(244, 239, 228); border-radius: 50%; box-shadow: rgba(34, 32, 29, 0.28) 0px 6px 22px; opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity 0.4s, transform 0.4s, visibility 0.4s, background 0.3s;">
+    <span data-dc-tpl="598" style="font-size: 15px; line-height: 1;">↑</span>
+    <span data-dc-tpl="599" style="font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 10px; letter-spacing: 1px; line-height: 1;"><span data-dc-tpl="600" class="i18n-zh">首页</span><span data-dc-tpl="601" class="i18n-hant">首頁</span><span data-dc-tpl="602" class="i18n-en">Top</span></span>
   </a>
 
-  <footer data-dc-tpl="617" style="background: rgb(26, 24, 21); color: rgb(138, 133, 124); padding: 56px 6vw 40px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 1px;">
-    <div data-dc-tpl="618" style="max-width: 1280px; margin: 0px auto;">
-      <nav data-dc-tpl="619" class="footnav" aria-label="快速导览" style="display: flex; flex-wrap: wrap; gap: 10px 24px; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid rgba(239, 233, 220, 0.12);">
-        <a data-dc-tpl="620" href="九经书院.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="621" class="i18n-zh">首页</span><span data-dc-tpl="622" class="i18n-hant">首頁</span><span data-dc-tpl="623" class="i18n-en">Home</span></a>
-        <a data-dc-tpl="624" href="书院概览.dc.html#intro" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="625" class="i18n-zh">书院简介</span><span data-dc-tpl="626" class="i18n-hant">書院簡介</span><span data-dc-tpl="627" class="i18n-en">Intro</span></a>
-        <a data-dc-tpl="628" href="书院概览.dc.html#organization" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="629" class="i18n-zh">机构设置</span><span data-dc-tpl="630" class="i18n-hant">機構設置</span><span data-dc-tpl="631" class="i18n-en">Org</span></a>
-        <a data-dc-tpl="632" href="书院概览.dc.html#founder" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="633" class="i18n-zh">创始人</span><span data-dc-tpl="634" class="i18n-hant">創始人</span><span data-dc-tpl="635" class="i18n-en">Founder</span></a>
-        <a data-dc-tpl="636" href="书院概览.dc.html#ceo" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="637" class="i18n-zh">CEO</span><span data-dc-tpl="638" class="i18n-hant">CEO</span><span data-dc-tpl="639" class="i18n-en">CEO</span></a>
-        <a data-dc-tpl="640" href="书院概览.dc.html#teachers" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="641" class="i18n-zh">名师荟萃</span><span data-dc-tpl="642" class="i18n-hant">名師薈萃</span><span data-dc-tpl="643" class="i18n-en">Teachers</span></a>
-        <a data-dc-tpl="644" href="九经课程.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="645" class="i18n-zh">九经课程</span><span data-dc-tpl="646" class="i18n-hant">九經課程</span><span data-dc-tpl="647" class="i18n-en">Classes</span></a>
-        <a data-dc-tpl="648" href="AI哲学.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="649" class="i18n-zh">AI哲学</span><span data-dc-tpl="650" class="i18n-hant">AI哲學</span><span data-dc-tpl="651" class="i18n-en">AI</span></a>
-        <a data-dc-tpl="652" href="书院动态.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="653" class="i18n-zh">书院动态</span><span data-dc-tpl="654" class="i18n-hant">書院動態</span><span data-dc-tpl="655" class="i18n-en">News</span></a>
-        <a data-dc-tpl="656" href="报名入学.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="657" class="i18n-zh">报名入学</span><span data-dc-tpl="658" class="i18n-hant">報名入學</span><span data-dc-tpl="659" class="i18n-en">Enroll</span></a>
+  <footer data-dc-tpl="603" style="background: rgb(26, 24, 21); color: rgb(138, 133, 124); padding: 56px 6vw 40px; font-family: &quot;Noto Sans SC&quot;, sans-serif; font-size: 13px; letter-spacing: 1px;">
+    <div data-dc-tpl="604" style="max-width: 1280px; margin: 0px auto;">
+      <nav data-dc-tpl="605" class="footnav" aria-label="快速导览" style="display: flex; flex-wrap: wrap; gap: 10px 24px; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid rgba(239, 233, 220, 0.12);">
+        <a data-dc-tpl="606" href="九经书院.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="607" class="i18n-zh">首页</span><span data-dc-tpl="608" class="i18n-hant">首頁</span><span data-dc-tpl="609" class="i18n-en">Home</span></a>
+        <a data-dc-tpl="610" href="书院概览.dc.html#intro" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="611" class="i18n-zh">书院简介</span><span data-dc-tpl="612" class="i18n-hant">書院簡介</span><span data-dc-tpl="613" class="i18n-en">Intro</span></a>
+        <a data-dc-tpl="614" href="书院概览.dc.html#organization" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="615" class="i18n-zh">机构设置</span><span data-dc-tpl="616" class="i18n-hant">機構設置</span><span data-dc-tpl="617" class="i18n-en">Org</span></a>
+        <a data-dc-tpl="618" href="书院概览.dc.html#founder" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="619" class="i18n-zh">创始人</span><span data-dc-tpl="620" class="i18n-hant">創始人</span><span data-dc-tpl="621" class="i18n-en">Founder</span></a>
+        <a data-dc-tpl="622" href="书院概览.dc.html#ceo" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="623" class="i18n-zh">CEO</span><span data-dc-tpl="624" class="i18n-hant">CEO</span><span data-dc-tpl="625" class="i18n-en">CEO</span></a>
+        <a data-dc-tpl="626" href="书院概览.dc.html#teachers" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="627" class="i18n-zh">名师荟萃</span><span data-dc-tpl="628" class="i18n-hant">名師薈萃</span><span data-dc-tpl="629" class="i18n-en">Teachers</span></a>
+        <a data-dc-tpl="630" href="九经课程.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="631" class="i18n-zh">九经课程</span><span data-dc-tpl="632" class="i18n-hant">九經課程</span><span data-dc-tpl="633" class="i18n-en">Classes</span></a>
+        <a data-dc-tpl="634" href="AI哲学.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="635" class="i18n-zh">AI哲学</span><span data-dc-tpl="636" class="i18n-hant">AI哲學</span><span data-dc-tpl="637" class="i18n-en">AI</span></a>
+        <a data-dc-tpl="638" href="书院动态.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="639" class="i18n-zh">书院动态</span><span data-dc-tpl="640" class="i18n-hant">書院動態</span><span data-dc-tpl="641" class="i18n-en">News</span></a>
+        <a data-dc-tpl="642" href="报名入学.dc.html" style="color: rgb(195, 188, 174); transition: color 0.2s;"><span data-dc-tpl="643" class="i18n-zh">报名入学</span><span data-dc-tpl="644" class="i18n-hant">報名入學</span><span data-dc-tpl="645" class="i18n-en">Enroll</span></a>
       </nav>
-      <div data-dc-tpl="660" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-        <div data-dc-tpl="661" style="display: flex; align-items: center; gap: 12px; color: rgb(195, 188, 174);"><span data-dc-tpl="662" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgb(156, 43, 35); color: rgb(244, 239, 228); font-size: 15px;">九经</span><span data-dc-tpl="663" style="letter-spacing: 3px;"><span data-dc-tpl="664" class="i18n-zh">九经书院</span><span data-dc-tpl="665" class="i18n-hant">九經書院</span><span data-dc-tpl="666" class="i18n-en">Jiujing Academy</span></span></div>
-        <div data-dc-tpl="667" style="letter-spacing: 2px;"><span data-dc-tpl="668" class="i18n-zh">儒 · 释 · 道　觉智圆成　体用不二</span><span data-dc-tpl="669" class="i18n-hant">儒 · 釋 · 道　覺智圓成　體用不二</span><span data-dc-tpl="670" class="i18n-en">Confucian · Buddhist · Daoist — Awakened Wisdom · Not-Two</span></div>
-        <div data-dc-tpl="671" style="opacity: 0.7;">© 2026 九经书院 · JIUJING ACADEMY</div>
+      <div data-dc-tpl="646" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div data-dc-tpl="647" style="display: flex; align-items: center; gap: 12px; color: rgb(195, 188, 174);"><span data-dc-tpl="648" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgb(156, 43, 35); color: rgb(244, 239, 228); font-size: 15px;">九经</span><span data-dc-tpl="649" style="letter-spacing: 3px;"><span data-dc-tpl="650" class="i18n-zh">九经书院</span><span data-dc-tpl="651" class="i18n-hant">九經書院</span><span data-dc-tpl="652" class="i18n-en">Jiujing Academy</span></span></div>
+        <div data-dc-tpl="653" style="letter-spacing: 2px;"><span data-dc-tpl="654" class="i18n-zh">儒 · 释 · 道　觉智圆成　体用不二</span><span data-dc-tpl="655" class="i18n-hant">儒 · 釋 · 道　覺智圓成　體用不二</span><span data-dc-tpl="656" class="i18n-en">Confucian · Buddhist · Daoist — Awakened Wisdom · Not-Two</span></div>
+        <div data-dc-tpl="657" style="opacity: 0.7;">© 2026 九经书院 · JIUJING ACADEMY</div>
       </div>
     </div>
   </footer></div></div></x-dc>
